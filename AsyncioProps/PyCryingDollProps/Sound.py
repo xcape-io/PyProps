@@ -6,14 +6,6 @@ Sound.py (version 0.1 initial)
 Sound play audio with aplay (until it ends).
 '''
 
-import gettext
-try:
- gettext.find("Sound")
- traduction = gettext.translation('Sound', localedir='locale', languages=['fr'])
- traduction.install()
-except:
- _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
-
 import os, subprocess
 	
 class Sound:
@@ -42,14 +34,14 @@ class Sound:
 					stderr=subprocess.DEVNULL)
 			except Exception as e:
 				if self._logger:
-					self._logger.error(_("Sound API : failed to load file"))
+					self._logger.error("Sound API : failed to load file")
 					self._logger.debug(e)
 			if self._logger:
-				self._logger.info("{} {}".format(_("Sound API : playing"), file))
+				self._logger.info("{} {}".format("Sound API : playing", file))
 		else:
 			self._file= None
 			if self._logger:
-				self._logger.info("{} {}".format(_("Sound API : file not found"), file))
+				self._logger.info("{} {}".format("Sound API : file not found", file))
 
 	#__________________________________________________________________
 	def isPlaying(self):

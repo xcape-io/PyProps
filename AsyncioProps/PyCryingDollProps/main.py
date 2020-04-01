@@ -22,6 +22,7 @@ To switch MQTT broker, kill the program and start again with new arguments.
 import paho.mqtt.client as mqtt
 import os, sys, platform, signal, uuid
 import asyncio
+import RPi.GPIO as GPIO
 
 from constants import *
 from CryingDollApp import CryingDollApp
@@ -46,7 +47,7 @@ mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 app = CryingDollApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 if app._logger:
-	app._logger.info(_("Program started"))
+	app._logger.info("Program started")
 
 loop = asyncio.get_event_loop()
 
@@ -93,7 +94,7 @@ except:
 	pass
 	
 if app._logger:
-	app._logger.info(_("Program done"))
+	app._logger.info("Program done")
 
 del(me)
 

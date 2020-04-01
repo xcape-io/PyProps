@@ -9,14 +9,6 @@ CryingDollApp extends MqttApp.
 
 from constants import *
 
-import gettext
-try:
- gettext.find("CryingDollApp")
- traduction = gettext.translation('CryingDollApp', localedir='locale', languages=['fr'])
- traduction.install()
-except:
- _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
-
 from MqttApp import MqttApp
 from MqttVar import MqttVar
 from Sound import Sound
@@ -43,7 +35,7 @@ class CryingDollApp(MqttApp):
 		for pin in GPIO_VIBRATION_SENSORS:
 			GPIO.setup(pin, GPIO.IN)
 			GPIO.add_event_detect(pin, GPIO.RISING, callback=self.vibrate, bouncetime=200)
-			self._logger.info("{} {}".format(_("Setup vibration sensor input pin on"), str(pin)))
+			self._logger.info("{} {}".format("Setup vibration sensor input pin on", str(pin)))
 		
 		self._sound = Sound(self._logger)
 		
