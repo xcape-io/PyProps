@@ -4,43 +4,54 @@
 MqttApp.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-App base class with MQTT inbox/outbox using asyncio event loop.
+App base class handling props app wide Paho MQTT client:
+- make all app subscriptions (app-inbox and mqtt-sub-* topics)
+- publish messages with publishPropsMessage() and publishMessage()
+- receive messages exposing onPropsMessage() and onMessage()
+- expose onConnect() and onDisconnect() virtual methods
+- handle logging defined in logging.ini
+- parse props app arguments
 
-pip:
------
-$ sudo pip3 install pyaml
-
-Config:
-----------
-- in constants.py
-APPLICATION =
-CONFIG_FILE =
-MQTT_DEFAULT_HOST =
-MQTT_DEFAULT_PORT =
-MQTT_DEFAULT_QoS =
-- in definitions.ini
-[mqtt]
-app-inbox =
-app-outbox =
-mqtt-sub-room-language =
-
-Extend:
-------------
-- onConnect()
-- onDisconnect()
-- onMessage(self, topic, message):
+Configured with:
+-  constants.py
+    APPLICATION
+    CONFIG_FILE
+    MQTT_DEFAULT_HOST
+    MQTT_DEFAULT_PORT
+    MQTT_DEFAULT_QoS
+    MQTT_KEEPALIVE
+- definitions.ini
+    app-inbox
+    app-outbox
+    mqtt-sub-...
+- logging.ini
 """
 
 from constants import *
-
-import gettext
-
 try:
-    gettext.find("MqttApp")
-    traduction = gettext.translation('MqttApp', localedir='locale', languages=['fr'])
-    traduction.install()
-except:
-    _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
+    APPLICATION
+except NameError:
+    APPLICATION = "Props"
+try:
+    CONFIG_FILE
+except NameError:
+    CONFIG_FILE = ".config.yml"
+try:
+    MQTT_DEFAULT_HOST
+except NameError:
+    MQTT_DEFAULT_HOST = "localhost"
+try:
+    MQTT_DEFAULT_PORT
+except NameError:
+    MQTT_DEFAULT_PORT = 1883
+try:
+    MQTT_DEFAULT_QoS
+except NameError:
+    MQTT_DEFAULT_QoS = 2
+try:
+    MQTT_KEEPALIVE
+except NameError:
+    MQTT_KEEPALIVE = 15
 
 import configparser, codecs, yaml
 import logging, logging.config
@@ -145,6 +156,11 @@ class MqttApp():
             ch.setLevel(logging.INFO)
             self._logger.addHandler(ch)
 
+        if self._mqttInbox is None:
+            self._logger.warning("Props inbox topic is not defined")
+        if self._mqttOutbox is None:
+            self._logger.warning("Props outbox topic is not defined")
+
         with open(CONFIG_FILE, 'w') as conffile:
             yaml.dump(self._config, conffile, default_flow_style=False)
 
@@ -159,41 +175,29 @@ class MqttApp():
         if rc == 0:
             self._mqttConnected = True
             # self._logger.debug("Connected to MQTT server with flags: ", flags) # flags is dict
-            self._logger.info(_("Program connected to MQTT server"))
-            if self._mqttOutbox:
-                try:
-                    message = "CONNECTED"
-                    (result, mid) = self._mqttClient.publish(self._mqttOutbox, message, qos=MQTT_DEFAULT_QoS,
-                                                             retain=True)
-                    self._logger.info("{0} '{1}' (mid={2}) on {3}".format(_("Program sending message"), message, mid,
-                                                                          self._mqttOutbox))
-                except Exception as e:
-                    self._logger.error("{0} '{1}' on {2}".format(_("MQTT API : failed to call publish() for"), message,
-                                                                 self._mqttOutbox))
-                    self._logger.debug(e)
+            self._logger.info("Program connected to MQTT server")
             for topic in self._mqttSubscriptions:
                 try:
                     (result, mid) = self._mqttClient.subscribe(topic, MQTT_DEFAULT_QoS)
-                    self._logger.info("{0} (mid={1}) : {2}".format(_("Program subscribing to topic"), mid, topic))
+                    self._logger.info("{0} (mid={1}) : {2}".format("Program subscribing to topic", mid, topic))
                 except Exception as e:
-                    self._logger.error(_("MQTT API : failed to call subscribe()"))
+                    self._logger.error("MQTT API : failed to call subscribe()")
                     self._logger.debug(e)
         elif rc == 1:
             self._logger.warning(
-                _("Program failed to connect to MQTT server : connection refused - incorrect protocol version"))
+                "Program failed to connect to MQTT server : connection refused - incorrect protocol version")
         elif rc == 2:
             self._logger.warning(
-                _("Program failed to connect to MQTT server : connection refused - invalid client identifier"))
+                "Program failed to connect to MQTT server : connection refused - invalid client identifier")
         elif rc == 3:
-            self._logger.warning(
-                _("Program failed to connect to MQTT server : connection refused - server unavailable"))
+            self._logger.warning("Program failed to connect to MQTT server : connection refused - server unavailable")
         elif rc == 4:
             self._logger.warning(
-                _("Program failed to connect to MQTT server : connection refused - bad username or password"))
+                "Program failed to connect to MQTT server : connection refused - bad username or password")
         elif rc == 5:
-            self._logger.warning(_("Program failed to connect to MQTT server : connection refused - not authorised"))
+            self._logger.warning("Program failed to connect to MQTT server : connection refused - not authorised")
         else:
-            self._logger.warning("{0} {1}".format(_("Program failed to connect to MQTT server : return code was"), rc))
+            self._logger.warning("{0} {1}".format("Program failed to connect to MQTT server : return code was", rc))
 
         self.onConnect(client, userdata, flags, rc)
 
@@ -325,26 +329,28 @@ class MqttApp():
         mydata = {'host': self._mqttServerHost, 'port': self._mqttServerPort}
         self._mqttClient.user_data_set(str(mydata))
 
-        """
-		The loop_start() starts a new thread, that calls the loop method at 
-		regular intervals for you. It also handles re-connects automatically.
-		"""
+        '''
+        The loop_start() starts a new thread, that calls the loop method at 
+        regular intervals for you. It also handles re-connects automatically.
+        '''
         self._mqttClient.loop_start()
 
-        """
-		If you use client.connect_async(), your client must use the 
-		threaded interface client.loop_start()
-		"""
+        '''
+        If you use client.connect_async(), your client must use the 
+        threaded interface client.loop_start()
+        '''
         try:
             self._mqttClient.connect_async(self._mqttServerHost, port=self._mqttServerPort, keepalive=MQTT_KEEPALIVE)
         except Exception as e:
-            self._logger.error(_("MQTT API : failed to call connect_async()"))
+            self._logger.error("MQTT API : failed to call connect_async()")
             self._logger.debug(e)
 
+    # __________________________________________________________________
     @property
     def logger(self):
         return self._logger
 
+    # __________________________________________________________________
     @logger.setter
     def logger(self, value):
         self._logger = value

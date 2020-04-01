@@ -9,6 +9,9 @@ CryingDollApp extends MqttApp.
 
 from constants import *
 
+import sys
+sys.path.append("../../core")
+
 from MqttApp import MqttApp
 from MqttVar import MqttVar
 from Sound import Sound
