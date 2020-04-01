@@ -77,7 +77,7 @@ For GPIO support, *PyProps library* comes with code for Raspberry Pi 3 and Pi 4.
 
 
 ## Eric IDE or PyCharm Professional
-You can use any Python IDE for your props development however we recommend:
+You can use any Python IDE for your props development, however we recommend:
 * Eric IDE to code and debug directly on the props via the VNC viewer
 * <a href="https://www.jetbrains.com/pycharm/" target="_blank">PyCharm Professional</a> on your PC to code and debug remotely
 
