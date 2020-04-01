@@ -1,29 +1,27 @@
 ﻿# Asyncio Props
 *Library for pure Python props using **asyncio**.*
 
-1. Installation and usage
-2. AsyncioProps applications
-3. AsyncioProps code
+With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a graphical interface:
+* sensors and actuators (GPIO and I2C shieds)
+* sound (<a href="https://pypi.org/project/playsound/" target="_blank">playsound</a>, <a href="https://pypi.org/project/pydub/" target="_blank">pydub</a> or native player like _aplay_, _mplayer_ and _mpg123_)
+
+The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework allows writing non-blocking Python programs that multitask seamlessly.
+
+[AsyncioProps](./AsyncioProps) props hides the complexity of the <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework and adds MQTT asynchronous messaging to facilitate your coding.
+
+You will choose your sound solution according to the latency required for the props to play an audio file.
+
+## Installation and usage
+You will find installation and usage instructions in the [PyProps library INSTALLATION.md](../INSTALLATION.md)
 
 
-## 1. Installation and usage
-You will find installation and usage instructions in the [PyProps library README.md](../README.md).
+## AsyncioProps applications
+For most the common console props (without graphical interface), for example:
+* detect vibrations to trigger a crying doll
+* detect RFID tag with a NFC I2C shield
 
 
-## 2. AsyncioProps applications
-For most the common console props (without graphical interface):
-* sensors
-    * I/O
-    * I2C shields
-* actuators
-    * digital outputs
-    * I2C shields
-* sound
-    * <a href="https://pypi.org/project/playsound/" target="_blank">playsound</a>
-    * <a href="https://pypi.org/project/pydub/" target="_blank">pydub</a>
-    * native player (_aplay_, _mplayer_, _mpg123_)
-
-## 3. AsyncioProps code
+## AsyncioProps code
 ...
 
 
