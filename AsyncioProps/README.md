@@ -7,7 +7,7 @@
 
 
 ## 1. Installation and usage
-You will find installation and usage instructions in the [PyProps library README.md](README).
+You will find installation and usage instructions in the [PyProps library README.md](../README.md).
 
 
 ## 2. AsyncioProps applications
