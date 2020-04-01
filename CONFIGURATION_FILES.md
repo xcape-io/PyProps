@@ -195,9 +195,9 @@ example:
 MQTT supports UTF-8 encoding.
  
 ### Sending messages only when appropriate  
-Usually Arduino IoT sketches send MQTT data for every variable at every loop. When the loop is fast, you can get tons of useless messages, and usually a sleeping delay is added at every loop to slow down the message flow ; this can slow down significantly the props response time to human supervision and automation commands. 
+Usually Arduino IoT appes send MQTT data for every variable at every loop. When the loop is fast, you can get tons of useless messages, and usually a sleeping delay is added at every loop to slow down the message flow ; this can slow down significantly the props response time to human supervision and automation commands. 
 
-While Arduino sketch is sending a message it isn't doing props sensor/actuator processing, and it takes about 20 to 40 milliseconds to send a message. With too many messsages it's too much processing time wasted.
+While Arduino app is sending a message it isn't doing props sensor/actuator processing, and it takes about 20 to 40 milliseconds to send a message. With too many messsages it's too much processing time wasted.
 
 *ArduinoProps library* sends all data periodically every 30 seconds (default parameter) and sends data changes over a period of time you choose (typical 400 milliseconds for real-time behavior, but you may choose every 100 milliseconds, 1 or 3 seconds: your choice for your application).
 
@@ -208,7 +208,7 @@ Tracking data changes could make Arduino code difficult to read and maintain but
 Some analog data can change at every loop but not significantly, for example U=2.77 volts while showing this when it changes more than 10% could be sufficient. *ArduinoProps library* offers a nice syntax to take care of this significance, with simple code.
 
 ### Maintaining MQTT server connection  
-MQTT connection state must be checked at erevy sketch loop as well as incoming MQTT messages. *ArduinoProps library* does all in one code line.
+MQTT connection state must be checked at erevy app loop as well as incoming MQTT messages. *ArduinoProps library* does all in one code line.
 
 And on Yun this same code line can switch MQTT server IP address (can be helpful in a fallback plan).
 
@@ -235,7 +235,7 @@ However, on Arduino the limit is for the addition of topic length + message leng
 - Wifi shield limit is 80 bytes
 - Yun limit (due to Bridge) is 120 bytes
 
-DATA messages when many I/O like on Arduino Mega 2560 and MESG information messages can go very long, and crash the sketch without notice at run-time.
+DATA messages when many I/O like on Arduino Mega 2560 and MESG information messages can go very long, and crash the app without notice at run-time.
 
 *ArduinoProps library* seamlessly splits long messages smartly when required.
 
@@ -243,7 +243,7 @@ DATA messages when many I/O like on Arduino Mega 2560 and MESG information messa
 
 A *level 7* protocol (*application level*) is necessary for connected props to report data and to be controlled for the escape room automation and game play.
 
-We have defined a simple human-readable text protocol. Messages are encoded in UTF-8, in Arduino sketches use:
+We have defined a simple human-readable text protocol. Messages are encoded in UTF-8, in Arduino appes use:
 ```csharp
     str = u8"la chaîne avec des caractères non Latin1";
 ```

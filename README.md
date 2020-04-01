@@ -7,7 +7,7 @@ With the *PyProps library* you can start coding a Raspberry props for you escape
 ## PyProps library core
 *MqttApp* and *MqttVar* classes, which manage MQTT messaging, will simplify and speed up the coding. *MqttApp* is the base class of the Python props program.
 
-`constants.py` and `definitions.ini` are configuration files related to the escape room MQTT topics and the props flavor.
+`constants.py`, `definitions.ini` and `logging.ini` are configuration files related to the escape room MQTT topics and the props flavor.
 
 *Singleton* class will guarantee that only one instance of the props program runs on the Raspberry board.
 

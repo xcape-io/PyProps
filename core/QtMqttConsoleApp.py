@@ -56,10 +56,10 @@ class MqttConsoleApp(QCoreApplication):
 						self._definitions[key] = definitions.value(key)
 						if key.startswith('mqtt-sub-'):
 							self._mqttSubscriptions.append(self._definitions[key])
-						if key == 'sketch-inbox':
+						if key == 'app-inbox':
 							self._mqttInbox = self._definitions[key]
 							self._mqttSubscriptions.append(self._mqttInbox)				
-						if key == 'sketch-outbox':
+						if key == 'app-outbox':
 							self._mqttOutbox = self._definitions[key]
 				definitions.endGroup()
 		

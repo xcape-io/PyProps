@@ -37,8 +37,8 @@ MQTT_DEFAULT_PORT =
 MQTT_DEFAULT_QoS = 
 - in definitions.ini
 [mqtt]
-sketch-inbox = 
-sketch-outbox = 
+app-inbox =
+app-outbox =
 mqtt-sub-room-language = 
 
 Extend:
@@ -97,10 +97,10 @@ class MqttKivyApp(App):
 					self._definitions[key] = self.config.get("mqtt", key)
 					if key.startswith('mqtt-sub-'):
 						self._mqttSubscriptions.append(self._definitions[key])
-					if key == 'sketch-inbox':
+					if key == 'app-inbox':
 						self._mqttInbox = self._definitions[key]
 						self._mqttSubscriptions.append(self._mqttInbox)				
-					if key == 'sketch-outbox':
+					if key == 'app-outbox':
 						self._mqttOutbox = self._definitions[key]			
 
 		if os.path.isfile(CONFIG_FILE):

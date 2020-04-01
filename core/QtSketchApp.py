@@ -3,7 +3,7 @@
 '''
 SketchApp.py  (version 0.1 initial)
 
-SketchApp extends MqttConsoleApp to implement automation sketch in a PyQt5 
+SketchApp extends MqttConsoleApp to implement automation app in a PyQt5
 console application.
 '''
 
@@ -81,15 +81,15 @@ class SketchApp(MqttConsoleApp):
 	#__________________________________________________________________
 	@pyqtSlot(str, str)
 	def onMessageReceived(self, topic, message):
-		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' might be implemented in derived sketch (' + self.__class__.__name__ + ')')
+		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' might be implemented in derived app (' + self.__class__.__name__ + ')')
 
 	#__________________________________________________________________
 	def performAction(self, message):
-		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived sketch (' + self.__class__.__name__ + ')')
+		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived app (' + self.__class__.__name__ + ')')
 			
 	#__________________________________________________________________
 	def processAutomation(self):
-		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived sketch (' + self.__class__.__name__ + ')')
+		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived app (' + self.__class__.__name__ + ')')
 	
 	#__________________________________________________________________
 	@pyqtSlot()
@@ -98,11 +98,11 @@ class SketchApp(MqttConsoleApp):
 	
 	#__________________________________________________________________
 	def publishAllData(self):
-		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived sketch (' + self.__class__.__name__ + ')')
+		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived app (' + self.__class__.__name__ + ')')
 		
 	#__________________________________________________________________
 	def publishDataChanges(self):
-		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived sketch (' + self.__class__.__name__ + ')')
+		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived app (' + self.__class__.__name__ + ')')
 
 	#__________________________________________________________________
 	@pyqtSlot()
@@ -162,5 +162,5 @@ class SketchApp(MqttConsoleApp):
 			
 	#__________________________________________________________________
 	def setupAutomation(self):
-		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived sketch (' + self.__class__.__name__ + ')')
+		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' must be implemented in derived app (' + self.__class__.__name__ + ')')
 		

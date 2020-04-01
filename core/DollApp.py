@@ -1,21 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-DollApp.py (version 0.1 initial)
+CryingDollApp.py (version 0.1 initial)
 
-DollApp extends MqttApp.
+CryingDollApp extends MqttApp.
 
 '''
 
 from constants import *
-
-import gettext
-try:
- gettext.find("DollApp")
- traduction = gettext.translation('DollApp', localedir='locale', languages=['fr'])
- traduction.install()
-except:
- _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
 
 from MqttApp import MqttApp
 from MqttVar import MqttVar
@@ -24,7 +16,7 @@ from Sound import Sound
 import RPi.GPIO as GPIO
 import random, os
 		
-class DollApp(MqttApp):
+class CryingDollApp(MqttApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):
