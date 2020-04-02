@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-'''
+"""
 CryingDollApp.py (version 0.1 initial)
 
 CryingDollApp extends MqttApp.
-
-'''
+"""
 
 from constants import *
 

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Singleton.py
+
 https://github.com/pycontribs/tendo/blob/master/tendo/singleton.py
 """
 
