@@ -26,14 +26,13 @@ class CryingDollApp(MqttApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):
-		
 		super().__init__(argv, client, debugging_mqtt)
 		
-		self._lumiere_p = MqttVar('lumière' , bool, 0, logger = self._logger)
-		self._publishable.append(self._lumiere_p )
-		self._pleurs_p = MqttVar('pleurs' , bool, 0, logger = self._logger)
-		self._publishable.append(self._pleurs_p )
-		self._active_p = MqttVar('activé' , bool, 0, alias=("oui","non"), logger = self._logger)
+		self._light_p = MqttVar('light' , bool, 0, logger = self._logger)
+		self._publishable.append(self._light_p )
+		self._crying_p = MqttVar('crying' , bool, 0, logger = self._logger)
+		self._publishable.append(self._crying_p )
+		self._active_p = MqttVar('activated' , bool, 0, alias=("yes","no"), logger = self._logger)
 		self._publishable.append(self._active_p )
 
 		GPIO.setup(GPIO_RELAY_LIGHT, GPIO.OUT,  initial=GPIO.LOW)
@@ -45,12 +44,12 @@ class CryingDollApp(MqttApp):
 		
 		self._sound = Sound(self._logger)
 		
-		self._lumiere_p.update(False)
-		self._pleurs_p.update(False)
+		self._light_p.update(False)
+		self._crying_p.update(False)
 		self._active_p.update(False)
 		
-		os.system("amixer cset numid=3 1") # audio jack
-		os.system("amixer set 'PCM' -- 400") # volume fort
+		os.system("amixer cset numid=3 1") # jack audio
+		os.system("amixer set 'PCM' -- 400") # loud volume
 
 	#__________________________________________________________________
 	def onConnect(self, client, userdata, flags, rc):
@@ -69,7 +68,7 @@ class CryingDollApp(MqttApp):
 		if message == "app:startup":
 			self.publishAllData()
 			self.publishMessage(self._mqttOutbox, "DONE " + message)
-		elif message.startswith("activer:"):
+		elif message.startswith("activate:"):
 			if message.endswith(":0"):
 				self._active_p.update(False)
 				self.publishMessage(self._mqttOutbox, "DATA " + str(self._active_p) )# accurate flip/flop
@@ -80,16 +79,16 @@ class CryingDollApp(MqttApp):
 				self.publishMessage(self._mqttOutbox, "DONE " + message)
 			else:
 				self.publishMessage(self._mqttOutbox, "OMIT " + message)
-		elif message.startswith("lumière:"):
-			if message.endswith(":éteindre"):
+		elif message.startswith("light:"):
+			if message.endswith(":off"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.LOW)
-				self._lumiere_p.update(False)
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._lumiere_p) )# accurate flip/flop
+				self._light_p.update(False)
+				self.publishMessage(self._mqttOutbox, "DATA " + str(self._light_p) )# accurate flip/flop
 				self.publishMessage(self._mqttOutbox, "DONE " + message)
-			elif message.endswith(":allumer"):
+			elif message.endswith(":on"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.HIGH)
-				self._lumiere_p.update(True)	
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._lumiere_p) )# accurate flip/flop
+				self._light_p.update(True)
+				self.publishMessage(self._mqttOutbox, "DATA " + str(self._light_p) )# accurate flip/flop
 				self.publishMessage(self._mqttOutbox, "DONE " + message)
 			else:
 				self.publishMessage(self._mqttOutbox, "OMIT " + message)
@@ -99,20 +98,16 @@ class CryingDollApp(MqttApp):
 
 	#__________________________________________________________________
 	def publishAllData(self):
-		
-		self._pleurs_p.update(self._sound.isPlaying() )
+		self._crying_p.update(self._sound.isPlaying() )
 		super().publishAllData()
 		
 	#__________________________________________________________________
 	def publishDataChanges(self):
-		
-		self._pleurs_p.update(self._sound.isPlaying() )
+		self._crying_p.update(self._sound.isPlaying() )
 		super().publishDataChanges()
 		
 	#__________________________________________________________________
 	def vibrate(self, pin):
-		#print("VIBRATE", pin)
-		
 		if not self._active_p.value() or self._sound.isPlaying():
 			return			
 
