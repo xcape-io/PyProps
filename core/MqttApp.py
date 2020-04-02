@@ -152,7 +152,7 @@ class MqttApp():
             else:
                 self._logger = logging.getLogger('production')
                 self._logger.setLevel(logging.INFO)
-            ch = logging.FileHandler(APPLICATION + '.log', 'w')
+            ch = logging.FileHandler('props.log', 'w')
             ch.setLevel(logging.INFO)
             self._logger.addHandler(ch)
 
