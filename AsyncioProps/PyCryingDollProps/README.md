@@ -1,55 +1,60 @@
-﻿# PyProps library
-***Installation and usage of the [PyProps library](README.md).***
+﻿# Crying Doll props
+***The doll cries when the players approach when vibrations are detected.***
+
+Two vibration sensors SW-420 are connected to the Raspberry Pi GPIO and tuned to detect human approaching.
+
+When vibration is detected, a sound is picked up randomly among seven audio files and played. The vibration detection can be activated / deactivated and a light is remotely switched on and off.
 
 
 ## Installation
-Download `PyProps-master.zip` from this GitHub repository and unflate it on your Raspberry Pi. Rename `PyProps-master` folder the a meaningful name for you props. 
-
-A good habit is to rename the props folder to: `/home/pi/Room/Props/MyProps`
-
-Install dependencies
-```bash
-pip3 install -r requirements.txt
-```
-
-Edit `definitions.ini` to set MQTT topics for your Escape Room:
-```python
-[mqtt]
-; mqtt-sub-* and app-inbox topics are subscribed by MqttApp
-app-inbox = Room/My room/Props/Raspberry MyProps/inbox
-app-outbox = Room/My room/Props/Raspberry MyProps/outbox
-;mqtt-sub-control-scenario = Room/My room/Control/game:scenario
-;mqtt-sub-control-clock-minutes=Room/My room/Control/game:clock:minutes
-;mqtt-sub-control-countdown-minutes=Room/My room/Control/game:countdown:minutes
-;mqtt-sub-control-players=Room/My room/Control/game:players
-``` 
+See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
 
 
 ## Usage
-Start `main.py` script:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps`:
 
 ```bash
-usage: python3 main.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/main.py -s localhost -d
+Config: {'host': '192.168.1.42'}
+INFO - New boolean Publishable 'light' (1/0) with initial=0
+INFO - New boolean Publishable 'crying' (1/0) with initial=0
+INFO - New boolean Publishable 'activated' (yes/no) with initial=0
+INFO - Setup vibration sensor input pin on 20
+INFO - Setup vibration sensor input pin on 21
+numid=3,iface=MIXER,name='PCM Playback Route'
+  ; type=INTEGER,access=rw------,values=1,min=0,max=3,step=0
+  : values=1
+Simple mixer control 'PCM',0
+  Capabilities: pvolume pvolume-joined pswitch pswitch-joined
+  Playback channels: Mono
+  Limits: Playback -10239 - 400
+  Mono: Playback 400 [100%] [4.00dB] [on]
+INFO - Program started
+INFO - Program connected to MQTT server
+INFO - Program subscribing to topic (mid=1) : Room/My room/Raspberry CryingDoll/inbox
+DEBUG - MQTT topic is subscribed : mid=1 granted_qos=(2,)
+DEBUG - MQTT message is published : mid=2 userdata={'host': 'localhost', 'port': 1883}
 
-optional arguments:
- -h, --help   show this help message and exit
- -s SERVER, --server SERVER
-      change MQTT server host
- -p PORT, --port PORT change MQTT server port
- -d, --debug   set DEBUG log level
- -l LOGGER, --logger LOGGER
-      use logging config file
 ```
 
-To switch MQTT broker, kill the program and start again with new arguments.
+
+## Vibration sensor
+We use two vibration sensors module SW-420 connected on GPIO 20 and 21:
+
+![SW-420](sensor/sw-420-vibration-sensor.png)
+
+<a href="sensor%2FVibration%20Sensor%20Module%20SW420.pdf" target="_blank">Vibration Sensor Module SW420.pdf</a>
+
+## Relay module
+An SRD relay module is connected to GPIO 16 to control the light.
+
+![SRD rely module](actuator/srd-relay-shield.jpg)
 
 
-## SSH relaunch command
-The command to relaunch the props from *<a href="https://xcape.io/" target="_blank">xcape.io</a>* **Room** software is :
+## Props
 
-```bash
-$ ps aux | grep python | grep -v "grep python" | grep MyProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/MyProps/main.py -s %BROKER%
-```
+
+
 
 
 ## Author

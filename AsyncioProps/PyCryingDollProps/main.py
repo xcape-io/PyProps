@@ -19,35 +19,47 @@ optional arguments:
 To switch MQTT broker, kill the program and start again with new arguments.
 '''
 
-import paho.mqtt.client as mqtt
-import os, sys, platform, signal, uuid
 import asyncio
+import os
+import platform
+import signal
+import sys
+import uuid
+
 import RPi.GPIO as GPIO
+import paho.mqtt.client as mqtt
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from constants import *
+
+try:
+    PYPROPS_CORELIBPATH
+    sys.path.append(PYPROPS_CORELIBPATH)
+except NameError:
+    pass
+
 from CryingDollApp import CryingDollApp
 from Singleton import Singleton, SingletonException
 
 me = None
 try:
-	me = Singleton()
+    me = Singleton()
 except SingletonException:
-	sys.exit(-1)
+    sys.exit(-1)
 except BaseException as e:
-	print(e)
-	
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    print(e)
 
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
-	GPIO.setmode(GPIO.BCM)
-	GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
 app = CryingDollApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 if app._logger:
-	app._logger.info("Program started")
+    app._logger.info("Program started")
 
 loop = asyncio.get_event_loop()
 
@@ -55,22 +67,25 @@ loop = asyncio.get_event_loop()
 signal.signal(signal.SIGTERM, loop.stop)
 signal.signal(signal.SIGINT, loop.stop)
 if platform.system() != 'Windows':
-	signal.signal(signal.SIGHUP, loop.stop)
-	signal.signal(signal.SIGQUIT, loop.stop)
+    signal.signal(signal.SIGHUP, loop.stop)
+    signal.signal(signal.SIGQUIT, loop.stop)
+
 
 # Publish data
 async def publishAllData(period):
-	while True:
-		await asyncio.sleep(period)
-		app.publishAllData()
-	
+    while True:
+        await asyncio.sleep(period)
+        app.publishAllData()
+
+
 async def publishDataChanges(period):
-	while True:
-		await asyncio.sleep(period)
-		app.publishDataChanges()
-	
+    while True:
+        await asyncio.sleep(period)
+        app.publishDataChanges()
+
+
 loop.create_task(publishAllData(PUBLISHALLDATA_PERIOD))
-loop.create_task(publishDataChanges(PUBLISHDATACHANGES_PERIOD)) # usually 3.0 but Sound has no state update period
+loop.create_task(publishDataChanges(PUBLISHDATACHANGES_PERIOD))  # usually 3.0 but Sound has no state update period
 
 # May add automation 
 '''
@@ -85,17 +100,17 @@ loop.run_forever()
 loop.close()
 
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
-	GPIO.cleanup()
+    GPIO.cleanup()
 
 try:
-	mqtt_client.disconnect()
-	mqtt_client.loop_stop()
+    mqtt_client.disconnect()
+    mqtt_client.loop_stop()
 except:
-	pass
-	
-if app._logger:
-	app._logger.info("Program done")
+    pass
 
-del(me)
+if app._logger:
+    app._logger.info("Program done")
+
+del (me)
 
 sys.exit(0)

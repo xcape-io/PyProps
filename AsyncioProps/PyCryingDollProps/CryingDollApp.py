@@ -8,13 +8,6 @@ CryingDollApp extends MqttApp.
 
 from constants import *
 
-import sys
-try:
-	PYPROPS_CORELIBPATH
-	sys.path.append(PYPROPS_CORELIBPATH)
-except NameError:
-    pass
-
 from MqttApp import MqttApp
 from MqttVar import MqttVar
 from Sound import Sound
@@ -79,6 +72,8 @@ class CryingDollApp(MqttApp):
 				self.publishMessage(self._mqttOutbox, "DONE " + message)
 			else:
 				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+		elif message.startswith("cry:_"):
+			self.vibrate(0)
 		elif message.startswith("light:"):
 			if message.endswith(":off"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.LOW)
