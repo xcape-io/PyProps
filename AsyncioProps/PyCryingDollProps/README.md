@@ -52,6 +52,15 @@ An SRD relay module is connected to GPIO 16 to control the light.
 
 
 ## Props
+Props commands:
+* activate:0
+* activate:1
+* light:off
+* light:on
+* cry:_
+
+Props data messages:
+
 
 
 
