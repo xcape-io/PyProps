@@ -2,30 +2,19 @@
 # -*- coding: utf-8 -*-
 """
 MqttVar.py
-MIT License (c) Marie Faure
+MIT License (c) Marie Faure <dev at faure dot systems>
 
-Class to track and publish variable changes.
+Class to track changes in variables and to publish them optimally in the props outbox.
 """
-
-import gettext
-
-try:
-    gettext.find("MqttVar")
-    traduction = gettext.translation('MqttVar', localedir='locale', languages=['fr'])
-    traduction.install()
-except:
-    _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
 
 
 class MqttVar:
 
     # __________________________________________________________________
     def __init__(self, name, type, initial, decimal=None, precision=1, alias=("1", "0"), logger=None):
-
         super().__init__()
 
         self._logger = logger
-
         self._name = name
         self._type = type
         self._decimal = decimal
@@ -38,38 +27,37 @@ class MqttVar:
             self._reference = v + 1
             if self._logger:
                 self._logger.info(
-                    "{0} '{1}' {2}={3} {4}={5}".format(_("New int Publishable"), self._name, _("with initial"), initial,
-                                                       _("and precision"), self._precision))
+                    "{0} '{1}' {2}={3} {4}={5}".format("New int Publishable", self._name, "with initial", initial,
+                                                       "and precision", self._precision))
         elif type == float:
             v = float(str(initial))
             self._value = v
             self._reference = v + 1.0
             if self._logger and self._decimal:
-                self._logger.info("{0} '{1}' {2}={3} {4}={5} {6}={7}".format(_("New float Publishable"), self._name,
-                                                                             _("with initial"), initial,
-                                                                             _("and precision"), self._precision,
-                                                                             _("and decimal"), self._decimal))
+                self._logger.info(
+                    "{0} '{1}' {2}={3} {4}={5} {6}={7}".format("New float Publishable", self._name, "with initial",
+                                                               initial, "and precision", self._precision, "and decimal",
+                                                               self._decimal))
             elif self._logger:
                 self._logger.info(
-                    "{0} '{1}' {2}={3} {4}={5}".format(_("New float Publishable"), self._name, _("with initial"),
-                                                       initial, _("and precision"), self._precision))
+                    "{0} '{1}' {2}={3} {4}={5}".format("New float Publishable", self._name, "with initial", initial,
+                                                       "and precision", self._precision))
         elif type == str:
             self._value = initial
             self._reference = initial + "_"
             if self._logger:
                 if initial:
                     self._logger.info(
-                        "{0} '{1}' {2}={3}".format(_("New str Publishable"), self._name, _("with initial"), initial))
+                        "{0} '{1}' {2}={3}".format("New str Publishable", self._name, "with initial", initial))
                 else:
-                    self._logger.info(
-                        "{0} '{1}' {2}=''".format(_("New str Publishable"), self._name, _("with initial")))
+                    self._logger.info("{0} '{1}' {2}=''".format("New str Publishable", self._name, "with initial"))
         elif type == bool:
             self._value = initial
             self._reference = not initial
             if self._logger:
                 self._logger.info(
-                    "{0} '{1}' ({2}/{3}) {4}={5}".format(_("New boolean Publishable"), self._name, self._true,
-                                                         self._false, _("with initial"), initial))
+                    "{0} '{1}' ({2}/{3}) {4}={5}".format("New boolean Publishable", self._name, self._true, self._false,
+                                                         "with initial", initial))
         else:
             self._type = int
             v = 0
@@ -79,12 +67,11 @@ class MqttVar:
             self._precision = 1
             if self._logger:
                 self._logger.info(
-                    "{0} '{1}' {2}={3} {4}={5}".format(_("New incorrect Publishable created as int"), self._name,
-                                                       _("with initial"), initial, _("and precision"), self._precision))
+                    "{0} '{1}' {2}={3} {4}={5}".format("New incorrect Publishable created as int", self._name,
+                                                       "with initial", initial, "and precision", self._precision))
 
     # __________________________________________________________________
     def __str__(self):
-
         self._reference = self._value
 
         if self._type == float and self._decimal:
@@ -114,7 +101,6 @@ class MqttVar:
 
     # __________________________________________________________________
     def change(self):
-
         if self._type == int or self._type == float:
             if abs(self._reference - self._value) > self._precision:
                 return self.__str__()

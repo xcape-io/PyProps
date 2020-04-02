@@ -10,7 +10,11 @@ CryingDollApp extends MqttApp.
 from constants import *
 
 import sys
-sys.path.append("../../core")
+try:
+	PYPROPS_CORELIBPATH
+	sys.path.append(PYPROPS_CORELIBPATH)
+except NameError:
+    pass
 
 from MqttApp import MqttApp
 from MqttVar import MqttVar

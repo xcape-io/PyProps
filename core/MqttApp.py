@@ -28,6 +28,7 @@ Configured with:
 """
 
 from constants import *
+
 try:
     APPLICATION
 except NameError:

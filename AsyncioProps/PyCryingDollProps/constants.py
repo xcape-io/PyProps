@@ -6,7 +6,9 @@ constants.py (version 0.1)
 Contains all the application constants. As a rule all constants are named in all caps.
 '''
 
-APPLICATION = "CryingDoll"
+APPLICATION = "Crying Doll"
+
+PYPROPS_CORELIBPATH = '../../core'
 
 PUBLISHALLDATA_PERIOD = 30.0
 PUBLISHDATACHANGES_PERIOD = 1.0
