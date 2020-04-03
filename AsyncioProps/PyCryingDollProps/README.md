@@ -68,9 +68,9 @@ Props commands:
 * `light:on` : switch off the light
 * `cry:_` : trigger crying
 
-Use `activate` to enable the cries at the right time (shen starting a new game or when a challenge is completed).
+Use `activate` to enable the cries at the right time (when starting a new game or when a challenge is completed).
 
-Use `cry` if automatic detection don't work (sensor calibration issue during a game) r to test sound level.
+Use `cry` if automatic detection doesn't work (sensor failure or calibration issue during a game) or to test sound level.
 
 Props data messages:
 
