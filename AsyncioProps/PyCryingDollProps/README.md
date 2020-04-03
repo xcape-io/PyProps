@@ -74,13 +74,14 @@ Use `cry` if automatic detection don't work (sensor calibration issue during a g
 
 Props data messages:
 
+![Outbox messages](props/outbox-messages.png)
 
 ## Room control panel
 Add the props to *<a href="https://xcape.io/" target="_blank">xcape.io</a>* **Room** software.
 
 Configure *Raspberry CryingDoll* control panel:
 
-
+![Room control panel](props/room-control-panel.png)
 
 
 ## Author
