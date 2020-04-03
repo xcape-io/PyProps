@@ -1,4 +1,4 @@
-﻿# Crying Doll props
+﻿# Crying Doll props (*PyCryingDollProps*)
 ***The doll cries when the players approach when vibrations are detected.***
 
 Two vibration sensors SW-420 are connected to the Raspberry Pi GPIO and tuned to detect human approaching.
@@ -9,6 +9,17 @@ When vibration is detected, a sound is picked up randomly among seven audio file
 ## Installation
 See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
 
+### Dependencies
+If you don't install the whole PyProps library, you will have to fulfill the  *PyCryingDollProps* requirements:
+* `PyProps/core/MqttApp.py`
+* `PyProps/core/MqttVar.py`
+* `PyProps/core/Singleton.py`
+
+And you will have to install following Python packages:
+```bash
+$ pip3 install paho-mqtt
+$ pip3 install PyYAML
+```
 
 ## Usage
 Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps`:
@@ -60,8 +71,10 @@ An SRD relay module is connected to GPIO 16 to control the light.
 ![SRD rely module](actuator/srd-relay-shield.jpg)
 
 
-## Props
-Props commands:
+## Crying Doll as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyCryingDollProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+
+### Props commands
 * `activate:0` : deactivate sensor
 * `activate:1` : activate sensor
 * `light:off` : switch off the light
@@ -72,14 +85,17 @@ Use `activate` to enable the cries at the right time (when starting a new game o
 
 Use `cry` if automatic detection doesn't work (sensor failure or calibration issue during a game) or to test sound level.
 
-Props data messages:
+### Pros configuration
+
+![Props configuration](props/props-configuration.png)
+
+
+### Props data messages
 
 ![Outbox messages](props/outbox-messages.png)
 
-## Room control panel
-Add the props to *<a href="https://xcape.io/" target="_blank">xcape.io</a>* **Room** software.
-
-Configure *Raspberry CryingDoll* control panel:
+### Props control panel
+Configure *Raspberry CryingDoll* control panel using the SVG images provided in [images folder](images): ![Crying doll](props/doll.png)
 
 ![Room control panel](props/room-control-panel.png)
 
