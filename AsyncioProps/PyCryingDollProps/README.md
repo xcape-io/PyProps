@@ -95,7 +95,7 @@ Use `cry` if automatic detection doesn't work (sensor failure or calibration iss
 ![Outbox messages](props/outbox-messages.png)
 
 ### Props control panel
-Configure *Raspberry CryingDoll* control panel using the SVG images provided in [images folder](images): ![Crying doll](props/doll.png)
+Configure *Raspberry CryingDoll* control panel using the SVG images ![Crying doll](props/doll.png) provided in [images folder](images).
 
 ![Room control panel](props/room-control-panel.png)
 
