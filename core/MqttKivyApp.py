@@ -23,10 +23,6 @@ Kivy:
 An application can be built if you return a widget on build(), or if you set
 self.root.
 
-pip:
------
-$ sudo pip3 install pyaml
-
 Config:
 ----------
 - in constants.py
