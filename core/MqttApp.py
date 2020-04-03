@@ -177,6 +177,17 @@ class MqttApp():
             self._mqttConnected = True
             # self._logger.debug("Connected to MQTT server with flags: ", flags) # flags is dict
             self._logger.info("Program connected to MQTT server")
+            if self._mqttOutbox:
+                try:
+                    message = "CONNECTED"
+                    (result, mid) = self._mqttClient.publish(self._mqttOutbox, message, qos=MQTT_DEFAULT_QoS,
+                                                             retain=True)
+                    self._logger.info("{0} '{1}' (mid={2}) on {3}".format("Program sending message", message, mid,
+                                                                          self._mqttOutbox))
+                except Exception as e:
+                    self._logger.error("{0} '{1}' on {2}".format("MQTT API : failed to call publish() for", message,
+                                                                 self._mqttOutbox))
+                    self._logger.debug(e)
             for topic in self._mqttSubscriptions:
                 try:
                     (result, mid) = self._mqttClient.subscribe(topic, MQTT_DEFAULT_QoS)
@@ -205,7 +216,7 @@ class MqttApp():
     # __________________________________________________________________
     def mqttOnDisconnect(self, client, userdata, rc):
         self._mqttConnected = False
-        self._logger.info(_("Program disconnected from MQTT server"))
+        self._logger.info("Program disconnected from MQTT server")
 
         serv = ''
         if isinstance(userdata, str):
@@ -214,14 +225,14 @@ class MqttApp():
                 if isinstance(mydata, dict) and 'host' in mydata and 'port' in mydata:
                     serv = mydata['host'] + ':' + str(mydata['port'])
             except Exception as e:
-                self._logger.debug(_("MQTT client userdata not as expected"))
+                self._logger.debug("MQTT client userdata not as expected")
                 self._logger.debug(e)
 
         if serv:
             self._logger.warning(
-                "{0}{1} {2} {3}".format(_("Disconnected from MQTT server with rc="), rc, _("from"), serv))
+                "{0}{1} {2} {3}".format("Disconnected from MQTT server with rc=", rc, "from", serv))
         else:
-            self._logger.warning("{0}{1}".format(_("Disconnected from MQTT server with rc="), rc))
+            self._logger.warning("{0}{1}".format("Disconnected from MQTT server with rc=", rc))
 
         self.onDisconnect(client, userdata, rc)
 
@@ -238,29 +249,29 @@ class MqttApp():
             pass
 
         if message:
-            self._logger.info(_("Message received : '") + message + _("' in ") + msg.topic)
+            self._logger.info("Message received : '" + message + "' in " + msg.topic)
             if msg.topic == self._mqttInbox and message == "@PING":
                 self.publishMessage(self._mqttOutbox, "PONG")
             else:
                 self.onMessage(msg.topic, message)
         else:
-            self._logger.warning("{0} {1}".format(_("MQTT message decoding failed on"), msg.topic))
+            self._logger.warning("{0} {1}".format("MQTT message decoding failed on"), msg.topic)
 
     # __________________________________________________________________
     def mqttOnPublish(self, client, userdata, mid):
         self._logger.debug("MQTT message is published : mid=%s userdata=%s", mid, userdata)
-        self._logger.info("{0} (mid={1})".format(_("Message published"), mid))
+        self._logger.info("{0} (mid={1})".format("Message published", mid))
 
     # __________________________________________________________________
     def mqttOnSubscribe(self, client, userdata, mid, granted_qos):
         self._logger.debug("MQTT topic is subscribed : mid=%s granted_qos=%s", mid, granted_qos)  # granted_qos is (2,)
-        self._logger.info("{0} (mid={1}) {2} {3}".format(_("Program susbcribed to topic"), mid, _("with QoS"),
+        self._logger.info("{0} (mid={1}) {2} {3}".format("Program susbcribed to topic", mid, "with QoS",
                                                          granted_qos))  # mid is a number (count)
 
     # __________________________________________________________________
     def mqttOnUnsubscribe(self, client, userdata, mid):
         self._logger.debug("MQTT topic is unsubscribed : mid=%s", mid)
-        self._logger.info("{0} (mid={1})".format(_("Program has been unsusbcribed from topic"), mid))
+        self._logger.info("{0} (mid={1})".format("Program has been unsusbcribed from topic", mid))
 
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
@@ -304,18 +315,18 @@ class MqttApp():
     # __________________________________________________________________
     def publishMessage(self, topic, message):
         if not topic:
-            self._logger.warning("{0} : '{1}'".format(_("Program failed to send message (no topic)"), message))
+            self._logger.warning("{0} : '{1}'".format("Program failed to send message (no topic)", message))
         elif self._mqttConnected:
             try:
                 (result, mid) = self._mqttClient.publish(topic, message, qos=MQTT_DEFAULT_QoS, retain=False)
                 self._logger.info(
-                    "{0} '{1}' (mid={2}) on {3}".format(_("Program sending message"), message, mid, topic))
+                    "{0} '{1}' (mid={2}) on {3}".format("Program sending message", message, mid, topic))
             except Exception as e:
                 self._logger.error(
-                    "{0} '{1}' on {2}".format(_("MQTT API : failed to call publish() for"), message, topic))
+                    "{0} '{1}' on {2}".format("MQTT API : failed to call publish() for", message, topic))
                 self._logger.debug(e)
         else:
-            self._logger.warning("{0} : '{1}'".format(_("Program failed to send message (disconnected)"), message))
+            self._logger.warning("{0} : '{1}'".format("Program failed to send message (disconnected)", message))
 
     # __________________________________________________________________
     def start(self):
@@ -324,7 +335,7 @@ class MqttApp():
                 # will mist be set before connection
                 self._mqttClient.will_set(self._mqttOutbox, payload="DISCONNECTED", qos=1, retain=True)
             except Exception as e:
-                self._logger.error(_("MQTT API : failed to call will_set()"))
+                self._logger.error("MQTT API : failed to call will_set()")
                 self._logger.debug(e)
 
         mydata = {'host': self._mqttServerHost, 'port': self._mqttServerPort}

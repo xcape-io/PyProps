@@ -45,6 +45,11 @@ class CryingDollApp(MqttApp):
 		os.system("amixer set 'PCM' -- 400") # loud volume
 
 	#__________________________________________________________________
+	def cry(self):
+		self._sound.play(AUDIO_CRYING[random.randint(1, len(AUDIO_CRYING)) - 1])
+		self.publishDataChanges()
+
+	#__________________________________________________________________
 	def onConnect(self, client, userdata, flags, rc):
 		# extend as a virtual method
 		pass
@@ -73,7 +78,8 @@ class CryingDollApp(MqttApp):
 			else:
 				self.publishMessage(self._mqttOutbox, "OMIT " + message)
 		elif message.startswith("cry:_"):
-			self.vibrate(0)
+			self.cry()
+			self.publishMessage(self._mqttOutbox, "DONE " + message)
 		elif message.startswith("light:"):
 			if message.endswith(":off"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.LOW)
@@ -104,7 +110,5 @@ class CryingDollApp(MqttApp):
 	#__________________________________________________________________
 	def vibrate(self, pin):
 		if not self._active_p.value() or self._sound.isPlaying():
-			return			
-
-		self._sound.play(AUDIO_CRYING[random.randint(1, len(AUDIO_CRYING)) - 1])
-		self.publishDataChanges()
+			return
+		self.cry()

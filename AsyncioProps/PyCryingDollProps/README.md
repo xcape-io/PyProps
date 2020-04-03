@@ -39,7 +39,7 @@ DEBUG - MQTT message is published : mid=2 userdata={'host': 'localhost', 'port':
 
 
 ## SSH relaunch command
-The command to relaunch the props from *<a href="https://xcape.io/" target="_blank">xcape.io</a>* **Room** software is :
+The command to relaunch the props is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep PyCryingDollProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/main.py -s %BROKER%
@@ -76,8 +76,10 @@ Props data messages:
 
 
 ## Room control panel
+Add the props to *<a href="https://xcape.io/" target="_blank">xcape.io</a>* **Room** software.
 
-...
+Configure *Raspberry CryingDoll* control panel:
+
 
 
 
