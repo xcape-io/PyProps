@@ -25,7 +25,7 @@ Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProps/PyBlinkEcho`
 ```bash
 pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/AsyncioProps/PyBlinkEcho/main.py -s 192.168.1.42 -d
 
-
+...
 ```
 
 
@@ -41,15 +41,10 @@ $ ps aux | grep python | grep -v "grep python" | grep PyBlinkEcho/main.py | awk 
 To use *PyBlinkEcho* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
-* `activate:0` : deactivate sensor
-* `activate:1` : activate sensor
-* `light:off` : switch off the light
-* `light:on` : switch off the light
-* `cry:_` : trigger crying
+* `blink:0` : deactivate blinking
+* `blink:1` : activate blinking
+* `echo:a message to be echoed` : echo the message
 
-Use `activate` to enable the cries at the right time (when starting a new game or when a challenge is completed).
-
-Use `cry` if automatic detection doesn't work (sensor failure or calibration issue during a game) or to test sound level.
 
 ### Pros configuration
 Add and configure *Raspberry BlinkEcho* connected props.
@@ -67,7 +62,7 @@ Add and configure *Raspberry BlinkEcho* connected props.
 
 
 ### Plugin for Blink Echo props
-Props control panel can not display multi-line text nor send text inpuit by the game master, therefore a plugin is necessary: [PyEchoPlugin](https://github.com/xcape-io/PyEchoPlugin)
+Props control panel cannot display text on multiple lines or send text by the game master, therefore a plugin is necessary: [PyEchoPlugin](https://github.com/xcape-io/PyEchoPlugin)
 
 ![PyEchoPlugin](props/plugin.png)
 
