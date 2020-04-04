@@ -5,7 +5,7 @@ Connected props for Escape Room exchange data and messages with a MQTT broker.
 
 **Room** Outbox protocol is a minimal implementation to structure messages sent by connected props. 
 
-However props may use MQTT topics in any way, for example [Teletext Props](https://github.com/fauresystems/TeletextProps) publishes its displayed text as a *retained* message in a dedicated MQTT topic.
+However props may use MQTT topics in any way, for example [Teletext Props](https://github.com/fauresystems/PyProps/tree/master/GuizeroProps/PyTeletextProps) publishes its displayed text as a *retained* message in a dedicated MQTT topic.
 
 ## Outbox
 **Room** Outbox protocol defines messages sent in props outbox, which is a MQTT topic structured like this:

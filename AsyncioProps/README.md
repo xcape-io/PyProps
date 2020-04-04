@@ -1,5 +1,5 @@
 ﻿# Asyncio Props
-*Library for pure Python props using **asyncio**.*
+*Examples of pure Python props using **asyncio**.*
 
 With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a graphical interface:
 * sensors and actuators (GPIO and I2C shieds)
@@ -15,13 +15,13 @@ You will choose your sound solution according to the latency required for the pr
 You will find installation and usage instructions in the [PyProps library INSTALLATION.md](../INSTALLATION.md)
 
 
-## AsyncioProps applications
+## Asyncio Props applications
 For most the common console props (without graphical interface), for example:
 * detect vibrations to trigger a crying doll
 * detect RFID tag with a NFC I2C shield
 
 
-## AsyncioProps code
+## Asyncio Props code
 ...
 
 
