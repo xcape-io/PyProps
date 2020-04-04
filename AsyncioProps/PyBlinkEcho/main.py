@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
+'''
 main.py
-MIT License (c) Marie Faure <dev at faure dot systems>
 
-Simple MQTT messaging echo props.
-
-To switch MQTT broker, kill the program and start again with new arguments.
-Use -d option to start in windowed mode instead of fullscreen.
+Main script for AsyncioProps.
 
 usage: python3 main.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
 
@@ -21,19 +17,30 @@ optional arguments:
       use logging config file
 
 To switch MQTT broker, kill the program and start again with new arguments.
-"""
+'''
 
-import paho.mqtt.client as mqtt
-import os, sys, platform, signal, uuid
 import asyncio
+import os
+import platform
+import signal
+import sys
+import uuid
 
-if os.path.isfile('/opt/vc/include/bcm_host.h'):
-    import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
+import paho.mqtt.client as mqtt
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from constants import *
+
+try:
+    PYPROPS_CORELIBPATH
+    sys.path.append(PYPROPS_CORELIBPATH)
+except NameError:
+    pass
+
 from PropsApp import PropsApp
 from Singleton import Singleton, SingletonException
-
 
 me = None
 try:
@@ -43,19 +50,7 @@ except SingletonException:
 except BaseException as e:
     print(e)
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
-# translation
-import gettext
-
-try:
-    gettext.find(APPLICATION)
-    traduction = gettext.translation(APPLICATION, localedir='locale', languages=['fr'])
-    traduction.install()
-except:
-    _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
-
-if os.path.isfile('/opt/vc/include/bcm_host.h'):
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
 
@@ -64,11 +59,11 @@ mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 app = PropsApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 if app._logger:
-    app._logger.info(_("Program started"))
+    app._logger.info("Program started")
 
 loop = asyncio.get_event_loop()
 
-# Assign handler for process exit
+# Assign handler for process exit (shows not effect on Windows in debug here)
 signal.signal(signal.SIGTERM, loop.stop)
 signal.signal(signal.SIGINT, loop.stop)
 if platform.system() != 'Windows':
@@ -89,8 +84,8 @@ async def publishDataChanges(period):
         app.publishDataChanges()
 
 
-loop.create_task(publishAllData(30.0))
-loop.create_task(publishDataChanges(3.0))  # usually 3.0 or 1.0 if a process (like mplayer) has no state update period
+loop.create_task(publishAllData(PUBLISHALLDATA_PERIOD))
+loop.create_task(publishDataChanges(PUBLISHDATACHANGES_PERIOD))  # usually 3.0 but Sound has no state update period
 
 # May add automation
 '''
@@ -101,16 +96,10 @@ async def processAutomation(period):
 loop.create_task(processAutomation(25e-3))
 '''
 
-if app._logger:
-    if os.path.isfile('/opt/vc/include/bcm_host.h'):
-        app._logger.info(_("Program running on Raspberry Pi"))
-    elif platform.system() == 'Windows':
-        app._logger.info(_("Program running on Windows"))
-
 loop.run_forever()
 loop.close()
 
-if os.path.isfile('/opt/vc/include/bcm_host.h'):
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
     GPIO.cleanup()
 
 try:
@@ -120,7 +109,7 @@ except:
     pass
 
 if app._logger:
-    app._logger.info(_("Program done"))
+    app._logger.info("Program done")
 
 del (me)
 

@@ -11,16 +11,6 @@ from constants import *
 from MqttApp import MqttApp
 from MqttVar import MqttVar
 
-import gettext
-
-try:
-    gettext.find("PropsApp")
-    traduction = gettext.translation('PropsApp', localedir='locale', languages=['fr'])
-    traduction.install()
-except:
-    _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
-
-
 import os, platform, sys, logging
 
 
@@ -31,7 +21,7 @@ class PropsApp(MqttApp):
 
         super().__init__(argv, client, debugging_mqtt)
 
-        self.logger.info(_("Props started"))
+        self.logger.info("Props started")
 
         self._last_echo_p = MqttVar('last_echo', str, BLANK_ECHO, logger=self._logger)
         self._publishable.append(self._last_echo_p)
@@ -41,7 +31,7 @@ class PropsApp(MqttApp):
                 (result, mid) = self._mqttClient.publish(MQTT_DISPLAY_TOPIC, "-", qos=MQTT_DEFAULT_QoS, retain=True)
             except Exception as e:
                 self._logger.error(
-                    "{0} '{1}' on {2}".format(_("MQTT API : failed to call publish() for"), "-", MQTT_DISPLAY_TOPIC))
+                    "{0} '{1}' on {2}".format("MQTT API : failed to call publish() for", "-", MQTT_DISPLAY_TOPIC))
                 self._logger.debug(e)
 
     # __________________________________________________________________
@@ -84,5 +74,5 @@ class PropsApp(MqttApp):
             self._mqttClient.loop_stop()
         except:
             pass
-        self.logger.info(_("Props stopped"))
+        self.logger.info("Props stopped")
         sys.exit(0)

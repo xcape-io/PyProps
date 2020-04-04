@@ -6,7 +6,14 @@ constants.py
 Contains all the application constants. As a rule all constants are named in all caps.
 """
 
-APPLICATION = "Echo"
+APPLICATION = "Blink Echo"
+
+PYPROPS_CORELIBPATH = '../../core'
+
+PUBLISHALLDATA_PERIOD = 30.0
+PUBLISHDATACHANGES_PERIOD = 1.0
+
+USE_GPIO = True
 
 #__________________________________________________________________
 # Required by MqttApp
@@ -21,3 +28,5 @@ MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClie
 #__________________________________________________________________
 # Required by PropsApp
 BLANK_ECHO = '---'
+
+GPIO_BLINKING_LED = 16
