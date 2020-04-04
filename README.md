@@ -48,6 +48,9 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 Two flavors:
 * [QtProps](./QtProps)
 * [QtGuiProps](./QtGuiProps)
+* the power of Qt (printing support, multimedia, styled GUI, etc)
+* ***use same code for the props and its plugin***
+* easy to mirror the props GUI in a plugin (often needed for complex props)
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 
