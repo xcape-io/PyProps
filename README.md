@@ -16,7 +16,7 @@ See:
 * [configuration files](CONFIGURATION_FILES.md)
 * [Singleton class](SINGLETON_CLASS.md)
 * [Installation and usage](INSTALLATION.md)
-
+* [Room Outbox protocol](PROTOCOL.md)
 
 ## PyProps library flavors
 The *PyProps library* takes advantage for many Python frameworks available on the Raspberry Pi running Raspbian to meet the requirements of any props created for the escape rooms.
