@@ -25,15 +25,15 @@ class BlinkEchoApp(PropsApp):
 
         GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
 
-        self._led_p = MqttVar('led', bool, 0, logger=self._logger)
+        self._led_p = PropsData('led', bool, 0, logger=self._logger)
         self._publishable.append(self._led_p)
-        self._blinking_p = MqttVar('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
         self._publishable.append(self._blinking_p)
 
         self._led_p.update(False)
         self._blinking_p.update(False)
 
-        self._last_echo_p = MqttVar('last_echo', str, BLANK_ECHO, logger=self._logger)
+        self._last_echo_p = PropsData('last_echo', str, BLANK_ECHO, logger=self._logger)
         self._publishable.append(self._last_echo_p)
 
         self._blinking_periodic = Periodic(self.blink, 1.0, logger=self._logger)

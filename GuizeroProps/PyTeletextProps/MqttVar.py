@@ -17,7 +17,7 @@ except:
     _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
 
 
-class MqttVar:
+class PropsData:
 
     # __________________________________________________________________
     def __init__(self, name, type, initial, decimal=None, precision=1, alias=("1", "0"), logger=None):

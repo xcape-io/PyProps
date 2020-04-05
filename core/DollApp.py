@@ -26,11 +26,11 @@ class CryingDollApp(MqttApp):
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setwarnings(False) 
 
-		self._lumiere_p = MqttVar('lumière' , bool, 0, logger = self._logger)
+		self._lumiere_p = PropsData('lumière' , bool, 0, logger = self._logger)
 		self._publishable.append(self._lumiere_p )
-		self._pleurs_p = MqttVar('pleurs' , bool, 0, logger = self._logger)
+		self._pleurs_p = PropsData('pleurs' , bool, 0, logger = self._logger)
 		self._publishable.append(self._pleurs_p )
-		self._active_p = MqttVar('activé' , bool, 0, alias=("oui","non"), logger = self._logger)
+		self._active_p = PropsData('activé' , bool, 0, alias=("oui","non"), logger = self._logger)
 		self._publishable.append(self._active_p )
 
 		GPIO.setup(GPIO_RELAY_LIGHT, GPIO.OUT,  initial=GPIO.LOW)
