@@ -3,7 +3,7 @@
 
 Connected props for Escape Room exchange data and messages with a MQTT broker.
 
-**Room** Outbox protocol is a minimal implementation to structure messages sent by connected props. 
+**Room** Outbox *level 7* protocol (*application level*)  is a minimal implementation to structure messages sent by connected props.
 
 However props may use MQTT topics in any way, for example [Teletext Props](https://github.com/fauresystems/PyProps/tree/master/GuizeroProps/PyTeletextProps) publishes its displayed text as a *retained* message in a dedicated MQTT topic.
 
@@ -35,14 +35,13 @@ The protocol has been defined to be **human readable** (so debugging Escape Room
 * `DATA var1=value1 var2=value2` to report sensors or challenge state
 * `REQU command` to send a request to another props
 * `PROG command` to send a program request to the Escape Game controller (**Room** software)
-* `DONE command` to report command has been received and done
-* `OMIT command` to report unsupported command has been received
-* `OVER command` to report an Escape Game challenge has been complete
+* `DONE command` to report that a command has been received and done
+* `OMIT command` to report that an unsupported command has been received and ignored
+* `OVER command` to report that an Escape Game challenge has been complete
 * `MESG any interesting stuff to report`
 
 
 ## Author
-
 **Marie FAURE** (Oct 9th, 2019)
 * company: FAURE SYSTEMS SAS
 * mail: *dev at faure dot systems*
