@@ -39,7 +39,7 @@ try:
 except NameError:
     pass
 
-from PropsApp import PropsApp
+from BlinkEchoApp import BlinkEchoApp
 from Singleton import Singleton, SingletonException
 
 me = None
@@ -56,7 +56,7 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
-app = PropsApp(sys.argv, mqtt_client, debugging_mqtt=False)
+app = BlinkEchoApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 if app._logger:
     app._logger.info("Program started")

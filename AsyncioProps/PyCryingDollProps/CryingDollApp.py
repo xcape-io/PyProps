@@ -52,8 +52,8 @@ class CryingDollApp(MqttApp):
 	#__________________________________________________________________
 	def onConnect(self, client, userdata, flags, rc):
 		# extend as a virtual method
-		pass
-		
+		self.publishAllData()
+
 	#__________________________________________________________________
 	def onDisconnect(self, client, userdata, rc):
 		# extend as a virtual method
