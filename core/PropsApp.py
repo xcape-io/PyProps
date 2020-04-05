@@ -27,9 +27,21 @@ class PropsApp(MqttApp):
     def __init__(self, argv, client, debugging_mqtt=False):
         super().__init__(argv, client, debugging_mqtt)
 
+        self._periodicActions = []
+
     # __________________________________________________________________
     def addData(self, data):
         self._publishable.append(data)
+
+    # __________________________________________________________________
+    def addPeriodicAction(self, title, func, time):
+        self._periodicActions.append((title, func, time))
+        self._logger.info("New periodic action created '{1}' every {2} seconds".format(title, time))
+
+    # __________________________________________________________________
+    @property
+    def periodicActions(self):
+        return self._periodicActions
 
     # __________________________________________________________________
     def sendAllData(self):
@@ -41,15 +53,15 @@ class PropsApp(MqttApp):
 
     # __________________________________________________________________
     def sendData(self, data):
-        self.sendData(message)
+        self.publishMessage(self._mqttOutbox, "DATA " + data)
 
     # __________________________________________________________________
     def sendDone(self, action):
-        self.sendDone(message)
+        self.publishMessage(self._mqttOutbox, "DONE " + action)
 
     # __________________________________________________________________
     def sendMesg(self, message):
-        self.sendMesg(message)
+        self.publishMessage(self._mqttOutbox, "MESG " + message)
 
     # __________________________________________________________________
     def sendMesg(self, message, topic):
@@ -57,7 +69,7 @@ class PropsApp(MqttApp):
 
     # __________________________________________________________________
     def sendOmit(self, action):
-        self.sendOmit(action)
+        self.publishMessage(self._mqttOutbox, "OMIT " + action)
 
     # __________________________________________________________________
     def sendOver(self, challenge):

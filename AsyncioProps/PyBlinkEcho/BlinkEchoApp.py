@@ -36,7 +36,7 @@ class BlinkEchoApp(PropsApp):
         self._last_echo_p = PropsData('last_echo', str, BLANK_ECHO, logger=self._logger)
         self.addData(self._last_echo_p)
 
-        self._blinking_periodic = Periodic(self.blink, 1.0, logger=self._logger)
+        self.addPeriodicAction = ("blinking", self.blink, 1.0)
 
         ##await self._blinking_periodic.start()
 
@@ -49,7 +49,7 @@ class BlinkEchoApp(PropsApp):
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
         # extend as a virtual method
-        self.sendMesg("echo on")
+        self.sendMesg("echo on", self._mqttOutbox)
 
     # __________________________________________________________________
     def onDisconnect(self, client, userdata, rc):
@@ -65,7 +65,8 @@ class BlinkEchoApp(PropsApp):
             self.sendDone(message)
         elif message.startswith("echo:"):
             text = message[5:]
-            self.sendMesg("echo: " + text)
+            ##self.sendMesg("echo: " + text)
+            self.sendMesg(text, self._mqttOutbox)
             self._last_echo_p.update(text)
             self.sendDataChanges()
             self.sendDone(message)
