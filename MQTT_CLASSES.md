@@ -1,4 +1,4 @@
-﻿# PyProps library: MqttApp and MqttVar classes
+﻿# PyProps library: MqttApp and PropsData classes
 
 ...
 

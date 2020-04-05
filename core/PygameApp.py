@@ -18,7 +18,7 @@ except:
  _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
 
 from MqttApp import MqttApp
-from MqttVar import MqttVar
+from PropsData import PropsData
 
 import RPi.GPIO as GPIO
 import os, re, threading, time

@@ -10,7 +10,7 @@ CryingDollApp extends MqttApp.
 from constants import *
 
 from MqttApp import MqttApp
-from MqttVar import MqttVar
+from PropsData import PropsData
 from Sound import Sound
 
 import RPi.GPIO as GPIO

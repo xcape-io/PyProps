@@ -8,15 +8,15 @@ BlinkEchoApp extends MqttApp.
 """
 
 from constants import *
-from MqttApp import MqttApp
-from MqttVar import MqttVar
+from PropsApp import PropsApp
+from PropsData import PropsData
 from Periodic import Periodic
 
 import os, platform, sys, logging
 import RPi.GPIO as GPIO
 
 
-class BlinkEchoApp(MqttApp):
+class BlinkEchoApp(PropsApp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):

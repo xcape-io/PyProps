@@ -8,14 +8,14 @@ CryingDollApp extends MqttApp.
 
 from constants import *
 
-from MqttApp import MqttApp
-from MqttVar import MqttVar
+from PropsApp import PropsApp
+from PropsData import PropsData
 from Sound import Sound
 
 import RPi.GPIO as GPIO
 import random, os
 		
-class CryingDollApp(MqttApp):
+class CryingDollApp(PropsApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):

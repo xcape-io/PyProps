@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-MqttVar.py
+PropsData.py
 MIT License (c) Marie Faure
 
 Class to track and publish variable changes.
@@ -10,8 +10,8 @@ Class to track and publish variable changes.
 import gettext
 
 try:
-    gettext.find("MqttVar")
-    traduction = gettext.translation('MqttVar', localedir='locale', languages=['fr'])
+    gettext.find("PropsData")
+    traduction = gettext.translation('PropsData', localedir='locale', languages=['fr'])
     traduction.install()
 except:
     _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'

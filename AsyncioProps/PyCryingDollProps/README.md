@@ -12,7 +12,7 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PyCryingDollProps* requirements:
 * `PyProps/core/MqttApp.py`
-* `PyProps/core/MqttVar.py`
+* `PyProps/core/PropsData.py`
 * `PyProps/core/Singleton.py`
 
 And you will have to install following Python packages:

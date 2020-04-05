@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-MqttVar.py
+PropsData.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
 Class to track changes in variables and to publish them optimally in the props outbox.
 """
 
 
-class MqttVar:
+class PropsData:
 
     # __________________________________________________________________
     def __init__(self, name, type, initial, decimal=None, precision=1, alias=("1", "0"), logger=None):
@@ -73,7 +73,6 @@ class MqttVar:
     # __________________________________________________________________
     def __str__(self):
         self._reference = self._value
-
         if self._type == float and self._decimal:
             return "{0}={1:.{prec}f}".format(self._name, self._value, prec=self._decimal)
         elif self._type == int:
@@ -114,10 +113,8 @@ class MqttVar:
 
     # __________________________________________________________________
     def update(self, value):
-
         self._value = value
 
     # __________________________________________________________________
     def value(self):
-
         return self._value

@@ -64,7 +64,7 @@ Teletext props is built with the following files:
 It depends on:
 * `GuizeroApp.py` base class to create a guizero event loop
 * `MqttApp.py` base class to publish/subscribe MQTT messages
-* `MqttVar.ini` base class to optimize network communications
+* `PropsData.ini` base class to optimize network communications
 * `Singleton.ini` to ensure one instance of application is running
 * `Sound.py` simple *aplay* wrapper
 
@@ -93,15 +93,15 @@ Extend this base class to build a connected props which does simple text display
 You might not modify `GuizeroApp.py` file.
 
 
-### *MqttApp* and *MqttVar* base classes
+### *MqttApp* and *PropsData* base classes
 *GuizeroApp* extends *MqttApp*, the python base app for Raspberry connected props.
 
 
 MQTT topics are defined in *definitions.ini*.
 
-PubSub variables extend *MqttVar*, it is an helper to track value changes and to optimize publishing values in MQTT topic outbox.
+PubSub variables extend *PropsData*, it is an helper to track value changes and to optimize publishing values in MQTT topic outbox.
 
-You might not modify `MqttApp.py` an `MqttVar.py` files.
+You might not modify `MqttApp.py` an `PropsData.py` files.
 
 #### Notes about MQTT QoS:
 >*Python script hangs* have been reported when `paho-mqtt` is running asynchronously with QoS 2 on a network with significant packet loss (particularly Wifi networks).
