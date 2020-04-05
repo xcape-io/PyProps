@@ -27,9 +27,10 @@ class PropsApp(MqttApp):
     def __init__(self, argv, client, debugging_mqtt=False):
         super().__init__(argv, client, debugging_mqtt)
 
-    '''
-        void addData(PropsData*);
-    '''
+    # __________________________________________________________________
+    def addData(self, data):
+        self._publishable.append(data)
+
     # __________________________________________________________________
     def sendAllData(self):
         self.publishAllData()
@@ -40,15 +41,15 @@ class PropsApp(MqttApp):
 
     # __________________________________________________________________
     def sendData(self, data):
-        self.publishMessage(self._mqttOutbox, "DATA " + message)
+        self.sendData(message)
 
     # __________________________________________________________________
     def sendDone(self, action):
-        self.publishMessage(self._mqttOutbox, "DONE " + message)
+        self.sendDone(message)
 
     # __________________________________________________________________
     def sendMesg(self, message):
-        self.publishMessage(self._mqttOutbox, "MESG " + message)
+        self.sendMesg(message)
 
     # __________________________________________________________________
     def sendMesg(self, message, topic):
@@ -56,7 +57,7 @@ class PropsApp(MqttApp):
 
     # __________________________________________________________________
     def sendOmit(self, action):
-        self.publishMessage(self._mqttOutbox, "OMIT " + action)
+        self.sendOmit(action)
 
     # __________________________________________________________________
     def sendOver(self, challenge):

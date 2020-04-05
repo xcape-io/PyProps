@@ -41,13 +41,13 @@ class AlphabetApp(SketchApp):
 					self._display = None
 				else:
 					self._logger.warning("{} '{}'F".format(self.tr("Ignore set OFF letter"), x))
-			self.publishAllData()
+			self.sendAllData()
 			QTimer.singleShot(interval, self.doSequence)
 		else:
 			self.setAllLettersOff()		
 			self._display = None
 			self.publishMessage(PIRELAY_INBOX, "lumières-salon:allumer")
-			self.publishAllData()					
+			self.sendAllData()
 		
 	#__________________________________________________________________
 	def performAction(self, message):
@@ -55,8 +55,8 @@ class AlphabetApp(SketchApp):
 
 		if message == "app:startup":
 			self._mqttDataCount = 0
-			self.publishAllData()
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendAllData()
+			self.sendDone(message)
 			
 		elif message.startswith("éclairer:"):
 			text = message[8:]
@@ -69,8 +69,8 @@ class AlphabetApp(SketchApp):
 			
 			self.setAllLettersOff()		
 			self._display = None
-			self.publishAllData()			
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendAllData()
+			self.sendDone(message)
 			
 			self.publishMessage(PIRELAY_INBOX, "lumières-salon:éteindre")
 			QTimer.singleShot(1000, self.doSequence)
@@ -85,8 +85,8 @@ class AlphabetApp(SketchApp):
 			
 			self.setAllLettersOff()		
 			self._display = None
-			self.publishAllData()			
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendAllData()
+			self.sendDone(message)
 			
 			QTimer.singleShot(0, self.doSequence)
 
@@ -94,23 +94,23 @@ class AlphabetApp(SketchApp):
 			# fire async effect
 			self.setAllLettersOff()		
 			self._display = "spinning"
-			self.publishAllData()			
+			self.sendAllData()
 			time.sleep(2.0)
 			threading.Thread(target=self.processSpinning, ).start()
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendDone(message)
 
 		elif message == "stop":
 
 			self._sequence = []
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendDone(message)
 			
 		else:
 			if False:
 				pass
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			else:
 				print(message)
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 			
 	#__________________________________________________________________
 	def processAutomation(self):
@@ -201,13 +201,13 @@ class AlphabetApp(SketchApp):
 			self._logger.debug(e)
 
 		self._display = None
-		self.publishAllData()			
+		self.sendAllData()
 
 	#__________________________________________________________________
 	def publishAllData(self):
 		#self._logger.debug("Publish all")
 		if self._criticalMessage:
-			self.publishMessage(self._mqttOutbox, "MESG " + self._criticalMessage)
+			self.sendMesg(self._criticalMessage)
 			return
 
 		display = self._display
@@ -227,7 +227,7 @@ class AlphabetApp(SketchApp):
 		##data = self._sequence_p.change()
 		##data = data.strip()
 		##if data:
-			##self.publishMessage(self._mqttOutbox, "DATA " + data + " phonemes=" + self.sequenceToPhonemes(self._sequence_p.value()))
+			##self.sendData(data + " phonemes=" + self.sequenceToPhonemes(self._sequence_p.value()))
 		pass
 		
 	#__________________________________________________________________

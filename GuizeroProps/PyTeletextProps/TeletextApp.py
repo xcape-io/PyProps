@@ -104,8 +104,8 @@ class TeletextApp(GuizeroApp):
                         "{0} '{1}' on {2}".format(_("MQTT API : failed to call publish() for"), message,
                                                   MQTT_DISPLAY_TOPIC))
                     self._logger.debug(e)
-            self.publishMessage(self._mqttOutbox, "DONE " + message)
-            self.publishDataChanges()
+            self.sendDone(message)
+            self.sendDataChanges()
             self._sound.play('media/bell.wav')
         elif message.startswith("effacer"):
             self._texte.value = ""
@@ -120,10 +120,10 @@ class TeletextApp(GuizeroApp):
                         "{0} '{1}' on {2}".format(_("MQTT API : failed to call publish() for"), message,
                                                   MQTT_DISPLAY_TOPIC))
                     self._logger.debug(e)
-            self.publishMessage(self._mqttOutbox, "DONE " + message)
-            self.publishDataChanges()
+            self.sendDone(message)
+            self.sendDataChanges()
         else:
-            self.publishMessage(self._mqttOutbox, "OMIT " + message)
+            self.sendOmit(message)
 
     # __________________________________________________________________
     def publishAllData(self):

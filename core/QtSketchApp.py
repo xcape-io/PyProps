@@ -110,9 +110,9 @@ class SketchApp(MqttConsoleApp):
 
 		if self.isConnectedToMqttBroker():
 			if self._mqttDataCount:
-				self.publishDataChanges()
+				self.sendDataChanges()
 			else:
-				self.publishAllData()
+				self.sendAllData()
 			self._mqttDataCount = self._mqttDataCount + 1
 			if self._mqttDataCount > SKETCH_DATA_COUNT:
 				self._mqttDataCount = 0

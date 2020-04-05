@@ -26,15 +26,15 @@ class BlinkEchoApp(PropsApp):
         GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
 
         self._led_p = PropsData('led', bool, 0, logger=self._logger)
-        self._publishable.append(self._led_p)
+        self.addData(self._led_p)
         self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
-        self._publishable.append(self._blinking_p)
+        self.addData(self._blinking_p)
 
         self._led_p.update(False)
         self._blinking_p.update(False)
 
         self._last_echo_p = PropsData('last_echo', str, BLANK_ECHO, logger=self._logger)
-        self._publishable.append(self._last_echo_p)
+        self.addData(self._last_echo_p)
 
         self._blinking_periodic = Periodic(self.blink, 1.0, logger=self._logger)
 
@@ -44,41 +44,41 @@ class BlinkEchoApp(PropsApp):
     def blink(self):
         self._led_p.update(not self._led_p.value())
         GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
-        self.publishMessage(self._mqttOutbox, "DATA " + str(self._led_p))  # immediate notification
+        self.sendData(str(self._led_p))  # immediate notification
 
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
         # extend as a virtual method
-        self.publishMessage(self._mqttOutbox, "MESG " + "echo on")
+        self.sendMesg("echo on")
 
     # __________________________________________________________________
     def onDisconnect(self, client, userdata, rc):
         # extend as a virtual method
-        self.publishMessage(self._mqttOutbox, "MESG " + "echo off")
+        self.sendMesg("echo off")
 
     # __________________________________________________________________
     def onMessage(self, topic, message):
         # extend as a virtual method
         print(topic, message)
         if message == "app:startup":
-            self.publishAllData()
-            self.publishMessage(self._mqttOutbox, "DONE " + message)
+            self.sendAllData()
+            self.sendDone(message)
         elif message.startswith("echo:"):
             text = message[5:]
-            self.publishMessage(self._mqttOutbox, "MESG " + "echo: " + text)
+            self.sendMesg("echo: " + text)
             self._last_echo_p.update(text)
-            self.publishDataChanges()
-            self.publishMessage(self._mqttOutbox, "DONE " + message)
+            self.sendDataChanges()
+            self.sendDone(message)
         elif message.startswith("blink:"):
             if message.endswith(":0"):
                 self._blinking_p.update(False)
-                self.publishMessage(self._mqttOutbox, "DATA " + str(self._blinking_p))  # accurate flip/flop
-                self.publishMessage(self._mqttOutbox, "DONE " + message)
+                self.sendData(str(self._blinking_p))  # accurate flip/flop
+                self.sendDone(message)
             elif message.endswith(":1"):
                 self._blinking_p.update(True)
-                self.publishMessage(self._mqttOutbox, "DATA " + str(self._blinking_p))  # accurate flip/flop
-                self.publishMessage(self._mqttOutbox, "DONE " + message)
+                self.sendData(str(self._blinking_p))  # accurate flip/flop
+                self.sendDone(message)
             else:
-                self.publishMessage(self._mqttOutbox, "OMIT " + message)
+                self.sendOmit(message)
         else:
-            self.publishMessage(self._mqttOutbox, "OMIT " + message)
+            self.sendOmit(message)

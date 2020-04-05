@@ -282,7 +282,7 @@ class MqttKivyApp(App):
 	def onMessage(self, topic, message):
 		# extend as a virtual method
 		print(topic, message)
-		self.publishMessage(self._mqttOutbox, "OMIT " + message)
+		self.sendOmit(message)
 
 	#__________________________________________________________________
 	def publishMessage(self, topic, message):

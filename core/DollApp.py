@@ -27,11 +27,11 @@ class CryingDollApp(MqttApp):
 		GPIO.setwarnings(False) 
 
 		self._lumiere_p = PropsData('lumière' , bool, 0, logger = self._logger)
-		self._publishable.append(self._lumiere_p )
+		self.addData(self._lumiere_p )
 		self._pleurs_p = PropsData('pleurs' , bool, 0, logger = self._logger)
-		self._publishable.append(self._pleurs_p )
+		self.addData(self._pleurs_p )
 		self._active_p = PropsData('activé' , bool, 0, alias=("oui","non"), logger = self._logger)
-		self._publishable.append(self._active_p )
+		self.addData(self._active_p )
 
 		GPIO.setup(GPIO_RELAY_LIGHT, GPIO.OUT,  initial=GPIO.LOW)
 
@@ -64,35 +64,35 @@ class CryingDollApp(MqttApp):
 		# extend as a virtual method
 		print(topic, message)
 		if message == "app:startup":
-			self.publishAllData()
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendAllData()
+			self.sendDone(message)
 		elif message.startswith("activer:"):
 			if message.endswith(":0"):
 				self._active_p.update(False)
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._active_p) )# accurate flip/flop
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendData(str(self._active_p) )# accurate flip/flop
+				self.sendDone(message)
 			elif message.endswith(":1"):
 				self._active_p.update(True)	
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._active_p) )# accurate flip/flop
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendData(str(self._active_p) )# accurate flip/flop
+				self.sendDone(message)
 			else:
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 		elif message.startswith("lumière:"):
 			if message.endswith(":éteindre"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.LOW)
 				self._lumiere_p.update(False)
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._lumiere_p) )# accurate flip/flop
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendData(str(self._lumiere_p) )# accurate flip/flop
+				self.sendDone(message)
 			elif message.endswith(":allumer"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.HIGH)
 				self._lumiere_p.update(True)	
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._lumiere_p) )# accurate flip/flop
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendData(str(self._lumiere_p) )# accurate flip/flop
+				self.sendDone(message)
 			else:
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 
 		else:
-			self.publishMessage(self._mqttOutbox, "OMIT " + message)
+			self.sendOmit(message)
 
 	#__________________________________________________________________
 	def publishAllData(self):
@@ -114,4 +114,4 @@ class CryingDollApp(MqttApp):
 			return			
 
 		self._sound.play(AUDIO_CRYING[random.randint(1, len(AUDIO_CRYING)) - 1])
-		self.publishDataChanges()
+		self.sendDataChanges()

@@ -271,7 +271,7 @@ class MqttApp():
     def onMessage(self, topic, message):
         # extend as a virtual method
         print(topic, message)
-        self.publishMessage(self._mqttOutbox, "OMIT " + message)
+        self.sendOmit(message)
 
     # __________________________________________________________________
     def publishAllData(self):
@@ -294,7 +294,7 @@ class MqttApp():
                 data = " ".join(changes)
                 data = data.strip()
                 if data:
-                    self.publishMessage(self._mqttOutbox, "DATA " + data)
+                    self.sendData(data)
 
     # __________________________________________________________________
     def publishMessage(self, topic, message):

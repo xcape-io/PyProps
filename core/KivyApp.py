@@ -93,19 +93,19 @@ class TeletextApp(MqttKivyApp):
 		#print(topic, message)
 		if message == "app:startup" or message == "effacer":
 			self.root.display('')
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendDone(message)
 			self.displayOnScreen = self.root.ids.display_label.text
 		elif message.startswith("afficher:"):
 			text = message[9:]
 			self.root.display(text)
-			self.publishMessage(self._mqttOutbox, "DONE " + message)
+			self.sendDone(message)
 			self.displayOnScreen = self.root.ids.display_label.text
 			sound = SoundLoader.load('bell.wav')
 			if sound:
 				os.system("amixer set 'PCM' -- -300") # volume -3dB
 				sound.play() # asynchronous
 		else:
-			self.publishMessage(self._mqttOutbox, "OMIT " + message)
+			self.sendOmit(message)
 
 	#__________________________________________________________________
 	def publishData(self, instance=None, prop=None):

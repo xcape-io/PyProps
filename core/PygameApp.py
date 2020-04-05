@@ -36,19 +36,19 @@ class PianoApp(MqttApp):
 		GPIO.setwarnings(False) 
 		
 		self._config_p  = PropsData('configuration' ,  str,  "",  logger = self._logger)
-		self._publishable.append(self._config_p )
+		self.addData(self._config_p )
 		self._gagne_p  = PropsData('gagné' ,  str,  "",  logger = self._logger)
-		self._publishable.append(self._gagne_p )
+		self.addData(self._gagne_p )
 		self._sequence_p  = PropsData('séquence' ,  str,  "",  logger = self._logger)
-		self._publishable.append(self._sequence_p )
+		self.addData(self._sequence_p )
 		self._solution_p  = PropsData('solution' ,  str,  "",  logger = self._logger)
-		self._publishable.append(self._solution_p )
+		self.addData(self._solution_p )
 		self._jackReset_p  = PropsData('magic' ,  str,  self.frenchKeys(JACK_RESET.split(" ")),  logger = self._logger)
-		self._publishable.append(self._jackReset_p )
+		self.addData(self._jackReset_p )
 		self._jack_p  = PropsData('vérin' ,  str,  "",  logger = self._logger)
-		self._publishable.append(self._jack_p )
+		self.addData(self._jack_p )
 		self._latch_p  = PropsData('piano' ,  str,  "",  logger = self._logger)
-		self._publishable.append(self._latch_p )
+		self.addData(self._latch_p )
 
 		self._keynote_list = []
 		self._keynotesDown = []
@@ -279,40 +279,40 @@ class PianoApp(MqttApp):
 		elif message in ["Anglais", "Français", "Enfants"]:
 			self._config_p.update(message)
 			self.loadSound(self._config_p.value())
-			self.publishMessage(self._mqttOutbox, "DONE " + message)	
+			self.sendDone(message)
 		elif message.startswith("gagner:"):
 			if message.endswith(":0"):
 				self._gagne_p.update("non")
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._gagne_p) )# accurate flip/flop
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendData(str(self._gagne_p) )# accurate flip/flop
+				self.sendDone(message)
 			elif message.endswith(":1"):
 				self._gagne_p.update("oui")	
-				self.publishMessage(self._mqttOutbox, "DATA " + str(self._gagne_p) )# accurate flip/flop
+				self.sendData(str(self._gagne_p) )# accurate flip/flop
 				threading.Timer(1.200, self.playFinalAudio).start()
 				threading.Timer(3, self.jackUp).start()
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			else:
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 		elif message.startswith("vérin:"):
 			if self._jack_p.value() != "pause":
-				self.publishMessage(self._mqttOutbox, "OMIT " + message+ " vérin en mouvement")				
+				self.sendOmit(message+ " vérin en mouvement")
 			elif message.endswith(":descendre"):
 				self.jackDown()		
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			elif message.endswith(":monter"):
 				self.jackUp()		
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			else:
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 		elif message.startswith("piano:"):
 			if message.endswith(":ouvrir"):
 				self.latchOff()		
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			elif message.endswith(":fermer"):
 				self.latchOn()		
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			else:
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 		elif message.startswith("thème:"):
 			if message.endswith(":démarrer"):
 				wav = "{}/{}.wav".format("/home/pi/Room/Piano/audio/melodies", "theme_exorcist")
@@ -322,12 +322,12 @@ class PianoApp(MqttApp):
 				else:
 					self._logger.warning("{} : {}".format(_("Melody file not found"), wav))				
 					self.publishMessage(self._mqttOutbox, "MESG Fichier non trouvé {}".format(wav))	
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			elif message.endswith(":arrêter"):
 				pygame.mixer.music.stop()
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			else:
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 		elif message.startswith("jouer:solution"):
 				self.playSolutionAudio()
 		else:
@@ -335,9 +335,9 @@ class PianoApp(MqttApp):
 			if m:
 				keynote= m.group(1).strip()
 				self.keyStroke(keynote)
-				self.publishMessage(self._mqttOutbox, "DONE " + message)
+				self.sendDone(message)
 			else:
-				self.publishMessage(self._mqttOutbox, "OMIT " + message)
+				self.sendOmit(message)
 
 	#__________________________________________________________________
 	def publishAllData(self):

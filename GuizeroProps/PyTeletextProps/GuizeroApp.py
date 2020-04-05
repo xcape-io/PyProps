@@ -61,14 +61,14 @@ class GuizeroApp(MqttApp):
         # extend as a virtual method
         print(topic, message)
         if message == "app:startup":
-            self.publishAllData()
-            self.publishMessage(self._mqttOutbox, "DONE " + message)
+            self.sendAllData()
+            self.sendDone(message)
         elif message == "app:quit":
-            self.publishAllData()
-            self.publishMessage(self._mqttOutbox, "DONE " + message)
+            self.sendAllData()
+            self.sendDone(message)
             self.quit()
         else:
-            self.publishMessage(self._mqttOutbox, "OMIT " + message)
+            self.sendOmit(message)
 
     # __________________________________________________________________
     def poll(self):
