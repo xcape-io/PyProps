@@ -27,7 +27,7 @@ class PropsApp(MqttApp):
     def __init__(self, argv, client, debugging_mqtt=False):
         super().__init__(argv, client, debugging_mqtt)
 
-        self._periodicActions = []
+        self._periodicActions = {}
 
     # __________________________________________________________________
     def addData(self, data):
@@ -35,8 +35,11 @@ class PropsApp(MqttApp):
 
     # __________________________________________________________________
     def addPeriodicAction(self, title, func, time):
-        self._periodicActions.append((title, func, time))
-        self._logger.info("New periodic action created '{1}' every {2} seconds".format(title, time))
+        if title in self._periodicActions:
+            self._logger.warning("Duplicate periodic action ignored '{0}' every {1} seconds".format(title, time))
+        else:
+            self._periodicActions[title] = (func, time)
+            self._logger.info("New periodic action added '{0}' every {1} seconds".format(title, time))
 
     # __________________________________________________________________
     @property

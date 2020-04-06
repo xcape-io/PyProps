@@ -58,8 +58,8 @@ mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
 app = CryingDollApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
-if app._logger:
-    app._logger.info("Program started")
+if app.logger:
+    app.logger.info("Program started")
 
 loop = asyncio.get_event_loop()
 
@@ -70,31 +70,10 @@ if platform.system() != 'Windows':
     signal.signal(signal.SIGHUP, loop.stop)
     signal.signal(signal.SIGQUIT, loop.stop)
 
-
-# Publish data
-async def publishAllData(period):
-    while True:
-        await asyncio.sleep(period)
-        app.publishAllData()
-
-
-async def publishDataChanges(period):
-    while True:
-        await asyncio.sleep(period)
-        app.publishDataChanges()
-
-
-loop.create_task(publishAllData(PUBLISHALLDATA_PERIOD))
-loop.create_task(publishDataChanges(PUBLISHDATACHANGES_PERIOD))  # usually 3.0 but Sound has no state update period
-
-# May add automation 
-'''
-async def processAutomation(period):
-	while True:
-		await asyncio.sleep(period)
-		app.processAutomation()
-loop.create_task(processAutomation(25e-3))
-'''
+# Periodic actions
+for title, (func, time) in app.periodicActions.items():
+    loop.create_task(func(time))
+    app.logger.info("Periodic task created '{0}' every {1} seconds".format(title, time))
 
 loop.run_forever()
 loop.close()
@@ -108,8 +87,8 @@ try:
 except:
     pass
 
-if app._logger:
-    app._logger.info("Program done")
+if app.logger:
+    app.logger.info("Program done")
 
 del (me)
 

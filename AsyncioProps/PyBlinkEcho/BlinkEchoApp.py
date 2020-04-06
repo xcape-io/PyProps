@@ -10,9 +10,8 @@ BlinkEchoApp extends MqttApp.
 from constants import *
 from PropsApp import PropsApp
 from PropsData import PropsData
-from Periodic import Periodic
 
-import os, platform, sys, logging
+import asyncio
 import RPi.GPIO as GPIO
 
 
@@ -36,19 +35,28 @@ class BlinkEchoApp(PropsApp):
         self._last_echo_p = PropsData('last_echo', str, BLANK_ECHO, logger=self._logger)
         self.addData(self._last_echo_p)
 
-        self.addPeriodicAction = ("blinking", self.blink, 1.0)
-
-        ##await self._blinking_periodic.start()
+        self._logPeriodics = True
+        self.addPeriodicAction("send all data", self.publishAll, PUBLISHALLDATA_PERIOD)
+        self.addPeriodicAction("send data changes", self.publishData, PUBLISHALLDATA_PERIOD)
+        self.addPeriodicAction("blink", self.blink, 1.0)
 
     # __________________________________________________________________
-    def blink(self):
-        self._led_p.update(not self._led_p.value())
-        GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
-        self.sendData(str(self._led_p))  # immediate notification
+    async def blink(self, time):
+        while True:
+            try:
+                if self._blinking_p.value():
+                    self._led_p.update(not self._led_p.value())
+                    GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
+                    self.sendData(str(self._led_p))  # immediate notification
+                    await asyncio.sleep(time)
+            except Exception as e:
+                self.logger.error("Failed to execute periodic 'blink'")
+                self.logger.debug(e)
 
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
         # extend as a virtual method
+        self.sendAllData() # sometimes is missed in ancestors
         self.sendMesg("echo on", self._mqttOutbox)
 
     # __________________________________________________________________
@@ -83,3 +91,16 @@ class BlinkEchoApp(PropsApp):
                 self.sendOmit(message)
         else:
             self.sendOmit(message)
+
+
+    # __________________________________________________________________
+    async def publishAll(self, period):
+        while True:
+            self.sendAllData()
+            await asyncio.sleep(period)
+
+    # __________________________________________________________________
+    async def publishData(self, period):
+        while True:
+            self.sendDataChanges()
+            await asyncio.sleep(period)
