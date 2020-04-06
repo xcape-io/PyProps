@@ -69,11 +69,11 @@ class CryingDollApp(AsyncioProps):
 		elif message.startswith("activate:"):
 			if message.endswith(":0"):
 				self._active_p.update(False)
-				self.sendData(str(self._active_p) )# accurate flip/flop
+				self.sendDataChanges()
 				self.sendDone(message)
 			elif message.endswith(":1"):
 				self._active_p.update(True)	
-				self.sendData(str(self._active_p) )# accurate flip/flop
+				self.sendDataChanges()
 				self.sendDone(message)
 			else:
 				self.sendOmit(message)
@@ -84,16 +84,15 @@ class CryingDollApp(AsyncioProps):
 			if message.endswith(":off"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.LOW)
 				self._light_p.update(False)
-				self.sendData(str(self._light_p) )# accurate flip/flop
+				self.sendDataChanges()
 				self.sendDone(message)
 			elif message.endswith(":on"):
 				GPIO.output(GPIO_RELAY_LIGHT,  GPIO.HIGH)
 				self._light_p.update(True)
-				self.sendData(str(self._light_p) )# accurate flip/flop
+				self.sendDataChanges()
 				self.sendDone(message)
 			else:
 				self.sendOmit(message)
-
 		else:
 			self.sendOmit(message)
 

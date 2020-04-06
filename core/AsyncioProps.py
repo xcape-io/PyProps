@@ -20,7 +20,6 @@ class AsyncioProps(PropsApp):
         super().__init__(argv, client, debugging_mqtt)
 
         self.addPeriodicAction("send all data", self._sendAllDataPeriodicTask, PUBLISHALLDATA_PERIOD)
-        self.addPeriodicAction("send data changes", self._sendDataChangesPeriodicTask, PUBLISHALLDATA_PERIOD)
 
     # __________________________________________________________________
     async def _sendAllDataPeriodicTask(self, period):

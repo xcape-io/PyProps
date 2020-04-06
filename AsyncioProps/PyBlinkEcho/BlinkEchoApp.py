@@ -54,7 +54,7 @@ class BlinkEchoApp(AsyncioProps):
     def onConnect(self, client, userdata, flags, rc):
         # extend as a virtual method
         self.sendAllData() # sometimes is missed in ancestors
-        self.sendMesg("echo on", self._mqttOutbox)
+        self.sendMesg("echo on")
 
     # __________________________________________________________________
     def onDisconnect(self, client, userdata, rc):
@@ -70,19 +70,18 @@ class BlinkEchoApp(AsyncioProps):
             self.sendDone(message)
         elif message.startswith("echo:"):
             text = message[5:]
-            ##self.sendMesg("echo: " + text)
-            self.sendMesg(text, self._mqttOutbox)
+            self.sendMesg("echo: " + text)
             self._last_echo_p.update(text)
             self.sendDataChanges()
             self.sendDone(message)
         elif message.startswith("blink:"):
             if message.endswith(":0"):
                 self._blinking_p.update(False)
-                self.sendData(str(self._blinking_p))  # accurate flip/flop
+                self.sendDataChanges()
                 self.sendDone(message)
             elif message.endswith(":1"):
                 self._blinking_p.update(True)
-                self.sendData(str(self._blinking_p))  # accurate flip/flop
+                self.sendDataChanges()
                 self.sendDone(message)
             else:
                 self.sendOmit(message)

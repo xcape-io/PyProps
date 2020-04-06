@@ -58,12 +58,11 @@ class PropsApp(MqttApp):
         self.publishMessage(self._mqttOutbox, "DONE " + action)
 
     # __________________________________________________________________
-    def sendMesg(self, message):
-        self.publishMessage(self._mqttOutbox, "MESG " + message)
-
-    # __________________________________________________________________
-    def sendMesg(self, message, topic):
-        self.publishMessage(topic, "MESG " + message)
+    def sendMesg(self, message, topic = None):
+        if topic is None:
+            self.publishMessage(self._mqttOutbox, "MESG " + message)
+        else:
+            self.publishMessage(topic, "MESG " + message)
 
     # __________________________________________________________________
     def sendOmit(self, action):
@@ -78,9 +77,8 @@ class PropsApp(MqttApp):
         self.publishMessage(self._mqttOutbox, "PROG " + program)
 
     # __________________________________________________________________
-    def sendRequ(self, request):
-        self.publishMessage(self._mqttOutbox, "REQU " + request)
-
-    # __________________________________________________________________
-    def sendRequ(self, request, topic):
-        self.publishMessage(topic, "REQU " + request)
+    def sendRequ(self, request, topic = None):
+        if topic is None:
+            self.publishMessage(self._mqttOutbox, "REQU " + request)
+        else:
+            self.publishMessage(topic, "REQU " + message)
