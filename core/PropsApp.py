@@ -17,8 +17,8 @@ Props base class extends MqttApp:
     PROG -> request a control program
 """
 
-from MqttApp import MqttApp
 from constants import *
+from MqttApp import MqttApp
 
 
 class PropsApp(MqttApp):
@@ -40,11 +40,6 @@ class PropsApp(MqttApp):
         else:
             self._periodicActions[title] = (func, time)
             self._logger.info("New periodic action added '{0}' every {1} seconds".format(title, time))
-
-    # __________________________________________________________________
-    @property
-    def periodicActions(self):
-        return self._periodicActions
 
     # __________________________________________________________________
     def sendAllData(self):

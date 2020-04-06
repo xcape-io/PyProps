@@ -8,14 +8,14 @@ BlinkEchoApp extends MqttApp.
 """
 
 from constants import *
-from PropsApp import PropsApp
+from AsyncioProps import AsyncioProps
 from PropsData import PropsData
 
 import asyncio
 import RPi.GPIO as GPIO
 
 
-class BlinkEchoApp(PropsApp):
+class BlinkEchoApp(AsyncioProps):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
@@ -35,9 +35,6 @@ class BlinkEchoApp(PropsApp):
         self._last_echo_p = PropsData('last_echo', str, BLANK_ECHO, logger=self._logger)
         self.addData(self._last_echo_p)
 
-        self._logPeriodics = True
-        self.addPeriodicAction("send all data", self.publishAll, PUBLISHALLDATA_PERIOD)
-        self.addPeriodicAction("send data changes", self.publishData, PUBLISHALLDATA_PERIOD)
         self.addPeriodicAction("blink", self.blink, 1.0)
 
     # __________________________________________________________________
@@ -50,8 +47,8 @@ class BlinkEchoApp(PropsApp):
                     self.sendData(str(self._led_p))  # immediate notification
                     await asyncio.sleep(time)
             except Exception as e:
-                self.logger.error("Failed to execute periodic 'blink'")
-                self.logger.debug(e)
+                self._logger.error("Failed to execute periodic 'blink'")
+                self._logger.debug(e)
 
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
@@ -91,16 +88,3 @@ class BlinkEchoApp(PropsApp):
                 self.sendOmit(message)
         else:
             self.sendOmit(message)
-
-
-    # __________________________________________________________________
-    async def publishAll(self, period):
-        while True:
-            self.sendAllData()
-            await asyncio.sleep(period)
-
-    # __________________________________________________________________
-    async def publishData(self, period):
-        while True:
-            self.sendDataChanges()
-            await asyncio.sleep(period)
