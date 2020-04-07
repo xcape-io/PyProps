@@ -61,6 +61,7 @@ The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asy
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
 * audio and video output
 * keyboard, mouse and joystick input
+* video games
 * sensors and actuators (GPIO and I2C shields)
 
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> (see <a href="https://www.pygame.org/" target="_blank">pygame.org</a>) is very popular and very easy to learn so the [PygameProps](./PygameProps) flavor may be your preferred choice most of the time.
@@ -75,7 +76,7 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 Two flavors:
 * [QtConsoleProps](./QtConsoleProps)
 * [QtGuiProps](./QtGuiProps)
-* the power of Qt (printing support, multimedia, styled GUI, etc)
+* the power of Qt (printing support, multimedia, styled GUI, Bluetooth, etc.)
 * ***use same code for the props and its plugin***
 * easy to mirror the props GUI in a plugin (often needed for complex props)
 
