@@ -3,19 +3,28 @@
 
 With the *PyProps library* you can start coding a Raspberry props for you escape room 2.0 in a few minutes.
 
-
-## Introduction
 PyProps core library:
 * hide the code to publish / subscribe messages with MQTT
 * hide the complexity to create non-blocking asynchronous code
 * expose a rotating file logger
+* code is robust to work 24/7
 
 PyProps examples:
-* show how to code a props in few lines
+* show how to code a props in a few lines
 * provide code for common sensors / actuators
 
 
 ## PyProps core library
+PyProps support different Pyhton frameworks:
+* [AsyncioProps](./AsyncioProps)
+* [PygameProps](./PygameProps)
+* [QtConsoleProps](./QtConsoleProps)
+* [QtGuiProps](./QtGuiProps)
+* [GuizeroProps](./GuizeroProps)
+* [KivyProps](./KivyProps)
+
+
+
 *MqttApp* and *PropsData* classes, which manage MQTT messaging, will simplify and speed up the coding. *MqttApp* is the base class of the Python props program.
 
 `constants.py`, `definitions.ini` and `logging.ini` are configuration files related to the escape room MQTT topics and the props flavor.
@@ -57,7 +66,7 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> brings the power of <a href="https://doc.qt.io/" target="_blank">Qt</a> to Python and is well supported on Raspberry Pi.
 
 Two flavors:
-* [QtProps](./QtProps)
+* [QtConsoleProps](./QtConsoleProps)
 * [QtGuiProps](./QtGuiProps)
 * the power of Qt (printing support, multimedia, styled GUI, etc)
 * ***use same code for the props and its plugin***
