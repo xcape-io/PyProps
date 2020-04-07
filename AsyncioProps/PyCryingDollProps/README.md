@@ -97,7 +97,7 @@ Use `activate` to enable the cries at the right time (when starting a new game o
 
 Use `cry` if automatic detection doesn't work (sensor failure or calibration issue during a game) or to test sound level.
 
-### Pros configuration
+### Props configuration
 Add and configure *Raspberry CryingDoll* connected props.
 
 ![Props configuration](props/props-configuration.png)

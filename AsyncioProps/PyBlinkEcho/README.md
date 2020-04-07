@@ -68,7 +68,7 @@ To use *PyBlinkEcho* as a props for <a href="https://xcape.io/" target="_blank">
 * `echo:a message to be echoed` : echo the message
 
 
-### Pros configuration
+### Props configuration
 Add and configure *Raspberry BlinkEcho* connected props.
 
 ![Props configuration](props/props-configuration.png)
