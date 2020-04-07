@@ -87,6 +87,10 @@ Props control panel cannot display text on multiple lines or send text by the ga
 ![PyEchoPlugin](props/plugin.png)
 
 
+## The props code
+
+...
+
 ## Author
 
 **Marie FAURE** (Mar 30th, 2020)
