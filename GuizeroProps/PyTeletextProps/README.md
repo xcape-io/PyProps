@@ -13,8 +13,10 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PyBlinkEcho* requirements:
-* `PyProps/core/AsyncioProps.py`
+* `PyProps/core/GuizeroProps.py`
 * `PyProps/core/PropsData.py`
+* `PyProps/core/PropsApp.py`
+* `PyProps/core/MqttApp.py`
 * `PyProps/core/Singleton.py`
 
 And you will have to install following Python packages:
@@ -64,62 +66,34 @@ INFO - Program sending message 'DONE afficher:1515' (mid=7) on Room/My room/Prop
 To switch MQTT broker, kill the program and start again with new arguments.
 
 
-## Understanding the code
+## Blink Echo as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyBlinkEcho* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
-### *TeletextApp*
-Teletext props is built with the following files:
-* `teletext.py` main script to start the props
-* `constants.py`
-* `definitions.ini`
-* `logging.ini`
-* __`TeletextApp.py`__ props related code
-
-It depends on:
-* `GuizeroProps.py` base class to create a guizero event loop
-* `MqttApp.py` base class to publish/subscribe MQTT messages
-* `PropsData.ini` base class to optimize network communications
-* `Singleton.ini` to ensure one instance of application is running
-* `Sound.py` simple *aplay* wrapper
-
-Use ***TeletextApp*** as a model to create your own connected props if you need simple text display, sound playback. You can also add GPIO stuff.
-
-About `create-teletextprops-tgz.bat`:
-* install <a href="https://www.7-zip.org/" target="_blank">7-Zip</a> on your Windows desktop
-* run `create-teletextprops-tgz.bat` to archive versions of your work
-
-#### MQTT message protocol:
-> This props has been created for [Live Escape Grenoble](https://www.live-escape.net/) rooms, controlled with **Room** software so MQTT messages published in the props outbox implement the <a href="https://github.com/fauresystems/TeletextProps/blob/master/PROTOCOL.md" target="_blank">Room Outbox protocol</a>.
-
-#### IDE for hacking `TeletextApp.py`:
-> You can open a PyCharm Professional project to hack the code remotely, thanks to `.idea` folder. Or if you prefer to the code hack directly on the Raspberry, we suggest <a href="https://eric-ide.python-projects.org/" target="_blank">Eric6 IDE</a>. 
+### Props commands
+* `blink:0` : deactivate blinking
+* `blink:1` : activate blinking
+* `echo:a message to be echoed` : echo the message
 
 
-### *GuizeroProps* base class
-*TeletextApp* extends *GuizeroProps*, python base app for Raspberry connected props which require simple text display. 
+### Pros configuration
+Add and configure *Raspberry BlinkEcho* connected props.
 
-For more advanced text display (visual effects, True-Type fonts) you may see *Kivi* props below such as TelefxProps.
-
-GUI is built with *<a href="https://lawsie.github.io/guizero/" target="_blank">guizero</a>* library. If you don't need display, prefer *Asyncio* props.
-
-Extend this base class to build a connected props which does simple text display, sound playback. Optionally you can GPIO stuff.
-
-You might not modify `GuizeroProps.py` file.
+![Props configuration](props/props-configuration.png)
 
 
-### *MqttApp* and *PropsData* base classes
-*GuizeroProps* extends *MqttApp*, the python base app for Raspberry connected props.
+### Props data messages
+
+![Outbox messages](props/outbox-messages.png)
+
+### Props control panel
+
+![Room control panel](props/room-control-panel.png)
 
 
-MQTT topics are defined in *definitions.ini*.
+### Plugin for Blink Echo props
+Props control panel cannot display text on multiple lines or send text by the game master, therefore a plugin is necessary: [PyEchoPlugin](https://github.com/xcape-io/PyEchoPlugin)
 
-PubSub variables extend *PropsData*, it is an helper to track value changes and to optimize publishing values in MQTT topic outbox.
-
-You might not modify `MqttApp.py` an `PropsData.py` files.
-
-#### Notes about MQTT QoS:
->*Python script hangs* have been reported when `paho-mqtt` is running asynchronously with QoS 2 on a network with significant packet loss (particularly Wifi networks).
-
-We have choosen MQTT QoS 1 as default (see *constants.py*).
+![PyEchoPlugin](props/plugin.png)
 
 
 ## Author

@@ -17,7 +17,8 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 
 ## Asyncio Props applications
 For most the common console props (without graphical interface), for example:
-* detect vibrations to trigger a crying doll
+* educational example which echoes messages and make a LED blinking ([PyBlinkEcho](PyBlinkEcho))
+* detect vibrations to trigger a crying doll  ([PyCryingDollProps](PyCryingDollProps))
 * detect RFID tag with a NFC I2C shield
 * play sound
 
