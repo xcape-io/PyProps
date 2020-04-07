@@ -9,6 +9,10 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 
 ## Pygame Props applications
 
+*Pygame* props
+* Tetris hacked
+* mechanic Piano sound player
+* hacker intrusion puzzle
 
 
 

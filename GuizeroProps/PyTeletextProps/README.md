@@ -15,37 +15,26 @@ You will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspber
 
 
 ## Installation
-Download `PyTeletextProps-master.zip` from this GitHub repository and unflate it on your Raspberry Pi.
+See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
 
-Install dependencies
+### Dependencies
+If you don't install the whole PyProps library, you will have to fulfill the  *PyBlinkEcho* requirements:
+* `PyProps/core/AsyncioProps.py`
+* `PyProps/core/PropsData.py`
+* `PyProps/core/Singleton.py`
+
+And you will have to install following Python packages:
 ```bash
-pip3 install -r requirements.txt
+$ pip3 install paho-mqtt
+$ pip3 install PyYAML
 ```
 
-Edit `definitions.ini` to set MQTT topics for your Escape Room:
-```python
-[mqtt]
-; mqtt-sub-* and app-inbox topics are subscribed by MqttApp
-app-inbox = Room/My room/Props/Raspberry Teletext/inbox
-app-outbox = Room/My room/Props/Raspberry Teletext/outbox
-mqtt-sub-room-scenario = Room/My room/Control/game:scenario
-``` 
-
-
 ## Usage
-Start `teletext.py` script:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps`:
 
 ```bash
-usage: python3 teletext.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
 
-optional arguments:
- -h, --help   show this help message and exit
- -s SERVER, --server SERVER
-      change MQTT server host
- -p PORT, --port PORT change MQTT server port
- -d, --debug   set DEBUG log level
- -l LOGGER, --logger LOGGER
-      use logging config file
+
 ```
 
 To switch MQTT broker, kill the program and start again with new arguments.

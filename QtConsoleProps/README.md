@@ -8,9 +8,9 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 
 
 ## Qt Console  Props applications
-For props with basic graphical interface, for example:
-* display text on the props TV monitor (teletext)
-
+For example:
+* fortune telling table (alphanum LED switching)
+* electric jack cylinder control
 
 ## Qt Console  Props code
 ...
