@@ -80,6 +80,14 @@ class GuizeroProps(PropsApp):
         self._gui.tk.after(500, self.poll)
 
     # __________________________________________________________________
+    def replayInSeconds(self, func, time):
+        try:
+            self._gui.tk.after(int(time*1000), func)
+        except Exception as e:
+            self._logger.error("Failed to replay in {} seconds".format(time))
+            self._logger.debug(e)
+
+    # __________________________________________________________________
     def quit(self):
         self._gui.exit_full_screen()
         self._gui.destroy()

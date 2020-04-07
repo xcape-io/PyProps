@@ -54,7 +54,7 @@ class TeletextApp(GuizeroProps):
 
         self._sound = Sound(self._logger)
 
-        #self.addPeriodicAction("blink", self._blink, 1.0)
+        self.addPeriodicAction("blink", self.blink, 1.0)
 
         if platform.system() != 'Windows':
             os.system("amixer cset numid=3 1")  # audio jack
@@ -80,7 +80,7 @@ class TeletextApp(GuizeroProps):
             self._logger.error("Failed to execute periodic 'blink'")
             self._logger.debug(e)
         finally:
-            self._gui.tk.after(1000, self.blink)
+            self.replayInSeconds(self.blink, 1.0)
 
     # __________________________________________________________________
     def lightOff(self):
