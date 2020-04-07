@@ -13,9 +13,10 @@ PyProps examples:
 * show how to code a props in a few lines
 * provide code for common sensors / actuators
 
+Read [INSTALLATION.md](INSTALLATION.md) for installation and usage.
 
-## PyProps core library
-PyProps support different Pyhton frameworks:
+## Props unified coding
+PyProps supports different Python frameworks to write any kind of props providing a base class for your props:
 * [AsyncioProps](./AsyncioProps)
 * [PygameProps](./PygameProps)
 * [QtConsoleProps](./QtConsoleProps)
@@ -23,23 +24,29 @@ PyProps support different Pyhton frameworks:
 * [GuizeroProps](./GuizeroProps)
 * [KivyProps](./KivyProps)
 
+Each props base class extends the base class *MqttApp* which handles messaging and  the base class *PropsApp* which handles the periodic actions and the simple [Room Outbox protocol](PROTOCOL.md) protocol.
 
-
-*MqttApp* and *PropsData* classes, which manage MQTT messaging, will simplify and speed up the coding. *MqttApp* is the base class of the Python props program.
-
-`constants.py`, `definitions.ini` and `logging.ini` are configuration files related to the escape room MQTT topics and the props flavor.
+*PropsData* is a base class that manages the props data variables sent to the outbox.
 
 *Singleton* class will guarantee that only one instance of the props program runs on the Raspberry board.
 
-See:
-* [MqttApp and PropsData classes](MQTT_CLASSES.md)
-* [configuration files](CONFIGURATION_FILES.md)
-* [Singleton class](SINGLETON_CLASS.md)
-* [Installation and usage](INSTALLATION.md)
-* [Room Outbox protocol](PROTOCOL.md)
+Each props must have its own `constants.py` and `definitions.ini` [configuration files](CONFIGURATION_FILES.md) related to the escape room MQTT topics and to the props flavor.
 
-## PyProps library flavors
-The *PyProps library* takes advantage for many Python frameworks available on the Raspberry Pi running Raspbian to meet the requirements of any props created for the escape rooms.
+`logging.ini` is the logger configuration file which can be used as is.
+
+`main.py` is the main props script to:
+* ensure only one instance of the props program is running
+* initialize GPIO
+* create the Paho MQTT client
+* create the props class
+* start MQTT client event loop
+* start props framework event loop
+* cleanup GPIO at end
+* stop MQTT client event loop at end
+
+
+## Props flavors
+The *PyProps library* takes advantage for many Python frameworks available on the Raspberry Pi running Raspbian to meet the requirements of any props created for escape rooms.
 
 ### Asyncio framework: [AsyncioProps](./AsyncioProps)
 With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a graphical interface:
