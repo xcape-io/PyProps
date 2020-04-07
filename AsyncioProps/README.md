@@ -19,11 +19,7 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 For most the common console props (without graphical interface), for example:
 * detect vibrations to trigger a crying doll
 * detect RFID tag with a NFC I2C shield
-
-
-## Asyncio Props code
-...
-
+* play sound
 
 
 ## Author

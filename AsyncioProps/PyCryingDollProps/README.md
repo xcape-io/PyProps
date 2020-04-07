@@ -1,4 +1,4 @@
-﻿# Crying Doll props (*PyCryingDollProps*)
+﻿# Crying Doll props
 ***The doll cries when the players approach when vibrations are detected.***
 
 Two vibration sensors SW-420 are connected to the Raspberry Pi GPIO and tuned to detect human approaching.
@@ -11,7 +11,7 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PyCryingDollProps* requirements:
-* `PyProps/core/MqttApp.py`
+* `PyProps/core/AsyncioProps.py`
 * `PyProps/core/PropsData.py`
 * `PyProps/core/Singleton.py`
 

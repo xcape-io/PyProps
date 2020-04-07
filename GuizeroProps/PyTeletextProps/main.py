@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-teletext.py
+main.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-Displays message received from MQTT server in fullscreen on main monitor and play a sound.
+Main script for GuizeroProps.
 
-To switch MQTT broker, kill the program and start again with new arguments.
-Use -d option to start in windowed mode instead of fullscreen.
-
-usage: python3 teletext.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
+usage: python3 main.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
 
 optional arguments:
  -h, --help   show this help message and exit

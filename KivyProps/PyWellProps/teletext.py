@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-teletext.py (version 0.1)
+main.py (version 0.1)
 
 Kivy app to display clues on TV (HDMI) with Raspberry.
 
-usage: python3 teletext.py  [-- [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]]
+usage: python3 main.py  [-- [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]]
 
 optional arguments:
   -h, --help            show this help message and exit
