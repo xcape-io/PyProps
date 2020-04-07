@@ -31,21 +31,21 @@ INFO - New boolean Publishable 'led' (1/0) with initial=0
 INFO - New boolean Publishable 'blinking' (yes/no) with initial=0
 INFO - New str Publishable 'last_echo' with initial=---
 INFO - New periodic action added 'blink' every 1.0 seconds
+INFO - Periodic task created 'send all data' every 30.0 seconds
+INFO - Periodic task created 'blink' every 1.0 seconds
+WARNING - Program failed to send message (disconnected) : 'DATA led=0 blinking=no last_echo=---'
 INFO - Program connected to MQTT server
 INFO - Program sending message 'CONNECTED' (mid=1) on Room/My room/Props/Raspberry BlinkEcho/outbox
 INFO - Program subscribing to topic (mid=2) : Room/My room/Props/Raspberry BlinkEcho/inbox
-INFO - Periodic task created 'send all data' every 30.0 seconds
 INFO - Program subscribing to topic (mid=3) : Room/My room/Control/game:scenario
 INFO - Program sending message 'DATA led=0 blinking=no last_echo=---' (mid=4) on Room/My room/Props/Raspberry BlinkEcho/outbox
-INFO - Periodic task created 'blink' every 1.0 seconds
 INFO - Program sending message 'MESG echo on' (mid=5) on Room/My room/Props/Raspberry BlinkEcho/outbox
-INFO - Program sending message 'DATA led=0 blinking=no last_echo=---' (mid=6) on Room/My room/Props/Raspberry BlinkEcho/outbox
 DEBUG - MQTT message is published : mid=1 userdata={'host': '192.168.1.42', 'port': 1883}
 INFO - Message published (mid=1)
 DEBUG - MQTT topic is subscribed : mid=2 granted_qos=(1,)
 INFO - Program susbcribed to topic (mid=2) with QoS (1,)
 DEBUG - MQTT topic is subscribed : mid=3 granted_qos=(1,)
-
+INFO - Program susbcribed to topic (mid=3) with QoS (1,)
 ```
 
 
