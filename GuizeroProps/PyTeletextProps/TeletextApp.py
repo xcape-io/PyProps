@@ -126,8 +126,8 @@ class TeletextApp(GuizeroProps):
         print(topic, message)
         if message in ["app:startup", "app:quit"]:
             super().onMessage(topic, message)
-        elif message.startswith("afficher:"):
-            text = message[9:]
+        elif message.startswith("display:"):
+            text = message[8:]
             self._texte.value = text
             if self._mqttConnected:
                 try:
@@ -145,7 +145,7 @@ class TeletextApp(GuizeroProps):
             self.sendDataChanges()
             self.lightOnForSeconds(3.0)
             self._sound.play('media/bell.wav')
-        elif message.startswith("effacer"):
+        elif message.startswith("erase"):
             self._texte.value = ""
             if self._mqttConnected:
                 try:

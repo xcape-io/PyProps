@@ -13,6 +13,8 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 If you don't install the whole PyProps library, you will have to fulfill the  *PyCryingDollProps* requirements:
 * `PyProps/core/AsyncioProps.py`
 * `PyProps/core/PropsData.py`
+* `PyProps/core/PropsApp.py`
+* `PyProps/core/MqttApp.py`
 * `PyProps/core/Singleton.py`
 
 And you will have to install following Python packages:
