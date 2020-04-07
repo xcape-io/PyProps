@@ -26,7 +26,9 @@ Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDoll
 
 ```bash
 pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/main.py -s 192.168.1.42 -d
+
 Config: {'host': '192.168.1.42'}
+INFO - New periodic action added 'send all data' every 30.0 seconds
 INFO - New boolean Publishable 'light' (1/0) with initial=0
 INFO - New boolean Publishable 'crying' (1/0) with initial=0
 INFO - New boolean Publishable 'activated' (yes/no) with initial=0
@@ -35,17 +37,25 @@ INFO - Setup vibration sensor input pin on 21
 numid=3,iface=MIXER,name='PCM Playback Route'
   ; type=INTEGER,access=rw------,values=1,min=0,max=3,step=0
   : values=1
+INFO - Program connected to MQTT server
+INFO - Program sending message 'CONNECTED' (mid=1) on Room/My room/Props/Raspberry CryingDoll/outbox
+INFO - Program subscribing to topic (mid=2) : Room/My room/Props/Raspberry CryingDoll/inbox
 Simple mixer control 'PCM',0
   Capabilities: pvolume pvolume-joined pswitch pswitch-joined
   Playback channels: Mono
   Limits: Playback -10239 - 400
+INFO - Program sending message 'DATA light=0 crying=0 activated=no' (mid=3) on Room/My room/Props/Raspberry CryingDoll/outbox
   Mono: Playback 400 [100%] [4.00dB] [on]
-INFO - Program started
-INFO - Program connected to MQTT server
-INFO - Program subscribing to topic (mid=1) : Room/My room/Raspberry CryingDoll/inbox
-DEBUG - MQTT topic is subscribed : mid=1 granted_qos=(2,)
-DEBUG - MQTT message is published : mid=2 userdata={'host': 'localhost', 'port': 1883}
-
+DEBUG - MQTT topic is subscribed : mid=2 granted_qos=(2,)
+INFO - Program susbcribed to topic (mid=2) with QoS (2,)
+DEBUG - MQTT message is published : mid=1 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=1)
+INFO - Periodic task created 'send all data' every 30.0 seconds
+DEBUG - MQTT message is published : mid=3 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=3)
+INFO - Program sending message 'DATA light=0 crying=0 activated=no' (mid=4) on Room/My room/Props/Raspberry CryingDoll/outbox
+INFO - Message received : '@PING' in Room/My room/Props/Raspberry CryingDoll/inbox
+INFO - Program sending message 'PONG' (mid=5) on Room/My room/Props/Raspberry CryingDoll/outbox
 ```
 
 
