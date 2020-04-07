@@ -53,8 +53,8 @@ With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a gr
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 * examples:
-    - educational example which echoes messages and make a LED blinking ([PyBlinkEcho](PyBlinkEcho))
-    - detect vibrations to trigger a crying doll  ([PyCryingDollProps](PyCryingDollProps))
+    - educational example which echoes messages and make a LED blinking ([PyBlinkEcho](./AsyncioProps/PyBlinkEcho))
+    - detect vibrations to trigger a crying doll  ([PyCryingDollProps](./AsyncioProps/PyCryingDollProps))
 
 The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework allows writing non-blocking Python programs that multitask seamlessly.
 
@@ -95,7 +95,7 @@ Two flavors:
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 * example:
-    - display text on the props TV monitor ([PyTeletextProps](PyTeletextProps))
+    - display text on the props TV monitor ([PyTeletextProps](./GuizeroProps/PyTeletextProps))
     
 See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings Started</a> and the Guizero widgets from the same web page.
 
