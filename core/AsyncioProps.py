@@ -9,7 +9,6 @@ Add asyncio periodic tasks handling to Props base class.
 
 from constants import *
 from PropsApp import PropsApp
-
 import asyncio
 
 
@@ -37,5 +36,9 @@ class AsyncioProps(PropsApp):
     def withEventLoop(self, loop):
         # Periodic actions
         for title, (func, time) in self._periodicActions.items():
-            loop.create_task(func(time))
-            self._logger.info("Periodic task created '{0}' every {1} seconds".format(title, time))
+            try:
+                loop.create_task(func(time))
+                self._logger.info("Periodic task created '{0}' every {1} seconds".format(title, time))
+            except Exception as e:
+                self._logger.error("Failed to create periodic task '{0}'".format(title))
+                self._logger.debug(e)

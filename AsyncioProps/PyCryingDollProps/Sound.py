@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-Sound.py (version 0.1 initial)
+Sound.py
+MIT License (c) Marie Faure <dev at faure dot systems>
 
 Sound play audio with aplay (until it ends).
 '''
@@ -12,7 +13,6 @@ class Sound:
 
 	#__________________________________________________________________
 	def __init__(self, logger=None):
-		
 		super().__init__()
 
 		self._logger = logger
@@ -21,7 +21,6 @@ class Sound:
 
 	#__________________________________________________________________
 	def play(self, file):
-		
 		if self.isPlaying():
 			return
 			
@@ -45,14 +44,11 @@ class Sound:
 
 	#__________________________________________________________________
 	def isPlaying(self):
-		
 		if self._player is not None:
 			self._player.poll()
-
 			if self._player.returncode is None:
 				return  True
 			else:
 				return False
-		
-		else:		
+		else:
 			return False

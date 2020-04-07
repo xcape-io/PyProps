@@ -27,6 +27,7 @@ And you will have to install following Python packages:
 ```bash
 $ pip3 install paho-mqtt
 $ pip3 install PyYAML
+$ pip3 install guizero
 ```
 
 ## Usage
@@ -51,7 +52,7 @@ Teletext props is built with the following files:
 * __`TeletextApp.py`__ props related code
 
 It depends on:
-* `GuizeroApp.py` base class to create a guizero event loop
+* `GuizeroProps.py` base class to create a guizero event loop
 * `MqttApp.py` base class to publish/subscribe MQTT messages
 * `PropsData.ini` base class to optimize network communications
 * `Singleton.ini` to ensure one instance of application is running
@@ -70,8 +71,8 @@ About `create-teletextprops-tgz.bat`:
 > You can open a PyCharm Professional project to hack the code remotely, thanks to `.idea` folder. Or if you prefer to the code hack directly on the Raspberry, we suggest <a href="https://eric-ide.python-projects.org/" target="_blank">Eric6 IDE</a>. 
 
 
-### *GuizeroApp* base class
-*TeletextApp* extends *GuizeroApp*, python base app for Raspberry connected props which require simple text display. 
+### *GuizeroProps* base class
+*TeletextApp* extends *GuizeroProps*, python base app for Raspberry connected props which require simple text display. 
 
 For more advanced text display (visual effects, True-Type fonts) you may see *Kivi* props below such as TelefxProps.
 
@@ -79,11 +80,11 @@ GUI is built with *<a href="https://lawsie.github.io/guizero/" target="_blank">g
 
 Extend this base class to build a connected props which does simple text display, sound playback. Optionally you can GPIO stuff.
 
-You might not modify `GuizeroApp.py` file.
+You might not modify `GuizeroProps.py` file.
 
 
 ### *MqttApp* and *PropsData* base classes
-*GuizeroApp* extends *MqttApp*, the python base app for Raspberry connected props.
+*GuizeroProps* extends *MqttApp*, the python base app for Raspberry connected props.
 
 
 MQTT topics are defined in *definitions.ini*.

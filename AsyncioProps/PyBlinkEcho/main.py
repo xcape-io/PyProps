@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 '''
 main.py
+MIT License (c) Marie Faure <dev at faure dot systems>
 
 Main script for AsyncioProps.
 

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 main.py
-MIT License (c) Marie Faure <dev at faure dot systems>
 
 Main script for GuizeroProps.
 
@@ -20,13 +19,25 @@ optional arguments:
 To switch MQTT broker, kill the program and start again with new arguments.
 """
 
+import os
+import sys
+import uuid
+
+import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
-import os, sys, uuid
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from constants import *
+
+try:
+    PYPROPS_CORELIBPATH
+    sys.path.append(PYPROPS_CORELIBPATH)
+except NameError:
+    pass
+
 from TeletextApp import TeletextApp
 from Singleton import Singleton, SingletonException
-
 
 me = None
 try:
@@ -36,17 +47,9 @@ except SingletonException:
 except BaseException as e:
     print(e)
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
-# translation
-import gettext
-
-try:
-    gettext.find(APPLICATION)
-    traduction = gettext.translation(APPLICATION, localedir='locale', languages=['fr'])
-    traduction.install()
-except:
-    _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
@@ -55,6 +58,15 @@ app = TeletextApp(sys.argv, mqtt_client, debugging_mqtt=False)
 # guizero event loop
 app.loop()
 
-del me
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+    GPIO.cleanup()
+
+try:
+    mqtt_client.disconnect()
+    mqtt_client.loop_stop()
+except:
+    pass
+
+del (me)
 
 sys.exit(0)

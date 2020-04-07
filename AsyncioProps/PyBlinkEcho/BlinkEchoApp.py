@@ -4,7 +4,7 @@
 BlinkEchoApp.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-BlinkEchoApp extends MqttApp.
+BlinkEchoApp extends AsyncioProps.
 """
 
 from constants import *

@@ -1,44 +1,48 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-GuizeroApp.py
+GuizeroProps.py
 MIT License (c) Marie Faure <dev at faure dot systems>
-GuizeroApp extends MqttApp.
+
+GuizeroProps extends MqttApp.
 """
 
 from constants import *
 
-import gettext
-import os, platform, signal, yaml
+import os, platform, sys, signal, yaml
 
-try:
-    gettext.find("GuizeroApp")
-    traduction = gettext.translation('GuizeroApp', localedir='locale', languages=['fr'])
-    traduction.install()
-except:
-    _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
-
-from MqttApp import MqttApp
+from PropsApp import PropsApp
 from guizero import App
 
-import sys
 
-
-class GuizeroApp(MqttApp):
+class GuizeroProps(PropsApp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
-
         super().__init__(argv, client, debugging_mqtt)
 
-        self._gui = App(APPLICATION_GUI_NAME)
+        self._gui = App(WINDOW_TITLE)
 
         self._relaunched = False
 
         if platform.system() != 'Windows':
             signal.signal(signal.SIGUSR1, self.receiveSignal)
 
-        self._gui.tk.after(500, self.poll)
+        self._gui.tk.after(500, self.poll) # for signals
+
+        self.addPeriodicAction("send all data", self.sendAllData, PUBLISHALLDATA_PERIOD)
+        self._gui.tk.after(1, self._startPeriodicTasks) # when derived class is built
+
+    # __________________________________________________________________
+    def _startPeriodicTasks(self):
+        # Periodic actions
+        for title, (func, time) in self._periodicActions.items():
+            try:
+                self._gui.tk.after(0, func)
+                self._logger.info("Periodic task created '{0}' every {1} seconds".format(title, time))
+            except Exception as e:
+                self._logger.error("Failed to create periodic task '{0}'".format(title))
+                self._logger.debug(e)
 
     # __________________________________________________________________
     def loop(self):
@@ -53,7 +57,7 @@ class GuizeroApp(MqttApp):
             try:
                 self._mqttClient.connect_async(self._mqttServerHost, port=self._mqttServerPort, keepalive=MQTT_KEEPALIVE)
             except Exception as e:
-                self._logger.error(_("MQTT API : failed to call connect_async()"))
+                self._logger.error("MQTT API : failed to call connect_async()")
                 self._logger.debug(e)
 
     # __________________________________________________________________
@@ -72,7 +76,7 @@ class GuizeroApp(MqttApp):
 
     # __________________________________________________________________
     def poll(self):
-        # required for Tkinter tn cathc signal quickly
+        # required for Tkinter to catch signal quickly
         self._gui.tk.after(500, self.poll)
 
     # __________________________________________________________________
@@ -84,7 +88,6 @@ class GuizeroApp(MqttApp):
             self._mqttClient.loop_stop()
         except:
             pass
-        self.logger.info(_("Program done"))
         sys.exit(0)
 
     # __________________________________________________________________
@@ -107,6 +110,6 @@ class GuizeroApp(MqttApp):
         try:
             self._mqttClient.connect_async(self._mqttServerHost, port=self._mqttServerPort, keepalive=MQTT_KEEPALIVE)
         except Exception as e:
-            self._logger.error(_("MQTT API : failed to call connect_async()"))
+            self._logger.error("MQTT API : failed to call connect_async()")
             self._logger.debug(e)
 

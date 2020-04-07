@@ -291,7 +291,6 @@ class MqttApp():
 
     # __________________________________________________________________
     def publishAllData(self):
-
         if len(self._publishable):
             data = "DATA"
             for publishable in self._publishable:

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-CryingDollApp.py (version 0.1 initial)
+CryingDollApp.py
+MIT License (c) Marie Faure <dev at faure dot systems>
 
-CryingDollApp extends MqttApp.
+CryingDollApp extends AsyncioProps.
 """
 
 from constants import *
