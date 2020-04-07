@@ -78,7 +78,7 @@ To use *PyTeletextProps* as a props for <a href="https://xcape.io/" target="_bla
 ### Props configuration
 Add and configure *Raspberry Teletext* connected props.
 
-The SSH command to launch GUI props is particular:
+The SSH relaunch command for GUI props relies on `signal.SIGUSR1`:
 ```bash
 echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProps/main.py | awk '{print $2}' | xargs kill -10
 ```
@@ -89,6 +89,7 @@ echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps/.c
 ### Props data messages
 
 ![Outbox messages](props/outbox-messages.png)
+
 
 ### Props control panel
 
