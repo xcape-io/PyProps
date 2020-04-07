@@ -69,7 +69,7 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 
 [PygameProps](./PygameProps) adds MQTT asynchronous messaging to the <a href="https://pypi.org/project/pygame/" target="_blank">Pygame</a> framework to facilitate your coding.
 
-### PyQt5 framework: [QtProps](./QtProps) and [QtGuiProps](./QtGuiProps)
+### PyQt5 framework: [QtConsoleProps](./QtConsoleProps) and [QtGuiProps](./QtGuiProps)
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> brings the power of <a href="https://doc.qt.io/" target="_blank">Qt</a> to Python and is well supported on Raspberry Pi.
 
 Two flavors:
