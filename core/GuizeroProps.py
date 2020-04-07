@@ -50,6 +50,11 @@ class GuizeroProps(PropsApp):
         self._gui.display()
 
     # __________________________________________________________________
+    def onConnect(self, client, userdata, flags, rc):
+        # extend as a virtual method
+        self.sendAllData()
+
+    # __________________________________________________________________
     def onDisconnect(self, client, userdata, rc):
         # extend as a virtual method
         if self._relaunched:

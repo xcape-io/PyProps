@@ -108,6 +108,7 @@ class TeletextApp(GuizeroProps):
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
         # extend as a virtual method
+        self.sendAllData()
         # display message will '-' for black screen
         if hasattr(self, '_texte'):
             text = self._texte.value
