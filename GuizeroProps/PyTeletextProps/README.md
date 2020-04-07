@@ -75,8 +75,13 @@ To use *PyBlinkEcho* as a props for <a href="https://xcape.io/" target="_blank">
 * `echo:a message to be echoed` : echo the message
 
 
-### Pros configuration
+### Props configuration
 Add and configure *Raspberry BlinkEcho* connected props.
+
+The SSH command to launch GUI props is particular:
+```bash
+echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProps/main.py | awk '{print $2}' | xargs kill -10
+```
 
 ![Props configuration](props/props-configuration.png)
 
@@ -91,9 +96,9 @@ Add and configure *Raspberry BlinkEcho* connected props.
 
 
 ### Plugin for Blink Echo props
-Props control panel cannot display text on multiple lines or send text by the game master, therefore a plugin is necessary: [PyEchoPlugin](https://github.com/xcape-io/PyEchoPlugin)
+The [Teletext Plugin](https://github.com/fauresystems/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
 
-![PyEchoPlugin](props/plugin.png)
+![PyTeletextPlugin](props/plugin.png)
 
 
 ## Author

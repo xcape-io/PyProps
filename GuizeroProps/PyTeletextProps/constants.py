@@ -13,6 +13,7 @@ PUBLISHALLDATA_PERIOD = 30.0
 
 USE_GPIO = True
 
+
 #__________________________________________________________________
 # Required by MqttApp
 CONFIG_FILE = '.config.yml'

@@ -30,7 +30,7 @@ class GuizeroProps(PropsApp):
 
         self._gui.tk.after(500, self.poll) # for signals
 
-        self.addPeriodicAction("send all data", self.sendAllData, PUBLISHALLDATA_PERIOD)
+        self.addPeriodicAction("send all data", self.sendAllDataPeriodically, PUBLISHALLDATA_PERIOD)
         self._gui.tk.after(1, self._startPeriodicTasks) # when derived class is built
 
     # __________________________________________________________________
@@ -121,3 +121,7 @@ class GuizeroProps(PropsApp):
             self._logger.error("MQTT API : failed to call connect_async()")
             self._logger.debug(e)
 
+    # __________________________________________________________________
+    def sendAllDataPeriodically(self):
+        self.sendAllData()
+        self.playInSeconds(self.sendAllDataPeriodically, PUBLISHALLDATA_PERIOD)
