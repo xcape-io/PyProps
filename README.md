@@ -77,7 +77,7 @@ Two flavors:
 * [QtConsoleProps](./QtConsoleProps)
 * [QtGuiProps](./QtGuiProps)
 * the power of Qt (printing support, multimedia, styled GUI, Bluetooth, etc.)
-* ***use same code for the props and its plugin***
+* ***use same code for the props and its <a href="https://github.com/xcape-io/PySkeletonPlugin" target="_blank">Room plugin</a>***
 * easy to mirror the props GUI in a plugin (often needed for complex props)
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
