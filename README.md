@@ -52,6 +52,9 @@ The *PyProps library* takes advantage for many Python frameworks available on th
 With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a graphical interface:
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
+* examples:
+    - educational example which echoes messages and make a LED blinking ([PyBlinkEcho](PyBlinkEcho))
+    - detect vibrations to trigger a crying doll  ([PyCryingDollProps](PyCryingDollProps))
 
 The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework allows writing non-blocking Python programs that multitask seamlessly.
 
@@ -91,7 +94,9 @@ Two flavors:
 * simple graphical interface for a Raspberry with a TV display 
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
-
+* example:
+    - display text on the props TV monitor ([PyTeletextProps](PyTeletextProps))
+    
 See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings Started</a> and the Guizero widgets from the same web page.
 
 [GuizeroProps](./GuizeroProps) extends *<a href="https://lawsie.github.io/guizero/app/" target="_blank">Guizero App</a>* object to add MQTT asynchronous messaging to the <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> framework to facilitate your coding.
