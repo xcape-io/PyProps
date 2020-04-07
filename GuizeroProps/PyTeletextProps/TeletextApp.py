@@ -26,9 +26,12 @@ class TeletextApp(GuizeroProps):
 
         self._light_p = PropsData('light', bool, 0, logger=self._logger)
         self.addData(self._light_p)
+        self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self.addData(self._blinking_p)
 
         GPIO.setup(GPIO_RELAY_LIGHT, GPIO.OUT, initial=GPIO.LOW)
 
+        self._blinking_p.update(False)
         self._light_p.update(False)
         GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
 
@@ -73,36 +76,34 @@ class TeletextApp(GuizeroProps):
     def blink(self):
         # test periodic
         try:
-            self._light_p.update(not self._light_p.value())
-            GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
-            self.sendData(str(self._light_p))  # immediate notification
+            if self._blinking_p.value():
+                self._light_p.update(not self._light_p.value())
+                GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
+                self.sendData(str(self._light_p))  # immediate notification
         except Exception as e:
             self._logger.error("Failed to execute periodic 'blink'")
             self._logger.debug(e)
         finally:
-            self.replayInSeconds(self.blink, 1.0)
+            self.playInSeconds(self.blink, 1.0)
 
     # __________________________________________________________________
     def lightOff(self):
-        try:
-            self._light_p.update(False)
-            GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
-            self.sendData(str(self._light_p))  # immediate notification
-        except Exception as e:
-            self._logger.error("Failed to execute periodic 'blink'")
-            self._logger.debug(e)
+        self._light_p.update(False)
+        GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
+        self.sendData(str(self._light_p))  # immediate notification
 
     # __________________________________________________________________
     def lightOn(self):
-        try:
-            self._light_p.update(True)
-            GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
-            self.sendData(str(self._light_p))  # immediate notification
-        except Exception as e:
-            self._logger.error("Failed to execute periodic 'blink'")
-            self._logger.debug(e)
-        finally:
-            self._gui.tk.after(3000, self.lightOff)
+        self._light_p.update(True)
+        GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
+        self.sendData(str(self._light_p))  # immediate notification
+
+    # __________________________________________________________________
+    def lightOnForSeconds(self, time):
+        self._light_p.update(True)
+        GPIO.output(GPIO_RELAY_LIGHT, self._light_p.value())
+        self.sendData(str(self._light_p))  # immediate notification
+        self.playInSeconds(self.lightOff, time)
 
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
@@ -142,7 +143,7 @@ class TeletextApp(GuizeroProps):
                     self._logger.debug(e)
             self.sendDone(message)
             self.sendDataChanges()
-            self.lightOn()
+            self.lightOnForSeconds(3.0)
             self._sound.play('media/bell.wav')
         elif message.startswith("effacer"):
             self._texte.value = ""
@@ -159,6 +160,17 @@ class TeletextApp(GuizeroProps):
                     self._logger.debug(e)
             self.sendDone(message)
             self.sendDataChanges()
+        elif message.startswith("blink:"):
+            if message.endswith(":0"):
+                self._blinking_p.update(False)
+                self.sendDataChanges()
+                self.sendDone(message)
+            elif message.endswith(":1"):
+                self._blinking_p.update(True)
+                self.sendDataChanges()
+                self.sendDone(message)
+            else:
+                self.sendOmit(message)
         else:
             self.sendOmit(message)
 

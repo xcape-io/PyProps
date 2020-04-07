@@ -75,17 +75,17 @@ class GuizeroProps(PropsApp):
             self.sendOmit(message)
 
     # __________________________________________________________________
-    def poll(self):
-        # required for Tkinter to catch signal quickly
-        self._gui.tk.after(500, self.poll)
-
-    # __________________________________________________________________
-    def replayInSeconds(self, func, time):
+    def playInSeconds(self, func, time):
         try:
             self._gui.tk.after(int(time*1000), func)
         except Exception as e:
             self._logger.error("Failed to replay in {} seconds".format(time))
             self._logger.debug(e)
+
+    # __________________________________________________________________
+    def poll(self):
+        # required for Tkinter to catch signal quickly
+        self._gui.tk.after(500, self.poll)
 
     # __________________________________________________________________
     def quit(self):
