@@ -77,12 +77,12 @@ Two flavors:
 * [QtConsoleProps](./QtConsoleProps)
 * [QtGuiProps](./QtGuiProps)
 * the power of Qt (printing support, multimedia, styled GUI, Bluetooth, etc.)
-* ***use same code for the props and its <a href="https://github.com/xcape-io/PySkeletonPlugin" target="_blank">Room plugin</a>***
-* easy to mirror the props GUI in a plugin (often needed for complex props)
+* easy to reuse the props code in a control panel (necessary for complex props such as fingerprint biometric props with 2 Raspberry boards)
+* use same code for the props and its <a href="https://github.com/xcape-io/PySkeletonPlugin" target="_blank">Room plugin</a>
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 
-[QtProps](./QtProps) and [QtGuiProps](./QtGuiProps) extend *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
+[QtConsoleProps](./QtConsoleProps) and [QtGuiProps](./QtGuiProps) extend *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
 
 ### Guizero (Tkinter GUI) framework: [GuizeroProps](./GuizeroProps)
 <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your props it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
