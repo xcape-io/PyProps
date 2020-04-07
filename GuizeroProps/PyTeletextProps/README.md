@@ -12,7 +12,7 @@ The [Teletext Plugin](https://github.com/fauresystems/TeletextPlugin) can be use
 See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
 
 ### Dependencies
-If you don't install the whole PyProps library, you will have to fulfill the  *PyBlinkEcho* requirements:
+If you don't install the whole PyProps library, you will have to fulfill the  *PyTeletextProps* requirements:
 * `PyProps/core/GuizeroProps.py`
 * `PyProps/core/PropsData.py`
 * `PyProps/core/PropsApp.py`
@@ -66,17 +66,17 @@ INFO - Program sending message 'DONE afficher:1515' (mid=7) on Room/My room/Prop
 To switch MQTT broker, kill the program and start again with new arguments.
 
 
-## Blink Echo as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyBlinkEcho* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## PyTeletextProps as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyTeletextProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking
 * `blink:1` : activate blinking
-* `echo:a message to be echoed` : echo the message
+* `display:a message to display on the TV` : display the message
 
 
 ### Props configuration
-Add and configure *Raspberry BlinkEcho* connected props.
+Add and configure *Raspberry Teletext* connected props.
 
 The SSH command to launch GUI props is particular:
 ```bash
@@ -95,7 +95,7 @@ echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps/.c
 ![Room control panel](props/room-control-panel.png)
 
 
-### Plugin for Blink Echo props
+### Plugin for Teletext props
 The [Teletext Plugin](https://github.com/fauresystems/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
 
 ![PyTeletextPlugin](props/plugin.png)
