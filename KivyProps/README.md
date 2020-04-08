@@ -28,8 +28,8 @@ Installing Kivy can be bumpy and crash the system, so **we recommend installing 
 3. Install Kivy to Python globally
 
 ```bash
-$ chmod a+x install-kivy.sh
-$ ./install-kivy.sh
+pi@raspberrypi:~/Room/Props/PyProps/KivyProps $ chmod a+x install-kivy.sh 
+pi@raspberrypi:~/Room/Props/PyProps/KivyProps $ ./install-kivy.sh
 ```
 
 
