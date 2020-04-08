@@ -13,7 +13,9 @@ PyProps examples:
 * show how to code a props in a few lines
 * provide code for common sensors / actuators
 
-Read [INSTALLATION.md](INSTALLATION.md) for installation and usage.
+Read <a href="RASPBERRY_PI_PROPS.md" target="_blank">RASPBERRY_PI_PROPS.md</a> to prepare your Rasbpberry Pi board ready for PyProps installation.
+
+Read [INSTALLATION.md](INSTALLATION.md) for PyProps installation and usage.
 
 ## Props unified coding
 PyProps supports different Python frameworks to write any kind of props providing a base class for your props:
