@@ -17,7 +17,7 @@ At the time of writing, the current version is NOOBS 3.3.1.
 
 Download *NOOBS (Offline and network install)* from <a href="https://www.raspberrypi.org/downloads/noobs/" target="_blank">NOOBS page at raspberrypi.org</a> and unzip all files in the clean SD Card.
 
-Insert the SD card in the Raspberry Pi (3B/3B+/4) connected to a keyboard, a mouse and an HDMI screen, and turn the Raspberry:
+Insert the SD card in the Raspberry Pi (3B/3B+/4) connected to a keyboard, a mouse and an HDMI screen, and turn on the Raspberry:
 
 1. Let NOOBS boot 
 2. Check the box **Raspbian Full** installation
@@ -27,7 +27,7 @@ Insert the SD card in the Raspberry Pi (3B/3B+/4) connected to a keyboard, a mou
 5. Complete the wizard that appeared on the first start:
      * set country
      * change password
-     * select WiFi network (if you want)
+     * select WiFi network (if relevant)
      * update software
 
 
