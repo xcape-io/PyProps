@@ -3,7 +3,7 @@
 '''
 main.py (version 0.1)
 
-Kivy app to display clues on TV (HDMI) with Raspberry.
+Kivy app to display clues with graphics effects on TV (HDMI) with Raspberry.
 
 usage: python3 main.py  [-- [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]]
 
