@@ -27,6 +27,11 @@ We have simplied the job for you with a shell script ([install-kivy.sh](https://
 2. Installs pip dependencies
 3. Install Kivy to Python globally
 
+```bash
+$ chmod a+x install-kivy.sh
+$ ./install-kivy.sh
+```
+
 
 ## Kivy Props applications
 For props with advanced graphical interface, for example:
