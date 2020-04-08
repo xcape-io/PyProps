@@ -6,8 +6,9 @@
 Install Kivy with the  ([install-kivy.sh](https://github.com/fauresystems/PyProps/blob/master/KivyProps/PyWaterWellProps/install-kivy.sh)) shell script.
 
 ```bash
-$ chmod a+x install-kivy.sh
-$ ./install-kivy.sh
+pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProps $ chmod a+x install-kivy.sh 
+pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProps $ ./install-kivy.sh 
+
 ```
 
 
@@ -67,7 +68,7 @@ The [Teletext Plugin](https://github.com/fauresystems/TeletextPlugin) can be use
 
 ## Author
 
-**Marie FAURE** (Mar 30th, 2020)
+**Marie FAURE** (Apr 8th, 2020)
 * company: FAURE SYSTEMS SAS
 * mail: *dev at faure dot systems*
 * github: <a href="https://github.com/xcape-io?tab=repositories" target="_blank">xcape-io</a>
