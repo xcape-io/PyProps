@@ -115,9 +115,9 @@ See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings
 * example: 
     - display text on the props TV monitor ([PyWaterWellProps](./KivyProps/PyWaterWellProps))
     
-To install <a href="https://kivy.org" target="_blank">Kivy</a> on Raspberry Pi, see <a href="https://kivy.org/doc/stable/installation/installation-rpi.html" target="_blank">Installation on Raspberry Pi</a> in the <a href="https://kivy.org/doc/stable/gettingstarted/intro.html" target="_blank">Kivy Guides</a>.
+To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a goods start is <a href="https://kivy.org/doc/stable/gettingstarted/intro.html" target="_blank">Kivy Guides</a>.
 
-[KivyProps](./KivyProps) extends *<a href="https://kivy.org/doc/stable/api-kivy.app.html" target="_blank">Kivy App </a>* object to add MQTT asynchronous messaging to the <a href="https://kivy.org" target="_blank">Kivy</a> framework to facilitate your coding.
+[KivyProps](./KivyProps) extends *<a href="https://kivy.org/doc/stable/api-kivy.app.html" target="_blank">KivyApp</a>*  object to add MQTT asynchronous messaging to the <a href="https://kivy.org" target="_blank">Kivy</a> framework to facilitate your coding.
 
 
 ## Compatible hardware
