@@ -1,8 +1,8 @@
 ﻿# Kivy installation on Raspberry Pi
-***Installation and usage of the [PyProps library](README.md).***
 
 
-## Kivy installation on Raspbian
+
+
 ...
 
 
