@@ -22,7 +22,7 @@ To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a go
 ## Kivy installation on Raspbian
 <a href="https://kivy.org" target="_blank">Kivy</a> installation on Raspberry Pi is a bit tough, as you may read from <a href="https://kivy.org/doc/stable/installation/installation-rpi.html" target="_blank">Installation on Raspberry Pi</a>.
 
-We have simplied the job for you with a shell script ([install-kivy.sh](https://github.com/fauresystems/PyProps/blob/master/KivyProps/README.md)) that:
+We have simplied the job for you with a shell script ([install-kivy.sh](https://github.com/fauresystems/PyProps/blob/master/KivyProps/install-kivy.sh)) that:
 1. Installs the dependencies
 2. Installs pip dependencies
 3. Install Kivy to Python globally
