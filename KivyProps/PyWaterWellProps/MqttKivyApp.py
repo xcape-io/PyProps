@@ -58,7 +58,7 @@ except:
     _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
 
 import kivy
-kivy.require('1.0.7')
+kivy.require('1.1.11')
 
 from kivy.app import App
 from kivy.uix.button import Button
