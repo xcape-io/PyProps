@@ -3,14 +3,14 @@
 
 <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your props it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
 
-[GuizeroProps](./GuizeroProps) is suitable for:
+***GuizeroProps*** is suitable for:
 * simple graphical interface for a Raspberry with a TV display 
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 
 See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings Started</a> and the Guizero widgets from the same web page.
 
-[GuizeroProps](./GuizeroProps) extends *<a href="https://lawsie.github.io/guizero/app/" target="_blank">Guizero App</a>* object to add MQTT asynchronous messaging to the <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> framework to facilitate your coding.
+***GuizeroProps*** extends *<a href="https://lawsie.github.io/guizero/app/" target="_blank">Guizero App</a>* object to add MQTT asynchronous messaging to the <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> framework to facilitate your coding.
 
 ## Installation and usage
 You will find installation and usage instructions in the [PyProps library INSTALLATION.md](../INSTALLATION.md)
