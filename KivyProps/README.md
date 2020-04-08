@@ -22,10 +22,15 @@ To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a go
 ## Kivy installation on Raspbian
 <a href="https://kivy.org" target="_blank">Kivy</a> installation on Raspberry Pi is a bit tough, as you may read from <a href="https://kivy.org/doc/stable/installation/installation-rpi.html" target="_blank">Installation on Raspberry Pi</a>.
 
-We have simplied the job for you:
-1. ed
-2. zd
-3. zr
+We have simplied the job for you with a shell script ([install-kivy.sh](https://github.com/fauresystems/PyProps/blob/master/KivyProps/README.md)) that:
+1. Installs the dependencies
+2. Installs pip dependencies
+3. Install Kivy to Python globally
+
+
+## Kivy Props applications
+For props with advanced graphical interface, for example:
+* display text with a water effect on the props TV monitor ([PyWaterWellProps](PyWaterWellProps))
 
 
 ## Author
