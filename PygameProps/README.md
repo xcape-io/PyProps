@@ -3,7 +3,7 @@
 
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
 * audio and video output
-* simultaneous sound (create a piano props with an antic piano)
+* simultaneous sounds
 * keyboard, mouse and joystick input
 * video games
 * sensors and actuators (GPIO and I2C shields)
