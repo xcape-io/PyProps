@@ -73,6 +73,7 @@ To use *PyTeletextProps* as a props for <a href="https://xcape.io/" target="_bla
 * `blink:0` : deactivate blinking
 * `blink:1` : activate blinking
 * `display:a message to display on the TV` : display the message
+* `erase` : clear TV screen
 
 
 ### Props configuration
