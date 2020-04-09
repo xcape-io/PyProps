@@ -3,6 +3,8 @@
 
 An educational example which makes a LED blinking.
 
+# !!!!!!!!! WORK IN PROGRESS
+
 
 ## Installation
 See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
@@ -62,7 +64,7 @@ Add and configure *Raspberry Blink* connected props.
 
 ## Author
 
-**Marie FAURE** (Mar 30th, 2020)
+**Marie FAURE** (Apr 10th, 2020)
 * company: FAURE SYSTEMS SAS
 * mail: *dev at faure dot systems*
 * github: <a href="https://github.com/xcape-io?tab=repositories" target="_blank">xcape-io</a>
