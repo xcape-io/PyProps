@@ -79,7 +79,7 @@ class TeletextApp(KivyProps):
 	#__________________________________________________________________
 	def build(self):
 		# return nothing so teletext.kv is loaded
-		#return Button(text=_('hello') )
+		#return Button(text='hello')
 		self.root.ids.display_label.text = '' # must be different from initial self.displayOnScreen to publish at connect
 
 	#__________________________________________________________________
