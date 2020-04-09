@@ -8,6 +8,8 @@ Contains all the application constants. As a rule all constants are named in all
 
 APPLICATION = "Podium"
 
+PYPROPS_CORELIBPATH = '../../core'
+
 #__________________________________________________________________
 # Required by MqttApp
 CONFIG_FILE = '.config.yml'

@@ -9,16 +9,8 @@ PodiumApp extends MqttApp.
 
 from constants import *
 
-import gettext
-try:
- gettext.find("Podium")
- traduction = gettext.translation('Podium', localedir='locale', languages=['fr'])
- traduction.install()
-except:
- _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
-
 from MqttApp import MqttApp
-from MqttVar import MqttVar
+from PropsData import PropsData
 
 import RPi.GPIO as GPIO
 import os, re, threading, time, yaml
@@ -80,18 +72,18 @@ class PodiumApp(MqttApp):
 			# GPIO ports set up as inputs, pulled up to avoid false detection. 
 			# Keynote ports are wired to connect to GND on action  
 			GPIO.setup(gpio, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
-			self._logger.info("{} {} {}{}".format(_("GPIO: setup"),  k, _("input pulled-up."), gpio))
+			self._logger.info("{} {} {}{}".format("GPIO: setup",  k, "input pulled-up.", gpio))
 
 		GPIO.setup(RELAY_JEU_DES_BILLES, GPIO.OUT, initial=GPIO.LOW)
-		self._logger.info("{}{} = {}".format(_("GPIO: setup RELAY_JEU_DES_BILLES output."), RELAY_JEU_DES_BILLES, GPIO.LOW))	
+		self._logger.info("{}{} = {}".format("GPIO: setup RELAY_JEU_DES_BILLES output.", RELAY_JEU_DES_BILLES, GPIO.LOW))
 
 		GPIO.setup(RELAY_LIGHT, GPIO.OUT, initial=GPIO.LOW)
-		self._logger.info("{}{} = {}".format(_("GPIO: setup RELAY_LIGHT output."), RELAY_LIGHT, GPIO.HIGH))	
+		self._logger.info("{}{} = {}".format("GPIO: setup RELAY_LIGHT output.", RELAY_LIGHT, GPIO.HIGH))
 
 		GPIO.setup(RELAY_VR_PLUS, GPIO.OUT, initial=GPIO.HIGH)
-		self._logger.info("{}{} = {}".format(_("GPIO: setup RELAY_VR_PLUS output."), RELAY_VR_PLUS, GPIO.HIGH))	
+		self._logger.info("{}{} = {}".format("GPIO: setup RELAY_VR_PLUS output.", RELAY_VR_PLUS, GPIO.HIGH))
 		GPIO.setup(RELAY_VR_MINUS, GPIO.OUT, initial=GPIO.LOW)
-		self._logger.info("{}{} = {}".format(_("GPIO: setup RELAY_VR_MINUS output."), RELAY_VR_MINUS, GPIO.HIGH))			
+		self._logger.info("{}{} = {}".format("GPIO: setup RELAY_VR_MINUS output.", RELAY_VR_MINUS, GPIO.HIGH))
 		self._nextSymbolExpected = self._soluce_list[0]
 	
 		if 'jack_course_door_forward' in self._config: 
@@ -114,24 +106,24 @@ class PodiumApp(MqttApp):
 		else:
 			self._jack_course_stick_backward = JACK_COURSE_STICK_BACKWARD
 			
-		self._activated_p  = MqttVar('activé' ,  str,  "",  logger = self._logger)
+		self._activated_p  = PropsData('activé' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._activated_p )
-		self._gagne_p  = MqttVar('gagné' ,  str,  "",  logger = self._logger)
+		self._gagne_p  = PropsData('gagné' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._gagne_p )
-		self._sequence_p  = MqttVar('séquence' ,  str,  "",  logger = self._logger)
+		self._sequence_p  = PropsData('séquence' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._sequence_p )
-		self._previous_p  = MqttVar('précédente' ,  str,  "",  logger = self._logger)
+		self._previous_p  = PropsData('précédente' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._previous_p )
-		self._solution_p  = MqttVar('solution' ,  str,  "",  logger = self._logger)
+		self._solution_p  = PropsData('solution' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._solution_p )
-		self._jackReset_p  = MqttVar('magic' ,  str,  self.displayKeys(JACK_RESET.split(" ")),  logger = self._logger)
+		self._jackReset_p  = PropsData('magic' ,  str,  self.displayKeys(JACK_RESET.split(" ")),  logger = self._logger)
 		self._publishable.append(self._jackReset_p )
-		self._jack_p  = MqttVar('vérin' ,  str,  "",  logger = self._logger)
+		self._jack_p  = PropsData('vérin' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_p )
-		self._light_p  = MqttVar('lumière' ,  bool,  "",  logger = self._logger)
+		self._light_p  = PropsData('lumière' ,  bool,  "",  logger = self._logger)
 		self._publishable.append(self._light_p )
 
-		self._billes_p  = MqttVar('billes' ,  bool,  "",  logger = self._logger)
+		self._billes_p  = PropsData('billes' ,  bool,  "",  logger = self._logger)
 		self._publishable.append(self._billes_p )
 		
 		self._activated_p.update("non")
@@ -140,14 +132,14 @@ class PodiumApp(MqttApp):
 		self._jack_p.update("pause")
 		self._light_p.update(GPIO.input(RELAY_LIGHT))
 		
-		self._jack_course_door_forward_p  = MqttVar('porte_avant' ,  str,  "",  logger = self._logger)
+		self._jack_course_door_forward_p  = PropsData('porte_avant' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_door_forward_p )
-		self._jack_course_door_backward_p  = MqttVar('porte_arrière' ,  str,  "",  logger = self._logger)
+		self._jack_course_door_backward_p  = PropsData('porte_arrière' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_door_backward_p )
 			
-		self._jack_course_stick_forward_p  = MqttVar('bâton_avant' ,  str,  "",  logger = self._logger)
+		self._jack_course_stick_forward_p  = PropsData('bâton_avant' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_stick_forward_p )
-		self._jack_course_stick_backward_p  = MqttVar('bâton_arrière' ,  str,  "",  logger = self._logger)
+		self._jack_course_stick_backward_p  = PropsData('bâton_arrière' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_stick_backward_p )
 		
 		self._jack_course_door_forward_p.update(str(self._jack_course_door_forward))
@@ -182,7 +174,7 @@ class PodiumApp(MqttApp):
 			self._wrongSymbolAudioChannel.stop()
 			self._wrongSymbolAudioChannel.play(self._wrongSymbolSound)
 		except BaseException as e:
-			self._logger.error("{} : {}".format(_("Failed to play small bell"), str(e)))
+			self._logger.error("{} : {}".format("Failed to play small bell", str(e)))
 		
 	#__________________________________________________________________
 	def playVerinBaton(self):
@@ -197,10 +189,10 @@ class PodiumApp(MqttApp):
 				pygame.mixer.music.set_volume(2.0)
 				pygame.mixer.music.play()
 			else:
-				self._logger.warning("{} : {}".format(_("Jack door audio file not found"), wav))	
+				self._logger.warning("{} : {}".format("Jack door audio file not found", wav))
 				self.publishMessage(self._mqttOutbox, "MESG Fichier non trouvé {}".format(wav))	
 		except BaseException as e:
-			self._logger.error("{} : {}".format(_("Failed to play jack door audio"), str(e)))
+			self._logger.error("{} : {}".format("Failed to play jack door audio", str(e)))
 			
 	#__________________________________________________________________
 	def playVerinPorte(self):
@@ -215,10 +207,10 @@ class PodiumApp(MqttApp):
 				pygame.mixer.music.set_volume(2.0)
 				pygame.mixer.music.play()
 			else:
-				self._logger.warning("{} : {}".format(_("Jack stick audio file not found"), wav))	
+				self._logger.warning("{} : {}".format("Jack stick audio file not found", wav))
 				self.publishMessage(self._mqttOutbox, "MESG Fichier non trouvé {}".format(wav))	
 		except BaseException as e:
-			self._logger.error("{} : {}".format(_("Failed to play jack stick audio"), str(e)))
+			self._logger.error("{} : {}".format("Failed to play jack stick audio", str(e)))
 			
 	#__________________________________________________________________
 	def jackBase(self):
@@ -303,7 +295,7 @@ class PodiumApp(MqttApp):
 				else:
 					self.playClochette()
 		except BaseException as e:
-			self._logger.error("{} {} : {}".format(_("Failed to play key stroke"), keynote, str(e)))
+			self._logger.error("{} {} : {}".format("Failed to play key stroke", keynote, str(e)))
 		try:
 			if self._nextSymbolExpected and self._nextSymbolExpected != keynote:
 				self._keynote_list.append(keynote)
@@ -325,7 +317,7 @@ class PodiumApp(MqttApp):
 			elif self._gagne_p.value() ==  "oui" and JACK_RESET == " ".join(self._keynote_list):
 				self.jackBase()
 		except BaseException as e:
-			self._logger.error("{} : {}".format(_("Failed to process key stroke"), str(e)))			
+			self._logger.error("{} : {}".format("Failed to process key stroke", str(e)))
 	
 	#__________________________________________________________________
 	def loadSound(self):
@@ -517,7 +509,7 @@ class PodiumApp(MqttApp):
 						# pin LOW
 						if gpio not in self._keynotesDown:
 							# fire key pressed !
-							#self._logger.info("{} {}".format(_("KEY FIRED"), self._keynotesReversed[gpio]))
+							#self._logger.info("{} {}".format("KEY FIRED", self._keynotesReversed[gpio]))
 							self.keyStroke(self._keynotesReversed[gpio])
 							self._keynotesDown.append(gpio)
 					elif lev >= (SAMPLING_SIZE - SAMPLING_TOLERANCE):

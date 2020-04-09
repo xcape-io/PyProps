@@ -28,6 +28,17 @@ import RPi.GPIO as GPIO
 import pygame
 
 from constants import *
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+from constants import *
+
+try:
+    PYPROPS_CORELIBPATH
+    sys.path.append(PYPROPS_CORELIBPATH)
+except NameError:
+    pass
+
 from PianoApp import PianoApp
 from Singleton import Singleton, SingletonException
 
@@ -42,8 +53,6 @@ except SingletonException:
     sys.exit(-1)
 except BaseException as e:
     print(e)
-
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 

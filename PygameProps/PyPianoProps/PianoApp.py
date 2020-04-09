@@ -9,16 +9,8 @@ PianoApp extends MqttApp.
 
 from constants import *
 
-import gettext
-try:
- gettext.find("PianoApp")
- traduction = gettext.translation('PianoApp', localedir='locale', languages=['fr'])
- traduction.install()
-except:
- _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
-
 from MqttApp import MqttApp
-from MqttVar import MqttVar
+from PropsData import PropsData
 
 import RPi.GPIO as GPIO
 import os, re, threading, time
@@ -35,19 +27,19 @@ class PianoApp(MqttApp):
 		GPIO.setmode(GPIO.BCM)
 		GPIO.setwarnings(False) 
 		
-		self._config_p  = MqttVar('configuration' ,  str,  "",  logger = self._logger)
+		self._config_p  = PropsData('configuration' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._config_p )
-		self._gagne_p  = MqttVar('gagné' ,  str,  "",  logger = self._logger)
+		self._gagne_p  = PropsData('gagné' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._gagne_p )
-		self._sequence_p  = MqttVar('séquence' ,  str,  "",  logger = self._logger)
+		self._sequence_p  = PropsData('séquence' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._sequence_p )
-		self._solution_p  = MqttVar('solution' ,  str,  "",  logger = self._logger)
+		self._solution_p  = PropsData('solution' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._solution_p )
-		self._jackReset_p  = MqttVar('magic' ,  str,  self.frenchKeys(JACK_RESET.split(" ")),  logger = self._logger)
+		self._jackReset_p  = PropsData('magic' ,  str,  self.frenchKeys(JACK_RESET.split(" ")),  logger = self._logger)
 		self._publishable.append(self._jackReset_p )
-		self._jack_p  = MqttVar('vérin' ,  str,  "",  logger = self._logger)
+		self._jack_p  = PropsData('vérin' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_p )
-		self._latch_p  = MqttVar('piano' ,  str,  "",  logger = self._logger)
+		self._latch_p  = PropsData('piano' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._latch_p )
 
 		self._keynote_list = []
@@ -89,14 +81,14 @@ class PianoApp(MqttApp):
 			# GPIO ports set up as inputs, pulled up to avoid false detection. 
 			# Keynote ports are wired to connect to GND on action  
 			GPIO.setup(gpio, GPIO.IN, pull_up_down=GPIO.PUD_UP) 
-			self._logger.info("{} {} {}{}".format(_("GPIO: setup"),  k, _("input pulled-up."), gpio))
+			self._logger.info("{} {} {}{}".format("GPIO: setup",  k, "input pulled-up.", gpio))
 					
 		GPIO.setup(RELAY_VR_PLUS, GPIO.OUT, initial=GPIO.HIGH)
-		self._logger.info("{}{} = {}".format(_("GPIO: setup RELAY_VR_PLUS output."), RELAY_VR_PLUS, GPIO.HIGH))	
+		self._logger.info("{}{} = {}".format("GPIO: setup RELAY_VR_PLUS output.", RELAY_VR_PLUS, GPIO.HIGH))
 		GPIO.setup(RELAY_VR_MINUS, GPIO.OUT, initial=GPIO.LOW)
-		self._logger.info("{}{} = {}".format(_("GPIO: setup RELAY_VR_MINUS output."), RELAY_VR_PLUS, GPIO.HIGH))	
+		self._logger.info("{}{} = {}".format("GPIO: setup RELAY_VR_MINUS output.", RELAY_VR_PLUS, GPIO.HIGH))
 		GPIO.setup(RELAY_LATCH, GPIO.OUT, initial=GPIO.HIGH)
-		self._logger.info("{}{} = {}".format(_("GPIO: setup RELAY_LATCH output."), RELAY_VR_PLUS, GPIO.HIGH))	
+		self._logger.info("{}{} = {}".format("GPIO: setup RELAY_LATCH output.", RELAY_VR_PLUS, GPIO.HIGH))
 		
 		self._config_p.update("Français")
 		self._gagne_p.update("non")
@@ -128,10 +120,10 @@ class PianoApp(MqttApp):
 				pygame.mixer.music.set_volume(0.85)
 				pygame.mixer.music.play()
 			else:
-				self._logger.warning("{} : {}".format(_("Final file not found"), wav))	
+				self._logger.warning("{} : {}".format("Final file not found", wav))
 				self.publishMessage(self._mqttOutbox, "MESG Fichier non trouvé {}".format(wav))	
 		except BaseException as e:
-			self._logger.error("{} : {}".format(_("Failed to play final"), str(e)))
+			self._logger.error("{} : {}".format("Failed to play final", str(e)))
 		finally:
 			self.publishMessage(self._mqttOutbox, "OVER {}".format(CHALLENGE))	
 
@@ -151,10 +143,10 @@ class PianoApp(MqttApp):
 				pygame.mixer.music.load(wav)
 				pygame.mixer.music.play()
 			else:
-				self._logger.warning("{} : {}".format(_("Final file not found"), wav))	
+				self._logger.warning("{} : {}".format("Final file not found", wav))
 				self.publishMessage(self._mqttOutbox, "MESG Fichier non trouvé {}".format(wav))	
 		except BaseException as e:
-			self._logger.error("{} : {}".format(_("Failed to play final"), str(e)))
+			self._logger.error("{} : {}".format("Failed to play final", str(e)))
 
 	#__________________________________________________________________
 	def frenchKeys(self, keys):
@@ -177,7 +169,7 @@ class PianoApp(MqttApp):
 		threading.Timer(JACK_COURSE, self.jackPause).start()
 		threading.Timer(JACK_COURSE, self.latchOn).start()
 		self._jack_p.update("descente")
-		self._logger.info(_("Jack: DOWN"))			
+		self._logger.info("Jack: DOWN")
 	
 	#__________________________________________________________________
 	def jackPause(self):
@@ -185,7 +177,7 @@ class PianoApp(MqttApp):
 		GPIO.output(RELAY_VR_PLUS, GPIO.HIGH)
 		GPIO.output(RELAY_VR_MINUS, GPIO.LOW)
 		self._jack_p.update("pause")
-		self._logger.info(_("Jack: PAUSE"))			
+		self._logger.info("Jack: PAUSE")
 	
 	#__________________________________________________________________
 	def jackUp(self):
@@ -195,7 +187,7 @@ class PianoApp(MqttApp):
 		GPIO.output(RELAY_VR_MINUS, GPIO.LOW)	
 		threading.Timer(JACK_COURSE, self.jackPause).start()
 		self._jack_p.update("montée")
-		self._logger.info(_("Jack: UP"))			
+		self._logger.info("Jack: UP")
 
 	#__________________________________________________________________ 
 	def keyStroke(self, keynote):
@@ -203,7 +195,7 @@ class PianoApp(MqttApp):
 			self._keynoteAudioChannel [keynote] .stop()
 			self._keynoteAudioChannel [keynote] .play(self._keynoteSound[keynote])
 		except BaseException as e:
-			self._logger.error("{} {} : {}".format(_("Failed to play key stroke"), keynote, str(e)))
+			self._logger.error("{} {} : {}".format("Failed to play key stroke", keynote, str(e)))
 		try:
 			if '#' in keynote:
 				self._keynote_list.append(keynote)
@@ -222,21 +214,21 @@ class PianoApp(MqttApp):
 			elif self._gagne_p.value() ==  "oui" and JACK_RESET == " ".join(self._keynote_list):
 				self.jackDown()
 		except BaseException as e:
-			self._logger.error("{} : {}".format(_("Failed to process key stroke"), str(e)))		
+			self._logger.error("{} : {}".format("Failed to process key stroke", str(e)))
 			
 	#__________________________________________________________________
 	def latchOff(self):
 
 		GPIO.output(RELAY_LATCH, GPIO.LOW)
 		self._latch_p.update("ouvert")
-		self._logger.info(_("Latch: OFF (open)"))			
+		self._logger.info("Latch: OFF (open)")
 	
 	#__________________________________________________________________
 	def latchOn(self):
 		
 		GPIO.output(RELAY_LATCH, GPIO.HIGH)
 		self._latch_p.update("fermé")
-		self._logger.info(_("Latch: ON (close)"))			
+		self._logger.info("Latch: ON (close)")
 	
 	#__________________________________________________________________
 	def loadSound(self, config):
@@ -320,7 +312,7 @@ class PianoApp(MqttApp):
 					pygame.mixer.music.load(wav)
 					pygame.mixer.music.play()
 				else:
-					self._logger.warning("{} : {}".format(_("Melody file not found"), wav))				
+					self._logger.warning("{} : {}".format("Melody file not found", wav))
 					self.publishMessage(self._mqttOutbox, "MESG Fichier non trouvé {}".format(wav))	
 				self.publishMessage(self._mqttOutbox, "DONE " + message)
 			elif message.endswith(":arrêter"):
@@ -378,7 +370,7 @@ class PianoApp(MqttApp):
 						# pin LOW
 						if gpio not in self._keynotesDown:
 							# fire key pressed !
-							#self._logger.info("{} {}".format(_("KEY FIRED"), self._keynotesReversed[gpio]))
+							#self._logger.info("{} {}".format("KEY FIRED", self._keynotesReversed[gpio]))
 							self.keyStroke(self._keynotesReversed[gpio])
 							self._keynotesDown.append(gpio)
 					elif lev >= (SAMPLING_SIZE - SAMPLING_TOLERANCE):
