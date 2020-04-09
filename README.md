@@ -65,10 +65,16 @@ The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asy
 ### Pygame framework: [PygameProps](./PygameProps)
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
 * audio and video output
-* simultaneous sound (create a piano props with an antic piano)
+* simultaneous sounds
 * keyboard, mouse and joystick input
 * video games
 * sensors and actuators (GPIO and I2C shields)
+* examples:
+    - educational blink example ([PyBlinkProps](./PygameProps/PyBlinkProps))
+    - piano props with a mechanic piano ([PyPianoProps](./PygameProps/PyPianoProps))
+    - podium with linear jack ([PyPodiumProps](./PygameProps/PyPodiumProps))
+    - hacker intrusion puzzle (contact me)
+    - Tetris hacked (contact me)
 
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> (see <a href="https://www.pygame.org/" target="_blank">pygame.org</a>) is very popular and very easy to learn so the [PygameProps](./PygameProps) flavor may be your preferred choice most of the time.
 
