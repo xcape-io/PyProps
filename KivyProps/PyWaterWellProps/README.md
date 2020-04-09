@@ -3,9 +3,9 @@
 
 This props listens to MQTT messages and then displays the text on an HDMI display and rings a bell.
 
-Messages are sent by the game master with the [Teletext Plugin](https://github.com/fauresystems/TeletextPlugin) or any application able to publish MQTT messages.
+Messages are sent by the game master with the [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) or any application able to publish MQTT messages.
 
-The [Teletext Plugin](https://github.com/fauresystems/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
+The [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
 
 An advanced graphical effect is used to mimic water waves:
 ```
@@ -22,7 +22,7 @@ vec4 effect(vec4 color, sampler2D texture, vec2 tex_coords, vec2 coords)
 ```
 
 ## Installation
-Install Kivy with the  ([install-kivy.sh](https://github.com/fauresystems/PyProps/blob/master/KivyProps/PyWaterWellProps/install-kivy.sh)) shell script.
+Install Kivy with the  ([install-kivy.sh](https://github.com/xcape-io/PyProps/blob/master/KivyProps/PyWaterWellProps/install-kivy.sh)) shell script.
 
 ```bash
 pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProps $ chmod a+x install-kivy.sh 
@@ -133,7 +133,7 @@ Add and configure *Raspberry WaterWell* connected props.
 
 
 ### Plugin for Water Well props
-The [Teletext Plugin](https://github.com/fauresystems/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
+The [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
 
 ![PyTeletextPlugin](props/plugin.png)
 

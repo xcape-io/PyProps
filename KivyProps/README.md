@@ -22,7 +22,7 @@ To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a go
 ## Kivy installation on Raspbian
 Installing Kivy can be bumpy and crash the system, so **we recommend installing Kivy on a fresh Raspbian installation**.
 
-<a href="https://kivy.org" target="_blank">Kivy</a> installation on Raspberry Pi is a bit tough, as you may read from <a href="https://kivy.org/doc/stable/installation/installation-rpi.html" target="_blank">Installation on Raspberry Pi</a>. We have simplied the job for you with a shell script ([install-kivy.sh](https://github.com/fauresystems/PyProps/blob/master/KivyProps/install-kivy.sh)):
+<a href="https://kivy.org" target="_blank">Kivy</a> installation on Raspberry Pi is a bit tough, as you may read from <a href="https://kivy.org/doc/stable/installation/installation-rpi.html" target="_blank">Installation on Raspberry Pi</a>. We have simplied the job for you with a shell script ([install-kivy.sh](https://github.com/xcape-io/PyProps/blob/master/KivyProps/install-kivy.sh)):
 1. Connect and HDMI display to the Raspberry (required during Kivy installation)
 2. Update your system
 
