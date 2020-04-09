@@ -15,9 +15,6 @@ pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProps $ ./install-kivy.
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PyWaterWellProps* requirements:
 * `PyProps/core/KivyProps.py`
-* `PyProps/core/PropsData.py`
-* `PyProps/core/PropsApp.py`
-* `PyProps/core/MqttApp.py`
 * `PyProps/core/Singleton.py`
 
 And you will have to install following Python packages:
