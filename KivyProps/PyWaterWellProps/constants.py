@@ -7,7 +7,7 @@ Contains all the application constants. As a rule all constants are named in all
 '''
 
 
-APPLICATION = "Teletext"
+APPLICATION = "Water Well"
 PYPROPS_CORELIBPATH = '../../core'
 
 PUBLISHALLDATA_PERIOD = 30.0
@@ -27,4 +27,4 @@ MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClie
 #import os
 #FONT_FOLDER = os.path.dirname(os.path.abspath(__file__)) + "/fonts"
 
-MQTT_DISPLAY_TOPIC = 'Room/My room/Props/Raspberry Teletext/display'
+MQTT_DISPLAY_TOPIC = 'Room/My room/Props/Raspberry WaterWell/display'
