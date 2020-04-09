@@ -22,15 +22,11 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 ## Pygame Props applications
 
 *Pygame* props
-* Tetris hacked
-* piano props with a mechanic piano
-* hacker intrusion puzzle
-
-
-
-## Pygame Props code
-...
-
+* educational blink example ([PyBlinkProps](PyBlinkProps))
+* piano props with a mechanic piano ([PyPianoProps](PyPianoProps))
+* podium with linear jack ([PyPodiumProps](PyPodiumProps))
+* hacker intrusion puzzle (contact me)
+* Tetris hacked (contact me)
 
 
 ## Author
