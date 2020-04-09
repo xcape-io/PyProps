@@ -3,8 +3,6 @@
 
 <a href="https://kivy.org/" target="_blank">Kivy</a> is a very powerful Python framework and may be recommended for advanced Python developers.
 
-**To run <a href="https://kivy.org/" target="_blank">Kivy</a>, an HDMI display must be connected to the Raspberry.**
-
 ***KivyProps*** hides a lot of complexity, therefore any escape room tinkerer should be able to create his own props with <a href="https://kivy.org/" target="_blank">Kivy</a>.
 
 ***KivyProps*** is suitable for:
