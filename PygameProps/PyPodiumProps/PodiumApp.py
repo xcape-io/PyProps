@@ -3,13 +3,13 @@
 '''
 PodiumApp.py (version 0.2 fix MQTT connection issue)
 
-PodiumApp extends MqttApp.
+PodiumApp extends PropsApp.
 
 '''
 
 from constants import *
 
-from MqttApp import MqttApp
+from PropsApp import PropsApp
 from PropsData import PropsData
 
 import RPi.GPIO as GPIO
@@ -17,7 +17,7 @@ import os, re, threading, time, yaml
 
 import pygame
 		
-class PodiumApp(MqttApp):
+class PodiumApp(PropsApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):

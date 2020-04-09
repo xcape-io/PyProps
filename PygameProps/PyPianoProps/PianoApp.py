@@ -3,13 +3,13 @@
 '''
 PianoApp.py (version 0.1 initial)
 
-PianoApp extends MqttApp.
+PianoApp extends PropsApp.
 
 '''
 
 from constants import *
 
-from MqttApp import MqttApp
+from PropsApp import PropsApp
 from PropsData import PropsData
 
 import RPi.GPIO as GPIO
@@ -17,7 +17,7 @@ import os, re, threading, time
 
 import pygame
 		
-class PianoApp(MqttApp):
+class PianoApp(PropsApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):

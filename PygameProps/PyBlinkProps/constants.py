@@ -11,7 +11,7 @@ APPLICATION = "Podium"
 PYPROPS_CORELIBPATH = '../../core'
 
 #__________________________________________________________________
-# Required by MqttApp
+# Required by PropsApp
 CONFIG_FILE = '.config.yml'
 
 MQTT_DEFAULT_HOST = 'localhost'
