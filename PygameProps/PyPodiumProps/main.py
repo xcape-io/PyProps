@@ -45,16 +45,6 @@ except BaseException as e:
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-# translation
-import gettext
-
-try:
-    gettext.find(APPLICATION)
-    traduction = gettext.translation(APPLICATION, localedir='locale', languages=['fr'])
-    traduction.install()
-except:
-    _ = gettext.gettext  # cool, this hides PyLint warning Undefined name '_'
-
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
 sketch = PodiumApp(sys.argv, mqtt_client, debugging_mqtt=False)
@@ -88,8 +78,8 @@ except:
     pass
 finally:
     try:
-		GPIO.cleanup()
-		mqtt_client.disconnect()
+        GPIO.cleanup()
+        mqtt_client.disconnect()
         mqtt_client.loop_stop()
     except:
         pass

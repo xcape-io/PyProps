@@ -55,9 +55,10 @@ KEY_FRENCH = {
 	}
 	
 ''' Audio files '''
-AUDIO_ENGLISH = "/home/pi/Room/Piano/audio/english"
-AUDIO_FRENCH = "/home/pi/Room/Piano/audio/french"
-AUDIO_KIDS = "/home/pi/Room/Piano/audio/kids"
+import os
+AUDIO_ENGLISH = os.path.dirname(os.path.abspath(__file__)) + "/audio/english"
+AUDIO_FRENCH = os.path.dirname(os.path.abspath(__file__)) + "/audio/french"
+AUDIO_KIDS = os.path.dirname(os.path.abspath(__file__)) + "/audio/kids"
 
 ''' Sampling: 20 10 2 for sampling every 20 milliseconds, positive if 8 for 10 values'''
 SAMPLING_INTERVAL = 20e-3

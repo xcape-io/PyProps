@@ -34,7 +34,8 @@ KEY_SYMBOLS = {
 	}
 	
 ''' Audio files '''
-AUDIO= "/home/pi/Room/Podium/audio"
+import os
+AUDIO = os.path.dirname(os.path.abspath(__file__)) + "/audio"
 
 ''' Sampling: 20 10 2 for sampling every 20 milliseconds, positive if 8 for 10 values'''
 SAMPLING_INTERVAL = 20e-3

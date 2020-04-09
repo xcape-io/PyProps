@@ -37,22 +37,13 @@ pygame.mixer.init()
 
 me = None
 try:
-	me = Singleton()
+    me = Singleton()
 except SingletonException:
-	sys.exit(-1)
+    sys.exit(-1)
 except BaseException as e:
-	print(e)
-	
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    print(e)
 
-# translation
-import gettext
-try:
- gettext.find(APPLICATION)
- traduction = gettext.translation(APPLICATION, localedir='locale', languages=['fr'])
- traduction.install()
-except:
- _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
@@ -68,8 +59,8 @@ def quit(a, b):
 signal.signal(signal.SIGTERM, quit)
 signal.signal(signal.SIGINT, quit)
 if platform.system() != 'Windows':
-	signal.signal(signal.SIGHUP, quit)
-	signal.signal(signal.SIGQUIT, quit)
+    signal.signal(signal.SIGHUP, quit)
+    signal.signal(signal.SIGQUIT, quit)
 
 clock = pygame.time.Clock()
 
@@ -87,8 +78,8 @@ except:
     pass
 finally:
     try:
-		GPIO.cleanup()
-		mqtt_client.disconnect()
+        GPIO.cleanup()
+        mqtt_client.disconnect()
         mqtt_client.loop_stop()
     except:
         pass
