@@ -1,3 +1,3 @@
-guizero>=1.1.0
-paho-mqtt>=1.3.1
-PyYAML>=5.1.2
+guizero
+paho-mqtt
+PyYAML
