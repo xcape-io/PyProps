@@ -50,7 +50,7 @@ After the first start, it is time to complete the configuration to adapt it to t
     $ sudo apt-get update
     $ sudo apt-get install qt5-default pyqt5-dev pyqt5-dev-tools
     $ sudo apt-get install eric
-    $ sudo pip3 install paho-mqtt
+    $ sudo pip3 install paho-mqtt PyYAML guizero
     ```
 
 <a href="https://eric-ide.python-projects.org/" target="_blank">Eric IDE</a> is a powerful and user-friendly Python IDE with an easy to use debugger.
