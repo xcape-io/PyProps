@@ -5,7 +5,7 @@ Connected props for Escape Room exchange data and messages with a MQTT broker.
 
 **Room** Outbox *level 7* protocol (*application level*)  is a minimal implementation to structure messages sent by connected props.
 
-However props may use MQTT topics in any way, for example [Teletext Props](https://github.com/fauresystems/PyProps/tree/master/GuizeroProps/PyTeletextProps) publishes its displayed text as a *retained* message in a dedicated MQTT topic.
+However props may use MQTT topics in any way, for example [Teletext Props](https://github.com/xcape-io/PyProps/tree/master/GuizeroProps/PyTeletextProps) publishes its displayed text as a *retained* message in a dedicated MQTT topic.
 
 ## Outbox
 **Room** Outbox protocol defines messages sent in props outbox, which is a MQTT topic structured like this:
@@ -45,5 +45,5 @@ The protocol has been defined to be **human readable** (so debugging Escape Room
 **Marie FAURE** (Oct 9th, 2019)
 * company: FAURE SYSTEMS SAS
 * mail: *dev at faure dot systems*
-* github: <a href="https://github.com/fauresystems?tab=repositories" target="_blank">fauresystems</a>
+* github: <a href="https://github.com/xcape-io?tab=repositories" target="_blank">fauresystems</a>
 * web: <a href="https://faure.systems/" target="_blank">Faure Systems</a>
