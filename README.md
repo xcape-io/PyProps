@@ -65,6 +65,7 @@ The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asy
 ### Pygame framework: [PygameProps](./PygameProps)
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
 * audio and video output
+* simultaneous sound (create a piano props with an antic piano)
 * keyboard, mouse and joystick input
 * video games
 * sensors and actuators (GPIO and I2C shields)

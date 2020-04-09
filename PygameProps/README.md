@@ -1,6 +1,18 @@
 ﻿# Pygame Props
 *Examples of pure Python props using **pygame**.*
 
+The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
+* audio and video output
+* simultaneous sound (create a piano props with an antic piano)
+* keyboard, mouse and joystick input
+* video games
+* sensors and actuators (GPIO and I2C shields)
+
+The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> (see <a href="https://www.pygame.org/" target="_blank">pygame.org</a>) is very popular and very easy to learn so the [PygameProps](./PygameProps) flavor may be your preferred choice most of the time.
+
+<a href="https://www.pygame.org/" target="_blank">Pygame</a> has its own event loop to multitask seamlessly.
+
+[PygameProps](./PygameProps) adds MQTT asynchronous messaging to the <a href="https://pypi.org/project/pygame/" target="_blank">Pygame</a> framework to facilitate your coding.
 
 
 ## Installation and usage
@@ -11,7 +23,7 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 
 *Pygame* props
 * Tetris hacked
-* mechanic Piano sound player
+* piano props with a mechanic piano
 * hacker intrusion puzzle
 
 
