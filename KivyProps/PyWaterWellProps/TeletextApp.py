@@ -3,8 +3,7 @@
 '''
 TeletextApp.py
 
-TeletextApp loads teletext.kv and  extends MqttKivyApp.
-
+Extending KivyProps, TeletextApp loads teletext.kv.
 '''
 
 from constants import *
