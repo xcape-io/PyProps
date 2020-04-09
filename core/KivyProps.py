@@ -298,16 +298,6 @@ class KivyProps(App):
 
 
 	# __________________________________________________________________
-	def sendAllData(self):
-		self.publishAllData()
-
-
-	# __________________________________________________________________
-	def sendDataChanges(self):
-		self.publishDataChanges()
-
-
-	# __________________________________________________________________
 	def sendData(self, data):
 		self.publishMessage(self._mqttOutbox, "DATA " + data)
 

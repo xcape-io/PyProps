@@ -12,8 +12,6 @@ PYPROPS_CORELIBPATH = '../../core'
 
 PUBLISHALLDATA_PERIOD = 30.0
 
-USE_GPIO = True
-
 #__________________________________________________________________
 # Required by MqttApp
 CONFIG_FILE = '.config.yml'
@@ -28,3 +26,5 @@ MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClie
 # Required by TeletextApp
 #import os
 #FONT_FOLDER = os.path.dirname(os.path.abspath(__file__)) + "/fonts"
+
+MQTT_DISPLAY_TOPIC = 'Room/My room/Props/Raspberry Teletext/display'

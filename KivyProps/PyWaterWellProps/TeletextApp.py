@@ -10,7 +10,6 @@ TeletextApp loads teletext.kv and  extends MqttKivyApp.
 from constants import *
 from KivyProps import KivyProps
 
-from kivy.app import App
 from kivy.uix.effectwidget import EffectWidget, AdvancedEffectBase
 from kivy.core.window import Window
 from kivy.properties import ListProperty, StringProperty
@@ -75,7 +74,7 @@ class TeletextApp(KivyProps):
 		# self.publishData() called when self.displayOnScreen is modifyed ; it'sb what we exactly want!
 		self.bind(displayOnScreen=self.publishData)
 		
-		Clock.schedule_interval(self.publishData, 30.0)
+		Clock.schedule_interval(self.publishData, PUBLISHALLDATA_PERIOD)
 
 	#__________________________________________________________________
 	def build(self):
@@ -87,6 +86,7 @@ class TeletextApp(KivyProps):
 	def mqttOnConnect(self, client, userdata, flags, rc):
 		KivyProps.mqttOnConnect(self, client, userdata, flags, rc)
 		self.displayOnScreen = self.root.ids.display_label.text
+		self.publishData()
 
 	#__________________________________________________________________
 	def onMessage(self, topic, message):
@@ -96,15 +96,41 @@ class TeletextApp(KivyProps):
 			self.root.display('')
 			self.sendDone(message)
 			self.displayOnScreen = self.root.ids.display_label.text
+			self.publishData()
+			if self._mqttConnected:
+				try:
+					(result, mid) = self._mqttClient.publish(MQTT_DISPLAY_TOPIC, "-", qos=MQTT_DEFAULT_QoS,
+															 retain=True)
+					self._logger.info(
+						"{0} '{1}' (mid={2}) on {3}".format("Program sending message", message, mid,
+															MQTT_DISPLAY_TOPIC))
+				except Exception as e:
+					self._logger.error(
+						"{0} '{1}' on {2}".format("MQTT API : failed to call publish() for", message,
+												  MQTT_DISPLAY_TOPIC))
+					self._logger.debug(e)
 		elif message.startswith("display:"):
 			text = message[8:]
 			self.root.display(text)
-			self.sendDone(message)
 			self.displayOnScreen = self.root.ids.display_label.text
+			self.sendDone(message)
+			self.publishData()
 			sound = SoundLoader.load('bell.wav')
 			if sound:
-				os.system("amixer set 'PCM' -- -300") # volume -3dB
-				sound.play() # asynchronous
+				os.system("amixer set 'PCM' -- -300")  # volume -3dB
+				sound.play()  # asynchronous
+			if self._mqttConnected:
+				try:
+					(result, mid) = self._mqttClient.publish(MQTT_DISPLAY_TOPIC, text, qos=MQTT_DEFAULT_QoS,
+															 retain=True)
+					self._logger.info(
+						"{0} '{1}' (mid={2}) on {3}".format("Program sending message", message, mid,
+															MQTT_DISPLAY_TOPIC))
+				except Exception as e:
+					self._logger.error(
+						"{0} '{1}' on {2}".format("MQTT API : failed to call publish() for", message,
+												  MQTT_DISPLAY_TOPIC))
+					self._logger.debug(e)
 		else:
 			self.sendOmit(message)
 
@@ -112,5 +138,5 @@ class TeletextApp(KivyProps):
 	def publishData(self, instance=None, prop=None):
 		display = self.displayOnScreen
 		if not display: display = '-'
-		data = "DATA " + "affichage=" + display
-		self.publishMessage(self._mqttOutbox, data)
+		data = "display=" + display
+		self.sendData(data)
