@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-PodiumApp.py (version 0.2 fix MQTT connection issue)
+BlinkApp.py (version 0.2 fix MQTT connection issue)
 
-PodiumApp extends PropsApp.
+BlinkApp extends PropsApp.
 
 '''
 
@@ -17,7 +17,7 @@ import os, re, threading, time, yaml
 
 import pygame
 		
-class PodiumApp(PropsApp):
+class BlinkApp(PropsApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):

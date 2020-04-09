@@ -22,7 +22,7 @@ MQTT_DEFAULT_QoS = 0  # usually 2 but client blocks is packet loiss so try 1 (ma
 MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClient.h
 
 #__________________________________________________________________
-# Required by PodiumApp
+# Required by BlinkApp
 CHALLENGE = "Podium"
 
 ''' GPIO symbol keys '''

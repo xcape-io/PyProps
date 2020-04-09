@@ -39,7 +39,7 @@ try:
 except NameError:
     pass
 
-from PodiumApp import PodiumApp
+from BlinkApp import BlinkApp
 from Singleton import Singleton, SingletonException
 
 pygame.mixer.pre_init(44100, -16, 1, 4096)
@@ -56,7 +56,7 @@ except BaseException as e:
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
-sketch = PodiumApp(sys.argv, mqtt_client, debugging_mqtt=False)
+sketch = BlinkApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 done = False
 
