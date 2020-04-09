@@ -6,14 +6,25 @@ constants.py (version 0.1)
 Contains all the application constants. As a rule all constants are named in all caps.
 '''
 
+
+APPLICATION = "Teletext"
+PYPROPS_CORELIBPATH = '../../core'
+
+PUBLISHALLDATA_PERIOD = 30.0
+
+USE_GPIO = True
+
 #__________________________________________________________________
-# Required by MqttKivyApp
-APPLICATIONNAME = "teletext"
+# Required by MqttApp
 CONFIG_FILE = '.config.yml'
+
 MQTT_DEFAULT_HOST = 'localhost'
 MQTT_DEFAULT_PORT = 1883
-MQTT_DEFAULT_QoS = 2
+MQTT_DEFAULT_QoS = 1
+
+MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClient.h
 
 #__________________________________________________________________
 # Required by TeletextApp
-#FONT_FOLDER = "/home/pi/Room/Puits/fonts"
+#import os
+#FONT_FOLDER = os.path.dirname(os.path.abspath(__file__)) + "/fonts"

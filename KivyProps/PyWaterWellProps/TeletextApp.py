@@ -7,11 +7,10 @@ TeletextApp loads teletext.kv and  extends MqttKivyApp.
 
 '''
 
-from MqttKivyApp import MqttKivyApp
+from constants import *
+from KivyProps import KivyProps
 
-#from MqttKivyApp import _is_rpi
-#if _is_rpi: import RPi.GPIO as GPIO
-
+from kivy.app import App
 from kivy.uix.effectwidget import EffectWidget, AdvancedEffectBase
 from kivy.core.window import Window
 from kivy.properties import ListProperty, StringProperty
@@ -20,6 +19,7 @@ from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
 
 import os
+import logging, logging.config
 
 #font = 'Something Strange'
 #font = 'SpecialElite'
@@ -60,7 +60,7 @@ class MyWidget(EffectWidget):
 	def display(self, text):
 		self.display_text = text
 
-class TeletextApp(MqttKivyApp):
+class TeletextApp(KivyProps):
 
 	displayOnScreen = StringProperty('---')
 
@@ -68,7 +68,10 @@ class TeletextApp(MqttKivyApp):
 	def __init__(self, client, debugging_mqtt=False, **kwargs):
 
 		super().__init__(client, debugging_mqtt, **kwargs)
-		
+
+		self._logger = logging.getLogger('debug')
+		self._logger.setLevel(logging.DEBUG)
+
 		# self.publishData() called when self.displayOnScreen is modifyed ; it'sb what we exactly want!
 		self.bind(displayOnScreen=self.publishData)
 		
@@ -79,24 +82,22 @@ class TeletextApp(MqttKivyApp):
 		# return nothing so teletext.kv is loaded
 		#return Button(text=_('hello') )
 		self.root.ids.display_label.text = '' # must be different from initial self.displayOnScreen to publish at connect
-		pass
-		
+
 	#__________________________________________________________________
 	def mqttOnConnect(self, client, userdata, flags, rc):
-
-		MqttKivyApp.mqttOnConnect(self, client, userdata, flags, rc)
+		KivyProps.mqttOnConnect(self, client, userdata, flags, rc)
 		self.displayOnScreen = self.root.ids.display_label.text
 
 	#__________________________________________________________________
 	def onMessage(self, topic, message):
 		# extend as a virtual method
 		#print(topic, message)
-		if message == "app:startup" or message == "effacer":
+		if message == "app:startup" or message == "erase":
 			self.root.display('')
 			self.sendDone(message)
 			self.displayOnScreen = self.root.ids.display_label.text
-		elif message.startswith("afficher:"):
-			text = message[9:]
+		elif message.startswith("display:"):
+			text = message[8:]
 			self.root.display(text)
 			self.sendDone(message)
 			self.displayOnScreen = self.root.ids.display_label.text

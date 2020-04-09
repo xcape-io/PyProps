@@ -4,43 +4,6 @@
 MqttKivyApp.py (version 0.1 initial)
 
 Base class for Kivy application with MQTT inbox/outbox.
-
-usage: python3 script.py  [-- [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -s SERVER, --server SERVER
-                        change MQTT server host
-  -p PORT, --port PORT  change MQTT server port
-  -d, --debug           set DEBUG log level
-  -l LOGGER, --logger LOGGER
-                        use logging config file (default ./logging.ini)
-
-To switch MQTT broker, kill the program and start again with new arguments.
-
-Kivy:
-------
-An application can be built if you return a widget on build(), or if you set
-self.root.
-
-Config:
-----------
-- in constants.py
-APPLICATIONNAME = 
-CONFIG_FILE = 
-MQTT_DEFAULT_HOST =
-MQTT_DEFAULT_PORT = 
-MQTT_DEFAULT_QoS = 
-- in definitions.ini
-[mqtt]
-app-inbox =
-app-outbox =
-mqtt-sub-room-language = 
-
-Extend:
-------------
-- build(self)
-- onMessage(self, topic, message):
 '''
 
 from constants import *
@@ -53,9 +16,6 @@ try:
 except:
     _ = gettext.gettext # cool, this hides PyLint warning Undefined name '_'
 
-import kivy
-kivy.require('1.0.7')
-
 from kivy.app import App
 from kivy.uix.button import Button
 
@@ -63,18 +23,13 @@ import configparser, codecs, yaml
 import logging, logging.config
 import argparse
 import os
-
-MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClient.h
-
-def _is_rpi():
-		return exists('/opt/vc/include/bcm_host.h')
 		
-class MqttKivyApp(App):
+class KivyProps(App):
 
 	#__________________________________________________________________
 	def __init__(self, client, debugging_mqtt=False, **kwargs):
 
-		super(MqttKivyApp, self).__init__(**kwargs)
+		super(KivyProps, self).__init__(**kwargs)
 		
 		self._config = {}
 		self._definitions = {}
@@ -87,7 +42,7 @@ class MqttKivyApp(App):
 		ini = 'definitions.ini'
 		if os.path.isfile(ini):
 			self.config = configparser.ConfigParser()
-			self.config.readfp(codecs.open(ini, 'r', 'utf8'))
+			self.config.read_file(codecs.open(ini, 'r', 'utf8'))
 			if "mqtt" in self.config.sections():
 				for key in self.config.options("mqtt"):
 					self._definitions[key] = self.config.get("mqtt", key)
@@ -101,9 +56,9 @@ class MqttKivyApp(App):
 
 		if os.path.isfile(CONFIG_FILE):
 			with open(CONFIG_FILE, 'r') as conffile:
-				self._config = yaml.load(conffile)
+				self._config = yaml.load(conffile, Loader=yaml.SafeLoader)
 		else:
-			self._config =  {}
+			self._config = {}
 		
 		print('Config:', self._config)
 		
@@ -282,7 +237,7 @@ class MqttKivyApp(App):
 	def onMessage(self, topic, message):
 		# extend as a virtual method
 		print(topic, message)
-		self.sendOmit(message)
+		self.publishMessage(self._mqttOutbox, "OMIT " + message)
 
 	#__________________________________________________________________
 	def publishMessage(self, topic, message):
@@ -327,17 +282,67 @@ class MqttKivyApp(App):
 		except Exception as e:
 			self._logger.error(_("MQTT API : failed to call connect_async()"))
 			self._logger.debug(e)
-		
 
-if __name__ == '__main__':
-	import paho.mqtt.client as mqtt
-	import uuid
-	mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
-	app = MqttKivyApp(mqtt_client, debugging_mqtt=False)
-	app.run()
-	try:
-		mqtt_client.disconnect()
-		mqtt_client.loop_stop()
-	except:
-		pass
-		
+	# __________________________________________________________________
+	def addData(self, data):
+		self._publishable.append(data)
+
+
+	# __________________________________________________________________
+	def addPeriodicAction(self, title, func, time):
+		if title in self._periodicActions:
+			self._logger.warning("Duplicate periodic action ignored '{0}' every {1} seconds".format(title, time))
+		else:
+			self._periodicActions[title] = (func, time)
+			self._logger.info("New periodic action added '{0}' every {1} seconds".format(title, time))
+
+
+	# __________________________________________________________________
+	def sendAllData(self):
+		self.publishAllData()
+
+
+	# __________________________________________________________________
+	def sendDataChanges(self):
+		self.publishDataChanges()
+
+
+	# __________________________________________________________________
+	def sendData(self, data):
+		self.publishMessage(self._mqttOutbox, "DATA " + data)
+
+
+	# __________________________________________________________________
+	def sendDone(self, action):
+		self.publishMessage(self._mqttOutbox, "DONE " + action)
+
+
+	# __________________________________________________________________
+	def sendMesg(self, message, topic=None):
+		if topic is None:
+			self.publishMessage(self._mqttOutbox, "MESG " + message)
+		else:
+			self.publishMessage(topic, "MESG " + message)
+
+
+	# __________________________________________________________________
+	def sendOmit(self, action):
+		self.publishMessage(self._mqttOutbox, "OMIT " + action)
+
+
+	# __________________________________________________________________
+	def sendOver(self, challenge):
+		self.publishMessage(self._mqttOutbox, "OVER " + challenge)
+
+
+	# __________________________________________________________________
+	def sendProg(self, program):
+		self.publishMessage(self._mqttOutbox, "PROG " + program)
+
+
+	# __________________________________________________________________
+	def sendRequ(self, request, topic=None):
+		if topic is None:
+			self.publishMessage(self._mqttOutbox, "REQU " + request)
+		else:
+			self.publishMessage(topic, "REQU " + message)

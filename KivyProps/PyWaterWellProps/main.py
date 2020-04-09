@@ -5,28 +5,32 @@ main.py (version 0.1)
 
 Kivy app to display clues with graphics effects on TV (HDMI) with Raspberry.
 
-usage: python3 main.py  [-- [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]]
+usage: python3 main.py  [-- [-h] [-d] ]
 
 optional arguments:
   -h, --help            show this help message and exit
-  -s SERVER, --server SERVER
-                        change MQTT server host
-  -p PORT, --port PORT  change MQTT server port
   -d, --debug           set DEBUG log level
-  -l LOGGER, --logger LOGGER
-                        use logging config file
-
-To switch MQTT broker, kill the program and start again with new arguments.
 '''
 
-import os, sys,  uuid
-
-#os.environ['KIVY_AUDIO'] = 'sdl2'  # mandatory if using jack audio
-
-from TeletextApp import TeletextApp
+import os
+import sys
+import uuid
 
 import paho.mqtt.client as mqtt
 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+os.environ['KIVY_AUDIO'] = 'sdl2'  # mandatory if using jack audio
+
+from constants import *
+
+try:
+    PYPROPS_CORELIBPATH
+    sys.path.append(PYPROPS_CORELIBPATH)
+except NameError:
+    pass
+
+from TeletextApp import TeletextApp
 from Singleton import Singleton, SingletonException
 
 me = None
@@ -36,8 +40,7 @@ except SingletonException:
 	sys.exit(-1)
 except BaseException as e:
 	print(e)
-	
-os.chdir('/home/pi/Room/Puits')
+
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 

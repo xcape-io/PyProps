@@ -4,7 +4,7 @@
 GuizeroProps.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-GuizeroProps extends MqttApp.
+Add guizero and Tkinter to PropsApp.
 """
 
 from constants import *
