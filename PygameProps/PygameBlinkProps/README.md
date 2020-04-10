@@ -3,7 +3,7 @@
 
 An educational example which makes a LED blinking.
 
-# !!!!!!!!! WORK IN PROGRESS
+This props uses Pygame and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/ThreadingProps.py" target="_blank">ThreadingProps</a> (so it uses multi-threading) .
 
 
 ## Installation
@@ -11,9 +11,10 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PygameBlinkProps* requirements:
-* `PyProps/core/PropsData.py`
+* `PyProps/core/ThreadingProps.py`
 * `PyProps/core/PropsApp.py`
 * `PyProps/core/MqttApp.py`
+* `PyProps/core/PropsData.py`
 * `PyProps/core/Singleton.py`
 
 And you will have to install following Python packages:
@@ -41,7 +42,7 @@ $ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProps/main.py |
 ```
 
 
-## Blink Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+## Pygame Blink Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *PygameBlinkProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
@@ -49,7 +50,7 @@ To use *PygameBlinkProps* as a props for <a href="https://xcape.io/" target="_bl
 * `blink:1` : activate blinking
 
 ### Props configuration
-Add and configure *Raspberry Blink* connected props.
+Add and configure *Raspberry PygameBlink* connected props.
 
 ![Props configuration](props/props-configuration.png)
 
