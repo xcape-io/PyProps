@@ -20,6 +20,8 @@ import paho.mqtt.client as mqtt
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+# Raspberry Pi 3 only supports full screen mode
+# see https://kivy.org/doc/stable/guide/environment.html
 os.environ['KIVY_AUDIO'] = 'sdl2'  # mandatory if using jack audio
 
 from constants import *
