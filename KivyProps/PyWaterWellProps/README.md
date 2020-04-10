@@ -8,7 +8,9 @@ Messages are sent by the game master with the [Teletext Plugin](https://github.c
 The [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
 
 An advanced graphical effect is used to mimic water waves:
+
 ![Water effect](props/water_effect.gif)
+
 
 ```
 uniform vec2 ref_coords;
