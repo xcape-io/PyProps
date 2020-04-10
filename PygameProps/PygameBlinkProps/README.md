@@ -29,8 +29,23 @@ Start `main.py` script in `/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkPr
 ```bash
 pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/PygameProps/PygameBlinkProps/main.py -s 192.168.1.42 -d
 
+pygame 1.9.4.post1
+Hello from the pygame community. https://www.pygame.org/contribute.html
 Config: {'host': '192.168.1.42'}
-
+/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProps/BlinkApp.py:27: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+  GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
+INFO - New boolean Publishable 'led' (1/0) with initial=0
+INFO - New boolean Publishable 'blinking' (yes/no) with initial=0
+INFO - Program connected to MQTT server
+INFO - Program sending message 'CONNECTED' (mid=1) on Room/My room/Props/Raspberry PygameBlink/outbox
+INFO - Program subscribing to topic (mid=2) : Room/My room/Props/Raspberry PygameBlink/inbox
+INFO - Program sending message 'DATA led=0 blinking=no' (mid=3) on Room/My room/Props/Raspberry PygameBlink/outbox
+DEBUG - MQTT message is published : mid=1 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=1)
+DEBUG - MQTT message is published : mid=3 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=3)
+DEBUG - MQTT topic is subscribed : mid=2 granted_qos=(0,)
+INFO - Program susbcribed to topic (mid=2) with QoS (0,)
 ```
 
 
