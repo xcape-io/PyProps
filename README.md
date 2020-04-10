@@ -70,9 +70,9 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 * video games
 * sensors and actuators (GPIO and I2C shields)
 * examples:
-    - educational blink example ([PyBlinkProps](./PygameProps/PyBlinkProps))
-    - piano props with a mechanic piano ([PyPianoProps](./PygameProps/PyPianoProps))
-    - podium with linear jack ([PyPodiumProps](./PygameProps/PyPodiumProps))
+    - educational blink example ([PyBlinkProps](./PygameProps/PygameBlinkProps))
+    - piano props with a mechanic piano ([PyPianoProps](./PygameProps/PygamePianoProps))
+    - podium with linear jack ([PyPodiumProps](./PygameProps/PyPodiumgameProps))
     - hacker intrusion puzzle (contact me)
     - Tetris hacked (contact me)
 
