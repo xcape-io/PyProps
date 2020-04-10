@@ -8,6 +8,7 @@ Base class for Kivy application with MQTT inbox/outbox.
 
 from constants import *
 
+
 from kivy.app import App
 from kivy.uix.button import Button
 

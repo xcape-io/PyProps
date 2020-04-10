@@ -70,9 +70,8 @@ class TeletextApp(KivyProps):
 		self._logger = logging.getLogger('debug')
 		self._logger.setLevel(logging.DEBUG)
 
-		# self.publishData() called when self.displayOnScreen is modifyed ; it'sb what we exactly want!
+		# self.publishData() called when self.displayOnScreen is modified ; it's what we exactly want!
 		self.bind(displayOnScreen=self.publishData)
-		
 		Clock.schedule_interval(self.publishData, PUBLISHALLDATA_PERIOD)
 
 	#__________________________________________________________________
