@@ -22,7 +22,7 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 ## Pygame Props applications
 
 *Pygame* props
-* educational blink example ([PyBlinkProps](PyBlinkProps))
+* educational blink example ([PygameBlinkProps](PygameBlinkProps))
 * piano props with a mechanic piano ([PyPianoProps](PyPianoProps))
 * podium with linear jack ([PyPodiumProps](PyPodiumProps))
 * hacker intrusion puzzle (contact me)
