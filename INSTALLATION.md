@@ -1,6 +1,8 @@
 ﻿# PyProps library
 ***Installation and usage of the [PyProps library](README.md).***
 
+## Prepare your Raspberry Pi as a props
+You will find instructions in the [RASPBERRY_PI_PROPS.md](RASPBERRY_PI_PROPS.md)
 
 ## Installation
 Download `PyProps-master.zip` from this GitHub repository and unflate it on your Raspberry Pi. Rename `PyProps-master` folder the a meaningful name for you props. 

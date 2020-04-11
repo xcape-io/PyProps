@@ -15,12 +15,17 @@ The <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework is 
 ## Installation and usage
 You will find installation and usage instructions in the [PyProps library INSTALLATION.md](../INSTALLATION.md)
 
+PyQt5 must be installed:
+
+```bash
+    $ sudo apt-get update
+    $ sudo apt-get install qt5-default pyqt5-dev pyqt5-dev-tools
+```
 
 ## Qt Console  Props applications
 For example:
-* fortune telling table (alphanum LED switching)
-* electric jack cylinder control
-* RFID based props
+* fortune telling table ([FortuneTellerTableProps](FortuneTellerTableProps))
+* educational RFID/blink example ([PyQt5RfidBlinkProps](PyQt5RfidBlinkProps))
 
 
 ## Author

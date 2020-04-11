@@ -87,6 +87,9 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 
 Two flavors:
 * [QtConsoleProps](./QtConsoleProps)
+* examples:
+    - educational blink example ([PyQt5RfidBlinkProps](./QtConsoleProps/PyQt5RfidBlinkProps))
+    - fortune teller table ([FortuneTellerTableProps](./QtConsoleProps/FortuneTellerTableProps))
 * [QtGuiProps](./QtGuiProps)
 * the power of Qt (printing support, multimedia, styled GUI, Bluetooth, etc.)
 * easy to reuse the props code in a control panel (necessary for complex props such as fingerprint biometric props with 2 Raspberry boards)

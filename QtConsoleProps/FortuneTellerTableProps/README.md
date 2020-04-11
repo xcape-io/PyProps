@@ -25,29 +25,31 @@ This props was created before PyProps library was released so there is no depend
 
 You will have to install following Python packages:
 ```bash
-$ pip3 install paho-mqtt
-$ pip3 install PyYAML
+    $ pip3 install paho-mqtt
+    $ pip3 install PyYAML
+    $ sudo apt-get update
+    $ sudo apt-get install qt5-default pyqt5-dev pyqt5-dev-tools
 ```
 
 ### RFID-RC522 module configuration
 1) enable SPI in **raspi-config**
 2) check:
 ```bash
-$ lsmod | grep spi
-spidev                 16384  0
-spi_bcm2835            16384  0
+    $ lsmod | grep spi
+    spidev                 16384  0
+    spi_bcm2835            16384  0
 ```
 3) install python library
 ```bash
-$ sudo apt-get update
-$ sudo apt-get upgrade
+    $ sudo apt-get update
+    $ sudo apt-get upgrade
 ```
 4) download and install SPI-Py
 ```bash
-$ cd ~
-$ git clone https://github.com/lthiery/SPI-Py.git
-$ cd ~/SPI-Py
-$ sudo python3 setup.py install
+    $ cd ~
+    $ git clone https://github.com/lthiery/SPI-Py.git
+    $ cd ~/SPI-Py
+    $ sudo python3 setup.py install
 ```
 
 
@@ -57,7 +59,33 @@ Start `main.py` script in `/home/pi/Room/Props/PyProps/QtConsoleProps/FortuneTel
 ```bash
 pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtConsoleProps/FortuneTellerTableProps/main.py -s 192.168.1.42 -d
 
-
+INFO - Relay A on output 4 is set to 0
+INFO - Relay B on output 17 is set to 0
+INFO - Relay C on output 27 is set to 0
+INFO - Relay D on output 22 is set to 0
+INFO - Relay E on output 23 is set to 0
+INFO - Relay F on output 24 is set to 0
+INFO - Relay 1 on output 13 is set to 0
+INFO - Relay 2 on output 6 is set to 0
+INFO - Relay 3 on output 5 is set to 0
+INFO - Relay 4 on output 16 is set to 0
+INFO - Relay 5 on output 20 is set to 0
+INFO - Relay 6 on output 21 is set to 0
+INFO - Data change will be published every 1000 milliseconds
+INFO - Data full publishing will occur every 30000 milliseconds
+INFO - Automation processing will run every 500 milliseconds
+INFO - Sketch started
+INFO - Sketch running on Raspberry Pi 3
+INFO - Program connected to MQTT server
+INFO - Program sending message 'CONNECTED' (mid=1) on Live/Demeure/Raspberry Alphabet/outbox
+INFO - Program subscribing to topic (mid=2) : Live/Demeure/Raspberry Alphabet/inbox
+DEBUG - MQTT topic is subscribed : mid=2 granted_qos=(2,)
+INFO - Program susbcribed to topic (mid=2) with QoS (2,)
+DEBUG - MQTT message is published : mid=1 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=1)
+INFO - Program sending message 'DATA éclairage=- carte=non' (mid=3) on Live/Demeure/Raspberry Alphabet/outbox
+DEBUG - MQTT message is published : mid=3 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=3)
 
 ```
 
