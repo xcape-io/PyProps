@@ -12,7 +12,10 @@ from ThreadingProps import ThreadingProps
 from PropsData import PropsData
 
 import RPi.GPIO as GPIO
-import threading, time
+import os, threading, time
+
+import pygame
+
 		
 class BlinkApp(ThreadingProps):
 
@@ -25,6 +28,13 @@ class BlinkApp(ThreadingProps):
 		#GPIO.setwarnings(False)
 
 		GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
+
+		os.system("amixer cset numid=3 1") # audio jack
+		os.system("amixer set 'PCM' -- 400")  # volume maxi
+
+		self._dingChannel = pygame.mixer.Channel(0)
+		self._dingSound = pygame.mixer.Sound("audio/ringtone.wav")
+		self._dingSound.set_volume(0.5)
 
 		self._led_p = PropsData('led', bool, 0, logger=self._logger)
 		self.addData(self._led_p)
@@ -81,6 +91,8 @@ class BlinkApp(ThreadingProps):
 			try:
 				if self._blinking_p.value():
 					self._led_p.update(not self._led_p.value())
+					if self._led_p.value():
+						self._dingChannel.play(self._dingSound)
 					GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
 					self.sendData(str(self._led_p))  # immediate notification
 			except:
