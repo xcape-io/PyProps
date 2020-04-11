@@ -7,6 +7,10 @@ This props uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/b
 
 We use a MIFARE RFID-RC522 module:
 
+https://www.waveshare.com/wiki/PN532_NFC_HAT
+http://wiki.sunfounder.cc/index.php?title=Mifare_RC522_Module_RFID_Reader
+
+
 ![](docs/1-module%20schema.png)
 
 
