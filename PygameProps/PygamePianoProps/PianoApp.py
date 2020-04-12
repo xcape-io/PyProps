@@ -12,8 +12,9 @@ from constants import *
 from PropsApp import PropsApp
 from PropsData import PropsData
 
-import RPi.GPIO as GPIO
 import os, re, threading, time
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+	import RPi.GPIO as GPIO
 
 import pygame
 		
@@ -23,9 +24,7 @@ class PianoApp(PropsApp):
 	def __init__(self, argv, client, debugging_mqtt=False):
 		
 		super().__init__(argv, client, debugging_mqtt)
-		
-		GPIO.setmode(GPIO.BCM)
-		GPIO.setwarnings(False) 
+
 		
 		self._config_p  = PropsData('configuration' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._config_p )

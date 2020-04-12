@@ -11,8 +11,9 @@ from constants import *
 from ThreadingProps import ThreadingProps
 from PropsData import PropsData
 
-import RPi.GPIO as GPIO
 import os, threading, time
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+	import RPi.GPIO as GPIO
 
 import pygame
 
@@ -23,9 +24,6 @@ class BlinkApp(ThreadingProps):
 	def __init__(self, argv, client, debugging_mqtt=False):
 		
 		super().__init__(argv, client, debugging_mqtt)
-		
-		GPIO.setmode(GPIO.BCM)
-		#GPIO.setwarnings(False)
 
 		GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
 

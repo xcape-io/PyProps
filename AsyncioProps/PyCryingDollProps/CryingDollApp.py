@@ -13,9 +13,10 @@ from AsyncioProps import AsyncioProps
 from PropsData import PropsData
 from Sound import Sound
 
-import RPi.GPIO as GPIO
 import random, os
-		
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+	import RPi.GPIO as GPIO
+
 class CryingDollApp(AsyncioProps):
 
 	#__________________________________________________________________

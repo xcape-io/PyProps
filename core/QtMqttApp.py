@@ -304,21 +304,25 @@ class QtMqttApp(QAPP):
 
     # __________________________________________________________________
     def publishAllData(self):
-        if len(self._publishable):
-            data = "DATA"
+        if self._publishable:
+            all_data = []
             for publishable in self._publishable:
-                data = data + " " + str(publishable)
-            self.publishMessage(self._mqttOutbox, data)
+                all_data.append(str(publishable))
+            if all_data:
+                data = " ".join(all_data)
+                data = data.strip()
+                if data:
+                    self.sendData(data)
 
     # __________________________________________________________________
     def publishDataChanges(self):
-        if len(self._publishable):
+        if self._publishable:
             changes = []
             for publishable in self._publishable:
                 change = publishable.change()
                 if isinstance(change, str):
-                    changes.append(change)
-            if len(changes):
+                    changes.append(str(change))
+            if changes:
                 data = " ".join(changes)
                 data = data.strip()
                 if data:

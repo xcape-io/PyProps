@@ -23,8 +23,8 @@ import signal
 import sys
 import time
 import uuid
+
 import paho.mqtt.client as mqtt
-import RPi.GPIO as GPIO
 import pygame
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -52,16 +52,23 @@ except SingletonException:
 except BaseException as e:
     print(e)
 
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
 sketch = BlinkApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 done = False
 
+
 # Assign handler for process exit (shows not effect on Windows in debug here)
 def quit(a, b):
     global done
     done = True
+
 
 signal.signal(signal.SIGTERM, quit)
 signal.signal(signal.SIGINT, quit)
@@ -85,7 +92,8 @@ except:
     pass
 finally:
     try:
-        GPIO.cleanup()
+        if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+            GPIO.cleanup()
         mqtt_client.disconnect()
         mqtt_client.loop_stop()
     except:

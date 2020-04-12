@@ -124,13 +124,11 @@ class KivyProps(App):
 		return Button(text='hello world!!!')
 
 	#__________________________________________________________________
-	def isConnectedToMqttBroker(self):	
-				
+	def isConnectedToMqttBroker(self):
 		return self._mqttConnected
 
 	#__________________________________________________________________
 	def mqttOnConnect(self, client, userdata, flags, rc):
-
 		if rc == 0:
 			self._mqttConnected = True
 			#self._logger.debug("Connected to MQTT server with flags: ", flags) # flags is dict
@@ -163,9 +161,10 @@ class KivyProps(App):
 		else:
 			self._logger.warning("{0} {1}".format("Program failed to connect to MQTT server : return code was"), rc)
 
+		self.onConnect(client, userdata, flags, rc)
+
 	#__________________________________________________________________
 	def mqttOnDisconnect(self, client, userdata, rc):
-
 		self._mqttConnected = False
 		self._logger.info("Program disconnected from MQTT server")
 
@@ -184,14 +183,14 @@ class KivyProps(App):
 		else:
 			self._logger.warning("{0}{1}".format("Disconnected from MQTT server with rc=", rc))
 
+		self.onDisconnect(client, userdata, rc)
+
 	#__________________________________________________________________
 	def mqttOnLog(self, client, userdata, level, buf):
-
 		self._logger.debug("Paho log level {0} : {1}".format(level, buf))
 
 	#__________________________________________________________________
 	def mqttOnMessage(self, client, userdata, msg):
-
 		message = None
 		try:
 			message = msg.payload.decode(encoding="utf-8", errors="strict")
@@ -209,21 +208,28 @@ class KivyProps(App):
 
 	#__________________________________________________________________
 	def mqttOnPublish(self, client, userdata, mid):
-
 		self._logger.debug("MQTT message is published : mid=%s userdata=%s", mid, userdata)
 		self._logger.info("{0} (mid={1})".format("Message published", mid))
 
 	#__________________________________________________________________
 	def mqttOnSubscribe(self, client, userdata, mid, granted_qos):
-
 		self._logger.debug("MQTT topic is subscribed : mid=%s granted_qos=%s", mid, granted_qos) # granted_qos is (2,)
 		self._logger.info("{0} (mid={1}) {2} {3}".format("Program susbcribed to topic", mid, "with QoS", granted_qos))  # mid is a number (count)
 
 	#__________________________________________________________________
 	def mqttOnUnsubscribe(self, client, userdata, mid):
-
 		self._logger.debug("MQTT topic is unsubscribed : mid=%s", mid)
 		self._logger.info("{0} (mid={1})".format("Program has been unsusbcribed from topic", mid))
+
+	# __________________________________________________________________
+	def onConnect(self, client, userdata, flags, rc):
+		# extend as a virtual method
+		pass
+
+	# __________________________________________________________________
+	def onDisconnect(self, client, userdata, rc):
+		# extend as a virtual method
+		pass
 
 	#__________________________________________________________________
 	def onMessage(self, topic, message):
@@ -275,10 +281,10 @@ class KivyProps(App):
 			self._logger.error("MQTT API : failed to call connect_async()")
 			self._logger.debug(e)
 
+
 	# __________________________________________________________________
 	def addData(self, data):
 		self._publishable.append(data)
-
 
 	# __________________________________________________________________
 	def addPeriodicAction(self, title, func, time):

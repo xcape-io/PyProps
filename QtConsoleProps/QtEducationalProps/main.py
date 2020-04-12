@@ -21,7 +21,6 @@ To switch MQTT broker, kill the program and start again with new arguments.
 
 import paho.mqtt.client as mqtt
 import os, sys, platform, signal, uuid
-import RPi.GPIO as GPIO
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -44,6 +43,11 @@ except SingletonException:
 except BaseException as e:
 	print(e)
 
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
 app = EducationalApp(sys.argv, mqtt_client, debugging_mqtt=False)
@@ -59,8 +63,10 @@ app.start()
 
 rc = app.exec_()
 
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+    GPIO.cleanup()
+
 try:
-	GPIO.cleanup()
 	mqtt_client.disconnect()
 	mqtt_client.loop_stop()
 except:

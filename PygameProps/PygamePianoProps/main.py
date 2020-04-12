@@ -24,7 +24,6 @@ import sys
 import time
 import uuid
 import paho.mqtt.client as mqtt
-import RPi.GPIO as GPIO
 import pygame
 
 from constants import *
@@ -53,6 +52,11 @@ except SingletonException:
     sys.exit(-1)
 except BaseException as e:
     print(e)
+
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
@@ -87,7 +91,8 @@ except:
     pass
 finally:
     try:
-        GPIO.cleanup()
+        if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+            GPIO.cleanup()
         mqtt_client.disconnect()
         mqtt_client.loop_stop()
     except:

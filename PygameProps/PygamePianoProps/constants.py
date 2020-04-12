@@ -10,6 +10,8 @@ APPLICATION = "Piano"
 
 PYPROPS_CORELIBPATH = '../../core'
 
+USE_GPIO = True
+
 #__________________________________________________________________
 # Required by PropsApp
 CONFIG_FILE = '.config.yml'

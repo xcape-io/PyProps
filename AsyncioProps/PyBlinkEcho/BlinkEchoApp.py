@@ -11,9 +11,9 @@ from constants import *
 from AsyncioProps import AsyncioProps
 from PropsData import PropsData
 
-import asyncio
-import RPi.GPIO as GPIO
-
+import asyncio, os
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+	import RPi.GPIO as GPIO
 
 class BlinkEchoApp(AsyncioProps):
 
@@ -53,8 +53,8 @@ class BlinkEchoApp(AsyncioProps):
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
         # extend as a virtual method
-        self.sendAllData() # sometimes is missed in ancestors
         self.sendMesg("echo on")
+        self.sendAllData()
 
     # __________________________________________________________________
     def onDisconnect(self, client, userdata, rc):

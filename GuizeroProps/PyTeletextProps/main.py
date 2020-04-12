@@ -23,7 +23,6 @@ import os
 import sys
 import uuid
 
-import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -48,6 +47,7 @@ except BaseException as e:
     print(e)
 
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+    import RPi.GPIO as GPIO
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
 

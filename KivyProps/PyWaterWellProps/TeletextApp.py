@@ -80,11 +80,15 @@ class TeletextApp(KivyProps):
 		#return Button(text='hello')
 		self.root.ids.display_label.text = '' # must be different from initial self.displayOnScreen to publish at connect
 
-	#__________________________________________________________________
-	def mqttOnConnect(self, client, userdata, flags, rc):
-		KivyProps.mqttOnConnect(self, client, userdata, flags, rc)
-		self.displayOnScreen = self.root.ids.display_label.text
-		self.publishData()
+	# __________________________________________________________________
+	def onConnect(self, client, userdata, flags, rc):
+		# extend as a virtual method
+		self.displayOnScreen = self.root.ids.display_label.text # bound to self.publishData
+
+	# __________________________________________________________________
+	def onDisconnect(self, client, userdata, rc):
+		# extend as a virtual method
+		pass
 
 	#__________________________________________________________________
 	def onMessage(self, topic, message):

@@ -14,9 +14,9 @@ from GuizeroProps import GuizeroProps
 from Sound import Sound
 from guizero import Text
 
-import RPi.GPIO as GPIO
 import os, platform, sys, logging
-
+if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
+	import RPi.GPIO as GPIO
 
 class TeletextApp(GuizeroProps):
 

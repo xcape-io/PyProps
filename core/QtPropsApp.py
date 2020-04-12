@@ -28,6 +28,26 @@ class QtPropsApp(QtMqttApp):
         super().__init__(argv, client, debugging_mqtt)
 
         self._periodicActions = {}
+        self._periodicTimers = []
+
+        self.addPeriodicAction("send all data", self.sendAllData, PUBLISHALLDATA_PERIOD)
+
+        self._startPeriodicTasks()
+
+    # __________________________________________________________________
+    def _startPeriodicTasks(self):
+        # Periodic actions
+        for title, (func, time) in self._periodicActions.items():
+            try:
+                timer = QTimer()
+                timer.setInterval(time * 1000)
+                timer.timeout.connect(func)
+                self.blinkTimer.start()
+                QTimer.singleShot(0, timer, timer.start)
+                self._logger.info("Periodic task created '{0}' every {1} seconds".format(title, time))
+            except Exception as e:
+                self._logger.error("Failed to create periodic task '{0}'".format(title))
+                self._logger.debug(e)
 
     # __________________________________________________________________
     def addData(self, data):
