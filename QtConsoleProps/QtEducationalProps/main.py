@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-alphabet.py (version 0.1)
+main.py
 
-Automation sketch to fire LEDs to display clue words.
+Educational example of Qt console props.
 
 usage: python3 alphabet.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
 
@@ -19,13 +19,23 @@ optional arguments:
 To switch MQTT broker, kill the program and start again with new arguments.
 '''
 
-from PyQt5.QtCore import QUuid
-
 import paho.mqtt.client as mqtt
 import os, sys, platform, signal
+import RPi.GPIO as GPIO
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from constants import *
-from AlphabetApp import AlphabetApp
+
+try:
+    PYPROPS_CORELIBPATH
+    sys.path.append(PYPROPS_CORELIBPATH)
+except NameError:
+    pass
+
+from PyQt5.QtCore import QUuid
+
+from EducationalApp import EducationalApp
 from Singleton import Singleton, SingletonException
 
 me = None
@@ -35,44 +45,30 @@ except SingletonException:
 	sys.exit(-1)
 except BaseException as e:
 	print(e)
-	
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 clientid = MQTT_CLIENTID_PREFIX + QUuid.createUuid().toString()
 
 mqtt_client = mqtt.Client(clientid, clean_session=True, userdata=None)
 
-sketch = AlphabetApp(sys.argv, mqtt_client, debugging_mqtt=False, gpio_bcm=True, no_gpio=False)
-
-if sketch._logger:
-	sketch._logger.info(sketch.tr("Sketch started"))
+app = EducationalApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 # Assign handler for process exit (shows not effect on Windows in debug here)
-signal.signal(signal.SIGTERM, sketch.quit)
-signal.signal(signal.SIGINT, sketch.quit)
+signal.signal(signal.SIGTERM, app.quit)
+signal.signal(signal.SIGINT, app.quit)
 if platform.system() != 'Windows':
-	signal.signal(signal.SIGHUP, sketch.quit)
-	signal.signal(signal.SIGQUIT, sketch.quit)
+	signal.signal(signal.SIGHUP, app.quit)
+	signal.signal(signal.SIGQUIT, app.quit)
 
-sketch.start()
+app.start()
 
-if sketch._logger:
-	raspberryPi = sketch.raspberryPiVersion()
-	if raspberryPi:
-		sketch._logger.info("{0} {1}".format(sketch.tr("Sketch running on Raspberry Pi"), raspberryPi))
-	elif platform.system() == 'Windows':
-		sketch._logger.info(sketch.tr("Sketch running on Windows"))
-
-rc = sketch.exec_()
+rc = app.exec_()
 
 try:
+	GPIO.cleanup()
 	mqtt_client.disconnect()
 	mqtt_client.loop_stop()
 except:
 	pass
-	
-if sketch._logger:
-	sketch._logger.info(sketch.tr("Sketch done"))
 
 del(me)
 

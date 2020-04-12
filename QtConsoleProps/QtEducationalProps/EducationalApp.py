@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-AlphabetApp.py
+EducationalApp.py
 
-AlphabetApp application extends SketchApp.
+EducationalApp application extends SketchApp.
 
 Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
 
@@ -11,20 +11,45 @@ Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
 
 import platform
 from constants import *
-from SketchApp import SketchApp
-from PyQt5.QtCore import pyqtSlot, QTimer
+from QtPropsApp import QtPropsApp
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, QTimer
 import threading, time
 import RPi.GPIO as GPIO
 ####import MFRC522 # modified for GPIO mode
 
-class AlphabetApp(SketchApp):
+class EducationalApp(QtPropsApp):
+	actuatorReceived = pyqtSignal(str)
 
 	#__________________________________________________________________
-	def __init__(self, argv, client, debugging_mqtt=False, gpio_bcm=True, no_gpio=False):
+	def __init__(self, argv, client, debugging_mqtt=False):
 
 		super().__init__(argv, client, debugging_mqtt)
 		# let's initialize automation stuff in setupAutomation()
-		
+		GPIO.setmode(GPIO.BCM)
+
+		if self._mqttInbox:
+			self._mqttClient.message_callback_add(self._mqttInbox, self.mqttOnActuator)
+
+		self.actuatorReceived.connect(self.onActuatorReceived)
+		self.messageReceived.connect(self.onMessageReceived)
+
+		self.setupAutomation()
+
+		self._mqttDataCount = 0
+
+		self._mqttDataTimer = QTimer()
+		self._mqttDataTimer.setInterval(SKETCH_INTERVAL_DATA)
+		self._mqttDataTimer.timeout.connect(self.publishDataOnTick)
+		self._mqttDataTimer.start()
+		self._logger.info("{0} {1} {2}".format(self.tr("Data change will be published every"), SKETCH_INTERVAL_DATA, self.tr("milliseconds")))
+		self._logger.info("{0} {1} {2}".format(self.tr("Data full publishing will occur every"), SKETCH_INTERVAL_DATA * SKETCH_DATA_COUNT, self.tr("milliseconds")))
+
+		self._automationTimer = QTimer()
+		self._automationTimer.setInterval(SKETCH_INTERVAL_AUTOMATION)
+		self._automationTimer.timeout.connect(self.processAutomationOnTick)
+		self._automationTimer.start()
+		self._logger.info("{0} {1} {2}".format(self.tr("Automation processing will run every"), SKETCH_INTERVAL_AUTOMATION, self.tr("milliseconds")))
+
 	#__________________________________________________________________
 	@pyqtSlot()
 	def doSequence(self):
@@ -48,7 +73,36 @@ class AlphabetApp(SketchApp):
 			self._display = None
 			self.publishMessage(PIRELAY_INBOX, "lumières-salon:allumer")
 			self.publishAllData()					
-		
+
+	#__________________________________________________________________
+	def mqttOnActuator(self, client, userdata, msg):
+
+		message = None
+		try:
+			message = msg.payload.decode(encoding="utf-8", errors="strict")
+		except:
+			pass
+
+		if message:
+			self._logger.info(self.tr("Message received : '") + message + self.tr("' in ") + msg.topic)
+			self.actuatorReceived.emit(message)
+		else:
+			self._logger.warning("{0} {1}".format(self.tr("MQTT message decoding failed on"), msg.topic))
+
+	#__________________________________________________________________
+	@pyqtSlot(str)
+	def onActuatorReceived(self, action):
+
+		if action == "@PING":
+			self.publishMessage(self._mqttOutbox, "PONG")
+		else:
+			self.performAction(action)
+
+	#__________________________________________________________________
+	@pyqtSlot(str, str)
+	def onMessageReceived(self, topic, message):
+		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' might be implemented in derived sketch (' + self.__class__.__name__ + ')')
+
 	#__________________________________________________________________
 	def performAction(self, message):
 		#self._logger.debug("Action " + message)
@@ -164,6 +218,11 @@ class AlphabetApp(SketchApp):
 					self.publishMessage(self._mqttOutbox, data)					
 				self._cardPresent = False
 
+	# __________________________________________________________________
+	@pyqtSlot()
+	def processAutomationOnTick(self):
+		self.processAutomation()
+
 	#__________________________________________________________________
 	def processSpinning(self):
 
@@ -229,7 +288,27 @@ class AlphabetApp(SketchApp):
 		##if data:
 			##self.publishMessage(self._mqttOutbox, "DATA " + data + " phonemes=" + self.sequenceToPhonemes(self._sequence_p.value()))
 		pass
-		
+
+	#__________________________________________________________________
+	@pyqtSlot()
+	def publishDataOnTick(self):
+
+		if self.isConnectedToMqttBroker():
+			if self._mqttDataCount:
+				self.publishDataChanges()
+			else:
+				self.publishAllData()
+			self._mqttDataCount = self._mqttDataCount + 1
+			if self._mqttDataCount > SKETCH_DATA_COUNT:
+				self._mqttDataCount = 0
+
+	# __________________________________________________________________
+	@pyqtSlot()
+	def quit(self, a=None, b=None):
+
+		GPIO.cleanup()
+		MqttConsoleApp.quit(self)
+
 	#__________________________________________________________________
 	def setAllLettersOff(self):
 

@@ -27,8 +27,6 @@ import paho.mqtt.client as mqtt
 import RPi.GPIO as GPIO
 import pygame
 
-from constants import *
-
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from constants import *

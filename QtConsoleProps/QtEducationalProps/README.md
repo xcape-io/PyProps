@@ -1,4 +1,4 @@
-﻿# PyQt5RfidBlinkProps props
+﻿# PyQt5 Educational props
 *Educational example of pure Python props using **PyQt5**.*
 
 An educational example which makes a LED blinking and making a sound when an RFID tag is detected.
@@ -48,10 +48,10 @@ You will have to install following Python packages:
 
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/QtConsoleProps/PyQt5RfidBlinkProps/`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/QtConsoleProps/QtEducationalProps/`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtConsoleProps/PyQt5RfidBlinkProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtConsoleProps/QtEducationalProps/main.py -s 192.168.1.42 -d
 
 ...
 ...
@@ -63,12 +63,12 @@ pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtConsoleProps/PyQt5RfidBlinkPro
 The command to relaunch the props is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep PyQt5RfidBlinkProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtConsoleProps/PyQt5RfidBlinkProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep QtEducationalProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtConsoleProps/QtEducationalProps/main.py -s %BROKER%
 ```
 
 
 ## Fortune Teller Table Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyQt5RfidBlinkProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+To use *QtEducationalProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 

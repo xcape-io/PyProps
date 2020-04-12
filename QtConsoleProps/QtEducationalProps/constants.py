@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-constants.py (version 0.1)
+constants.py
 
 Contains all the application constants. As a rule all constants are named in all caps.
 '''
+
+
+PYPROPS_CORELIBPATH = '../../core'
 
 MQTT_CLIENTID_PREFIX = "Demeure/Raspberry Alphabet/"
 
 #__________________________________________________________________
 # Required by MqttConsoleApp
-APPLICATIONNAME = "alphabet"
-ORGANIZATIONDOMAIN = "live-escape.net"
-ORGANIZATIONNAME = "live-escape.net"
+APPLICATIONNAME = "educational"
+ORGANIZATIONDOMAIN = "xcape.io"
+ORGANIZATIONNAME = "xcape.io"
 
 MQTT_DEFAULT_HOST = 'localhost'
 MQTT_DEFAULT_PORT = 1883
@@ -26,10 +29,10 @@ full data sent at least SKETCH_INTERVAL_DATA * SKETCH_DATA_COUNT
 '''
 SKETCH_INTERVAL_AUTOMATION = 500 # milliseconds
 SKETCH_INTERVAL_DATA = 1000 # milliseconds
-SKETCH_DATA_COUNT = 30 # 
+SKETCH_DATA_COUNT = 30 # for 30 seconds
 
 #__________________________________________________________________
-# Required by AlphabetApp
+# Required by EducationalApp
 DISPLAY_ON_TIME = 800 # milliseconds
 DISPLAY_OFF_TIME = 400
 GARLAND_ON_TIME = 350

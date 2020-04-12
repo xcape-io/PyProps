@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-MqttKivyApp.py (version 0.1 initial)
+KivyApp.py
 
 Base class for Kivy application with MQTT inbox/outbox.
 '''
