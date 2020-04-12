@@ -6,23 +6,23 @@ constants.py
 Contains all the application constants. As a rule all constants are named in all caps.
 '''
 
+APPLICATION = "educational"
 
 PYPROPS_CORELIBPATH = '../../core'
 
-MQTT_CLIENTID_PREFIX = "Demeure/Raspberry Alphabet/"
-
 #__________________________________________________________________
 # Required by MqttConsoleApp
-APPLICATIONNAME = "educational"
 ORGANIZATIONDOMAIN = "xcape.io"
 ORGANIZATIONNAME = "xcape.io"
 
 MQTT_DEFAULT_HOST = 'localhost'
 MQTT_DEFAULT_PORT = 1883
-MQTT_DEFAULT_QoS = 2
+MQTT_DEFAULT_QoS = 1
+
+MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClient.h
 
 #__________________________________________________________________
-# Required by SketchApp
+# Required by EducationalApp
 '''
 Data changes sent every SKETCH_INTERVAL_DATA
 full data sent at least SKETCH_INTERVAL_DATA * SKETCH_DATA_COUNT

@@ -20,7 +20,7 @@ To switch MQTT broker, kill the program and start again with new arguments.
 '''
 
 import paho.mqtt.client as mqtt
-import os, sys, platform, signal
+import os, sys, platform, signal, uuid
 import RPi.GPIO as GPIO
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -33,8 +33,6 @@ try:
 except NameError:
     pass
 
-from PyQt5.QtCore import QUuid
-
 from EducationalApp import EducationalApp
 from Singleton import Singleton, SingletonException
 
@@ -46,9 +44,7 @@ except SingletonException:
 except BaseException as e:
 	print(e)
 
-clientid = MQTT_CLIENTID_PREFIX + QUuid.createUuid().toString()
-
-mqtt_client = mqtt.Client(clientid, clean_session=True, userdata=None)
+mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
 app = EducationalApp(sys.argv, mqtt_client, debugging_mqtt=False)
 

@@ -68,7 +68,7 @@ class QtMqttApp(QCoreApplication):
     def __init__(self, argv, client, debugging_mqtt=False):
         super().__init__(argv)
 
-        self.setApplicationName(APPLICATIONNAME)
+        self.setApplicationName(APPLICATION)
         self.setOrganizationDomain(ORGANIZATIONDOMAIN)
         self.setOrganizationName(ORGANIZATIONNAME)
 
