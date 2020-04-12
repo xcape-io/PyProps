@@ -62,7 +62,6 @@ import os
 from PyQt5.QtCore import QCoreApplication, pyqtSignal, pyqtSlot
 
 class QtMqttApp(QCoreApplication):
-    messageReceived = pyqtSignal(str, str)
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):

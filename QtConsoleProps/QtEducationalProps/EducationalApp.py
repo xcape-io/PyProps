@@ -31,7 +31,6 @@ class EducationalApp(QtPropsApp):
 			self._mqttClient.message_callback_add(self._mqttInbox, self.mqttOnActuator)
 
 		self.actuatorReceived.connect(self.onActuatorReceived)
-		self.messageReceived.connect(self.onMessageReceived)
 
 		self.setupAutomation()
 
@@ -99,9 +98,9 @@ class EducationalApp(QtPropsApp):
 			self.performAction(action)
 
 	#__________________________________________________________________
-	@pyqtSlot(str, str)
-	def onMessageReceived(self, topic, message):
-		self._logger.debug('SketchApp.' + sys._getframe(0).f_code.co_name + ' might be implemented in derived sketch (' + self.__class__.__name__ + ')')
+	def onMessage(self, topic, message):
+		print(topic, message)
+		self.sendOmit(message)
 
 	#__________________________________________________________________
 	def performAction(self, message):
@@ -301,13 +300,6 @@ class EducationalApp(QtPropsApp):
 			self._mqttDataCount = self._mqttDataCount + 1
 			if self._mqttDataCount > SKETCH_DATA_COUNT:
 				self._mqttDataCount = 0
-
-	# __________________________________________________________________
-	@pyqtSlot()
-	def quit(self, a=None, b=None):
-
-		GPIO.cleanup()
-		MqttConsoleApp.quit(self)
 
 	#__________________________________________________________________
 	def setAllLettersOff(self):
