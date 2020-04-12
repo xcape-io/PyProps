@@ -10,6 +10,8 @@ APPLICATION = "educational"
 
 PYPROPS_CORELIBPATH = '../../core'
 
+QTGUI = False # optional
+
 #__________________________________________________________________
 # Required by MqttConsoleApp
 ORGANIZATIONDOMAIN = "xcape.io"

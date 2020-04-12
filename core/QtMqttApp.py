@@ -59,9 +59,17 @@ import logging, logging.config
 import argparse
 import os
 
-from PyQt5.QtCore import QCoreApplication, pyqtSignal, pyqtSlot
+try:
+    if QTGUI:
+        from PyQt5.QtWidgets import QApplication as QAPP
+        from PyQt5.QtCore import pyqtSlot
+    else:
+        from PyQt5.QtCore import QCoreApplication as QAPP, pyqtSlot
+except NameError:
+    from PyQt5.QtCore import QCoreApplication as QAPP, pyqtSlot
 
-class QtMqttApp(QCoreApplication):
+
+class QtMqttApp(QAPP):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
