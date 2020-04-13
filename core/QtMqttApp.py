@@ -303,6 +303,7 @@ class QtMqttApp(QAPP):
         self.sendOmit(message)
 
     # __________________________________________________________________
+    @pyqtSlot()
     def _publishAllData(self):
         if self._publishable:
             all_data = []
@@ -315,6 +316,7 @@ class QtMqttApp(QAPP):
                     self.sendData(data)
 
     # __________________________________________________________________
+    @pyqtSlot()
     def _publishDataChanges(self):
         if self._publishable:
             changes = []
@@ -329,6 +331,7 @@ class QtMqttApp(QAPP):
                     self.sendData(data)
 
     # __________________________________________________________________
+    @pyqtSlot()
     def _publishMessage(self, topic, message):
         if not topic:
             self._logger.warning("{0} : '{1}'".format("Program failed to send message (no topic)", message))

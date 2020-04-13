@@ -27,6 +27,49 @@ PyQt5 must be installed:
 ```bash
     $ sudo apt-get update
     $ sudo apt-get install qt5-default pyqt5-dev pyqt5-dev-tools
+    $ sudo apt-get install python3-pyqt5 python3-pyqt5-dbg
+```
+
+You will have to install more packages from `python3-pyqt5` packages:
+
+```bash
+    $ sudo apt-get update
+    $ apt-cache search pyqt5 | grep python3-pyqt5
+    
+    python3-pyqt5 - Python 3 bindings for Qt5
+    python3-pyqt5-dbg - Python 3 bindings for Qt5 (debug extensions)
+    python3-pyqt5.qsci - Python 3 bindings for QScintilla 2 with Qt 5
+    python3-pyqt5.qsci-dbg - Python 3 bindings for QScintilla 2 (Qt 5 debug extensions)
+    python3-pyqt5.qtchart - Python 3 bindings for Qt5's Charts module
+    python3-pyqt5.qtchart-dbg - Python 3 bindings for Qt5's Charts module (debug extension)
+    python3-pyqt5.qtmultimedia - Python 3 bindings for Qt5's Multimedia module
+    python3-pyqt5.qtmultimedia-dbg - Python 3 bindings for Qt5's Multimedia module (debug extensions)
+    python3-pyqt5.qtopengl - Python 3 bindings for Qt5's OpenGL module
+    python3-pyqt5.qtopengl-dbg - Python 3 bindings for Qt5's OpenGL module (debug extension)
+    python3-pyqt5.qtpositioning - Python 3 bindings for QtPositioning module
+    python3-pyqt5.qtpositioning-dbg - Python 3 bindings for QtPositioning module (debug extension)
+    python3-pyqt5.qtquick - Python 3 bindings for QtQuick module
+    python3-pyqt5.qtquick-dbg - Python 3 bindings for QtQuick module (debug extension)
+    python3-pyqt5.qtsensors - Python 3 bindings for QtSensors module
+    python3-pyqt5.qtsensors-dbg - Python 3 bindings for QtSensors module (debug extension)
+    python3-pyqt5.qtserialport - Python 3 bindings for QtSerialPort module
+    python3-pyqt5.qtserialport-dbg - Python 3 bindings for QtSerialPort module (debug extension)
+    python3-pyqt5.qtsql - Python 3 bindings for Qt5's SQL module
+    python3-pyqt5.qtsql-dbg - Python 3 bindings for Qt5's SQL module (debug extension)
+    python3-pyqt5.qtsvg - Python 3 bindings for Qt5's SVG module
+    python3-pyqt5.qtsvg-dbg - Python 3 bindings for Qt5's SVG module (debug extension)
+    python3-pyqt5.qtwebchannel - Python 3 bindings for Qt5's WebChannel module
+    python3-pyqt5.qtwebchannel-dbg - Python 3 bindings for Qt5's Webchannel module (debug extension)
+    python3-pyqt5.qtwebkit - Python 3 bindings for Qt5's WebKit module
+    python3-pyqt5.qtwebkit-dbg - Python 3 bindings for Qt5's WebKit module (debug extensions)
+    python3-pyqt5.qtwebsockets - Python 3 bindings for Qt5's WebSockets module
+    python3-pyqt5.qtwebsockets-dbg - Python 3 bindings for Qt5's WebSockets module (debug extensions)
+    python3-pyqt5.qtx11extras - Python 3 bindings for QtX11Extras module
+    python3-pyqt5.qtx11extras-dbg - Python 3 bindings for QtX11Extras module (debug extension)
+    python3-pyqt5.qtxmlpatterns - Python 3 bindings for Qt5's XmlPatterns module
+    python3-pyqt5.qtxmlpatterns-dbg - Python 3 bindings for Qt5's XmlPatterns module (debug extension)
+    python3-pyqt5.qwt - Python version of the Qwt6 technical widget library (Python3)
+
 ```
 
 ## Qt Console  Props applications

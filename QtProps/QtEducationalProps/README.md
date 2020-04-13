@@ -36,6 +36,14 @@ You will have to install following Python packages:
     $ pip3 install PyYAML
     $ sudo apt-get update
     $ sudo apt-get install qt5-default pyqt5-dev pyqt5-dev-tools
+    $ sudo apt-get install python3-pyqt5 python3-pyqt5-dbg
+```
+
+PyQt5.QtMultimedia must be installed:
+
+```bash
+    $ sudo apt-get update
+    $ sudo apt-get install python3-pyqt5.qtmultimedia
 ```
 
 ### RFID-RC522 module configuration

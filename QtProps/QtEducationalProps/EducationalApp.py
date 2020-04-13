@@ -12,7 +12,7 @@ Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
 import os
 
 from PropsData import PropsData
-from PyQt5.QtCore import pyqtSlot, QTimer
+from PyQt5.QtMultimedia import QSound
 from QtPropsApp import QtPropsApp
 from constants import *
 
@@ -43,28 +43,23 @@ class EducationalApp(QtPropsApp):
 
         self.addPeriodicAction("blink", self.blink, 1.0)
 
-        self._mqttDataCount = 0
-
-        self._mqttDataTimer = QTimer()
-        self._mqttDataTimer.setInterval(SKETCH_INTERVAL_DATA)
-        self._mqttDataTimer.timeout.connect(self.publishDataOnTick)
-        self._mqttDataTimer.start()
-        self._logger.info("{0} {1} {2}".format(self.tr("Data change will be published every"), SKETCH_INTERVAL_DATA,
-                                               self.tr("milliseconds")))
-        self._logger.info("{0} {1} {2}".format(self.tr("Data full publishing will occur every"),
-                                               SKETCH_INTERVAL_DATA * SKETCH_DATA_COUNT, self.tr("milliseconds")))
-
     # __________________________________________________________________
     def blink(self):
-        while True:
-            try:
-                if self._blinking_p.value():
-                    self._led_p.update(not self._led_p.value())
-                    GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
-                    self.sendData(str(self._led_p))  # immediate notification
-            except Exception as e:
-                self._logger.error("Failed to execute periodic 'blink'")
-                self._logger.debug(e)
+        try:
+            if self._blinking_p.value():
+                self._led_p.update(not self._led_p.value())
+                if self._sounding_p.value() and self._led_p.value():
+                    QSound.play("audio/ringtone.wav");
+                GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
+                self.sendData(str(self._led_p))  # immediate notification
+        except Exception as e:
+            self._logger.error("Failed to execute periodic 'blink'")
+            self._logger.debug(e)
+
+    # __________________________________________________________________
+    def onConnect(self, client, userdata, flags, rc):
+        # extend as a virtual method
+        self.sendAllData()
 
     # __________________________________________________________________
     def onMessage(self, topic, message):
@@ -95,33 +90,8 @@ class EducationalApp(QtPropsApp):
                 self._sounding_p.update(True)
                 self.sendDataChanges()
                 self.sendDone(message)
+
             else:
                 self.sendOmit(message)
         else:
             self.sendOmit(message)
-
-    # __________________________________________________________________
-    def publishAllData(self):
-        # self._logger.debug("Publish all")
-
-        data = "DATA " + "toto=0" + " tata=0"
-        self._publishMessage(self._mqttOutbox, data)
-
-    # __________________________________________________________________
-    def publishDataChanges(self):
-        # self._logger.debug("Publish changes")
-        data = "DATA " + "toto=0"
-        self._publishMessage(self._mqttOutbox, data)
-
-    # __________________________________________________________________
-    @pyqtSlot()
-    def publishDataOnTick(self):
-
-        if self.isConnectedToMqttBroker():
-            if self._mqttDataCount:
-                self.publishDataChanges()
-            else:
-                self.publishAllData()
-            self._mqttDataCount = self._mqttDataCount + 1
-            if self._mqttDataCount > SKETCH_DATA_COUNT:
-                self._mqttDataCount = 0
