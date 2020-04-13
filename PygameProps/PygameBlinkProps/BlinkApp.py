@@ -27,9 +27,6 @@ class BlinkApp(ThreadingProps):
 
 		GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
 
-		os.system("amixer cset numid=3 1") # audio jack
-		os.system("amixer set 'PCM' -- 400")  # volume maxi
-
 		self._dingChannel = pygame.mixer.Channel(0)
 		self._dingSound = pygame.mixer.Sound("audio/ringtone.wav")
 		self._dingSound.set_volume(0.5)
