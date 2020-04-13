@@ -17,7 +17,7 @@
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 
-[QtProps](./QtProps) extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
+***QtProps*** extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
 
 ## Installation and usage
 You will find installation and usage instructions in the [PyProps library INSTALLATION.md](../INSTALLATION.md)
@@ -31,9 +31,9 @@ PyQt5 must be installed:
 
 ## Qt Console  Props applications
 For example:
-* educational blink example ([QtEducationalProps](./QtProps/QtEducationalProps))
-* fortune teller table ([FortuneTellerTableProps](./QtProps/FortuneTellerTableProps))
-* game countdown on the escape room TV screen ([QtCountdownProps](./QtProps/QtCountdownProps))
+* educational blink example ([QtEducationalProps](./QtEducationalProps))
+* fortune teller table ([FortuneTellerTableProps](./FortuneTellerTableProps))
+* game countdown on the escape room TV screen ([QtCountdownProps](./QtCountdownProps))
 
 
 ## Author
