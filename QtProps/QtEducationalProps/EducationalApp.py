@@ -89,13 +89,13 @@ class EducationalApp(QtPropsApp):
         # self._logger.debug("Publish all")
 
         data = "DATA " + "toto=0" + " tata=0"
-        self.publishMessage(self._mqttOutbox, data)
+        self._publishMessage(self._mqttOutbox, data)
 
     # __________________________________________________________________
     def publishDataChanges(self):
         # self._logger.debug("Publish changes")
         data = "DATA " + "toto=0"
-        self.publishMessage(self._mqttOutbox, data)
+        self._publishMessage(self._mqttOutbox, data)
 
     # __________________________________________________________________
     @pyqtSlot()

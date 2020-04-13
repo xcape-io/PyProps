@@ -99,14 +99,14 @@ class CryingDollApp(AsyncioProps):
 			self.sendOmit(message)
 
 	#__________________________________________________________________
-	def publishAllData(self):
+	def sendAllData(self):
 		self._crying_p.update(self._sound.isPlaying() )
-		super().publishAllData()
+		super().sendAllData()
 		
 	#__________________________________________________________________
-	def publishDataChanges(self):
+	def sendDataChanges(self):
 		self._crying_p.update(self._sound.isPlaying() )
-		super().publishDataChanges()
+		super().sendDataChanges()
 		
 	#__________________________________________________________________
 	def vibrate(self, pin):

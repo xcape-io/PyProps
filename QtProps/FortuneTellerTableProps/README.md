@@ -54,10 +54,10 @@ You will have to install following Python packages:
 
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/QtConsoleProps/FortuneTellerTableProps/`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/FortuneTellerTableProps/`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtConsoleProps/FortuneTellerTableProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/FortuneTellerTableProps/main.py -s 192.168.1.42 -d
 
 INFO - Relay A on output 4 is set to 0
 INFO - Relay B on output 17 is set to 0
@@ -94,7 +94,7 @@ INFO - Message published (mid=3)
 The command to relaunch the props is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep FortuneTellerTableProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtConsoleProps/FortuneTellerTableProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep FortuneTellerTableProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/FortuneTellerTableProps/main.py -s %BROKER%
 ```
 
 

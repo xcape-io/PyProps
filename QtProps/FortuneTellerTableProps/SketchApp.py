@@ -32,7 +32,7 @@ class SketchApp(MqttConsoleApp):
 				GPIO.setmode(GPIO.BOARD)
 
 		if self._mqttInbox:
-			self._mqttClient.message_callback_add(self._mqttInbox, self.mqttOnActuator)
+			self._mqttClient.message_callback_add(self._mqttInbox, self._mqttOnActuator)
 
 		self.actuatorReceived.connect(self.onActuatorReceived)
 		self.messageReceived.connect(self.onMessageReceived)
@@ -55,7 +55,7 @@ class SketchApp(MqttConsoleApp):
 		self._logger.info("{0} {1} {2}".format(self.tr("Automation processing will run every"), SKETCH_INTERVAL_AUTOMATION, self.tr("milliseconds")))
 				
 	#__________________________________________________________________
-	def mqttOnActuator(self, client, userdata, msg):
+	def _mqttOnActuator(self, client, userdata, msg):
 
 		message = None
 		try:

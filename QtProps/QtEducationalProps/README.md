@@ -48,10 +48,10 @@ You will have to install following Python packages:
 
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/QtConsoleProps/QtEducationalProps/`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/QtEducationalProps/`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtConsoleProps/QtEducationalProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtEducationalProps/main.py -s 192.168.1.42 -d
 
 ...
 ...
@@ -63,7 +63,7 @@ pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtConsoleProps/QtEducationalProp
 The command to relaunch the props is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep QtEducationalProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtConsoleProps/QtEducationalProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep QtEducationalProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtEducationalProps/main.py -s %BROKER%
 ```
 
 

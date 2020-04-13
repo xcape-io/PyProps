@@ -378,7 +378,7 @@ class PodiumApp(PropsApp):
 				self._logger.debug(e)
 				self.publishMessage(self._mqttOutbox, "MESG " + message +"-->" + e)
 			self.publishMessage(self._mqttOutbox, "DONE " + message)
-			#super().publishDataChanges()
+			#super()._publishDataChanges()
 			with open(CONFIG_FILE, 'w') as conffile:
 				yaml.dump(self._config, conffile, default_flow_style = False)
 			#print(self._config)
@@ -473,7 +473,7 @@ class PodiumApp(PropsApp):
 		
 		while True:
 			try:
-				super().publishAllData()
+				super()._publishAllData()
 			except:
 				pass
 			finally:
@@ -484,7 +484,7 @@ class PodiumApp(PropsApp):
 
 		while True:
 			try:
-				super().publishDataChanges()
+				super()._publishDataChanges()
 			except:
 				pass
 			finally:

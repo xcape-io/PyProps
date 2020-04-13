@@ -43,42 +43,42 @@ class PropsApp(MqttApp):
 
     # __________________________________________________________________
     def sendAllData(self):
-        self.publishAllData()
+        self._publishAllData()
 
     # __________________________________________________________________
     def sendDataChanges(self):
-        self.publishDataChanges()
+        self._publishDataChanges()
 
     # __________________________________________________________________
     def sendData(self, data):
-        self.publishMessage(self._mqttOutbox, "DATA " + data)
+        self._publishMessage(self._mqttOutbox, "DATA " + data)
 
     # __________________________________________________________________
     def sendDone(self, action):
-        self.publishMessage(self._mqttOutbox, "DONE " + action)
+        self._publishMessage(self._mqttOutbox, "DONE " + action)
 
     # __________________________________________________________________
     def sendMesg(self, message, topic = None):
         if topic is None:
-            self.publishMessage(self._mqttOutbox, "MESG " + message)
+            self._publishMessage(self._mqttOutbox, "MESG " + message)
         else:
-            self.publishMessage(topic, "MESG " + message)
+            self._publishMessage(topic, "MESG " + message)
 
     # __________________________________________________________________
     def sendOmit(self, action):
-        self.publishMessage(self._mqttOutbox, "OMIT " + action)
+        self._publishMessage(self._mqttOutbox, "OMIT " + action)
 
     # __________________________________________________________________
     def sendOver(self, challenge):
-        self.publishMessage(self._mqttOutbox, "OVER " + challenge)
+        self._publishMessage(self._mqttOutbox, "OVER " + challenge)
 
     # __________________________________________________________________
     def sendProg(self, program):
-        self.publishMessage(self._mqttOutbox, "PROG " + program)
+        self._publishMessage(self._mqttOutbox, "PROG " + program)
 
     # __________________________________________________________________
     def sendRequ(self, request, topic = None):
         if topic is None:
-            self.publishMessage(self._mqttOutbox, "REQU " + request)
+            self._publishMessage(self._mqttOutbox, "REQU " + request)
         else:
-            self.publishMessage(topic, "REQU " + message)
+            self._publishMessage(topic, "REQU " + message)

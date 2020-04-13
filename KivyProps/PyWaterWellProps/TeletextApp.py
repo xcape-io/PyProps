@@ -70,9 +70,9 @@ class TeletextApp(KivyProps):
 		self._logger = logging.getLogger('debug')
 		self._logger.setLevel(logging.DEBUG)
 
-		# self.publishData() called when self.displayOnScreen is modified ; it's what we exactly want!
-		self.bind(displayOnScreen=self.publishData)
-		Clock.schedule_interval(self.publishData, PUBLISHALLDATA_PERIOD)
+		# self.sendAllData() called when self.displayOnScreen is modified ; it's what we exactly want!
+		self.bind(displayOnScreen=self.sendAllData)
+		Clock.schedule_interval(self.sendAllData, PUBLISHALLDATA_PERIOD)
 
 	#__________________________________________________________________
 	def build(self):
@@ -83,7 +83,7 @@ class TeletextApp(KivyProps):
 	# __________________________________________________________________
 	def onConnect(self, client, userdata, flags, rc):
 		# extend as a virtual method
-		self.displayOnScreen = self.root.ids.display_label.text # bound to self.publishData
+		self.displayOnScreen = self.root.ids.display_label.text # bound to self.sendAllData
 
 	# __________________________________________________________________
 	def onDisconnect(self, client, userdata, rc):
@@ -98,7 +98,7 @@ class TeletextApp(KivyProps):
 			self.root.display('')
 			self.sendDone(message)
 			self.displayOnScreen = self.root.ids.display_label.text
-			self.publishData()
+			self.sendAllData()
 			if self._mqttConnected:
 				try:
 					(result, mid) = self._mqttClient.publish(MQTT_DISPLAY_TOPIC, "-", qos=MQTT_DEFAULT_QoS,
@@ -116,7 +116,7 @@ class TeletextApp(KivyProps):
 			self.root.display(text)
 			self.displayOnScreen = self.root.ids.display_label.text
 			self.sendDone(message)
-			self.publishData()
+			self.sendAllData()
 			sound = SoundLoader.load('bell.wav')
 			if sound:
 				os.system("amixer set 'PCM' -- -300")  # volume -3dB
@@ -137,7 +137,7 @@ class TeletextApp(KivyProps):
 			self.sendOmit(message)
 
 	#__________________________________________________________________
-	def publishData(self, instance=None, prop=None):
+	def sendAllData(self, instance=None, prop=None):
 		display = self.displayOnScreen
 		if not display: display = '-'
 		data = "display=" + display

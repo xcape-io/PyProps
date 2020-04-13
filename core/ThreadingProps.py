@@ -34,7 +34,7 @@ class ThreadingProps(PropsApp):
         # run in its own thread
         while True:
             try:
-                self.publishAllData()
+                self._publishAllData()
             except:
                 pass
             finally:
@@ -45,7 +45,7 @@ class ThreadingProps(PropsApp):
         # run in its own thread
         while True:
             try:
-                self.publishDataChanges()
+                self._publishDataChanges()
             except:
                 pass
             finally:

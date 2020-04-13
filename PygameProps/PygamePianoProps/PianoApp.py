@@ -335,7 +335,7 @@ class PianoApp(PropsApp):
 		
 		while True:
 			try:
-				super().publishAllData()
+				super()._publishAllData()
 			except:
 				pass
 			finally:
@@ -346,7 +346,7 @@ class PianoApp(PropsApp):
 
 		while True:
 			try:
-				super().publishDataChanges()
+				super()._publishDataChanges()
 			except:
 				pass
 			finally:

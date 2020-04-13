@@ -176,14 +176,6 @@ class TeletextApp(GuizeroProps):
             self.sendOmit(message)
 
     # __________________________________________________________________
-    def publishAllData(self):
-        super().publishAllData()
-
-    # __________________________________________________________________
-    def publishDataChanges(self):
-        super().publishDataChanges()
-
-    # __________________________________________________________________
     def quit(self):
         self._gui.exit_full_screen()
         self._gui.destroy()

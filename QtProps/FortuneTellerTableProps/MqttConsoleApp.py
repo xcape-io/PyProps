@@ -68,15 +68,15 @@ class MqttConsoleApp(QCoreApplication):
 		self._mqttServerHost = Reg.value('host', MQTT_DEFAULT_HOST)
 		self._mqttServerPort = Reg.value('port', MQTT_DEFAULT_PORT, type=int)
 
-		self._mqttClient.on_connect = self.mqttOnConnect
-		self._mqttClient.on_disconnect = self.mqttOnDisconnect
-		self._mqttClient.on_message = self.mqttOnMessage
-		self._mqttClient.on_publish = self.mqttOnPublish
-		self._mqttClient.on_subscribe = self.mqttOnSubscribe
-		self._mqttClient.on_unsubscribe = self.mqttOnUnsubscribe
+		self._mqttClient.on_connect = self._mqttOnConnect
+		self._mqttClient.on_disconnect = self._mqttOnDisconnect
+		self._mqttClient.on_message = self._mqttOnMessage
+		self._mqttClient.on_publish = self._mqttOnPublish
+		self._mqttClient.on_subscribe = self._mqttOnSubscribe
+		self._mqttClient.on_unsubscribe = self._mqttOnUnsubscribe
 		
 		if debugging_mqtt:		
-			self._mqttClient.on_log = self.mqttOnLog
+			self._mqttClient.on_log = self._mqttOnLog
 
 		parser = argparse.ArgumentParser()
 		parser.add_argument("-s", "--server", help="change MQTT server host", nargs=1)
@@ -126,7 +126,7 @@ class MqttConsoleApp(QCoreApplication):
 		return self._mqttConnected
 
 	#__________________________________________________________________
-	def mqttOnConnect(self, client, userdata, flags, rc):
+	def _mqttOnConnect(self, client, userdata, flags, rc):
 
 		if rc == 0:
 			self._mqttConnected = True
@@ -161,7 +161,7 @@ class MqttConsoleApp(QCoreApplication):
 			self._logger.warning("{0} {1}".format(self.tr("Program failed to connect to MQTT server : return code was"), rc))
 
 	#__________________________________________________________________
-	def mqttOnDisconnect(self, client, userdata, rc):
+	def _mqttOnDisconnect(self, client, userdata, rc):
 
 		self._mqttConnected = False
 		self._logger.info(self.tr("Program disconnected from MQTT server"))
@@ -182,12 +182,12 @@ class MqttConsoleApp(QCoreApplication):
 			self._logger.warning("{0}{1}".format(self.tr("Disconnected from MQTT server with rc="), rc))
 
 	#__________________________________________________________________
-	def mqttOnLog(self, client, userdata, level, buf):
+	def _mqttOnLog(self, client, userdata, level, buf):
 
 		self._logger.debug("Paho log level {0} : {1}".format(level, buf))
 
 	#__________________________________________________________________
-	def mqttOnMessage(self, client, userdata, msg):
+	def _mqttOnMessage(self, client, userdata, msg):
 
 		message = None
 		try:
@@ -202,19 +202,19 @@ class MqttConsoleApp(QCoreApplication):
 			self._logger.warning("{0} {1}".format(self.tr("MQTT message decoding failed on"), msg.topic))
 
 	#__________________________________________________________________
-	def mqttOnPublish(self, client, userdata, mid):
+	def _mqttOnPublish(self, client, userdata, mid):
 
 		self._logger.debug("MQTT message is published : mid=%s userdata=%s", mid, userdata)
 		self._logger.info("{0} (mid={1})".format(self.tr("Message published"), mid))
 
 	#__________________________________________________________________
-	def mqttOnSubscribe(self, client, userdata, mid, granted_qos):
+	def _mqttOnSubscribe(self, client, userdata, mid, granted_qos):
 
 		self._logger.debug("MQTT topic is subscribed : mid=%s granted_qos=%s", mid, granted_qos) # granted_qos is (2,)
 		self._logger.info("{0} (mid={1}) {2} {3}".format(self.tr("Program susbcribed to topic"), mid, self.tr("with QoS"), granted_qos))  # mid is a number (count)
 
 	#__________________________________________________________________
-	def mqttOnUnsubscribe(self, client, userdata, mid):
+	def _mqttOnUnsubscribe(self, client, userdata, mid):
 
 		self._logger.debug("MQTT topic is unsubscribed : mid=%s", mid)
 		self._logger.info("{0} (mid={1})".format(self.tr("Program has been unsusbcribed from topic"), mid))
