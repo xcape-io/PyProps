@@ -38,9 +38,12 @@ class BlinkApp(ThreadingProps):
 		self.addData(self._led_p)
 		self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
 		self.addData(self._blinking_p)
+		self._sounding_p = PropsData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
+		self.addData(self._sounding_p)
 
 		self._led_p.update(False)
 		self._blinking_p.update(False)
+		self._sounding_p.update(True)
 
 		self._blinkTimerThread = threading.Thread()
 		self._blinkTimerThread = threading.Thread(target=self.blinkThread())
@@ -79,6 +82,17 @@ class BlinkApp(ThreadingProps):
 				self.sendDone(message)
 			else:
 				self.sendOmit(message)
+		elif message.startswith("sound:"):
+			if message.endswith(":0"):
+				self._sounding_p.update(False)
+				self.sendDataChanges()
+				self.sendDone(message)
+			elif message.endswith(":1"):
+				self._sounding_p.update(True)
+				self.sendDataChanges()
+				self.sendDone(message)
+			else:
+				self.sendOmit(message)
 		else:
 			self.sendOmit(message)
 
@@ -89,7 +103,7 @@ class BlinkApp(ThreadingProps):
 			try:
 				if self._blinking_p.value():
 					self._led_p.update(not self._led_p.value())
-					if self._led_p.value():
+					if self._sounding_p.value() and self._led_p.value():
 						self._dingChannel.play(self._dingSound)
 					GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
 					self.sendData(str(self._led_p))  # immediate notification
