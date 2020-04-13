@@ -17,7 +17,23 @@ SRD relays have been replaced with transistors to be silent and reliable:
 
 We use a MIFARE RFID-RC522 module:
 
+http://wiki.sunfounder.cc/index.php?title=Mifare_RC522_Module_RFID_Reader
+
+
+| RC522 pin | Raspberry Pi 3 pin name   |
+|-----------|---------------------------|
+| SDA       | GPIO8                     |
+| SCK       | GPIO11                    |
+| MOSI      | GPIO10                    |
+| MISO      | GPIO9                     |
+| IRQ       | Not connected             |
+| GND       | GND                       |
+| RST       | GPIO25                    |
+| 3.3V      | 3V3                       |
+
 ![](docs/1-module%20schema.png)
+
+We have hacked `MFRC522.py` from <a href="https://github.com/mxgxw/MFRC522-python" target="_blank">MFRC522-python</a> for GPIO mode and due to a trange behavior (when a card is present: it loops detected/not detected), we need to read the NFC tag twice.
 
 
 ## Installation
@@ -50,6 +66,10 @@ You will have to install following Python packages:
     $ git clone https://github.com/lthiery/SPI-Py.git
     $ cd ~/SPI-Py
     $ sudo python3 setup.py install
+```
+5) test reading a tag
+```bash
+    $ sudo python Read.py
 ```
 
 

@@ -18,7 +18,7 @@ from constants import *
 
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
     import RPi.GPIO as GPIO
-    import MFRC522 # modified for GPIO mode
+    ####import MFRC522 # modified for GPIO mode
 
 
 class EducationalApp(QtPropsApp):
@@ -34,9 +34,12 @@ class EducationalApp(QtPropsApp):
         self.addData(self._led_p)
         self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
         self.addData(self._blinking_p)
+        self._sounding_p = PropsData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self.addData(self._sounding_p)
 
         self._led_p.update(False)
         self._blinking_p.update(False)
+        self._sounding_p.update(True)
 
         self.addPeriodicAction("blink", self.blink, 1.0)
 
@@ -69,6 +72,9 @@ class EducationalApp(QtPropsApp):
         if message == "app:startup":
             self.sendAllData()
             self.sendDone(message)
+        elif message == "app:data":
+            self.sendAllData()
+            self.sendDone(message)
         elif message.startswith("blink:"):
             if message.endswith(":0"):
                 self._blinking_p.update(False)
@@ -76,6 +82,17 @@ class EducationalApp(QtPropsApp):
                 self.sendDone(message)
             elif message.endswith(":1"):
                 self._blinking_p.update(True)
+                self.sendDataChanges()
+                self.sendDone(message)
+            else:
+                self.sendOmit(message)
+        elif message.startswith("sound:"):
+            if message.endswith(":0"):
+                self._sounding_p.update(False)
+                self.sendDataChanges()
+                self.sendDone(message)
+            elif message.endswith(":1"):
+                self._sounding_p.update(True)
                 self.sendDataChanges()
                 self.sendDone(message)
             else:
