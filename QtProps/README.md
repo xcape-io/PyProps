@@ -7,8 +7,8 @@
 * multimedia playback
 * graphics effects
 * sensors and actuators (GPIO and I2C shieds)
-* Bluetooth support,
-* printing support,
+* Bluetooth support
+* printing support
 * styled GUI (<a href="https://doc.qt.io/qt-5/stylesheet-reference.html" target="_blank">Qt Style Sheets</a>)
 * <a href="https://doc.qt.io/qt-5/signalsandslots.html" target="_blank">Qt Signals & Slots</a> mechanism
 * easy to reuse the props code in a control panel (necessary for complex props such as fingerprint biometric props with 2 Raspberry boards)

@@ -49,7 +49,7 @@ class EducationalApp(QtPropsApp):
             if self._blinking_p.value():
                 self._led_p.update(not self._led_p.value())
                 if self._sounding_p.value() and self._led_p.value():
-                    QSound.play("audio/ringtone.wav");
+                        QSound.play("audio/ringtone.wav"); # almost 1 second latency, you may prefer pygame
                 GPIO.output(GPIO_BLINKING_LED, self._led_p.value())
                 self.sendData(str(self._led_p))  # immediate notification
         except Exception as e:

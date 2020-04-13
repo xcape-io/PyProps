@@ -46,6 +46,8 @@ PyQt5.QtMultimedia must be installed:
     $ sudo apt-get install python3-pyqt5.qtmultimedia
 ```
 
+May have to install **pulseaudio**:
+
 ```bash
     $ sudo apt-get upgrade
     $ sudo apt-get install libasound2-dev pulseaudio libpulse-dev
@@ -56,6 +58,13 @@ PyQt5.QtMultimedia must be installed:
         gstreamer1.0-alsa
     $ sudo modprobe snd-bcm2835
     $ echo "snd-bcm2835" | sudo tee -a /etc/modules
+```
+
+Test  **pulseaudio** (output on HDMI TV monitor):
+
+```bash
+pi@raspberrypi:~/Room/Props/PyProps/QtProps/QtEducationalProps $ aplay audio/ringtone.wav 
+Playing WAVE 'audio/ringtone.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
 ```
 
 ### RFID-RC522 module configuration
