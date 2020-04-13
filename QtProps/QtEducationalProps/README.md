@@ -1,17 +1,30 @@
-﻿# PyQt5 Educational props
+﻿# Qt Educational props
 *Educational example of pure Python props using **PyQt5**.*
 
-An educational example which makes a LED blinking and making a sound when an RFID tag is detected.
+An educational example which makes a LED blinking and making a sound when an RFID tag is detected. And unlock a door when an object (magnetic) is detected by a <a href="https://en.wikipedia.org/wiki/Reed_switch" target="_blank">reed switch</a>.
 
 This props uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtProps.py" target="_blank">ThreadingProps</a> (so it uses multi-threading) .
 
 We use a MIFARE RFID-RC522 module:
 
-https://www.waveshare.com/wiki/PN532_NFC_HAT
 http://wiki.sunfounder.cc/index.php?title=Mifare_RC522_Module_RFID_Reader
 
+| RC522 pin | Raspberry Pi 3 pin name   |
+|-----------|---------------------------|
+| SDA       | GPIO8                     |
+| SCK       | GPIO11                    |
+| MOSI      | GPIO10                    |
+| MISO      | GPIO9                     |
+| IRQ       | Not connected             |
+| GND       | GND                       |
+| RST       | GPIO25                    |
+| 3.3V      | 3V3                       |
 
 ![](docs/1-module%20schema.png)
+
+We tested with a NFC Pi Hat as well: <a href="https://www.waveshare.com/wiki/PN532_NFC_HAT" target="_blank">https://www.waveshare.com/wiki/PN532_NFC_HAT</a>
+
+If you need two NFC reader you wil find help at <a href="https://github.com/pat-odoo/TwoRC522_RPi2-3" target="_blank">https://github.com/pat-odoo/TwoRC522_RPi2-3</a>
 
 
 ## Installation
@@ -44,6 +57,10 @@ You will have to install following Python packages:
     $ git clone https://github.com/lthiery/SPI-Py.git
     $ cd ~/SPI-Py
     $ sudo python3 setup.py install
+```
+5) test reading a tag
+```bash
+    $ sudo python Read.py
 ```
 
 
