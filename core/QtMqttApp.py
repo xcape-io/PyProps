@@ -347,7 +347,7 @@ class QtMqttApp(QAPP):
     # __________________________________________________________________
     @pyqtSlot()
     def quit(self, a=None, b=None):
-        QCoreApplication.quit()
+        QAPP.quit()
 
     # __________________________________________________________________
     def start(self):

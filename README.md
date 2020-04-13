@@ -21,7 +21,7 @@ Read [INSTALLATION.md](INSTALLATION.md) for PyProps installation and usage.
 PyProps supports different Python frameworks to write any kind of props providing a base class for your props:
 * [AsyncioProps](./AsyncioProps)
 * [PygameProps](./PygameProps)
-* [QtConsoleProps](./QtConsoleProps)
+* [QtProps](./QtProps)
 * [QtGuiProps](./QtGuiProps)
 * [GuizeroProps](./GuizeroProps)
 * [KivyProps](./KivyProps)
@@ -82,22 +82,29 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 
 [PygameProps](./PygameProps) adds MQTT asynchronous messaging to the <a href="https://pypi.org/project/pygame/" target="_blank">Pygame</a> framework to facilitate your coding.
 
-### PyQt5 framework: [QtConsoleProps](./QtConsoleProps) and [QtGuiProps](./QtGuiProps)
+### PyQt5 framework
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> brings the power of <a href="https://doc.qt.io/" target="_blank">Qt</a> to Python and is well supported on Raspberry Pi.
 
-Two flavors:
-* [QtConsoleProps](./QtConsoleProps)
-* examples:
-    - educational blink example ([PyQt5RfidBlinkProps](./QtConsoleProps/PyQt5RfidBlinkProps))
-    - fortune teller table ([FortuneTellerTableProps](./QtConsoleProps/FortuneTellerTableProps))
-* [QtGuiProps](./QtGuiProps)
-* the power of Qt (printing support, multimedia, styled GUI, Bluetooth, etc.)
+Console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a>:
+* multimedia playback
+* graphics effects
+* sensors and actuators (GPIO and I2C shieds)
+* Bluetooth support,
+* printing support,
+* styled GUI (<a href="https://doc.qt.io/qt-5/stylesheet-reference.html" target="_blank">Qt Style Sheets</a>)
+* <a href="https://doc.qt.io/qt-5/signalsandslots.html" target="_blank">Qt Signals & Slots</a> mechanism
+* the power of Qt (GUI widgets, styled GUI, multimedia, Bluetooth, printing support, etc.)
 * easy to reuse the props code in a control panel (necessary for complex props such as fingerprint biometric props with 2 Raspberry boards)
-* use same code for the props and its <a href="https://github.com/xcape-io/PySkeletonPlugin" target="_blank">Room plugin</a>
+* reuse the props code for its associated control applet
+* use the associated control applet as a <a href="https://github.com/xcape-io/PySkeletonPlugin" target="_blank">Room plugin</a>
+* examples:
+    - educational blink example ([QtEducationalProps](./QtProps/QtEducationalProps))
+    - fortune teller table ([FortuneTellerTableProps](./QtProps/FortuneTellerTableProps))
+    - game countdown on the escape room TV screen ([QtCountdownProps](./QtProps/QtCountdownProps))
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 
-[QtConsoleProps](./QtConsoleProps) and [QtGuiProps](./QtGuiProps) extend *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
+[QtProps](./QtProps) extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
 
 ### Guizero (Tkinter GUI) framework: [GuizeroProps](./GuizeroProps)
 <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your props it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
