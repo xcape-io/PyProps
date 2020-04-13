@@ -29,14 +29,4 @@ MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClie
 
 #__________________________________________________________________
 # Required by EducationalApp
-'''
-Data changes sent every SKETCH_INTERVAL_DATA
-full data sent at least SKETCH_INTERVAL_DATA * SKETCH_DATA_COUNT
-'''
-SKETCH_INTERVAL_AUTOMATION = 500 # milliseconds
-SKETCH_INTERVAL_DATA = 1000 # milliseconds
-SKETCH_DATA_COUNT = 30 # for 30 seconds
-
-#__________________________________________________________________
-# Required by EducationalApp
 GPIO_BLINKING_LED = 16

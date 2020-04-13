@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-'''
+"""
 AlphabetApp.py
 
 AlphabetApp application extends SketchApp.
-
-Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
-
-'''
+"""
 
 import platform
 from constants import *

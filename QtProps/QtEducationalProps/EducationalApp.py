@@ -12,17 +12,16 @@ Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
 import os
 
 from PropsData import PropsData
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QTimer
+from PyQt5.QtCore import pyqtSlot, QTimer
 from QtPropsApp import QtPropsApp
 from constants import *
 
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
     import RPi.GPIO as GPIO
-####import MFRC522 # modified for GPIO mode
+    import MFRC522 # modified for GPIO mode
 
 
 class EducationalApp(QtPropsApp):
-    actuatorReceived = pyqtSignal(str)
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
