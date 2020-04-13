@@ -46,6 +46,14 @@ PyQt5.QtMultimedia must be installed:
     $ sudo apt-get install python3-pyqt5.qtmultimedia
 ```
 
+```bash
+    $ sudo apt-get upgrade
+    $ sudo apt-get install libasound2-dev pulseaudio libpulse-dev
+    $ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad libgstreamer-plugins-bad1.0-dev gstreamer1.0-pulseaudio gstreamer1.0-tools gstreamer1.0-alsa
+    $ sudo modprobe snd-bcm2835
+    $ echo "snd-bcm2835" | sudo tee -a /etc/modules
+```
+
 ### RFID-RC522 module configuration
 1) enable SPI in **raspi-config**
 2) check:

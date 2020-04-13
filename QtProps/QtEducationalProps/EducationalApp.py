@@ -43,6 +43,11 @@ class EducationalApp(QtPropsApp):
 
         self.addPeriodicAction("blink", self.blink, 1.0)
 
+        #os.system("amixer cset numid=3 1")  # audio jack
+        #os.system("amixer set 'PCM' -- 400")  # volume maxi
+
+        #os.system("amixer -c 0")  # volume maxi
+
     # __________________________________________________________________
     def blink(self):
         try:

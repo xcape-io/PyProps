@@ -72,6 +72,20 @@ You will have to install more packages from `python3-pyqt5` packages:
 
 ```
 
+And you will have to complete with related packets:
+
+| Functionality  | Packages                                                     |
+|----------------|--------------------------------------------------------------|
+| Bluetooth      |	`$ sudo apt-get install bluez libbluetooth-dev`                 |
+| Multimedia     |	`$ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad libgstreamer-plugins-bad1.0-dev gstreamer1.0-pulseaudio gstreamer1.0-tools gstreamer1.0-alsa` |
+| Audio          |	`$ sudo apt-get install libasound2-dev pulseaudio libpulse-dev` |
+| Database       |	`$ sudo apt-get install libpq-dev libmariadbclient-dev libmariadbclient-dev-compat libsqlite3-dev` |
+|  Impression	 |  `$ sudo apt-get install libcups2-dev`                            |
+| X11            |	`$ sudo apt-get install libx11-dev libxcb1-dev libxkbcommon-x11-dev libx11-xcb-dev libxext-dev` |
+| Accessibility  |	`$ sudo apt-get install libatspi-dev`                           |
+| WebKit         |	`$ sudo apt-get install libicu-dev libsqlite3-dev libxslt1-dev libssl-dev` |
+
+
 ## Qt Console  Props applications
 For example:
 * educational blink example ([QtEducationalProps](./QtEducationalProps))
