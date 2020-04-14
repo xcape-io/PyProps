@@ -134,13 +134,27 @@ The command to relaunch the props is :
 $ ps aux | grep python | grep -v "grep python" | grep QtEducationalProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtEducationalProps/main.py -s %BROKER%
 ```
 
-
-## Fortune Teller Table Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+## Qt Educational Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *QtEducationalProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
+* `blink:0` : deactivate blinking
+* `blink:1` : activate blinking
+* `sound:0` : mute blinking sound
+* `sound:1` : unmute blinking sound
 
-...
+### Props configuration
+Add and configure *Raspberry PygameBlink* connected props.
+
+![Props configuration](props/props-configuration.png)
+
+### Props data messages
+
+![Outbox messages](props/outbox-messages.png)
+
+### Props control panel
+
+![Room control panel](props/room-control-panel.png)
 
 
 ## Author
