@@ -47,6 +47,7 @@ class CountdownApp(QtPropsApp):
         self._mainWidget.show()
 
         self._mainWidget.showFullScreen()
+        self._mainWidget.setCursor(Qt.BlankCursor)
 
     # __________________________________________________________________
     @pyqtSlot()
