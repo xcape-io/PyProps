@@ -3,7 +3,7 @@
 
 An educational example which makes a LED blinking and making a sound when an RFID tag is detected. And unlock a door when an object (magnetic) is detected by a <a href="https://en.wikipedia.org/wiki/Reed_switch" target="_blank">reed switch</a>.
 
-This props uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtProps.py" target="_blank">ThreadingProps</a> (so it uses multi-threading) .
+This props uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtPropsApp.py" target="_blank">QtPropsApp</a>.
 
 We use a MIFARE RFID-RC522 module:
 

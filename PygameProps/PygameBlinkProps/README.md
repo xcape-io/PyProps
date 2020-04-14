@@ -3,7 +3,7 @@
 
 An educational example which makes a LED blinking and making a sound.
 
-This props uses Pygame and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/ThreadingProps.py" target="_blank">ThreadingProps</a> (so it uses multi-threading) .
+This props uses Pygame and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/ThreadingProps.py" target="_blank">ThreadingProps</a> (so it uses multi-threading).
 
 
 ## Installation

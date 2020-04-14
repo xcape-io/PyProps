@@ -100,7 +100,7 @@ Console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">
 * examples:
     - educational blink example ([QtEducationalProps](./QtProps/QtEducationalProps))
     - fortune teller table ([FortuneTellerTableProps](./QtProps/FortuneTellerTableProps))
-    - game countdown on the escape room TV screen ([QtCountdownProps](./QtProps/QtCountdownProps))
+    - game countdown in the escape room on Raspberry TV screen ([QtCountdownProps](./QtProps/QtCountdownProps))
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 

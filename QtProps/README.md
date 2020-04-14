@@ -90,7 +90,7 @@ And you will have to complete with related packets:
 For example:
 * educational blink example ([QtEducationalProps](./QtEducationalProps))
 * fortune teller table ([FortuneTellerTableProps](./FortuneTellerTableProps))
-* game countdown on the escape room TV screen ([QtCountdownProps](./QtCountdownProps))
+* game countdown in the escape room on Raspberry TV screen ([QtCountdownProps](./QtCountdownProps))
 
 
 ## Author
