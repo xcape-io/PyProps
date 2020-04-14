@@ -8,15 +8,13 @@ Contains all the application constants. As a rule all constants are named in all
 
 APPLICATION = "countdown"
 
-QTGUI = False # optional
+QTGUI = True
 
 PYPROPS_CORELIBPATH = '../../core'
 
 PUBLISHALLDATA_PERIOD = 10.0
 
 USE_GPIO = True
-
-NFC_MODULE = None # or 'SPI' or 'Hat'
 
 #__________________________________________________________________
 # Required by MqttConsoleApp
@@ -31,4 +29,4 @@ MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClie
 
 #__________________________________________________________________
 # Required by CountdownApp
-GPIO_BLINKING_LED = 16
+
