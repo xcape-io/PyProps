@@ -9,7 +9,7 @@ Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
 
 '''
 
-import os
+import os, sys
 
 from PyQt5.QtMultimedia import QSound
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
@@ -36,7 +36,13 @@ class CountdownApp(QtPropsApp):
 
         self._sounding_p.update(True)
 
+        style = ""
+        qss = open("Countdown.css",'r')
+        with qss:
+            style = style + qss.read()
+
         self._mainWidget = CountdownWidget(self._logger)
+        self._mainWidget.setStyleSheet(style)
         self._mainWidget.aboutToClose.connect(self.exitOnClose)
         self._mainWidget.show()
 
