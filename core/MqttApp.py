@@ -6,8 +6,8 @@ MIT License (c) Marie Faure <dev at faure dot systems>
 
 App base class handling props app wide Paho MQTT client:
 - make all app subscriptions (app-inbox and mqtt-sub-* topics)
-- publish messages with publishPropsMessage() and publishMessage()
-- receive messages exposing onPropsMessage() and onMessage()
+- publish messages with _publishMessage(), _publishAllData() and _publishDataChanges()
+- receive messages exposing onMessage() virtual method
 - expose onConnect() and onDisconnect() virtual methods
 - handle logging defined in logging.ini
 - parse props app arguments

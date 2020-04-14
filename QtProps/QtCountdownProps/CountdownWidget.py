@@ -47,17 +47,5 @@ class CountdownWidget(QWidget):
         self.setLayout(main_layout)
 
     # __________________________________________________________________
-    @pyqtSlot(str)
-    def onTeletextDisplayMessage(self, message):
-        if message == "-":
-            message = ""
-        message = message.replace('\n', '<br>')
-
-    # __________________________________________________________________
-    @pyqtSlot(str)
-    def onPropsMessage(self, message):
-        pass
-
-    # __________________________________________________________________
     def closeEvent(self, e):
         self.aboutToClose.emit()
