@@ -1,4 +1,6 @@
-﻿# Qt Countdown props
+﻿# WORK IN PROGRESS ...
+
+# Qt Countdown props
 *Countdown example of pure Python props using **PyQt5**.*
 
 A props that displays the game countdown in the escape room on the Raspberry HDMI screen. This props uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtPropsApp.py" target="_blank">QtPropsApp</a>.
