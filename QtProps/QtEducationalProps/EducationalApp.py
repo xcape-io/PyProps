@@ -43,6 +43,14 @@ class EducationalApp(QtPropsApp):
 
         self.addPeriodicAction("blink", self.blink, 1.0)
 
+        self._nfc_module_p = PropsData('nfc', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self.addData(self._nfc_module_p)
+
+        if NFC_MODULE is None:
+            self._logger.info("No NFC module configured'")
+            self._blinking_p.update(False)
+
+
     # __________________________________________________________________
     def blink(self):
         try:

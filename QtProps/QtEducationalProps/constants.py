@@ -16,6 +16,8 @@ PUBLISHALLDATA_PERIOD = 10.0
 
 USE_GPIO = True
 
+NFC_MODULE = None # or 'SPI' or 'Hat'
+
 #__________________________________________________________________
 # Required by MqttConsoleApp
 ORGANIZATIONDOMAIN = "xcape.io"
