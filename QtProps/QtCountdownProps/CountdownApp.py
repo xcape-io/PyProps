@@ -11,9 +11,13 @@ Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
 
 import os
 
-from PropsData import PropsData
 from PyQt5.QtMultimedia import QSound
+from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
+
+from PropsData import PropsData
 from QtPropsApp import QtPropsApp
+from CountdownFrame import CountdownFrame
+
 from constants import *
 
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
@@ -31,6 +35,16 @@ class CountdownApp(QtPropsApp):
         self.addData(self._sounding_p)
 
         self._sounding_p.update(True)
+
+        self._mainFrame = CountdownFrame(self._logger)
+        self._mainFrame.aboutToClose.connect(self.exitOnClose)
+        self._mainFrame.show()
+
+    # __________________________________________________________________
+    @pyqtSlot()
+    def exitOnClose(self):
+        self._logger.info(self.tr("exitOnClose "))
+        self.quit()
 
     # __________________________________________________________________
     def onConnect(self, client, userdata, flags, rc):
