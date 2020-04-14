@@ -99,8 +99,30 @@ Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/QtEducationalProp
 ```bash
 pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtEducationalProps/main.py -s 192.168.1.42 -d
 
-...
-...
+Config: {'host': '192.168.1.42'}
+INFO - New periodic action added 'send all data' every 10.0 seconds
+INFO - New boolean Publishable 'led' (1/0) with initial=0
+INFO - New boolean Publishable 'blinking' (yes/no) with initial=0
+INFO - New boolean Publishable 'sounding' (yes/no) with initial=0
+INFO - New periodic action added 'blink' every 1.0 seconds
+INFO - New boolean Publishable 'nfc' (yes/no) with initial=0
+INFO - No NFC module configured'
+INFO - Periodic task created 'send all data' every 10.0 seconds
+INFO - Periodic task created 'blink' every 1.0 seconds
+INFO - Program connected to MQTT server
+INFO - Program sending message 'CONNECTED' (mid=1) on Room/My room/Props/Raspberry QtEducational/outbox
+INFO - Program subscribing to topic (mid=2) : Room/My room/Props/Raspberry QtEducational/inbox
+INFO - Program sending message 'DATA led=0 blinking=no sounding=yes nfc=no' (mid=3) on Room/My room/Props/Raspberry QtEducational/outbox
+DEBUG - MQTT message is published : mid=1 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=1)
+DEBUG - MQTT topic is subscribed : mid=2 granted_qos=(1,)
+INFO - Program susbcribed to topic (mid=2) with QoS (1,)
+DEBUG - MQTT message is published : mid=3 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=3)
+INFO - Message received : '@PING' in Room/My room/Props/Raspberry QtEducational/inbox
+INFO - Program sending message 'PONG' (mid=4) on Room/My room/Props/Raspberry QtEducational/outbox
+DEBUG - MQTT message is published : mid=4 userdata={'host': '192.168.1.42', 'port': 1883}
+INFO - Message published (mid=4)
 
 ```
 
