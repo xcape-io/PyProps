@@ -63,6 +63,8 @@ To use *PygameBlinkProps* as a props for <a href="https://xcape.io/" target="_bl
 ### Props commands
 * `blink:0` : deactivate blinking
 * `blink:1` : activate blinking
+* `sound:0` : mute blinking sound
+* `sound:1` : unmute blinking sound
 
 ### Props configuration
 Add and configure *Raspberry PygameBlink* connected props.
