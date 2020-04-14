@@ -8,7 +8,7 @@ Countdown main widget.
 """
 
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import QVBoxLayout, QWidget, QLabel
+from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QWidget, QLabel
 
 
 class CountdownWidget(QWidget):
@@ -30,12 +30,19 @@ class CountdownWidget(QWidget):
     def _buildUi(self):
 
         main_layout = QVBoxLayout()
-        main_layout.setSpacing(12)
+        chrono_layout = QHBoxLayout()
 
         self._chronoLabel = QLabel("00:00")
+        self._chronoLabel.setObjectName('chrono')
         self._chronoLabel.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
 
-        main_layout.addWidget(self._chronoLabel)
+        chrono_layout.addStretch()
+        chrono_layout.addWidget(self._chronoLabel)
+        chrono_layout.addStretch()
+
+        main_layout.addStretch()
+        main_layout.addLayout(chrono_layout)
+        main_layout.addStretch()
 
         self.setLayout(main_layout)
 
