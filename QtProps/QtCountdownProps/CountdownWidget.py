@@ -8,10 +8,10 @@ Countdown main widget.
 """
 
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
-from PyQt5.QtWidgets import (QHBoxLayout, QVBoxLayout, QFrame, QLabel)
+from PyQt5.QtWidgets import QVBoxLayout, QWidget, QLabel
 
 
-class CountdownFrame(QFrame):
+class CountdownWidget(QWidget):
     aboutToClose = pyqtSignal()
 
     # __________________________________________________________________
@@ -21,8 +21,10 @@ class CountdownFrame(QFrame):
         self._logger = logger
 
         # always on top sometimes doesn't work
-        self.setAttribute(Qt.WA_AlwaysStackOnTop)
+        #self.setAttribute(Qt.WA_AlwaysStackOnTop)
+        #self.setWindowFlags(Qt.Tool | Qt.FramelessWindowHint)
 
+        self._buildUi()
 
     # __________________________________________________________________
     def _buildUi(self):

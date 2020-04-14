@@ -16,7 +16,7 @@ from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
 from PropsData import PropsData
 from QtPropsApp import QtPropsApp
-from CountdownFrame import CountdownFrame
+from CountdownWidget import CountdownWidget
 
 from constants import *
 
@@ -36,9 +36,11 @@ class CountdownApp(QtPropsApp):
 
         self._sounding_p.update(True)
 
-        self._mainFrame = CountdownFrame(self._logger)
-        self._mainFrame.aboutToClose.connect(self.exitOnClose)
-        self._mainFrame.show()
+        self._mainWidget = CountdownWidget(self._logger)
+        self._mainWidget.aboutToClose.connect(self.exitOnClose)
+        self._mainWidget.show()
+
+        self._mainWidget.showFullScreen()
 
     # __________________________________________________________________
     @pyqtSlot()
