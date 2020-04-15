@@ -22,6 +22,7 @@ class CountdownWidget(QWidget):
 
         # always on top sometimes doesn't work
         #self.setAttribute(Qt.WA_AlwaysStackOnTop)
+        # frame only if not in fullscreen
         #self.setWindowFlags(Qt.Tool | Qt.FramelessWindowHint)
 
         self._buildUi()
@@ -49,3 +50,13 @@ class CountdownWidget(QWidget):
     # __________________________________________________________________
     def closeEvent(self, e):
         self.aboutToClose.emit()
+
+    # __________________________________________________________________
+    def setTime(self, timestr, overtime):
+        # we could use a pyqtSlot here
+        if overtime:
+            self._chronoLabel.setStyleSheet("color: red")
+        else:
+            self._chronoLabel.setStyleSheet("color: white")
+        self._chronoLabel.setText(timestr)
+
