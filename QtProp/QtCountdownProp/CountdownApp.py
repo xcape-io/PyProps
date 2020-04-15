@@ -25,6 +25,7 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 
 
 class CountdownApp(QtPropApp):
+    chronoUpdated = pyqtSignal(str, bool)
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
@@ -52,6 +53,7 @@ class CountdownApp(QtPropApp):
 
         self._mainWidget.showFullScreen()
         self._mainWidget.setCursor(Qt.BlankCursor)
+        self.chronoUpdated.connect(self._mainWidget.setTime)
 
     # __________________________________________________________________
     @pyqtSlot()
@@ -67,7 +69,7 @@ class CountdownApp(QtPropApp):
     # __________________________________________________________________
     def onMessage(self, topic, message):
         #print(topic, message)
-        self.processEvents()
+        #self.processEvents()
         if topic == self._mqttInbox:
             if message == "app:startup":
                 self.sendAllData()
@@ -87,7 +89,8 @@ class CountdownApp(QtPropApp):
                 mm = int(seconds / 60)
                 ss = seconds - mm * 60
                 self._chrono_p.update("{:0>2d}:{:0>2d}".format(mm, ss))
-                self._mainWidget.setTime(self._chrono_p.value(), self._overtime_p.value())
+                #self._mainWidget.setTime(self._chrono_p.value(), self._overtime_p.value())
+                self.chronoUpdated.emit(self._chrono_p.value(), self._overtime_p.value())
                 self.sendDataChanges()
             except Exception as e:
                 if self._logger:

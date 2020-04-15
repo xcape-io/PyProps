@@ -52,6 +52,7 @@ class CountdownWidget(QWidget):
         self.aboutToClose.emit()
 
     # __________________________________________________________________
+    @pyqtSlot(str, bool)
     def setTime(self, timestr, overtime):
         # we could use a pyqtSlot here
         if overtime:
