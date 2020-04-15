@@ -24,15 +24,15 @@ $ pip3 install PyYAML
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProp`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/PygameProp/PygameBlinkProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/PygameProps/PygameBlinkProp/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/PygameProp/PygameBlinkProp/main.py -s 192.168.1.42 -d
 
 pygame 1.9.4.post1
 Hello from the pygame community. https://www.pygame.org/contribute.html
 Config: {'host': '192.168.1.42'}
-/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProp/BlinkApp.py:27: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+/home/pi/Room/Props/PyProps/PygameProp/PygameBlinkProp/BlinkApp.py:27: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
   GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
 INFO - New boolean Publishable 'led' (1/0) with initial=0
 INFO - New boolean Publishable 'blinking' (yes/no) with initial=0
@@ -53,7 +53,7 @@ INFO - Program susbcribed to topic (mid=2) with QoS (0,)
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProp/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProp/PygameBlinkProp/main.py -s %BROKER%
 ```
 
 

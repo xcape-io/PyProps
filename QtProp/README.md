@@ -3,7 +3,7 @@
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> brings the power of <a href="https://doc.qt.io/" target="_blank">Qt</a> to Python and is well supported on Raspberry Pi.
 
-***QtProps*** is suitable for console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a>:
+***QtProp*** is suitable for console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a>:
 * multimedia playback
 * graphics effects
 * sensors and actuators (GPIO and I2C shieds)
@@ -17,7 +17,7 @@
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 
-***QtProps*** extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
+***QtProp*** extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
 
 ## Installation and usage
 You will find installation and usage instructions in the [PyProps library INSTALLATION.md](../INSTALLATION.md)

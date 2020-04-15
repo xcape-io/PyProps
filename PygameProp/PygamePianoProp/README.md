@@ -19,10 +19,10 @@ $ pip3 install PyYAML
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/PygameProps/PygamePianoProp`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/PygameProp/PygamePianoProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/PygameProps/PygamePianoProp/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/PygameProp/PygamePianoProp/main.py -s 192.168.1.42 -d
 
 pygame 1.9.4.post1
 Hello from the pygame community. https://www.pygame.org/contribute.html
@@ -78,7 +78,7 @@ INFO - Message published (mid=4)
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep PygamePianoProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProps/PygamePianoProp/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep PygamePianoProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProp/PygamePianoProp/main.py -s %BROKER%
 ```
 
 

@@ -20,9 +20,8 @@ Read [INSTALLATION.md](INSTALLATION.md) for PyProps installation and usage.
 ## Props unified coding
 PyProps supports different Python frameworks to write any kind of props providing a base class for your props:
 * [AsyncioProp](./AsyncioProp)
-* [PygameProps](./PygameProps)
-* [QtProps](./QtProps)
-* [QtGuiProps](./QtGuiProps)
+* [PygameProp](./PygameProp)
+* [QtProp](./QtProp)
 * [GuizeroProp](./GuizeroProp)
 * [KivyProp](./KivyProp)
 
@@ -62,7 +61,7 @@ The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asy
 
 [AsyncioProp](./AsyncioProp) prop hides the complexity of the <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework and adds MQTT asynchronous messaging to facilitate your coding.
 
-### Pygame framework: [PygameProps](./PygameProps)
+### Pygame framework: [PygameProp](./PygameProp)
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
 * audio and video output
 * simultaneous sounds
@@ -70,17 +69,17 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 * video games
 * sensors and actuators (GPIO and I2C shields)
 * examples:
-    - educational blink example ([PygameBlinkProp](./PygameProps/PygameBlinkProp))
-    - piano prop with a mechanic piano ([PygamePianoProp](./PygameProps/PygamePianoProp))
-    - podium with linear jack ([PyPodiumgameProp](./PygameProps/PyPodiumgameProp))
+    - educational blink example ([PygameBlinkProp](./PygameProp/PygameBlinkProp))
+    - piano prop with a mechanic piano ([PygamePianoProp](./PygameProp/PygamePianoProp))
+    - podium with linear jack ([PyPodiumgameProp](./PygameProp/PyPodiumgameProp))
     - hacker intrusion puzzle (contact me)
     - Tetris hacked (contact me)
 
-The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> (see <a href="https://www.pygame.org/" target="_blank">pygame.org</a>) is very popular and very easy to learn so the [PygameProps](./PygameProps) flavor may be your preferred choice most of the time.
+The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> (see <a href="https://www.pygame.org/" target="_blank">pygame.org</a>) is very popular and very easy to learn so the [PygameProp](./PygameProp) flavor may be your preferred choice most of the time.
 
 <a href="https://www.pygame.org/" target="_blank">Pygame</a> has its own event loop to multitask seamlessly.
 
-[PygameProps](./PygameProps) adds MQTT asynchronous messaging to the <a href="https://pypi.org/project/pygame/" target="_blank">Pygame</a> framework to facilitate your coding.
+[PygameProp](./PygameProp) adds MQTT asynchronous messaging to the <a href="https://pypi.org/project/pygame/" target="_blank">Pygame</a> framework to facilitate your coding.
 
 ### PyQt5 framework
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> brings the power of <a href="https://doc.qt.io/" target="_blank">Qt</a> to Python and is well supported on Raspberry Pi.
@@ -98,13 +97,13 @@ Console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">
 * reuse the props code for its associated control applet
 * use the associated control applet as a <a href="https://github.com/xcape-io/PySkeletonPlugin" target="_blank">Room plugin</a>
 * examples:
-    - educational blink example ([QtEducationalProp](./QtProps/QtEducationalProp))
-    - fortune teller table ([FortuneTellerTableProp](./QtProps/FortuneTellerTableProp))
-    - game countdown in the escape room on Raspberry TV screen ([QtCountdownProp](./QtProps/QtCountdownProp))
+    - educational blink example ([QtEducationalProp](./QtProp/QtEducationalProp))
+    - fortune teller table ([FortuneTellerTableProp](./QtProp/FortuneTellerTableProp))
+    - game countdown in the escape room on Raspberry TV screen ([QtCountdownProp](./QtProp/QtCountdownProp))
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 
-[QtProps](./QtProps) extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
+[QtProp](./QtProp) extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
 
 ### Guizero (Tkinter GUI) framework: [GuizeroProp](./GuizeroProp)
 <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your prop it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
