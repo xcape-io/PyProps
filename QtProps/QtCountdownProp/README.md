@@ -41,7 +41,7 @@ May have to install **pulseaudio**:
 Test  **pulseaudio** (output on HDMI TV monitor):
 
 ```bash
-pi@raspberrypi:~/Room/Props/PyProps/QtProps/QtCountdownProps $ aplay audio/ringtone.wav 
+pi@raspberrypi:~/Room/Props/PyProps/QtProps/QtCountdownProp $ aplay audio/ringtone.wav 
 Playing WAVE 'audio/ringtone.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
 ```
 
@@ -72,10 +72,10 @@ Playing WAVE 'audio/ringtone.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, 
 
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/QtCountdownProps/`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/QtCountdownProp/`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtCountdownProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtCountdownProp/main.py -s 192.168.1.42 -d
 
 
 ```
@@ -85,11 +85,11 @@ pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtCountdownProps/main.py
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep QtCountdownProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtCountdownProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep QtCountdownProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtCountdownProp/main.py -s %BROKER%
 ```
 
 ## Qt Countdown Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *QtCountdownProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
+To use *QtCountdownProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `sound:0` : mute blinking sound

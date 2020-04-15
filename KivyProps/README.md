@@ -6,7 +6,7 @@
 ***KivyProps*** hides a lot of complexity, therefore any escape room tinkerer should be able to create his own prop with <a href="https://kivy.org/" target="_blank">Kivy</a>.
 
 ***KivyProps*** is suitable for:
-* powerful graphical interface for a Raspberry with a TV display ([PyWaterWellProps](./PyWaterWellProps))
+* powerful graphical interface for a Raspberry with a TV display ([PyWaterWellProp](./PyWaterWellProp))
 * video effects
 * video games
 * audio
@@ -47,7 +47,7 @@ pi@raspberrypi:~/Room/Props/PyProps/KivyProps $ ./install-kivy.sh
 
 ## Kivy Props applications
 For props with advanced graphical interface, for example:
-* display text with a water effect on the prop TV monitor ([PyWaterWellProps](PyWaterWellProps))
+* display text with a water effect on the prop TV monitor ([PyWaterWellProp](PyWaterWellProp))
 
 
 ## Author

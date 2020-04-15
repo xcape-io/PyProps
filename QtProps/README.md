@@ -88,9 +88,9 @@ And you will have to complete with related packets:
 
 ## Qt Console  Props applications
 For example:
-* educational blink example ([QtEducationalProps](./QtEducationalProps))
-* fortune teller table ([FortuneTellerTableProps](./FortuneTellerTableProps))
-* game countdown in the escape room on Raspberry TV screen ([QtCountdownProps](./QtCountdownProps))
+* educational blink example ([QtEducationalProp](./QtEducationalProp))
+* fortune teller table ([FortuneTellerTableProp](./FortuneTellerTableProp))
+* game countdown in the escape room on Raspberry TV screen ([QtCountdownProp](./QtCountdownProp))
 
 
 ## Author

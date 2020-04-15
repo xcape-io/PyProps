@@ -10,7 +10,7 @@ When vibration is detected, a sound is picked up randomly among seven audio file
 See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
 
 ### Dependencies
-If you don't install the whole PyProps library, you will have to fulfill the  *PyCryingDollProps* requirements:
+If you don't install the whole PyProps library, you will have to fulfill the  *PyCryingDollProp* requirements:
 * `PyProps/core/AsyncioProps.py`
 * `PyProps/core/PropsData.py`
 * `PyProps/core/PropsApp.py`
@@ -24,10 +24,10 @@ $ pip3 install PyYAML
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/main.py -s 192.168.1.42 -d
 
 Config: {'host': '192.168.1.42'}
 INFO - New periodic action added 'send all data' every 30.0 seconds
@@ -65,7 +65,7 @@ INFO - Program sending message 'PONG' (mid=5) on Room/My room/Props/Raspberry Cr
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep PyCryingDollProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep PyCryingDollProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/main.py -s %BROKER%
 ```
 
 
@@ -84,7 +84,7 @@ An SRD relay module is connected to GPIO 16 to control the light.
 
 
 ## Crying Doll as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyCryingDollProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+To use *PyCryingDollProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `activate:0` : deactivate sensor

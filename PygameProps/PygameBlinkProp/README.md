@@ -10,7 +10,7 @@ This props uses Pygame and extends <a href="https://github.com/xcape-io/PyProps/
 See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
 
 ### Dependencies
-If you don't install the whole PyProps library, you will have to fulfill the  *PygameBlinkProps* requirements:
+If you don't install the whole PyProps library, you will have to fulfill the  *PygameBlinkProp* requirements:
 * `PyProps/core/ThreadingProps.py`
 * `PyProps/core/PropsApp.py`
 * `PyProps/core/MqttApp.py`
@@ -24,15 +24,15 @@ $ pip3 install PyYAML
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProps`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/PygameProps/PygameBlinkProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/PygameProps/PygameBlinkProp/main.py -s 192.168.1.42 -d
 
 pygame 1.9.4.post1
 Hello from the pygame community. https://www.pygame.org/contribute.html
 Config: {'host': '192.168.1.42'}
-/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProps/BlinkApp.py:27: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+/home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProp/BlinkApp.py:27: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
   GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
 INFO - New boolean Publishable 'led' (1/0) with initial=0
 INFO - New boolean Publishable 'blinking' (yes/no) with initial=0
@@ -53,12 +53,12 @@ INFO - Program susbcribed to topic (mid=2) with QoS (0,)
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProp/main.py -s %BROKER%
 ```
 
 
 ## Pygame Blink Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PygameBlinkProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+To use *PygameBlinkProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking

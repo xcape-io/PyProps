@@ -1,4 +1,4 @@
-﻿# Water  Well prop (*PyWaterWellProps*)
+﻿# Water  Well prop (*PyWaterWellProp*)
 ***Display messages with graphic effects in the Escape Room with a Raspberry Pi.***
 
 This prop listens to MQTT messages and then displays the text on an HDMI display and rings a bell.
@@ -26,16 +26,16 @@ vec4 effect(vec4 color, sampler2D texture, vec2 tex_coords, vec2 coords)
 ```
 
 ## Installation
-Install Kivy with the  ([install-kivy.sh](https://github.com/xcape-io/PyProps/blob/master/KivyProps/PyWaterWellProps/install-kivy.sh)) shell script.
+Install Kivy with the  ([install-kivy.sh](https://github.com/xcape-io/PyProps/blob/master/KivyProps/PyWaterWellProp/install-kivy.sh)) shell script.
 
 ```bash
-pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProps $ chmod a+x install-kivy.sh 
-pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProps $ ./install-kivy.sh 
+pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProp $ chmod a+x install-kivy.sh 
+pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProp $ ./install-kivy.sh 
 ```
 
 
 ### Dependencies
-If you don't install the whole PyProps library, you will have to fulfill the  *PyWaterWellProps* requirements:
+If you don't install the whole PyProps library, you will have to fulfill the  *PyWaterWellProp* requirements:
 * `PyProps/core/KivyProps.py`
 * `PyProps/core/Singleton.py`
 
@@ -46,10 +46,10 @@ $ pip3 install PyYAML
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProps`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/KivyProps/PyWaterWellProps/main.py -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/KivyProps/PyWaterWellProp/main.py -d
 
 [INFO   ] [Logger      ] Record log in /home/pi/.kivy/logs/kivy_20-04-09_108.txt
 [INFO   ] [Kivy        ] v2.0.0rc1, git-26228b2, 20200408
@@ -106,12 +106,12 @@ INFO - Message published (mid=3)
 The command to relaunch the prop is :
 
 ```bash
-$ echo host: %BROKER%> /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProps/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyWaterWellProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProps/main.py
+$ echo host: %BROKER%> /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProp/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyWaterWellProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProp/main.py
 ```
 
 
-## PyWaterWellProps as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyTeletextProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## PyWaterWellProp as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyTeletextProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking

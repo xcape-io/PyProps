@@ -31,11 +31,11 @@ GPIO_RELAY_LIGHT = 16
 GPIO_VIBRATION_SENSORS = [20, 21]
 
 AUDIO_CRYING = [
-	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/audio/1.wav",
-	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/audio/2.wav",
-	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/audio/3.wav",
-	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/audio/4.wav",
-	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/audio/5.wav",
-	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/audio/6.wav",
-	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/audio/7.wav"]
+	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/audio/1.wav",
+	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/audio/2.wav",
+	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/audio/3.wav",
+	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/audio/4.wav",
+	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/audio/5.wav",
+	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/audio/6.wav",
+	"/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/audio/7.wav"]
 

@@ -1,4 +1,4 @@
-﻿# FortuneTellerTableProps (Alphabet) prop
+﻿# FortuneTellerTableProp (Alphabet) prop
 *A prop from <a href="https://www.live-escape.net/" target="_blank">Live Escape Grenoble</a> using **PyQt5**.*
 
 A real word prop, we have created a fortune teller table with a cowhide top and 36 flashable alphanum characters with powerful LEDs, this prop (named *alphabet* in French at the time) is powered by a Raspberry Pi; the game master send a clue which is spelled  character LEDs. Some flashing effects are available to scare players.
@@ -74,10 +74,10 @@ You will have to install following Python packages:
 
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/FortuneTellerTableProps/`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/FortuneTellerTableProp/`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/FortuneTellerTableProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/FortuneTellerTableProp/main.py -s 192.168.1.42 -d
 
 INFO - Relay A on output 4 is set to 0
 INFO - Relay B on output 17 is set to 0
@@ -114,7 +114,7 @@ INFO - Message published (mid=3)
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep FortuneTellerTableProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/FortuneTellerTableProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep FortuneTellerTableProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/FortuneTellerTableProp/main.py -s %BROKER%
 ```
 
 

@@ -12,7 +12,7 @@ The [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) can be used as
 See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps folder is `/home/pi/Room/Props/PyProps`
 
 ### Dependencies
-If you don't install the whole PyProps library, you will have to fulfill the  *PyTeletextProps* requirements:
+If you don't install the whole PyProps library, you will have to fulfill the  *PyTeletextProp* requirements:
 * `PyProps/core/GuizeroProps.py`
 * `PyProps/core/PropsData.py`
 * `PyProps/core/PropsApp.py`
@@ -27,10 +27,10 @@ $ pip3 install guizero
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/GuizeroProps/PyTeletextProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/GuizeroProps/PyTeletextProp/main.py -s 192.168.1.42 -d
 
 Config: {'host': '192.168.1.42'}
 INFO - Program connected to MQTT server
@@ -66,8 +66,8 @@ INFO - Program sending message 'DONE afficher:1515' (mid=7) on Room/My room/Prop
 To switch MQTT broker, kill the program and start again with new arguments.
 
 
-## PyTeletextProps as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyTeletextProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## PyTeletextProp as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyTeletextProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking
@@ -81,7 +81,7 @@ Add and configure *Raspberry Teletext* connected prop.
 
 The SSH relaunch command for GUI prop relies on `signal.SIGUSR1`:
 ```bash
-echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProps/main.py | awk '{print $2}' | xargs kill -10
+echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProp/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProp/main.py | awk '{print $2}' | xargs kill -10
 ```
 
 ![Props configuration](props/props-configuration.png)

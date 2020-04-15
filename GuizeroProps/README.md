@@ -18,7 +18,7 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 
 ## Guizero Props applications
 For props with basic graphical interface, for example:
-* display text on the prop TV monitor ([PyTeletextProps](PyTeletextProps))
+* display text on the prop TV monitor ([PyTeletextProp](PyTeletextProp))
 
 
 ## Author

@@ -63,7 +63,7 @@ May have to install **pulseaudio**:
 Test  **pulseaudio** (output on HDMI TV monitor):
 
 ```bash
-pi@raspberrypi:~/Room/Props/PyProps/QtProps/QtEducationalProps $ aplay audio/ringtone.wav 
+pi@raspberrypi:~/Room/Props/PyProps/QtProps/QtEducationalProp $ aplay audio/ringtone.wav 
 Playing WAVE 'audio/ringtone.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, Stereo
 ```
 
@@ -94,10 +94,10 @@ Playing WAVE 'audio/ringtone.wav' : Signed 16 bit Little Endian, Rate 44100 Hz, 
 
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/QtEducationalProps/`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/QtProps/QtEducationalProp/`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtEducationalProps/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtEducationalProp/main.py -s 192.168.1.42 -d
 
 Config: {'host': '192.168.1.42'}
 INFO - New periodic action added 'send all data' every 10.0 seconds
@@ -131,11 +131,11 @@ INFO - Message published (mid=4)
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep QtEducationalProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtEducationalProps/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep QtEducationalProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtEducationalProp/main.py -s %BROKER%
 ```
 
 ## Qt Educational Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *QtEducationalProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
+To use *QtEducationalProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking

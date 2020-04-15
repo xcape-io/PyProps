@@ -56,7 +56,7 @@ With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a gr
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 * examples:
     - educational example which echoes messages and make a LED blinking ([PyBlinkEcho](./AsyncioProps/PyBlinkEcho))
-    - detect vibrations to trigger a crying doll  ([PyCryingDollProps](./AsyncioProps/PyCryingDollProps))
+    - detect vibrations to trigger a crying doll  ([PyCryingDollProp](./AsyncioProps/PyCryingDollProp))
 
 The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework allows writing non-blocking Python programs that multitask seamlessly.
 
@@ -70,9 +70,9 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 * video games
 * sensors and actuators (GPIO and I2C shields)
 * examples:
-    - educational blink example ([PyBlinkProps](./PygameProps/PygameBlinkProps))
-    - piano prop with a mechanic piano ([PyPianoProps](./PygameProps/PygamePianoProps))
-    - podium with linear jack ([PyPodiumProps](./PygameProps/PyPodiumgameProps))
+    - educational blink example ([PygameBlinkProp](./PygameProps/PygameBlinkProp))
+    - piano prop with a mechanic piano ([PygamePianoProp](./PygameProps/PygamePianoProp))
+    - podium with linear jack ([PyPodiumgameProp](./PygameProps/PyPodiumgameProp))
     - hacker intrusion puzzle (contact me)
     - Tetris hacked (contact me)
 
@@ -98,9 +98,9 @@ Console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">
 * reuse the props code for its associated control applet
 * use the associated control applet as a <a href="https://github.com/xcape-io/PySkeletonPlugin" target="_blank">Room plugin</a>
 * examples:
-    - educational blink example ([QtEducationalProps](./QtProps/QtEducationalProps))
-    - fortune teller table ([FortuneTellerTableProps](./QtProps/FortuneTellerTableProps))
-    - game countdown in the escape room on Raspberry TV screen ([QtCountdownProps](./QtProps/QtCountdownProps))
+    - educational blink example ([QtEducationalProp](./QtProps/QtEducationalProp))
+    - fortune teller table ([FortuneTellerTableProp](./QtProps/FortuneTellerTableProp))
+    - game countdown in the escape room on Raspberry TV screen ([QtCountdownProp](./QtProps/QtCountdownProp))
 
 <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> has its own event loop to multitask seamlessly.
 
@@ -114,7 +114,7 @@ Console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 * example:
-    - display text on the prop TV monitor ([PyTeletextProps](./GuizeroProps/PyTeletextProps))
+    - display text on the prop TV monitor ([PyTeletextProp](./GuizeroProps/PyTeletextProp))
     
 See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings Started</a> and the Guizero widgets from the same web page.
 
@@ -132,7 +132,7 @@ See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings
 * multi-touch app
 * sensors and actuators (GPIO and I2C shieds)
 * example: 
-    - display text on the prop TV monitor ([PyWaterWellProps](./KivyProps/PyWaterWellProps))
+    - display text on the prop TV monitor ([PyWaterWellProp](./KivyProps/PyWaterWellProp))
     
 To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a goods start is <a href="https://kivy.org/doc/stable/gettingstarted/intro.html" target="_blank">Kivy Guides</a>.
 
