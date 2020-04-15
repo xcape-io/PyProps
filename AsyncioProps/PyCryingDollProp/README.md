@@ -86,7 +86,7 @@ An SRD relay module is connected to GPIO 16 to control the light.
 ## Crying Doll as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *PyCryingDollProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
-### Props commands
+### Prop commands
 * `activate:0` : deactivate sensor
 * `activate:1` : activate sensor
 * `light:off` : switch off the light
@@ -97,17 +97,17 @@ Use `activate` to enable the cries at the right time (when starting a new game o
 
 Use `cry` if automatic detection doesn't work (sensor failure or calibration issue during a game) or to test sound level.
 
-### Props configuration
+### Prop configuration
 Add and configure *Raspberry CryingDoll* connected prop.
 
-![Props configuration](props/props-configuration.png)
+![Prop configuration](props/props-configuration.png)
 
 
-### Props data messages
+### Prop data messages
 
 ![Outbox messages](props/outbox-messages.png)
 
-### Props control panel
+### Prop control panel
 Configure *Raspberry CryingDoll* control panel using the SVG images ![Crying doll](props/doll.png) provided in [images folder](images).
 
 ![Room control panel](props/room-control-panel.png)

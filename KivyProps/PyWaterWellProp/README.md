@@ -113,25 +113,25 @@ $ echo host: %BROKER%> /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProp/.co
 ## PyWaterWellProp as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *PyTeletextProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
-### Props commands
+### Prop commands
 * `blink:0` : deactivate blinking
 * `blink:1` : activate blinking
 * `display:a message to display on the TV` : display the message
 * `erase` : clear TV screen
 
 
-### Props configuration
+### Prop configuration
 Add and configure *Raspberry WaterWell* connected prop.
 
-![Props configuration](props/props-configuration.png)
+![Prop configuration](props/props-configuration.png)
 
 
-### Props data messages
+### Prop data messages
 
 ![Outbox messages](props/outbox-messages.png)
 
 
-### Props control panel
+### Prop control panel
 
 ![Room control panel](props/room-control-panel.png)
 

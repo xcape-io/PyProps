@@ -69,14 +69,14 @@ To switch MQTT broker, kill the program and start again with new arguments.
 ## PyTeletextProp as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *PyTeletextProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
-### Props commands
+### Prop commands
 * `blink:0` : deactivate blinking
 * `blink:1` : activate blinking
 * `display:a message to display on the TV` : display the message
 * `erase` : clear TV screen
 
 
-### Props configuration
+### Prop configuration
 Add and configure *Raspberry Teletext* connected prop.
 
 The SSH relaunch command for GUI prop relies on `signal.SIGUSR1`:
@@ -84,15 +84,15 @@ The SSH relaunch command for GUI prop relies on `signal.SIGUSR1`:
 echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProp/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProp/main.py | awk '{print $2}' | xargs kill -10
 ```
 
-![Props configuration](props/props-configuration.png)
+![Prop configuration](props/props-configuration.png)
 
 
-### Props data messages
+### Prop data messages
 
 ![Outbox messages](props/outbox-messages.png)
 
 
-### Props control panel
+### Prop control panel
 
 ![Room control panel](props/room-control-panel.png)
 

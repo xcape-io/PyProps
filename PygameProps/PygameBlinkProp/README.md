@@ -60,22 +60,22 @@ $ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProp/main.py | 
 ## Pygame Blink Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *PygameBlinkProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
-### Props commands
+### Prop commands
 * `blink:0` : deactivate blinking
 * `blink:1` : activate blinking
 * `sound:0` : mute blinking sound
 * `sound:1` : unmute blinking sound
 
-### Props configuration
+### Prop configuration
 Add and configure *Raspberry PygameBlink* connected props.
 
-![Props configuration](props/props-configuration.png)
+![Prop configuration](props/props-configuration.png)
 
-### Props data messages
+### Prop data messages
 
 ![Outbox messages](props/outbox-messages.png)
 
-### Props control panel
+### Prop control panel
 
 ![Room control panel](props/room-control-panel.png)
 

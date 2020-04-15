@@ -91,20 +91,20 @@ $ ps aux | grep python | grep -v "grep python" | grep QtCountdownProp/main.py | 
 ## Qt Countdown Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *QtCountdownProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
 
-### Props commands
+### Prop commands
 * `sound:0` : mute blinking sound
 * `sound:1` : unmute blinking sound
 
-### Props configuration
+### Prop configuration
 Add and configure *Raspberry PygameBlink* connected prop.
 
-![Props configuration](props/props-configuration.png)
+![Prop configuration](props/props-configuration.png)
 
-### Props data messages
+### Prop data messages
 
 ![Outbox messages](props/outbox-messages.png)
 
-### Props control panel
+### Prop control panel
 
 ![Room control panel](props/room-control-panel.png)
 

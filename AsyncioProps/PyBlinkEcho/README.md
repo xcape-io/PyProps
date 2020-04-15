@@ -62,29 +62,29 @@ $ ps aux | grep python | grep -v "grep python" | grep PyBlinkEcho/main.py | awk 
 ## Blink Echo as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *PyBlinkEcho* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
-### Props commands
+### Prop commands
 * `blink:0` : deactivate blinking
 * `blink:1` : activate blinking
 * `echo:a message to be echoed` : echo the message
 
 
-### Props configuration
+### Prop configuration
 Add and configure *Raspberry BlinkEcho* connected prop.
 
-![Props configuration](props/props-configuration.png)
+![Prop configuration](props/props-configuration.png)
 
 
-### Props data messages
+### Prop data messages
 
 ![Outbox messages](props/outbox-messages.png)
 
-### Props control panel
+### Prop control panel
 
 ![Room control panel](props/room-control-panel.png)
 
 
 ### Plugin for Blink Echo prop
-Props control panel cannot display text on multiple lines or send text by the game master, therefore a plugin is necessary: [PyEchoPlugin](https://github.com/xcape-io/PyEchoPlugin)
+Prop control panel cannot display text on multiple lines or send text by the game master, therefore a plugin is necessary: [PyEchoPlugin](https://github.com/xcape-io/PyEchoPlugin)
 
 ![PyEchoPlugin](props/plugin.png)
 
