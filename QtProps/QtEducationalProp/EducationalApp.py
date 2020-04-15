@@ -11,9 +11,9 @@ Sainsmart Relay 16: inpu are active LOW (apply 0 to switch ON)
 
 import os
 
-from PropsData import PropsData
+from PropData import PropData
 from PyQt5.QtMultimedia import QSound
-from QtPropsApp import QtPropsApp
+from QtPropApp import QtPropApp
 from constants import *
 
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
@@ -21,7 +21,7 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
     ####import MFRC522 # modified for GPIO mode
 
 
-class EducationalApp(QtPropsApp):
+class EducationalApp(QtPropApp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
@@ -32,11 +32,11 @@ class EducationalApp(QtPropsApp):
 
         self._sound = QSound("audio/ringtone.wav")
 
-        self._led_p = PropsData('led', bool, 0, logger=self._logger)
+        self._led_p = PropData('led', bool, 0, logger=self._logger)
         self.addData(self._led_p)
-        self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self._blinking_p = PropData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
         self.addData(self._blinking_p)
-        self._sounding_p = PropsData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self._sounding_p = PropData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
         self.addData(self._sounding_p)
 
         self._led_p.update(False)
@@ -45,7 +45,7 @@ class EducationalApp(QtPropsApp):
 
         self.addPeriodicAction("blink", self.blink, 1.0)
 
-        self._nfc_module_p = PropsData('nfc', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self._nfc_module_p = PropData('nfc', bool, 0, alias=("yes", "no"), logger=self._logger)
         self.addData(self._nfc_module_p)
 
         if NFC_MODULE is None:

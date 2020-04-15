@@ -26,17 +26,17 @@ vec4 effect(vec4 color, sampler2D texture, vec2 tex_coords, vec2 coords)
 ```
 
 ## Installation
-Install Kivy with the  ([install-kivy.sh](https://github.com/xcape-io/PyProps/blob/master/KivyProps/PyWaterWellProp/install-kivy.sh)) shell script.
+Install Kivy with the  ([install-kivy.sh](https://github.com/xcape-io/PyProps/blob/master/KivyProp/PyWaterWellProp/install-kivy.sh)) shell script.
 
 ```bash
-pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProp $ chmod a+x install-kivy.sh 
-pi@raspberrypi:~/Room/Props/PyProps/KivyProps/PyWaterWellProp $ ./install-kivy.sh 
+pi@raspberrypi:~/Room/Props/PyProps/KivyProp/PyWaterWellProp $ chmod a+x install-kivy.sh 
+pi@raspberrypi:~/Room/Props/PyProps/KivyProp/PyWaterWellProp $ ./install-kivy.sh 
 ```
 
 
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PyWaterWellProp* requirements:
-* `PyProps/core/KivyProps.py`
+* `PyProps/core/KivyProp.py`
 * `PyProps/core/Singleton.py`
 
 And you will have to install following Python packages:
@@ -46,10 +46,10 @@ $ pip3 install PyYAML
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProp`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/KivyProp/PyWaterWellProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/KivyProps/PyWaterWellProp/main.py -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/KivyProp/PyWaterWellProp/main.py -d
 
 [INFO   ] [Logger      ] Record log in /home/pi/.kivy/logs/kivy_20-04-09_108.txt
 [INFO   ] [Kivy        ] v2.0.0rc1, git-26228b2, 20200408
@@ -106,7 +106,7 @@ INFO - Message published (mid=3)
 The command to relaunch the prop is :
 
 ```bash
-$ echo host: %BROKER%> /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProp/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyWaterWellProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProp/main.py
+$ echo host: %BROKER%> /home/pi/Room/Props/PyProps/KivyProp/PyWaterWellProp/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyWaterWellProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/KivyProp/PyWaterWellProp/main.py
 ```
 
 

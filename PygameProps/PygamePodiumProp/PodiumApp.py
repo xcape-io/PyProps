@@ -3,14 +3,14 @@
 '''
 PodiumApp.py (version 0.2 fix MQTT connection issue)
 
-PodiumApp extends PropsApp.
+PodiumApp extends PropApp.
 
 '''
 
 from constants import *
 
-from PropsApp import PropsApp
-from PropsData import PropsData
+from PropApp import PropApp
+from PropData import PropData
 
 import os, re, threading, time, yaml
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
@@ -18,7 +18,7 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 
 import pygame
 		
-class PodiumApp(PropsApp):
+class PodiumApp(PropApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):
@@ -104,24 +104,24 @@ class PodiumApp(PropsApp):
 		else:
 			self._jack_course_stick_backward = JACK_COURSE_STICK_BACKWARD
 			
-		self._activated_p  = PropsData('activé' ,  str,  "",  logger = self._logger)
+		self._activated_p  = PropData('activé' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._activated_p )
-		self._gagne_p  = PropsData('gagné' ,  str,  "",  logger = self._logger)
+		self._gagne_p  = PropData('gagné' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._gagne_p )
-		self._sequence_p  = PropsData('séquence' ,  str,  "",  logger = self._logger)
+		self._sequence_p  = PropData('séquence' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._sequence_p )
-		self._previous_p  = PropsData('précédente' ,  str,  "",  logger = self._logger)
+		self._previous_p  = PropData('précédente' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._previous_p )
-		self._solution_p  = PropsData('solution' ,  str,  "",  logger = self._logger)
+		self._solution_p  = PropData('solution' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._solution_p )
-		self._jackReset_p  = PropsData('magic' ,  str,  self.displayKeys(JACK_RESET.split(" ")),  logger = self._logger)
+		self._jackReset_p  = PropData('magic' ,  str,  self.displayKeys(JACK_RESET.split(" ")),  logger = self._logger)
 		self._publishable.append(self._jackReset_p )
-		self._jack_p  = PropsData('vérin' ,  str,  "",  logger = self._logger)
+		self._jack_p  = PropData('vérin' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_p )
-		self._light_p  = PropsData('lumière' ,  bool,  "",  logger = self._logger)
+		self._light_p  = PropData('lumière' ,  bool,  "",  logger = self._logger)
 		self._publishable.append(self._light_p )
 
-		self._billes_p  = PropsData('billes' ,  bool,  "",  logger = self._logger)
+		self._billes_p  = PropData('billes' ,  bool,  "",  logger = self._logger)
 		self._publishable.append(self._billes_p )
 		
 		self._activated_p.update("non")
@@ -130,14 +130,14 @@ class PodiumApp(PropsApp):
 		self._jack_p.update("pause")
 		self._light_p.update(GPIO.input(RELAY_LIGHT))
 		
-		self._jack_course_door_forward_p  = PropsData('porte_avant' ,  str,  "",  logger = self._logger)
+		self._jack_course_door_forward_p  = PropData('porte_avant' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_door_forward_p )
-		self._jack_course_door_backward_p  = PropsData('porte_arrière' ,  str,  "",  logger = self._logger)
+		self._jack_course_door_backward_p  = PropData('porte_arrière' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_door_backward_p )
 			
-		self._jack_course_stick_forward_p  = PropsData('bâton_avant' ,  str,  "",  logger = self._logger)
+		self._jack_course_stick_forward_p  = PropData('bâton_avant' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_stick_forward_p )
-		self._jack_course_stick_backward_p  = PropsData('bâton_arrière' ,  str,  "",  logger = self._logger)
+		self._jack_course_stick_backward_p  = PropData('bâton_arrière' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_course_stick_backward_p )
 		
 		self._jack_course_door_forward_p.update(str(self._jack_course_door_forward))

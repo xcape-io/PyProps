@@ -3,14 +3,14 @@
 '''
 PianoApp.py (version 0.1 initial)
 
-PianoApp extends PropsApp.
+PianoApp extends PropApp.
 
 '''
 
 from constants import *
 
-from PropsApp import PropsApp
-from PropsData import PropsData
+from PropApp import PropApp
+from PropData import PropData
 
 import os, re, threading, time
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
@@ -18,7 +18,7 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 
 import pygame
 		
-class PianoApp(PropsApp):
+class PianoApp(PropApp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):
@@ -26,19 +26,19 @@ class PianoApp(PropsApp):
 		super().__init__(argv, client, debugging_mqtt)
 
 		
-		self._config_p  = PropsData('configuration' ,  str,  "",  logger = self._logger)
+		self._config_p  = PropData('configuration' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._config_p )
-		self._gagne_p  = PropsData('gagné' ,  str,  "",  logger = self._logger)
+		self._gagne_p  = PropData('gagné' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._gagne_p )
-		self._sequence_p  = PropsData('séquence' ,  str,  "",  logger = self._logger)
+		self._sequence_p  = PropData('séquence' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._sequence_p )
-		self._solution_p  = PropsData('solution' ,  str,  "",  logger = self._logger)
+		self._solution_p  = PropData('solution' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._solution_p )
-		self._jackReset_p  = PropsData('magic' ,  str,  self.frenchKeys(JACK_RESET.split(" ")),  logger = self._logger)
+		self._jackReset_p  = PropData('magic' ,  str,  self.frenchKeys(JACK_RESET.split(" ")),  logger = self._logger)
 		self._publishable.append(self._jackReset_p )
-		self._jack_p  = PropsData('vérin' ,  str,  "",  logger = self._logger)
+		self._jack_p  = PropData('vérin' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._jack_p )
-		self._latch_p  = PropsData('piano' ,  str,  "",  logger = self._logger)
+		self._latch_p  = PropData('piano' ,  str,  "",  logger = self._logger)
 		self._publishable.append(self._latch_p )
 
 		self._keynote_list = []

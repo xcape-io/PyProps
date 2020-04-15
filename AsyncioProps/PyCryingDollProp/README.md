@@ -11,9 +11,9 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PyCryingDollProp* requirements:
-* `PyProps/core/AsyncioProps.py`
-* `PyProps/core/PropsData.py`
-* `PyProps/core/PropsApp.py`
+* `PyProps/core/AsyncioProp.py`
+* `PyProps/core/PropData.py`
+* `PyProps/core/PropApp.py`
 * `PyProps/core/MqttApp.py`
 * `PyProps/core/Singleton.py`
 
@@ -24,10 +24,10 @@ $ pip3 install PyYAML
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/AsyncioProp/PyCryingDollProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/AsyncioProp/PyCryingDollProp/main.py -s 192.168.1.42 -d
 
 Config: {'host': '192.168.1.42'}
 INFO - New periodic action added 'send all data' every 30.0 seconds
@@ -65,7 +65,7 @@ INFO - Program sending message 'PONG' (mid=5) on Room/My room/Props/Raspberry Cr
 The command to relaunch the prop is :
 
 ```bash
-$ ps aux | grep python | grep -v "grep python" | grep PyCryingDollProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProp/main.py -s %BROKER%
+$ ps aux | grep python | grep -v "grep python" | grep PyCryingDollProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/AsyncioProp/PyCryingDollProp/main.py -s %BROKER%
 ```
 
 

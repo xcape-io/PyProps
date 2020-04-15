@@ -13,7 +13,7 @@ PYPROPS_CORELIBPATH = '../../core'
 USE_GPIO = True
 
 #__________________________________________________________________
-# Required by PropsApp
+# Required by PropApp
 CONFIG_FILE = '.config.yml'
 
 MQTT_DEFAULT_HOST = 'localhost'

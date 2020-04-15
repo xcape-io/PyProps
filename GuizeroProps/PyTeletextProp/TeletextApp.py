@@ -4,13 +4,13 @@
 TeletextApp.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-TeletextApp extends GuizeroProps.
+TeletextApp extends GuizeroProp.
 """
 
 from constants import *
 
-from PropsData import PropsData
-from GuizeroProps import GuizeroProps
+from PropData import PropData
+from GuizeroProp import GuizeroProp
 from Sound import Sound
 from guizero import Text
 
@@ -18,15 +18,15 @@ import os, platform, sys, logging
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 	import RPi.GPIO as GPIO
 
-class TeletextApp(GuizeroProps):
+class TeletextApp(GuizeroProp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
         super().__init__(argv, client, debugging_mqtt)
 
-        self._light_p = PropsData('light', bool, 0, logger=self._logger)
+        self._light_p = PropData('light', bool, 0, logger=self._logger)
         self.addData(self._light_p)
-        self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self._blinking_p = PropData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
         self.addData(self._blinking_p)
 
         GPIO.setup(GPIO_RELAY_LIGHT, GPIO.OUT, initial=GPIO.LOW)

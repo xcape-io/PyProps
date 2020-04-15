@@ -3,7 +3,7 @@
 
 An educational example which makes a LED blinking and making a sound.
 
-This props uses Pygame and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/ThreadingProps.py" target="_blank">ThreadingProps</a> (so it uses multi-threading).
+This props uses Pygame and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/ThreadingProp.py" target="_blank">ThreadingProp</a> (so it uses multi-threading).
 
 
 ## Installation
@@ -11,10 +11,10 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PygameBlinkProp* requirements:
-* `PyProps/core/ThreadingProps.py`
-* `PyProps/core/PropsApp.py`
+* `PyProps/core/ThreadingProp.py`
+* `PyProps/core/PropApp.py`
 * `PyProps/core/MqttApp.py`
-* `PyProps/core/PropsData.py`
+* `PyProps/core/PropData.py`
 * `PyProps/core/Singleton.py`
 
 And you will have to install following Python packages:

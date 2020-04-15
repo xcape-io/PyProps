@@ -3,7 +3,7 @@
 """
 main.py
 
-Main script for GuizeroProps.
+Main script for GuizeroProp.
 
 usage: python3 main.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
 

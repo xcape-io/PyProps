@@ -4,18 +4,18 @@
 BlinkEchoApp.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-BlinkEchoApp extends AsyncioProps.
+BlinkEchoApp extends AsyncioProp.
 """
 
 from constants import *
-from AsyncioProps import AsyncioProps
-from PropsData import PropsData
+from AsyncioProp import AsyncioProp
+from PropData import PropData
 
 import asyncio, os
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 	import RPi.GPIO as GPIO
 
-class BlinkEchoApp(AsyncioProps):
+class BlinkEchoApp(AsyncioProp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
@@ -24,15 +24,15 @@ class BlinkEchoApp(AsyncioProps):
 
         GPIO.setup(GPIO_BLINKING_LED, GPIO.OUT, initial=GPIO.LOW)
 
-        self._led_p = PropsData('led', bool, 0, logger=self._logger)
+        self._led_p = PropData('led', bool, 0, logger=self._logger)
         self.addData(self._led_p)
-        self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self._blinking_p = PropData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
         self.addData(self._blinking_p)
 
         self._led_p.update(False)
         self._blinking_p.update(False)
 
-        self._last_echo_p = PropsData('last_echo', str, BLANK_ECHO, logger=self._logger)
+        self._last_echo_p = PropData('last_echo', str, BLANK_ECHO, logger=self._logger)
         self.addData(self._last_echo_p)
 
         self.addPeriodicAction("blink", self.blink, 1.0)

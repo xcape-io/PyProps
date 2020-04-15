@@ -4,30 +4,30 @@
 CryingDollApp.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-CryingDollApp extends AsyncioProps.
+CryingDollApp extends AsyncioProp.
 """
 
 from constants import *
 
-from AsyncioProps import AsyncioProps
-from PropsData import PropsData
+from AsyncioProp import AsyncioProp
+from PropData import PropData
 from Sound import Sound
 
 import random, os
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 	import RPi.GPIO as GPIO
 
-class CryingDollApp(AsyncioProps):
+class CryingDollApp(AsyncioProp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):
 		super().__init__(argv, client, debugging_mqtt)
 		
-		self._light_p = PropsData('light' , bool, 0, logger = self._logger)
+		self._light_p = PropData('light' , bool, 0, logger = self._logger)
 		self.addData(self._light_p )
-		self._crying_p = PropsData('crying' , bool, 0, logger = self._logger)
+		self._crying_p = PropData('crying' , bool, 0, logger = self._logger)
 		self.addData(self._crying_p )
-		self._active_p = PropsData('activated' , bool, 0, alias=("yes","no"), logger = self._logger)
+		self._active_p = PropData('activated' , bool, 0, alias=("yes","no"), logger = self._logger)
 		self.addData(self._active_p )
 
 		GPIO.setup(GPIO_RELAY_LIGHT, GPIO.OUT,  initial=GPIO.LOW)

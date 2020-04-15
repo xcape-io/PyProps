@@ -14,8 +14,8 @@ import os, sys
 from PyQt5.QtMultimedia import QSound
 from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
 
-from PropsData import PropsData
-from QtPropsApp import QtPropsApp
+from PropData import PropData
+from QtPropApp import QtPropApp
 from CountdownWidget import CountdownWidget
 
 from constants import *
@@ -24,14 +24,14 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
     import RPi.GPIO as GPIO
 
 
-class CountdownApp(QtPropsApp):
+class CountdownApp(QtPropApp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
 
         super().__init__(argv, client, debugging_mqtt)
 
-        self._sounding_p = PropsData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
+        self._sounding_p = PropData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
         self.addData(self._sounding_p)
 
         self._sounding_p.update(True)

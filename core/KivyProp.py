@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-KivyApp.py
+KivyProp.py
 
 Base class for Kivy application with MQTT inbox/outbox.
 '''
@@ -16,12 +16,12 @@ import logging, logging.config
 import argparse
 import os
 		
-class KivyProps(App):
+class KivyProp(App):
 
 	#__________________________________________________________________
 	def __init__(self, client, debugging_mqtt=False, **kwargs):
 
-		super(KivyProps, self).__init__(**kwargs)
+		super(KivyProp, self).__init__(**kwargs)
 		
 		self._config = {}
 		self._definitions = {}

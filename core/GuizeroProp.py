@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-GuizeroProps.py
+GuizeroProp.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-Add guizero and Tkinter to PropsApp.
+Add guizero and Tkinter to PropApp.
 """
 
 from constants import *
 
 import os, platform, sys, signal, yaml
 
-from PropsApp import PropsApp
+from PropApp import PropApp
 from guizero import App
 
 
-class GuizeroProps(PropsApp):
+class GuizeroProp(PropApp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):

@@ -3,13 +3,13 @@
 '''
 BlinkApp.py
 
-Pygame BlinkApp extends ThreadingProps.
+Pygame BlinkApp extends ThreadingProp.
 '''
 
 from constants import *
 
-from ThreadingProps import ThreadingProps
-from PropsData import PropsData
+from ThreadingProp import ThreadingProp
+from PropData import PropData
 
 import os, threading, time
 if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
@@ -18,7 +18,7 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 import pygame
 
 		
-class BlinkApp(ThreadingProps):
+class BlinkApp(ThreadingProp):
 
 	#__________________________________________________________________
 	def __init__(self, argv, client, debugging_mqtt=False):
@@ -31,11 +31,11 @@ class BlinkApp(ThreadingProps):
 		self._dingSound = pygame.mixer.Sound("audio/ringtone.wav")
 		self._dingSound.set_volume(0.5)
 
-		self._led_p = PropsData('led', bool, 0, logger=self._logger)
+		self._led_p = PropData('led', bool, 0, logger=self._logger)
 		self.addData(self._led_p)
-		self._blinking_p = PropsData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
+		self._blinking_p = PropData('blinking', bool, 0, alias=("yes", "no"), logger=self._logger)
 		self.addData(self._blinking_p)
-		self._sounding_p = PropsData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
+		self._sounding_p = PropData('sounding', bool, 0, alias=("yes", "no"), logger=self._logger)
 		self.addData(self._sounding_p)
 
 		self._led_p.update(False)

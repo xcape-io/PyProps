@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-PropsData.py
+PropData.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
 Class to track changes in variables and to publish them optimally in the props outbox.
 """
 
 
-class PropsData:
+class PropData:
 
     # __________________________________________________________________
     def __init__(self, name, type, initial, decimal=None, precision=1, alias=("1", "0"), logger=None):

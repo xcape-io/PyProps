@@ -3,11 +3,11 @@
 '''
 TeletextApp.py
 
-Extending KivyProps, TeletextApp loads teletext.kv.
+Extending KivyProp, TeletextApp loads teletext.kv.
 '''
 
 from constants import *
-from KivyProps import KivyProps
+from KivyProp import KivyProp
 
 from kivy.uix.effectwidget import EffectWidget, AdvancedEffectBase
 from kivy.core.window import Window
@@ -58,7 +58,7 @@ class MyWidget(EffectWidget):
 	def display(self, text):
 		self.display_text = text
 
-class TeletextApp(KivyProps):
+class TeletextApp(KivyProp):
 
 	displayOnScreen = StringProperty('---')
 

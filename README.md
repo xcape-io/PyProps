@@ -19,16 +19,16 @@ Read [INSTALLATION.md](INSTALLATION.md) for PyProps installation and usage.
 
 ## Props unified coding
 PyProps supports different Python frameworks to write any kind of props providing a base class for your props:
-* [AsyncioProps](./AsyncioProps)
+* [AsyncioProp](./AsyncioProp)
 * [PygameProps](./PygameProps)
 * [QtProps](./QtProps)
 * [QtGuiProps](./QtGuiProps)
-* [GuizeroProps](./GuizeroProps)
-* [KivyProps](./KivyProps)
+* [GuizeroProp](./GuizeroProp)
+* [KivyProp](./KivyProp)
 
-Each props base class extends the base class *MqttApp* which handles messaging and  the base class *PropsApp* which handles the periodic actions and the simple [Room Outbox protocol](PROTOCOL.md) protocol.
+Each props base class extends the base class *MqttApp* which handles messaging and  the base class *PropApp* which handles the periodic actions and the simple [Room Outbox protocol](PROTOCOL.md) protocol.
 
-*PropsData* is a base class that manages the prop data variables sent to the outbox.
+*PropData* is a base class that manages the prop data variables sent to the outbox.
 
 *Singleton* class will guarantee that only one instance of the prop program runs on the Raspberry board.
 
@@ -50,17 +50,17 @@ Each prop must have its own `constants.py` and `definitions.ini` [configuration 
 ## Props flavors
 The *PyProps library* takes advantage for many Python frameworks available on the Raspberry Pi running Raspbian to meet the requirements of any prop created for escape rooms.
 
-### Asyncio framework: [AsyncioProps](./AsyncioProps)
-With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a graphical interface:
+### Asyncio framework: [AsyncioProp](./AsyncioProp)
+With [AsyncioProp](./AsyncioProp) flavor, you code props that do not need a graphical interface:
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 * examples:
-    - educational example which echoes messages and make a LED blinking ([PyBlinkEcho](./AsyncioProps/PyBlinkEcho))
-    - detect vibrations to trigger a crying doll  ([PyCryingDollProp](./AsyncioProps/PyCryingDollProp))
+    - educational example which echoes messages and make a LED blinking ([PyBlinkEcho](./AsyncioProp/PyBlinkEcho))
+    - detect vibrations to trigger a crying doll  ([PyCryingDollProp](./AsyncioProp/PyCryingDollProp))
 
 The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework allows writing non-blocking Python programs that multitask seamlessly.
 
-[AsyncioProps](./AsyncioProps) prop hides the complexity of the <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework and adds MQTT asynchronous messaging to facilitate your coding.
+[AsyncioProp](./AsyncioProp) prop hides the complexity of the <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework and adds MQTT asynchronous messaging to facilitate your coding.
 
 ### Pygame framework: [PygameProps](./PygameProps)
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
@@ -106,24 +106,24 @@ Console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">
 
 [QtProps](./QtProps) extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
 
-### Guizero (Tkinter GUI) framework: [GuizeroProps](./GuizeroProps)
+### Guizero (Tkinter GUI) framework: [GuizeroProp](./GuizeroProp)
 <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your prop it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
 
-[GuizeroProps](./GuizeroProps) is suitable for:
+[GuizeroProp](./GuizeroProp) is suitable for:
 * simple graphical interface for a Raspberry with a TV display 
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 * example:
-    - display text on the prop TV monitor ([PyTeletextProp](./GuizeroProps/PyTeletextProp))
+    - display text on the prop TV monitor ([PyTeletextProp](./GuizeroProp/PyTeletextProp))
     
 See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings Started</a> and the Guizero widgets from the same web page.
 
-[GuizeroProps](./GuizeroProps) extends *<a href="https://lawsie.github.io/guizero/app/" target="_blank">Guizero App</a>* object to add MQTT asynchronous messaging to the <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> framework to facilitate your coding.
+[GuizeroProp](./GuizeroProp) extends *<a href="https://lawsie.github.io/guizero/app/" target="_blank">Guizero App</a>* object to add MQTT asynchronous messaging to the <a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> framework to facilitate your coding.
 
-### Kivy framework: [KivyProps](./KivyProps)
+### Kivy framework: [KivyProp](./KivyProp)
 <a href="https://kivy.org" target="_blank">Kivy</a> is a very powerful framework but is not that simple therefore more particularly recommended for advanced Python developers.
 
-[KivyProps](./KivyProps) is suitable for:
+[KivyProp](./KivyProp) is suitable for:
 * powerful graphical interface for a Raspberry with a TV display 
 * video effects
 * video games
@@ -132,11 +132,11 @@ See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings
 * multi-touch app
 * sensors and actuators (GPIO and I2C shieds)
 * example: 
-    - display text on the prop TV monitor ([PyWaterWellProp](./KivyProps/PyWaterWellProp))
+    - display text on the prop TV monitor ([PyWaterWellProp](./KivyProp/PyWaterWellProp))
     
 To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a goods start is <a href="https://kivy.org/doc/stable/gettingstarted/intro.html" target="_blank">Kivy Guides</a>.
 
-[KivyProps](./KivyProps) extends *<a href="https://kivy.org/doc/stable/api-kivy.app.html" target="_blank">KivyApp</a>*  object to add MQTT asynchronous messaging to the <a href="https://kivy.org" target="_blank">Kivy</a> framework to facilitate your coding.
+[KivyProp](./KivyProp) extends *<a href="https://kivy.org/doc/stable/api-kivy.app.html" target="_blank">KivyApp</a>*  object to add MQTT asynchronous messaging to the <a href="https://kivy.org" target="_blank">Kivy</a> framework to facilitate your coding.
 
 
 ## Compatible hardware

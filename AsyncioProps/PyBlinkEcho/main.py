@@ -4,7 +4,7 @@
 main.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
-Main script for AsyncioProps.
+Main script for AsyncioProp.
 
 usage: python3 main.py [-h] [-s SERVER] [-p PORT] [-d] [-l LOGGER]
 

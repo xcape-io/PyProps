@@ -13,9 +13,9 @@ See [INSTALLATION.md](.../INSTALLATION.md) and as a good habit is the PyProps fo
 
 ### Dependencies
 If you don't install the whole PyProps library, you will have to fulfill the  *PyTeletextProp* requirements:
-* `PyProps/core/GuizeroProps.py`
-* `PyProps/core/PropsData.py`
-* `PyProps/core/PropsApp.py`
+* `PyProps/core/GuizeroProp.py`
+* `PyProps/core/PropData.py`
+* `PyProps/core/PropApp.py`
 * `PyProps/core/MqttApp.py`
 * `PyProps/core/Singleton.py`
 
@@ -27,10 +27,10 @@ $ pip3 install guizero
 ```
 
 ## Usage
-Start `main.py` script in `/home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProp`:
+Start `main.py` script in `/home/pi/Room/Props/PyProps/GuizeroProp/PyTeletextProp`:
 
 ```bash
-pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/GuizeroProps/PyTeletextProp/main.py -s 192.168.1.42 -d
+pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/GuizeroProp/PyTeletextProp/main.py -s 192.168.1.42 -d
 
 Config: {'host': '192.168.1.42'}
 INFO - Program connected to MQTT server
@@ -81,7 +81,7 @@ Add and configure *Raspberry Teletext* connected prop.
 
 The SSH relaunch command for GUI prop relies on `signal.SIGUSR1`:
 ```bash
-echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProp/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProp/main.py | awk '{print $2}' | xargs kill -10
+echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProp/PyTeletextProp/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProp/main.py | awk '{print $2}' | xargs kill -10
 ```
 
 ![Prop configuration](props/props-configuration.png)

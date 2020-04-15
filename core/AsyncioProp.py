@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-AsyncioProps.py
+AsyncioProp.py
 MIT License (c) Marie Faure <dev at faure dot systems>
 
 Add asyncio periodic tasks handling to Props base class.
 """
 
 from constants import *
-from PropsApp import PropsApp
+from PropApp import PropApp
 import asyncio
 
 
-class AsyncioProps(PropsApp):
+class AsyncioProp(PropApp):
 
     # __________________________________________________________________
     def __init__(self, argv, client, debugging_mqtt=False):
