@@ -42,7 +42,7 @@ After the first start, it is time to complete the configuration to adapt it to t
     ```bash
     $ sudo apt-get install screen
     ```
-**screen** is a full-screen window manager required to start props program remotely from SSH.
+**screen** is a full-screen window manager required to start prop program remotely from SSH.
 
 3. MQTT, PyQt5 and Eric IDE
 

@@ -1,7 +1,7 @@
-﻿# FortuneTellerTableProps (Alphabet) props
-*A props from <a href="https://www.live-escape.net/" target="_blank">Live Escape Grenoble</a> using **PyQt5**.*
+﻿# FortuneTellerTableProps (Alphabet) prop
+*A prop from <a href="https://www.live-escape.net/" target="_blank">Live Escape Grenoble</a> using **PyQt5**.*
 
-A real word props, we have created a fortune teller table with a cowhide top and 36 flashable alphanum characters with powerful LEDs, this props (named *alphabet* in French at the time) is powered by a Raspberry Pi; the game master send a clue which is spelled  character LEDs. Some flashing effects are available to scare players.
+A real word prop, we have created a fortune teller table with a cowhide top and 36 flashable alphanum characters with powerful LEDs, this prop (named *alphabet* in French at the time) is powered by a Raspberry Pi; the game master send a clue which is spelled  character LEDs. Some flashing effects are available to scare players.
 
 Players must place a Tarot card in the correct place on the table to win the challenge that opens the door to the lounge.
 
@@ -37,7 +37,7 @@ We have hacked `MFRC522.py` from <a href="https://github.com/mxgxw/MFRC522-pytho
 
 
 ## Installation
-This props was created before PyProps library was released so there is no dependencies with PyProps.
+This prop was created before PyProps library was released so there is no dependencies with PyProps.
 
 You will have to install following Python packages:
 ```bash
@@ -111,15 +111,15 @@ INFO - Message published (mid=3)
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep FortuneTellerTableProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/FortuneTellerTableProps/main.py -s %BROKER%
 ```
 
 
-## Fortune Teller Table Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-This props is used as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software.
+## Fortune Teller Table Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+This prop is used as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software.
 
 ### Props commands
 Commands are in French; look at the code in `AlphabetApp.performAction()` method.

@@ -1,7 +1,7 @@
 ﻿# Guizero Props
 *Examples of pure Python props using **Tkinter** even loop with **Guizero**.*
 
-<a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your props it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
+<a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your prop it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
 
 ***GuizeroProps*** is suitable for: 
 * simple graphical interface for a Raspberry with a TV display 
@@ -18,7 +18,7 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 
 ## Guizero Props applications
 For props with basic graphical interface, for example:
-* display text on the props TV monitor ([PyTeletextProps](PyTeletextProps))
+* display text on the prop TV monitor ([PyTeletextProps](PyTeletextProps))
 
 
 ## Author

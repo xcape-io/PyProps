@@ -1,7 +1,7 @@
-﻿# Water  Well props (*PyWaterWellProps*)
+﻿# Water  Well prop (*PyWaterWellProps*)
 ***Display messages with graphic effects in the Escape Room with a Raspberry Pi.***
 
-This props listens to MQTT messages and then displays the text on an HDMI display and rings a bell.
+This prop listens to MQTT messages and then displays the text on an HDMI display and rings a bell.
 
 Messages are sent by the game master with the [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) or any application able to publish MQTT messages.
 
@@ -103,15 +103,15 @@ INFO - Message published (mid=3)
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ echo host: %BROKER%> /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProps/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyWaterWellProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/KivyProps/PyWaterWellProps/main.py
 ```
 
 
-## PyWaterWellProps as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyTeletextProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## PyWaterWellProps as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyTeletextProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking
@@ -121,7 +121,7 @@ To use *PyTeletextProps* as a props for <a href="https://xcape.io/" target="_bla
 
 
 ### Props configuration
-Add and configure *Raspberry WaterWell* connected props.
+Add and configure *Raspberry WaterWell* connected prop.
 
 ![Props configuration](props/props-configuration.png)
 
@@ -136,7 +136,7 @@ Add and configure *Raspberry WaterWell* connected props.
 ![Room control panel](props/room-control-panel.png)
 
 
-### Plugin for Water Well props
+### Plugin for Water Well prop
 The [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
 
 ![PyTeletextPlugin](props/plugin.png)

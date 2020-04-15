@@ -1,12 +1,12 @@
 ﻿# WORK IN PROGRESS ...
 
-# Qt Countdown props
+# Qt Countdown prop
 *Countdown example of pure Python props using **PyQt5**.*
 
-A props that displays the game countdown in the escape room on the Raspberry HDMI screen. This props uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtPropsApp.py" target="_blank">QtPropsApp</a>.
+A prop that displays the game countdown in the escape room on the Raspberry HDMI screen. This prop uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtPropsApp.py" target="_blank">QtPropsApp</a>.
 
 ## Installation
-This props was created before PyProps library was released so there is no dependencies with PyProps.
+This prop was created before PyProps library was released so there is no dependencies with PyProps.
 
 You will have to install following Python packages:
 ```bash
@@ -82,21 +82,21 @@ pi@raspberrypi:~ $ python3 ~/Room/Props/PyProps/QtProps/QtCountdownProps/main.py
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep QtCountdownProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtCountdownProps/main.py -s %BROKER%
 ```
 
-## Qt Countdown Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *QtCountdownProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## Qt Countdown Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *QtCountdownProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `sound:0` : mute blinking sound
 * `sound:1` : unmute blinking sound
 
 ### Props configuration
-Add and configure *Raspberry PygameBlink* connected props.
+Add and configure *Raspberry PygameBlink* connected prop.
 
 ![Props configuration](props/props-configuration.png)
 

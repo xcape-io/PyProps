@@ -1,4 +1,4 @@
-﻿# Crying Doll props
+﻿# Crying Doll prop
 ***The doll cries when the players approach when vibrations are detected.***
 
 Two vibration sensors SW-420 are connected to the Raspberry Pi GPIO and tuned to detect human approaching.
@@ -62,7 +62,7 @@ INFO - Program sending message 'PONG' (mid=5) on Room/My room/Props/Raspberry Cr
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep PyCryingDollProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/AsyncioProps/PyCryingDollProps/main.py -s %BROKER%
@@ -83,8 +83,8 @@ An SRD relay module is connected to GPIO 16 to control the light.
 ![SRD rely module](actuator/srd-relay-shield.jpg)
 
 
-## Crying Doll as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyCryingDollProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## Crying Doll as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyCryingDollProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `activate:0` : deactivate sensor
@@ -98,7 +98,7 @@ Use `activate` to enable the cries at the right time (when starting a new game o
 Use `cry` if automatic detection doesn't work (sensor failure or calibration issue during a game) or to test sound level.
 
 ### Props configuration
-Add and configure *Raspberry CryingDoll* connected props.
+Add and configure *Raspberry CryingDoll* connected prop.
 
 ![Props configuration](props/props-configuration.png)
 

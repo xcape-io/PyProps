@@ -1,7 +1,7 @@
 ﻿# PyProps library
 ***Library for escape room Raspberry props written in Python.***
 
-With the *PyProps library* you can start coding a Raspberry props for you escape room 2.0 in a few minutes.
+With the *PyProps library* you can start coding a Raspberry prop for you escape room 2.0 in a few minutes.
 
 PyProps core library:
 * hide the code to publish / subscribe messages with MQTT
@@ -10,7 +10,7 @@ PyProps core library:
 * code is robust to work 24/7
 
 PyProps examples:
-* show how to code a props in a few lines
+* show how to code a prop in a few lines
 * provide code for common sensors / actuators
 
 Read <a href="RASPBERRY_PI_PROPS.md" target="_blank">RASPBERRY_PI_PROPS.md</a> to prepare your Rasbpberry Pi board ready for PyProps installation.
@@ -28,27 +28,27 @@ PyProps supports different Python frameworks to write any kind of props providin
 
 Each props base class extends the base class *MqttApp* which handles messaging and  the base class *PropsApp* which handles the periodic actions and the simple [Room Outbox protocol](PROTOCOL.md) protocol.
 
-*PropsData* is a base class that manages the props data variables sent to the outbox.
+*PropsData* is a base class that manages the prop data variables sent to the outbox.
 
-*Singleton* class will guarantee that only one instance of the props program runs on the Raspberry board.
+*Singleton* class will guarantee that only one instance of the prop program runs on the Raspberry board.
 
-Each props must have its own `constants.py` and `definitions.ini` [configuration files](CONFIGURATION_FILES.md) related to the escape room MQTT topics and to the props flavor.
+Each prop must have its own `constants.py` and `definitions.ini` [configuration files](CONFIGURATION_FILES.md) related to the escape room MQTT topics and to the prop flavor.
 
 `logging.ini` is the logger configuration file which can be used as is.
 
-`main.py` is the main props script to:
-* ensure only one instance of the props program is running
+`main.py` is the main prop script to:
+* ensure only one instance of the prop program is running
 * initialize GPIO
 * create the Paho MQTT client
-* create the props class
+* create the prop class
 * start MQTT client event loop
-* start props framework event loop
+* start prop framework event loop
 * cleanup GPIO at end
 * stop MQTT client event loop at end
 
 
 ## Props flavors
-The *PyProps library* takes advantage for many Python frameworks available on the Raspberry Pi running Raspbian to meet the requirements of any props created for escape rooms.
+The *PyProps library* takes advantage for many Python frameworks available on the Raspberry Pi running Raspbian to meet the requirements of any prop created for escape rooms.
 
 ### Asyncio framework: [AsyncioProps](./AsyncioProps)
 With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a graphical interface:
@@ -60,7 +60,7 @@ With [AsyncioProps](./AsyncioProps) flavor, you code props that do not need a gr
 
 The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework allows writing non-blocking Python programs that multitask seamlessly.
 
-[AsyncioProps](./AsyncioProps) props hides the complexity of the <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework and adds MQTT asynchronous messaging to facilitate your coding.
+[AsyncioProps](./AsyncioProps) prop hides the complexity of the <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework and adds MQTT asynchronous messaging to facilitate your coding.
 
 ### Pygame framework: [PygameProps](./PygameProps)
 The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> is easy to use and is powerful for:
@@ -71,7 +71,7 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 * sensors and actuators (GPIO and I2C shields)
 * examples:
     - educational blink example ([PyBlinkProps](./PygameProps/PygameBlinkProps))
-    - piano props with a mechanic piano ([PyPianoProps](./PygameProps/PygamePianoProps))
+    - piano prop with a mechanic piano ([PyPianoProps](./PygameProps/PygamePianoProps))
     - podium with linear jack ([PyPodiumProps](./PygameProps/PyPodiumgameProps))
     - hacker intrusion puzzle (contact me)
     - Tetris hacked (contact me)
@@ -107,14 +107,14 @@ Console and GUI props with <a href="https://www.learnpyqt.com/" target="_blank">
 [QtProps](./QtProps) extends either *QCoreApplication* or *QApplication* object to add MQTT asynchronous messaging to the <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> framework to facilitate your coding.
 
 ### Guizero (Tkinter GUI) framework: [GuizeroProps](./GuizeroProps)
-<a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your props it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
+<a href="https://pypi.org/project/guizero/" target="_blank">Guizero</a> is a very simple and easy GUI framework built over [Tkinter](https://docs.python.org/3/library/tkinter.html) so if you need a simple GUI for your prop it's a reasonable choice and if you need more features you have access to <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a> via the `_gui.tk` property.
 
 [GuizeroProps](./GuizeroProps) is suitable for:
 * simple graphical interface for a Raspberry with a TV display 
 * sensors and actuators (GPIO and I2C shieds)
 * sound (*playsound, pydub, aplay, mplayer, mpg123*)
 * example:
-    - display text on the props TV monitor ([PyTeletextProps](./GuizeroProps/PyTeletextProps))
+    - display text on the prop TV monitor ([PyTeletextProps](./GuizeroProps/PyTeletextProps))
     
 See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings Started</a> and the Guizero widgets from the same web page.
 
@@ -132,7 +132,7 @@ See <a href="https://pypi.org/project/guizero/" target="_blank">Guizero Gettings
 * multi-touch app
 * sensors and actuators (GPIO and I2C shieds)
 * example: 
-    - display text on the props TV monitor ([PyWaterWellProps](./KivyProps/PyWaterWellProps))
+    - display text on the prop TV monitor ([PyWaterWellProps](./KivyProps/PyWaterWellProps))
     
 To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a goods start is <a href="https://kivy.org/doc/stable/gettingstarted/intro.html" target="_blank">Kivy Guides</a>.
 

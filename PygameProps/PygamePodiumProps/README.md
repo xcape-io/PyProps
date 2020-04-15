@@ -1,14 +1,14 @@
-﻿# Pygame Podium props
-*A props from <a href="https://www.live-escape.net/" target="_blank">Live Escape Grenoble</a> using **pygame**.*
+﻿# Pygame Podium prop
+*A prop from <a href="https://www.live-escape.net/" target="_blank">Live Escape Grenoble</a> using **pygame**.*
 
-A real word props, we created a rostrum (*podium* in French) powered by a Raspberry Pi; the players have clues in the room to find the correct sequence of coded keys; when a correct key is struck, an associated sound is played and when a wrong key in the sequence is struck, another sound is played.
+A real word prop, we created a rostrum (*podium* in French) powered by a Raspberry Pi; the players have clues in the room to find the correct sequence of coded keys; when a correct key is struck, an associated sound is played and when a wrong key in the sequence is struck, another sound is played.
 
 Players must play the correct sequence to win the challenge that opens the rostrum hidden door with a linear grip.
 
 This is a good example of GPIO events with debouncing and audio.
 
 ## Installation
-This props was created before PyProps library was released so there is no dependencies with PyProps.
+This prop was created before PyProps library was released so there is no dependencies with PyProps.
 
 You will have to install following Python packages:
 ```bash
@@ -79,15 +79,15 @@ INFO - Message published (mid=5)
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep PygamePodiumProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProps/PygamePodiumProps/main.py -s %BROKER%
 ```
 
 
-## Podium Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-This props is used as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software.
+## Podium Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+This prop is used as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software.
 
 ### Props commands
 Commands are in French; look at the code in `PodiumApp.onMessage()` method.

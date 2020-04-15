@@ -1,7 +1,7 @@
-﻿# Teletext props
+﻿# Teletext prop
 ***Display messages in the Escape Room with a Raspberry Pi.***
 
-This props listens to MQTT messages and then displays the text on an HDMI display, rings a bell and turns on a light for 3 seconds.
+This prop listens to MQTT messages and then displays the text on an HDMI display, rings a bell and turns on a light for 3 seconds.
 
 Messages are sent by the game master with the [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) or any application able to publish MQTT messages.
 
@@ -66,8 +66,8 @@ INFO - Program sending message 'DONE afficher:1515' (mid=7) on Room/My room/Prop
 To switch MQTT broker, kill the program and start again with new arguments.
 
 
-## PyTeletextProps as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyTeletextProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## PyTeletextProps as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyTeletextProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking
@@ -77,9 +77,9 @@ To use *PyTeletextProps* as a props for <a href="https://xcape.io/" target="_bla
 
 
 ### Props configuration
-Add and configure *Raspberry Teletext* connected props.
+Add and configure *Raspberry Teletext* connected prop.
 
-The SSH relaunch command for GUI props relies on `signal.SIGUSR1`:
+The SSH relaunch command for GUI prop relies on `signal.SIGUSR1`:
 ```bash
 echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps/.config.yml && ps aux | grep python | grep -v "grep python" | grep PyTeletextProps/main.py | awk '{print $2}' | xargs kill -10
 ```
@@ -97,7 +97,7 @@ echo host: %BROKER%> /home/pi/Room/Props/PyProps/GuizeroProps/PyTeletextProps/.c
 ![Room control panel](props/room-control-panel.png)
 
 
-### Plugin for Teletext props
+### Plugin for Teletext prop
 The [Teletext Plugin](https://github.com/xcape-io/TeletextPlugin) can be used as a standalone applet, without the need of <a href="https://xcape.io/go/room" target="_blank">Room software</a>. If you use <a href="https://xcape.io/go/room" target="_blank">Room software</a>, you will find <a href="https://xcape.io/public/documentation/en/room/AddaRaspberrypropsTeletext.html" target="_blank">detailed installation help in the Room manual</a>.
 
 ![PyTeletextPlugin](props/plugin.png)

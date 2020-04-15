@@ -9,7 +9,7 @@ The <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asy
 
 ***AsyncioProps*** props hides the complexity of the <a href="https://docs.python.org/3/library/asyncio.html" target="_blank">asyncio</a> framework and adds MQTT asynchronous messaging to facilitate your coding.
 
-You will choose your sound solution according to the latency required for the props to play an audio file.
+You will choose your sound solution according to the latency required for the prop to play an audio file.
 
 ## Installation and usage
 You will find installation and usage instructions in the [PyProps library INSTALLATION.md](../INSTALLATION.md)

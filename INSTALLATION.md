@@ -1,13 +1,13 @@
 ﻿# PyProps library
 ***Installation and usage of the [PyProps library](README.md).***
 
-## Prepare your Raspberry Pi as a props
+## Prepare your Raspberry Pi as a prop
 You will find instructions in the [RASPBERRY_PI_PROPS.md](RASPBERRY_PI_PROPS.md)
 
 ## Installation
-Download `PyProps-master.zip` from this GitHub repository and unflate it on your Raspberry Pi. Rename `PyProps-master` folder the a meaningful name for you props. 
+Download `PyProps-master.zip` from this GitHub repository and unflate it on your Raspberry Pi. Rename `PyProps-master` folder the a meaningful name for you prop. 
 
-A good habit is to rename the props folder to: `/home/pi/Room/Props/MyProps`
+A good habit is to rename the prop folder to: `/home/pi/Room/Props/MyProps`
 
 Install dependencies
 ```bash
@@ -47,7 +47,7 @@ To switch MQTT broker, kill the program and start again with new arguments.
 
 
 ## SSH relaunch command
-The command to relaunch the props from *<a href="https://xcape.io/" target="_blank">xcape.io</a>* **Room** software is :
+The command to relaunch the prop from *<a href="https://xcape.io/" target="_blank">xcape.io</a>* **Room** software is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep MyProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/MyProps/main.py -s %BROKER%

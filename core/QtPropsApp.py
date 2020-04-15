@@ -13,7 +13,7 @@ Props base class extends QtMqttApp:
     DONE -> acknowledge that a command has been performed
     OMIT -> acknowledge that a command has been ignored
     OVER -> notify that a challenge is over
-    REQU -> request a command to another props
+    REQU -> request a command to another prop
     PROG -> request a control program
 """
 

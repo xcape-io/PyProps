@@ -10,7 +10,7 @@ However props may use MQTT topics in any way, for example [Teletext Props](https
 ## Outbox
 **Room** Outbox protocol defines messages sent in props outbox, which is a MQTT topic structured like this:
 ```python
-Room/Name of the room/Props/Name of the props/outbox
+Room/Name of the room/Props/Name of the prop/outbox
 ```
 For example:
 ```python
@@ -18,9 +18,9 @@ Room/My room/Props/Raspberry Echo/outbox
 ```
 
 ## Inbox
-The props also subscribes to its dedicated inbox topic to listen to command such as actuators:
+The prop also subscribes to its dedicated inbox topic to listen to command such as actuators:
 ```python
-Room/Name of the room/Props/Name of the props/inbox
+Room/Name of the room/Props/Name of the prop/inbox
 ```
 For example:
 ```python
@@ -30,10 +30,10 @@ Room/My room/Props/Raspberry Echo/inbox
 ## Protocol for outbox
 The protocol has been defined to be **human readable** (so debugging Escape Room is easy) and  **simple to parse** (so low-end MCU can parse it quickly, such as Arduino):
 
-* `CONNECTED` is sent when the props is connected to the MQTT broker
+* `CONNECTED` is sent when the prop is connected to the MQTT broker
 * `DISCONNECTED` is set as the MQTT *will* for the outbox topic
 * `DATA var1=value1 var2=value2` to report sensors or challenge state
-* `REQU command` to send a request to another props
+* `REQU command` to send a request to another prop
 * `PROG command` to send a program request to the Escape Game controller (**Room** software)
 * `DONE command` to report that a command has been received and done
 * `OMIT command` to report that an unsupported command has been received and ignored

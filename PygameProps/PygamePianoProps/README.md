@@ -1,7 +1,7 @@
-﻿# Pygame Piano props
-*A props from <a href="https://www.live-escape.net/" target="_blank">Live Escape Grenoble</a> using **pygame**.*
+﻿# Pygame Piano prop
+*A prop from <a href="https://www.live-escape.net/" target="_blank">Live Escape Grenoble</a> using **pygame**.*
 
-A real word props, we wired an antic mechanic piano to a Raspberry Pi; black keys play real music notes and white keys play slices of the infamous phrase of the Exorcist "Your mother suck cocks in hell".
+A real word prop, we wired an antic mechanic piano to a Raspberry Pi; black keys play real music notes and white keys play slices of the infamous phrase of the Exorcist "Your mother suck cocks in hell".
 
 Players must hit the 7 white keys in order to win the challenge that opens the piano top with a linear grip and plays the scary Exorcist music.
 
@@ -10,7 +10,7 @@ To reset the challenge (close the top), the game master plays a melody with 7 se
 This is a good example of GPIO events with debouncing and multi channel audio.
 
 ## Installation
-This props was created before PyProps library was released so there is no dependencies with PyProps.
+This prop was created before PyProps library was released so there is no dependencies with PyProps.
 
 You will have to install following Python packages:
 ```bash
@@ -75,15 +75,15 @@ INFO - Message published (mid=4)
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep PygamePianoProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProps/PygamePianoProps/main.py -s %BROKER%
 ```
 
 
-## Piano Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-This props is used as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software.
+## Piano Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+This prop is used as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software.
 
 ### Props commands
 Commands are in French; look at the code in `PianoApp.onMessage()` method.

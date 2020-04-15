@@ -1,9 +1,9 @@
-﻿# Qt Educational props
-*Educational example of pure Python props using **PyQt5**.*
+﻿# Qt Educational prop
+*Educational example of pure Python prop using **PyQt5**.*
 
 An educational example which makes a LED blinking and making a sound when an RFID tag is detected. And unlock a door when an object (magnetic) is detected by a <a href="https://en.wikipedia.org/wiki/Reed_switch" target="_blank">reed switch</a>.
 
-This props uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtPropsApp.py" target="_blank">QtPropsApp</a>.
+This prop uses PyQt5 and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtPropsApp.py" target="_blank">QtPropsApp</a>.
 
 We use a MIFARE RFID-RC522 module:
 
@@ -28,7 +28,7 @@ If you need two NFC reader you wil find help at <a href="https://github.com/pat-
 
 
 ## Installation
-This props was created before PyProps library was released so there is no dependencies with PyProps.
+This prop was created before PyProps library was released so there is no dependencies with PyProps.
 
 You will have to install following Python packages:
 ```bash
@@ -128,14 +128,14 @@ INFO - Message published (mid=4)
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep QtEducationalProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProps/QtEducationalProps/main.py -s %BROKER%
 ```
 
-## Qt Educational Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *QtEducationalProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## Qt Educational Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *QtEducationalProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking

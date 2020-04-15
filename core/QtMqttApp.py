@@ -10,7 +10,7 @@ App base class extending QCoreApplication or QApplication with Paho MQTT client:
 - receive messages exposing onMessage() virtual method
 - expose onConnect() and onDisconnect() virtual methods
 - handle logging defined in logging.ini
-- parse props app arguments
+- parse prop app arguments
 
 Configured with:
 -  constants.py
@@ -166,7 +166,7 @@ class QtMqttApp(QAPP):
             else:
                 self._logger = logging.getLogger('production')
                 self._logger.setLevel(logging.INFO)
-            ch = logging.FileHandler('props.log', 'w')
+            ch = logging.FileHandler('prop.log', 'w')
             ch.setLevel(logging.INFO)
             self._logger.addHandler(ch)
 

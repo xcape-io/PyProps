@@ -1,4 +1,4 @@
-﻿# Pygame Blink props
+﻿# Pygame Blink prop
 *Educational example of pure Python props using **pygame**.*
 
 An educational example which makes a LED blinking and making a sound.
@@ -50,15 +50,15 @@ INFO - Program susbcribed to topic (mid=2) with QoS (0,)
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProps/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/PygameProps/PygameBlinkProps/main.py -s %BROKER%
 ```
 
 
-## Pygame Blink Props as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PygameBlinkProps* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## Pygame Blink Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PygameBlinkProps* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking

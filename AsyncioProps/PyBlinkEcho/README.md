@@ -1,4 +1,4 @@
-﻿# Blink Echo props
+﻿# Blink Echo prop
 *Example of pure Python props using **asyncio**.*
 
 An educational example which echoes messages and make a LED blinking.
@@ -52,15 +52,15 @@ INFO - Program susbcribed to topic (mid=3) with QoS (1,)
 
 
 ## SSH relaunch command
-The command to relaunch the props is :
+The command to relaunch the prop is :
 
 ```bash
 $ ps aux | grep python | grep -v "grep python" | grep PyBlinkEcho/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/AsyncioProps/PyBlinkEcho/main.py -s %BROKER%
 ```
 
 
-## Blink Echo as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
-To use *PyBlinkEcho* as a props for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
+## Blink Echo as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+To use *PyBlinkEcho* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Props commands
 * `blink:0` : deactivate blinking
@@ -69,7 +69,7 @@ To use *PyBlinkEcho* as a props for <a href="https://xcape.io/" target="_blank">
 
 
 ### Props configuration
-Add and configure *Raspberry BlinkEcho* connected props.
+Add and configure *Raspberry BlinkEcho* connected prop.
 
 ![Props configuration](props/props-configuration.png)
 
@@ -83,7 +83,7 @@ Add and configure *Raspberry BlinkEcho* connected props.
 ![Room control panel](props/room-control-panel.png)
 
 
-### Plugin for Blink Echo props
+### Plugin for Blink Echo prop
 Props control panel cannot display text on multiple lines or send text by the game master, therefore a plugin is necessary: [PyEchoPlugin](https://github.com/xcape-io/PyEchoPlugin)
 
 ![PyEchoPlugin](props/plugin.png)

@@ -78,7 +78,6 @@ class CountdownApp(QtPropsApp):
                 self._sounding_p.update(True)
                 self.sendDataChanges()
                 self.sendDone(message)
-
             else:
                 self.sendOmit(message)
         else:
