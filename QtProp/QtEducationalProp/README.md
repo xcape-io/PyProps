@@ -39,7 +39,7 @@ You will have to install following Python packages:
     $ sudo apt-get install python3-pyqt5 python3-pyqt5-dbg
 ```
 
-PyQt5.QtMultimedia must be installed:
+`PyQt5.QtMultimedia` must be installed:
 
 ```bash
     $ sudo apt-get update
@@ -134,7 +134,7 @@ The command to relaunch the prop is :
 $ ps aux | grep python | grep -v "grep python" | grep QtEducationalProp/main.py | awk '{print $2}' | xargs kill -9 && screen -d -m python3 /home/pi/Room/Props/PyProps/QtProp/QtEducationalProp/main.py -s %BROKER%
 ```
 
-## Qt Educational Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+## Qt Educational Prop as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *QtEducationalProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are prop commands and messages as well as a suggested control panel.
 
 ### Prop commands

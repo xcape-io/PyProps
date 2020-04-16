@@ -82,7 +82,7 @@ $ ps aux | grep python | grep -v "grep python" | grep PygamePianoProp/main.py | 
 ```
 
 
-## Piano Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+## Piano Prop as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 This prop is used as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software.
 
 ### Prop commands

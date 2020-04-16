@@ -57,7 +57,7 @@ $ ps aux | grep python | grep -v "grep python" | grep PygameBlinkProp/main.py | 
 ```
 
 
-## Pygame Blink Props as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
+## Pygame Blink Prop as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a>
 To use *PygameBlinkProp* as a prop for <a href="https://xcape.io/" target="_blank">*xcape.io* **Room**</a> software, here are props commands and messages as well as a suggested control panel.
 
 ### Prop commands
