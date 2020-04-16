@@ -69,7 +69,6 @@ class CountdownApp(QtPropApp):
     # __________________________________________________________________
     def onMessage(self, topic, message):
         #print(topic, message)
-        #self.processEvents()
         if topic == self._mqttInbox:
             if message == "app:startup":
                 self.sendAllData()

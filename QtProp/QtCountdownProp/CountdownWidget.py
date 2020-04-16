@@ -54,7 +54,6 @@ class CountdownWidget(QWidget):
     # __________________________________________________________________
     @pyqtSlot(str, bool)
     def setTime(self, timestr, overtime):
-        # we could use a pyqtSlot here
         if overtime:
             self._chronoLabel.setStyleSheet("color: red")
         else:
