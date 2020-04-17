@@ -22,10 +22,10 @@ Insert the SD card in the Raspberry Pi (3B/3B+/4) connected to a keyboard, a mou
 
 1. Let NOOBS boot 
 2. Check the box **Raspbian Full** installation
-2. Select your language and keyboard
-3. Click **Install(i)** and proceed (for a few minutes)
-4. When the installation is finished, reboot
-5. Complete the wizard that appeared on the first start:
+3. Select your language and keyboard
+4. Click **Install(i)** and proceed (for a few minutes)
+5. When the installation is finished, reboot
+6. Complete the wizard that appeared on the first start:
      * set country
      * change password
      * select WiFi network (if relevant)
