@@ -11,7 +11,35 @@ Each flavor of PyProp base class either implements or redefines the *Prop* base 
 * [KivyProp](#kivy-framework-kivyprop) see <a href="../core/KivyProp.py" target="_blank">`KivyProp.h`</a>
 
 
-...
+## Constructor
+
+
+## Interface
+The *Prop* class interface is consistent with the <a href="https://github.com/xcape-io/ArduinoProps/blob/master/help/Prop.md" target="_blank">Prop class</a> of the <a href="https://github.com/xcape-io/ArduinoProps#arduinoprops-library" target="_blank">ArduinoProps library</a> for Arduino boards.
+
+* `addData(data)`
+    - returns the string representation of the object if the variable has been updated since last call; or returns `None`
+* `addPeriodicAction(title, func, time)`
+    - update the variable
+* `sendAllData()`
+    - returns 
+* `sendDataChanges()`
+    - returns 
+* `sendData(data)`
+    - returns 
+* `sendDone(action)`
+    - returns 
+* `sendMesg(message, topic=None)`
+    - returns 
+* `sendOmit(action)`
+    - returns 
+* `sendOver(challenge)`
+    - returns 
+* `sendProg(program)`
+    - returns 
+* `sendRequ(request, topic=None)`
+    - returns 
+
 
 
 ## Author

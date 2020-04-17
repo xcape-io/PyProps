@@ -58,7 +58,7 @@ class PropApp(MqttApp):
         self._publishMessage(self._mqttOutbox, "DONE " + action)
 
     # __________________________________________________________________
-    def sendMesg(self, message, topic = None):
+    def sendMesg(self, message, topic=None):
         if topic is None:
             self._publishMessage(self._mqttOutbox, "MESG " + message)
         else:
@@ -77,7 +77,7 @@ class PropApp(MqttApp):
         self._publishMessage(self._mqttOutbox, "PROG " + program)
 
     # __________________________________________________________________
-    def sendRequ(self, request, topic = None):
+    def sendRequ(self, request, topic=None):
         if topic is None:
             self._publishMessage(self._mqttOutbox, "REQU " + request)
         else:
