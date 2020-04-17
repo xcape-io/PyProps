@@ -1,11 +1,11 @@
-# PyProps library: configuration files
-*Configuration files available for every prop application.*
+# PyProps library configuration files
+*Configuration files are available for every prop application.*
 
 The *PyProps* library offers an unified coding apprach to facilitate and speed up props coding.
 
-Two configuration files are alway avaliable:
-* [`constants.py`]( #constants)
-* [`definitions.ini`](#definitions)
+Two configuration files are always avaliable:
+* [`constants.py`]( #constantspy)
+* [`definitions.ini`](#definitionsini)
 
 ## `constants.py`
 For example here is the `constants.py` for [PyCryingDollProp](https://github.com/xcape-io/PyProps/tree/master/AsyncioProp/PyCryingDollProp)
@@ -13,7 +13,7 @@ For example here is the `constants.py` for [PyCryingDollProp](https://github.com
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-constants.py (version 0.1)
+constants.py
 
 Contains all the application constants. As a rule all constants are named in all caps.
 '''
