@@ -24,7 +24,7 @@ class PropData:
         if type == int:
             v = int(str(initial))
             self._value = v
-            self._reference = v + 1
+            self._reference = v + 1  # force an initial change
             if self._logger:
                 self._logger.info(
                     "{0} '{1}' {2}={3} {4}={5}".format("New int Publishable", self._name, "with initial", initial,
@@ -32,7 +32,7 @@ class PropData:
         elif type == float:
             v = float(str(initial))
             self._value = v
-            self._reference = v + 1.0
+            self._reference = v + 1.0  # force an initial change
             if self._logger and self._decimal:
                 self._logger.info(
                     "{0} '{1}' {2}={3} {4}={5} {6}={7}".format("New float Publishable", self._name, "with initial",
@@ -44,7 +44,7 @@ class PropData:
                                                        "and precision", self._precision))
         elif type == str:
             self._value = initial
-            self._reference = initial + "_"
+            self._reference = initial + "_"  # force an initial change
             if self._logger:
                 if initial:
                     self._logger.info(
@@ -53,7 +53,7 @@ class PropData:
                     self._logger.info("{0} '{1}' {2}=''".format("New str Publishable", self._name, "with initial"))
         elif type == bool:
             self._value = initial
-            self._reference = not initial
+            self._reference = not initial  # force an initial change
             if self._logger:
                 self._logger.info(
                     "{0} '{1}' ({2}/{3}) {4}={5}".format("New boolean Publishable", self._name, self._true, self._false,
@@ -62,7 +62,7 @@ class PropData:
             self._type = int
             v = 0
             self._value = v
-            self._reference = v + 1
+            self._reference = v + 1  # force an initial change
             self._decimal = None
             self._precision = 1
             if self._logger:
