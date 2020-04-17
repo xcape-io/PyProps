@@ -2,15 +2,15 @@
 See also:
 * <a href="Prop.md" target="_blank">Prop</a> class reference
 
-*PropData* tracks data changes and values to provide `DATA` ready string format for the <a href="https://github.com/xcape-io/PyProps/blob/master/PROTOCOL.md" target="_blank">escape room 2.0 propocol</a>.
+*PropData* tracks data changes and values to provide `DATA` ready string format for the <a href="https://github.com/xcape-io/PyProps/blob/master/PROTOCOL.md" target="_blank">escape room prop 2.0 protocol</a>.
 
 See [**4. Application protocol for escape room 2.0 prop**](../README.md#4-application-protocol-for-escape-room-20-prop) in [README.md](../README.md).
 
 
 ## Constructor
 * `PropData(name, type, initial, decimal=None, precision=1, alias=("1", "0"), logger=None)`
-    - `name` is the variable identifier  used in `DATA` messages, it mustr not contains space characters
-    - `type` is the data type (see below)
+    - `name` is the variable identifier  used in `DATA` messages, it must not contain space characters
+    - `type` is the data type (*see below*)
     - `initial` is the data initial value
     - `decimal` is the number of digits for a `float` value
     - `precision` is the precision (in percent, 0.1 for 10%) used to decide that the variable has changed
