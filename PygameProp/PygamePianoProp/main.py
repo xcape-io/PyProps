@@ -60,7 +60,7 @@ if USE_GPIO and os.path.isfile('/opt/vc/include/bcm_host.h'):
 
 mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)
 
-sketch = PianoApp(sys.argv, mqtt_client, debugging_mqtt=False)
+app = PianoApp(sys.argv, mqtt_client, debugging_mqtt=False)
 
 done = False
 
