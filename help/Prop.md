@@ -20,11 +20,11 @@ Every *Prop* constructor expects:
 Regarding the *Prop* flavor you will have to provide more parameters, such as `argv` and others.
 
 See:
-* **AsyncioProp** `main.py` example
-* **PygameProp** `main.py` example
-* **QtProp** `main.py` example
-* **GuizeroProp** `main.py` example
-* **KivyProp** `main.py` example
+* **AsyncioProp** <a href="https://github.com/xcape-io/PyProps/blob/master/AsyncioProp/PyCryingDollProp/main.py" target="_blank">`main.py` example</a>
+* **PygameProp** <a href="https://github.com/xcape-io/PyProps/blob/master/PygameProp/PygameBlinkProp/main.py" target="_blank">`main.py` example</a>
+* **QtProp** <a href="https://github.com/xcape-io/PyProps/blob/master/QtProp/QtEducationalProp/main.py" target="_blank">`main.py` example</a>
+* **GuizeroProp** <a href="https://github.com/xcape-io/PyProps/blob/master/GuizeroProp/PyTeletextProp/main.py" target="_blank">`main.py` example</a>
+* **KivyProp** <a href="https://github.com/xcape-io/PyProps/blob/master/KivyProp/PyWaterWellProp/main.py" target="_blank">`main.py` example</a>
 
 
 ## Interface
