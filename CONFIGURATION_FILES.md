@@ -1,4 +1,4 @@
-﻿# PyProps library: configuration files
+# PyProps library: configuration files
 *Configuration files available for every prop application.*
 
 The *PyProps* library offers an unified coding apprach to facilitate and speed up props coding.
@@ -8,7 +8,7 @@ Two configuration files are alway avaliable:
 * [`definitions.ini`](#definitions)
 
 ## `constants.py`
-For example here is the `constants.py` for **[PyCryingDollProp](https://github.com/xcape-io/PyProps/tree/master/AsyncioProp/PyCryingDollProp)**
+For example here is the `constants.py` for [PyCryingDollProp](https://github.com/xcape-io/PyProps/tree/master/AsyncioProp/PyCryingDollProp)
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -68,8 +68,27 @@ Most of the constants are self-explanatory. Each constant is required by the pro
 
 
 ## `definitions.ini`
-For example here is the `definitions.py` for
+For example here is the `definitions.py` for [QtCountdownProp](https://github.com/xcape-io/PyProps/tree/master/QtProp/QtCountdownProp)
+```ini
+[mqtt]
+; mqtt-sub-* and app-inbox topics are subscribed by MqttConsoleApp
+app-inbox = Room/My room/Props/Raspberry Countdown/inbox
+app-outbox = Room/My room/Props/Raspberry Countdown/outbox
+mqtt-sub-countdown-seconds = Room/My room/Control/game:countdown:seconds
+```
 
+#### `app-inbox` and `app-outbox` definitions
+Prop *inbox* and *outbox* MQTT topics are loaded by the prop base class (either [`MqttApp`](https://github.com/xcape-io/PyProps/blob/master/core/MqttApp.py), [`QtMqttApp`](https://github.com/xcape-io/PyProps/blob/master/core/QtMqttApp.py) or [`KivyProp`](https://github.com/xcape-io/PyProps/blob/master/core/KivyProp.py)).
+
+For *inbox* and *outbox* topics see [PROTOCOL.md](https://github.com/xcape-io/PyProps/blob/master/PROTOCOL.md)
+
+#### `mqtt-sub-*` definitions
+`MQTT_` constants are for the Paho MQTT client that is handled by the props base class, either:
+* `MqttApp` class
+* `QtMqttApp` class
+* `KivyProp` class
+
+Each topic starting with `mqtt-sub-` is unbscribed by the base class and messages are received in `onMessage(topic, message)` method which also recieve *inbox* messages.
 
 
 ## Author
