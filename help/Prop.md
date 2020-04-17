@@ -18,13 +18,13 @@ Each flavor of PyProp base class either implements or redefines the *Prop* base 
 The *Prop* class interface is consistent with the <a href="https://github.com/xcape-io/ArduinoProps/blob/master/help/Prop.md" target="_blank">Prop class</a> of the <a href="https://github.com/xcape-io/ArduinoProps#arduinoprops-library" target="_blank">ArduinoProps library</a> for Arduino boards.
 
 * `addData(data)`
-    -  registers a [PropData](PropData.md) instance to be treated by `sendAllData()` and `sendDataChanges()` methods.
+    -  registers a [PropData](PropData.md) instance to be treated by `sendAllData()` and `sendDataChanges()` methods
 * `addPeriodicAction(title, func, time)`
-    - add an action `func` to be executed every `time` period (in seconds).
+    - add an action `func` to be executed every `time` period (in seconds)
 * `sendAllData()`
-    - sends the `DATA` message for all registered data. 
+    - sends the `DATA` message for all registered data
 * `sendDataChanges()`
-    - sends the `DATA` message for all registered data that value has changed since last call. 
+    - sends the `DATA` message for all registered data that value has changed since last call.
 * `sendData(data)`
     - send the `data` string in a `DATA` message 
 * `sendDone(action)`
