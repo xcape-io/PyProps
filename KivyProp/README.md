@@ -16,7 +16,7 @@
 
 To learn the <a href="https://kivy.org" target="_blank">Kivy</a> framework, a goods start is <a href="https://kivy.org/doc/stable/gettingstarted/intro.html" target="_blank">Kivy Guides</a>.
 
-[KivyProp](./KivyProp) extends *<a href="https://kivy.org/doc/stable/api-kivy.app.html" target="_blank">KivyApp</a>*  object to add MQTT asynchronous messaging to the <a href="https://kivy.org" target="_blank">Kivy</a> framework to facilitate your coding.
+***KivyProp*** extends *<a href="https://kivy.org/doc/stable/api-kivy.app.html" target="_blank">KivyApp</a>*  object to add MQTT asynchronous messaging to the <a href="https://kivy.org" target="_blank">Kivy</a> framework to facilitate your coding.
 
 
 ## Kivy installation on Raspbian
