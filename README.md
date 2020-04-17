@@ -31,7 +31,7 @@ Each props base class extends the base class *MqttApp* which handles messaging a
 
 *Singleton* class will guarantee that only one instance of the prop program runs on the Raspberry board.
 
-Each prop must have its own `constants.py` and `definitions.ini` [configuration files](CONFIGURATION_FILES.md) related to the escape room MQTT topics and to the prop flavor.
+Each prop must have its own `constants.py` and `definitions.ini` **[configuration files](CONFIGURATION_FILES.md)** related to the escape room MQTT topics and to the prop flavor.
 
 `logging.ini` is the logger configuration file which can be used as is.
 
