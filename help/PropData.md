@@ -6,68 +6,29 @@ See also:
 
 See [**4. Application protocol for escape room 2.0 prop**](../README.md#4-application-protocol-for-escape-room-20-prop) in [README.md](../README.md).
 
-*PropData* (see <a href="https://github.com/xcape-io/ArduinoProps/blob/master/src/PropData.h" target="_blank">`PropData.h`</a>) is an interface (base class) implemented by 4 classes:
-* ***PropDataDecimal*** 
-* ***PropDataInteger*** 
-* ***PropDataLogical*** 
-* ***PropDataText*** 
 
-## Constructors
-* `PropDataDecimal(const char *, uint8_t digits = 2, double precision = 0.1, double initial = 0)`
-* `PropDataInteger(const char *, double precision = 0.1, long initial = 0)`
-* `PropDataLogical(const char *, const char *trueval = NULL, const char *falseval = NULL, bool initial = false)`
-* `PropDataText(const char *)`
+## Constructor
+* `PropData(name, type, initial, decimal=None, precision=1, alias=("1", "0"), logger=None)`
 
-By default for *PropDataLogical*, `trueval` is `"1"` band `falseval` is `"0"`.
 
-For *PropDataDecimal*, `digits` is the number of decimal digits in the display string.
 
-For *PropDataDecimal* and *PropDataInteger*, `precision` is the percentage threshold for deciding whether a change has occurred or not.
 
 ## Interface
-* `String fetch()`
-* `String fetchChange()`
-
-*fetch()* always returns the `"var=value "` string ready to be sent in a `DATA` protocol message and update the `_previous` value.
-
-*fetchChange()* checks whether a change has occurred or not. If a change occured, returns the `"var=value "` string ready to be sent in a `DATA` protocol message and update the `_previous` value. If no change occured, returns and empty string.
-
-## Accessors and Mutators
-* `void setValue(const double|long|bool|String)`
-* `double|long|bool|String value() const`
-
-Accessors and Mutators are typed according to *PropData* type.
-
-## Usage
-
-### Create a *PropData* instance
-```csharp
-PropDataLogical clignoter(u8"clignote", u8"oui", u8"non", true);
-```
-
-### Add the *PropData* instance to managed data of the *Props*
-```csharp
-void setup()
-{
-  ...
-
-  Props::addManagedLogicalData(&clignoter);
-
-  ...
-}
-```
-
-### Use the *PropData* instance anywhere
-```csharp
-clignoter.setValue(true);
+* `change()`
+* `update()`
+* `update(value)`
 
 ...
+...
 
-if (clignoter.value()) {
-    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-    led.setValue(digitalRead(LED_BUILTIN));
-}
-```
+
+## Private `__str__()` method
+
+
+...
+...
+
+
 
 ## Author
 
