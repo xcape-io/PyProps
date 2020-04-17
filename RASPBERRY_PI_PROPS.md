@@ -90,7 +90,7 @@ Edit `/etc/dhcpcd.conf`
     static domain_name_servers=192.168.0.1
 ```
 
-## Wifi network configuration
+### Wifi network configuration
 Wifi network configuration is editable, *order is not relevant if several nerworks are available*:
 
 ```bash
