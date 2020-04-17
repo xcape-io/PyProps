@@ -3,7 +3,7 @@ See also:
 * <a href="PropData.md" target="_blank">PropData</a> class reference
 
 ## Props unified coding
-Each flavor of PyProp base class either implements or redefines the *Prop* base class:
+Each flavor of PyProp base class either implements or redefines the *Prop* base class interface:
 * [AsyncioProp](#asyncio-framework-asyncioprop) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
 * [PygameProp](#asyncio-framework-asyncioprop) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
 * [QtProp](#pyqt5-framework) see <a href="../core/QtPropApp.py" target="_blank">`QtPropApp.h`</a>
@@ -18,7 +18,7 @@ Each flavor of PyProp base class either implements or redefines the *Prop* base 
 The *Prop* class interface is consistent with the <a href="https://github.com/xcape-io/ArduinoProps/blob/master/help/Prop.md" target="_blank">Prop class</a> of the <a href="https://github.com/xcape-io/ArduinoProps#arduinoprops-library" target="_blank">ArduinoProps library</a> for Arduino boards.
 
 * `addData(data)`
-    - returns the string representation of the object if the variable has been updated since last call; or returns `None`
+    -  registers a [PropData](PropData.md) instance to be treated by sendAllData() and sendDataChanges() methods.
 * `addPeriodicAction(title, func, time)`
     - update the variable
 * `sendAllData()`
