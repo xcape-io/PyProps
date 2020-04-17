@@ -48,7 +48,7 @@ except NameError:
 try:
     MQTT_DEFAULT_QoS
 except NameError:
-    MQTT_DEFAULT_QoS = 2
+    MQTT_DEFAULT_QoS = 1
 try:
     MQTT_KEEPALIVE
 except NameError:

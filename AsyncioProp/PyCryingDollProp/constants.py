@@ -20,7 +20,7 @@ CONFIG_FILE = '.config.yml'
 
 MQTT_DEFAULT_HOST = 'localhost'
 MQTT_DEFAULT_PORT = 1883
-MQTT_DEFAULT_QoS = 2
+MQTT_DEFAULT_QoS = 1
 
 MQTT_KEEPALIVE = 15 # 15 seconds is default MQTT_KEEPALIVE in Arduino PubSubClient.h
 

@@ -16,7 +16,7 @@ ORGANIZATIONNAME = "live-escape.net"
 
 MQTT_DEFAULT_HOST = 'localhost'
 MQTT_DEFAULT_PORT = 1883
-MQTT_DEFAULT_QoS = 2
+MQTT_DEFAULT_QoS = 1
 
 #__________________________________________________________________
 # Required by SketchApp
