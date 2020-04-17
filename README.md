@@ -19,11 +19,11 @@ Read [INSTALLATION.md](INSTALLATION.md) for PyProps installation and usage.
 
 ## Props unified coding
 PyProps supports different Python frameworks to write any kind of props providing a base class for your props:
-* [AsyncioProp](./AsyncioProp)
-* [PygameProp](./PygameProp)
-* [QtProp](./QtProp)
-* [GuizeroProp](./GuizeroProp)
-* [KivyProp](./KivyProp)
+* [AsyncioProp](#asyncio-framework-asyncioprop)
+* [PygameProp](#asyncio-framework-asyncioprop)
+* [QtProp](#pyqt5-framework)
+* [GuizeroProp](#guizero-tkinter-gui-framework-guizeroprop)
+* [KivyProp](#kivy-framework-kivyprop)
 
 Each props base class extends the base class *MqttApp* which handles messaging and  the base class *PropApp* which handles the periodic actions and the simple [Room Outbox protocol](PROTOCOL.md) protocol.
 
