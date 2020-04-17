@@ -12,7 +12,7 @@ Each flavor of PyProp base class either implements or redefines the *Prop* base 
 
 
 ## Constructor
-Any constructor expects:
+Every *Prop* constructor expects:
 * `client` parameter
     - a Paho MQTT client created in `main.py` usually with
     `mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)`
