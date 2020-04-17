@@ -12,7 +12,10 @@ Each flavor of PyProp base class either implements or redefines the *Prop* base 
 
 
 ## Constructor
-
+Any constructor expects:
+* `client` parameter
+    - a Paho MQTT client created in `main.py` usually with
+    `mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)`
 
 ## Interface
 The *Prop* class interface is consistent with the <a href="https://github.com/xcape-io/ArduinoProps/blob/master/help/Prop.md" target="_blank">Prop class</a> of the <a href="https://github.com/xcape-io/ArduinoProps#arduinoprops-library" target="_blank">ArduinoProps library</a> for Arduino boards.
