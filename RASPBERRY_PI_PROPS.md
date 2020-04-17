@@ -1,10 +1,11 @@
 ﻿# Raspberry Pi Props
 
-1. Prepare a clean SD Card 
-2. Install Raspbian with latest NOOBS
-3. Complete Raspbian installation
-4. Optional configuration
-5. Install *mosquitto* broker
+1. [Prepare a clean SD Card ](#1-prepare-a-clean-sd-card)
+2. [Install Raspbian with latest NOOBS](#2-install-raspbian-with-latest-noobs)
+3. [Complete Raspbian installation](#3-complete-raspbian-installation)
+4. [Optional configuration](#4-optional-configuration)
+5. [Install *mosquitto* broker](#5-install-mosquitto-broker)
+
 
 ## 1. Prepare a clean SD Card 
 Format an SD Card (16GB Class 10 U1 recommended) with <a href="https://www.sdcard.org/downloads/formatter/" target="_blank">SD Card Formatter</a> from Tuxera.
