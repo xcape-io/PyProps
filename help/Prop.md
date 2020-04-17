@@ -11,6 +11,8 @@ Each flavor of PyProp base class either implements or redefines the *Prop* base 
 * [KivyProp](#kivy-framework-kivyprop) see <a href="core/KivyProp.py" target="_blank">`KivyProp.h`</a>
 
 
+...
+
 
 ## Author
 
