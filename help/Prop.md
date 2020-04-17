@@ -4,11 +4,11 @@ See also:
 
 ## Props unified coding
 Each flavor of PyProp base class either implements or redefines the *Prop* base class interface:
-* [AsyncioProp](#asyncio-framework-asyncioprop) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
-* [PygameProp](#asyncio-framework-asyncioprop) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
-* [QtProp](#pyqt5-framework) see <a href="../core/QtPropApp.py" target="_blank">`QtPropApp.h`</a>
-* [GuizeroProp](#guizero-tkinter-gui-framework-guizeroprop) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
-* [KivyProp](#kivy-framework-kivyprop) see <a href="../core/KivyProp.py" target="_blank">`KivyProp.h`</a>
+* [AsyncioProp](https://github.com/xcape-io/PyProps/tree/master/AsyncioProp) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
+* [PygameProp](https://github.com/xcape-io/PyProps/tree/master/PygameProp) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
+* [QtProp](https://github.com/xcape-io/PyProps/tree/master/QtProp) see <a href="../core/QtPropApp.py" target="_blank">`QtPropApp.h`</a>
+* [GuizeroProp](https://github.com/xcape-io/PyProps/tree/master/GuizeroProp) see <a href="../core/PropApp.py" target="_blank">`PropApp.py`</a>
+* [KivyProp](https://github.com/xcape-io/PyProps/tree/master/KivyProp) see <a href="../core/KivyProp.py" target="_blank">`KivyProp.h`</a>
 
 
 ## Constructor
@@ -18,6 +18,13 @@ Every *Prop* constructor expects:
     `mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)`
 
 Regarding the *Prop* flavor you will have to provide more parameters, such as `argv` and others.
+
+See:
+* **AsyncioProp** `main.py` example
+* **PygameProp** `main.py` example
+* **QtProp** `main.py` example
+* **GuizeroProp** `main.py` example
+* **KivyProp** `main.py` example
 
 
 ## Interface
