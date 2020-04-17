@@ -17,6 +17,9 @@ Every *Prop* constructor expects:
     - a Paho MQTT client created in `main.py` usually with
     `mqtt_client = mqtt.Client(uuid.uuid4().urn, clean_session=True, userdata=None)`
 
+Regarding the *Prop* flavor you will have to provide more parameters, such as `argv` and others.
+
+
 ## Interface
 The *Prop* class interface is consistent with the <a href="https://github.com/xcape-io/ArduinoProps/blob/master/help/Prop.md" target="_blank">Prop class</a> of the <a href="https://github.com/xcape-io/ArduinoProps#arduinoprops-library" target="_blank">ArduinoProps library</a> for Arduino boards.
 
