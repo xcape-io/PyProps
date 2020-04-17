@@ -1,10 +1,13 @@
 # *PropData* reference
-
+See also:
+* <a href="Prop.md" target="_blank">Prop</a> class reference
+* <a href="PropAction.md" target="_blank">PropAction</a> class reference
+* 
 *PropData* tracks data changes and provides escape room 2.0 propocol `DATA` ready string format.
 
 See [**4. Application protocol for escape room 2.0 prop**](../README.md#4-application-protocol-for-escape-room-20-prop) in [README.md](../README.md).
 
-*PropData* is an interface (base class) implemented by 4 classes:
+*PropData* (see <a href="https://github.com/xcape-io/ArduinoProps/blob/master/src/PropData.h" target="_blank">`PropData.h`</a>) is an interface (base class) implemented by 4 classes:
 * ***PropDataDecimal*** 
 * ***PropDataInteger*** 
 * ***PropDataLogical*** 
