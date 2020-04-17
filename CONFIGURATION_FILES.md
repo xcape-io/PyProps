@@ -78,17 +78,12 @@ mqtt-sub-countdown-seconds = Room/My room/Control/game:countdown:seconds
 ```
 
 #### `app-inbox` and `app-outbox` definitions
-Prop *inbox* and *outbox* MQTT topics are loaded by the prop base class (either [`MqttApp`](https://github.com/xcape-io/PyProps/blob/master/core/MqttApp.py), [`QtMqttApp`](https://github.com/xcape-io/PyProps/blob/master/core/QtMqttApp.py) or [`KivyProp`](https://github.com/xcape-io/PyProps/blob/master/core/KivyProp.py)).
+The prop *inbox* and *outbox* MQTT topics are loaded by the prop base class (either [`MqttApp`](https://github.com/xcape-io/PyProps/blob/master/core/MqttApp.py), [`QtMqttApp`](https://github.com/xcape-io/PyProps/blob/master/core/QtMqttApp.py) or [`KivyProp`](https://github.com/xcape-io/PyProps/blob/master/core/KivyProp.py)).
 
 For *inbox* and *outbox* topics see [PROTOCOL.md](https://github.com/xcape-io/PyProps/blob/master/PROTOCOL.md)
 
 #### `mqtt-sub-*` definitions
-`MQTT_` constants are for the Paho MQTT client that is handled by the props base class, either:
-* `MqttApp` class
-* `QtMqttApp` class
-* `KivyProp` class
-
-Each topic starting with `mqtt-sub-` is unbscribed by the base class and messages are received in `onMessage(topic, message)` method which also recieve *inbox* messages.
+Each topic starting with `mqtt-sub-` is subscribed by the prop base class and messages are received in `onMessage(topic, message)` method which also receives messages from the *inbox*.
 
 
 ## Author
