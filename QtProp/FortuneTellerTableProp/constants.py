@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-constants.py (version 0.1)
+constants.py
 
 Contains all the application constants. As a rule all constants are named in all caps.
 '''

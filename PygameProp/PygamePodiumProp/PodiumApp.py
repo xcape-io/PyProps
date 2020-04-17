@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-PodiumApp.py (version 0.2 fix MQTT connection issue)
+PodiumApp.py
 
 PodiumApp extends PropApp.
 

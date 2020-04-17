@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-SketchApp.py  (version 0.1 initial)
+SketchApp.py
 
 SketchApp extends MqttConsoleApp to implement automation sketch in a PyQt5 
 console application.

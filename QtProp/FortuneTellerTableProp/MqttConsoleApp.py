@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-MqttConsoleApp.py (version 0.1 initial)
+MqttConsoleApp.py
 
 Base class for console PyQt5 application with MQTT inbox/outbox.
 

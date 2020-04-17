@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-alphabet.py (version 0.1)
+alphabet.py
 
 Automation sketch to fire LEDs to display clue words.
 

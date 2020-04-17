@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-main.py (version 0.1)
+main.py
 
 Kivy app to display clues with graphics effects on TV (HDMI) with Raspberry.
 

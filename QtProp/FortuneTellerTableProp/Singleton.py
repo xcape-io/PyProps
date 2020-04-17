@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-Singleton.py  (version 0.1 initial)
+Singleton.py
 
 https://github.com/pycontribs/tendo/blob/master/tendo/singleton.py
 '''

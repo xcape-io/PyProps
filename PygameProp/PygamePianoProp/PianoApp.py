@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
-PianoApp.py (version 0.1 initial)
+PianoApp.py
 
 PianoApp extends PropApp.
 
