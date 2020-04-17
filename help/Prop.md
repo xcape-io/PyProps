@@ -40,6 +40,8 @@ The *Prop* class interface is consistent with the <a href="https://github.com/xc
 * `sendRequ(request, topic=None)`
     - send the `request` string in a `REQU` message to the *outbox* or the `topic` parameter
 
+For `send----()` methods see <a href="https://github.com/xcape-io/PyProps/blob/master/PROTOCOL.md" target="_blank">Room Outbox protocol</a>
+
 
 ## Author
 
