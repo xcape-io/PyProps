@@ -13,7 +13,7 @@ PYPROPS_CORELIBPATH = '../../core'
 PUBLISHALLDATA_PERIOD = 30.0
 
 #__________________________________________________________________
-# Required by MqttApp
+# Required by KivyProp
 CONFIG_FILE = '.config.yml'
 
 MQTT_DEFAULT_HOST = 'localhost'

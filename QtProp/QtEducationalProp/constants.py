@@ -19,7 +19,7 @@ USE_GPIO = True
 NFC_MODULE = None # or 'SPI' or 'Hat'
 
 #__________________________________________________________________
-# Required by MqttConsoleApp
+# Required by QtMqttApp
 ORGANIZATIONDOMAIN = "xcape.io"
 ORGANIZATIONNAME = "xcape.io"
 

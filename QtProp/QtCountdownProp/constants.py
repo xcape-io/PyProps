@@ -17,7 +17,7 @@ PUBLISHALLDATA_PERIOD = 30.0
 USE_GPIO = True
 
 #__________________________________________________________________
-# Required by MqttConsoleApp
+# Required by QtMqttApp
 ORGANIZATIONDOMAIN = "xcape.io"
 ORGANIZATIONNAME = "xcape.io"
 
