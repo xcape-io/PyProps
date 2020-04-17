@@ -8,11 +8,11 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 * video games
 * sensors and actuators (GPIO and I2C shields)
 
-The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> (see <a href="https://www.pygame.org/" target="_blank">pygame.org</a>) is very popular and very easy to learn so the [PygameProp](./PygameProp) flavor may be your preferred choice most of the time.
+The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework</a> (see <a href="https://www.pygame.org/" target="_blank">pygame.org</a>) is very popular and very easy to learn so the ***PygameProp*** flavor may be your preferred choice most of the time.
 
 <a href="https://www.pygame.org/" target="_blank">Pygame</a> has its own event loop to multitask seamlessly.
 
-[PygameProp](./PygameProp) adds MQTT asynchronous messaging to the <a href="https://pypi.org/project/pygame/" target="_blank">Pygame</a> framework to facilitate your coding.
+***PygameProp*** adds MQTT asynchronous messaging to the <a href="https://pypi.org/project/pygame/" target="_blank">Pygame</a> framework to facilitate your coding.
 
 
 ## Installation and usage
