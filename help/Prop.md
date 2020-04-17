@@ -18,28 +18,27 @@ Each flavor of PyProp base class either implements or redefines the *Prop* base 
 The *Prop* class interface is consistent with the <a href="https://github.com/xcape-io/ArduinoProps/blob/master/help/Prop.md" target="_blank">Prop class</a> of the <a href="https://github.com/xcape-io/ArduinoProps#arduinoprops-library" target="_blank">ArduinoProps library</a> for Arduino boards.
 
 * `addData(data)`
-    -  registers a [PropData](PropData.md) instance to be treated by sendAllData() and sendDataChanges() methods.
+    -  registers a [PropData](PropData.md) instance to be treated by `sendAllData()` and `sendDataChanges()` methods.
 * `addPeriodicAction(title, func, time)`
-    - update the variable
+    - add an action `func` to be executed every `time` period (in seconds).
 * `sendAllData()`
-    - returns 
+    - sends the `DATA` message for all registered data. 
 * `sendDataChanges()`
-    - returns 
+    - sends the `DATA` message for all registered data that value has changed since last call. 
 * `sendData(data)`
-    - returns 
+    - send the `data` string in a `DATA` message 
 * `sendDone(action)`
-    - returns 
+    - send the `action` string in a `DONE` message  
 * `sendMesg(message, topic=None)`
-    - returns 
+    - send the `message` string in a `MESG` message to the *outbox* or the `topic` parameter
 * `sendOmit(action)`
-    - returns 
+    - send the `action` string in a `OMIT` message  
 * `sendOver(challenge)`
-    - returns 
+    - send the `challenge` string in a `OVER` message  
 * `sendProg(program)`
-    - returns 
+    - send the `program` string in a `PROG` message  
 * `sendRequ(request, topic=None)`
-    - returns 
-
+    - send the `request` string in a `REQU` message to the *outbox* or the `topic` parameter
 
 
 ## Author
