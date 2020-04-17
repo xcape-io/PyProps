@@ -1,4 +1,4 @@
-﻿# PyProps library
+# PyProps library
 ***Library for escape room Raspberry props written in Python.***
 
 With the *PyProps library* you can start coding a Raspberry prop for you escape room 2.0 in a few minutes.
