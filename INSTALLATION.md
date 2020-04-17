@@ -15,7 +15,7 @@ pip3 install -r requirements.txt
 ```
 
 Edit `definitions.ini` to set MQTT topics for your Escape Room:
-```python
+```ini
 [mqtt]
 ; mqtt-sub-* and app-inbox topics are subscribed by MqttApp
 app-inbox = Room/My room/Props/Raspberry MyProps/inbox
