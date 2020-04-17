@@ -13,10 +13,10 @@ See [**4. Application protocol for escape room 2.0 prop**](../README.md#4-applic
     - `type` is the data type (*see below*)
     - `initial` is the data initial value
     - `decimal` is the number of digits for a `float` value
-    - `precision` is the precision (in percent, 0.1 for 10%) used to decide that the variable has changed
+    - `precision` is the precision (in percent; 0.1 for 10%) used to decide that the variable has changed
     - `alias` is a tuple of strings to represent a boolean value (eg. `("yes", "no")`)
 
-Type available for `type` are:
+Types available for `type` are:
 * `bool` for a boolean value which can be substituted by an alias
 * `int` for integer
 * `float` for a decimal value
@@ -35,7 +35,7 @@ Type available for `type` are:
 The string representation of the object is the string to send in `DATA` messages.
 
 ## Private `__str__()` method
-This Python classic method returns the string representation of the object.
+This pythonic private method returns the string representation of the object.
 
 
 ## Author
