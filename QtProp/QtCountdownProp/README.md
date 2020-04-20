@@ -6,7 +6,7 @@ A prop that displays the game countdown in the escape room on the Raspberry HDMI
 This prop uses <a href="https://www.learnpyqt.com/" target="_blank">PyQt5</a> and extends <a href="https://github.com/xcape-io/PyProps/blob/master/core/QtPropApp.py" target="_blank">QtPropApp</a>.
 
 ## Installation
-This prop was created before PyProps library was released so there is no dependencies with PyProps.
+This prop was created before *PyProps* library was released so there is no dependencies with PyProps.
 
 You will have to install following Python packages:
 ```bash
