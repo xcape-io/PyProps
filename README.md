@@ -20,7 +20,7 @@ Read [INSTALLATION.md](INSTALLATION.md) for PyProps installation and usage.
 ## Props unified coding
 PyProps supports different Python frameworks to write any kind of props providing a base class for your props:
 * [AsyncioProp](#asyncio-framework-asyncioprop)
-* [PygameProp](#asyncio-framework-asyncioprop)
+* [PygameProp](##pygame-framework-pygameprop)
 * [QtProp](#pyqt5-framework)
 * [GuizeroProp](#guizero-tkinter-gui-framework-guizeroprop)
 * [KivyProp](#kivy-framework-kivyprop)
