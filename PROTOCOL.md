@@ -1,4 +1,4 @@
-﻿# Room Outbox protocol
+﻿# Room Prop Protocol
 ***An effective protocol for MQTT messages sent by connected props for Escape Room.***
 
 Connected props for Escape Room exchange data and messages with a MQTT broker.
