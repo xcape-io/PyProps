@@ -40,6 +40,8 @@ The protocol has been defined to be **human readable** (so debugging Escape Room
 * `OVER command` to report that an Escape Game challenge has been complete
 * `MESG any interesting stuff to report`
 
+![Prop Protocol](assets/Prop-Protocol.png)
+
 
 ## Author
 **Marie FAURE** (Oct 9th, 2019)
