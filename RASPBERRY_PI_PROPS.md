@@ -114,6 +114,8 @@ Wifi network configuration is editable, *order is not relevant if several nerwor
 
 
 ## 5. Install *mosquitto* broker
+> Each room requires a MQTT broker and it's a good idea to run the broker on a Raspberry prop.
+
 Install *mosquitto* broker:
 ```bash
     $ sudo apt-get install mosquitto
