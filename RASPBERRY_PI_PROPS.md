@@ -160,3 +160,4 @@ The reference is : <a href="https://mosquitto.org/man/mosquitto-conf-5.html" tar
 * mail: *dev at faure dot systems*
 * github: <a href="https://github.com/xcape-io?tab=repositories" target="_blank">xcape-io</a>
 * web: <a href="https://xcape.io/" target="_blank">xcape.io</a>
+* original: <a href="https://github.com/xcape-io/PyProps/blob/master/RASPBERRY_PI_PROPS.md" target="_blank">RASPBERRY_PI_PROPS.md</a>
