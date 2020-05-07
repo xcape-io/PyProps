@@ -6,7 +6,7 @@
 4. [Optional configuration](#4-optional-configuration)
 5. [Install *mosquitto* broker](#5-install-mosquitto-broker)
 
-> A Raspberry Pi prop 16GB Raspbian image from NOOBS 3.3.1 (2020-02-14) without optional configuration is available from download from [PROPS_3_3_1.7z](https://sourceforge.net/projects/xcape/files/Pi%20Prop%20Raspbian%20Images/)
+> A Raspberry Pi prop 16GB Raspbian image from NOOBS 3.3.1 (2020-02-14) without optional configuration is available for download from [PROPS_3_3_1.7z](https://sourceforge.net/projects/xcape/files/Pi%20Prop%20Raspbian%20Images/)
 >
 > <a href="https://www.7-zip.org/" target="_blank">7Zip</a> is required to unflate .7z the image.
 
