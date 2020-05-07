@@ -6,6 +6,10 @@
 4. [Optional configuration](#4-optional-configuration)
 5. [Install *mosquitto* broker](#5-install-mosquitto-broker)
 
+> A Raspberry Pi prop 16GB Raspbian image from NOOBS 3.3.1 (2020-02-14) without optional configuration is available from download from [PROPS_3_3_1.7z](https://sourceforge.net/projects/xcape/files/Pi%20Prop%20Raspbian%20Images/)
+>
+> <a href="https://www.7-zip.org/" target="_blank">7Zip</a> is required to unflate .7z the image.
+
 
 ## 1. Prepare a clean SD Card 
 Format an SD Card (16GB Class 10 U1 recommended) with <a href="https://www.sdcard.org/downloads/formatter/" target="_blank">SD Card Formatter</a> from Tuxera.
