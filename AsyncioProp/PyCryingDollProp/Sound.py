@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 '''
 Sound.py
-MIT License (c) Marie Faure <dev at faure dot systems>
+MIT License (c) Faure Systems <dev at faure dot systems>
 
 Sound play audio with aplay (until it ends).
 '''

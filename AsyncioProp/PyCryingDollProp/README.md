@@ -115,7 +115,7 @@ Configure *Raspberry CryingDoll* control panel using the SVG images ![Crying dol
 
 ## Author
 
-**Marie FAURE** (Mar 30th, 2020)
+**Faure Systems** (Mar 30th, 2020)
 * company: FAURE SYSTEMS SAS
 * mail: *dev at faure dot systems*
 * github: <a href="https://github.com/xcape-io?tab=repositories" target="_blank">xcape-io</a>
