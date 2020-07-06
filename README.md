@@ -1,4 +1,4 @@
-# PyProps library
+﻿# PyProps library
 ***Library for escape room Raspberry props written in Python.***
 
 With the *PyProps library* you can start coding a Raspberry prop for you escape room 2.0 in a few minutes.
@@ -71,7 +71,7 @@ The <a href="https://pypi.org/project/pygame/" target="_blank">Pygame framework<
 * examples:
     - educational blink example ([PygameBlinkProp](./PygameProp/PygameBlinkProp))
     - piano prop with a mechanic piano ([PygamePianoProp](./PygameProp/PygamePianoProp))
-    - podium with linear jack ([PyPodiumgameProp](./PygameProp/PyPodiumgameProp))
+    - podium with linear jack ([PygamePodiumProp](./PygameProp/PygamePodiumProp))
     - hacker intrusion puzzle (contact me)
     - Tetris hacked (contact me)
 
