@@ -24,7 +24,7 @@ You will find installation and usage instructions in the [PyProps library INSTAL
 *Pygame* props
 * educational blink example ([PygameBlinkProp](PygameBlinkProp))
 * piano prop with a mechanic piano ([PygamePianoProp](PygamePianoProp))
-* podium with linear jack ([PygamePodiumProps](PygamePodiumProps))
+* podium with linear jack ([PygamePodiumProp](PygamePodiumProp))
 * hacker intrusion puzzle (contact me)
 * Tetris hacked (contact me)
 
